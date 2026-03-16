@@ -15,7 +15,7 @@ from config import (
     BAN_SEQUENCE, PICK_SEQUENCE,
     TIER_CARDS,
 )
-from cards import fetch_cards, deck_link
+from backend.cards import fetch_cards, deck_link
 
 draft_bp = Blueprint("draft", __name__)
 
