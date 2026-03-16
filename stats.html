@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CR Draft — Card Stats</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#f5c842;--gold-dark:#b8902a;
+  --bg:#141720;--surface:#1c2030;--surface2:#222840;
+  --border:#2a3050;--text:#e8ecff;--text-muted:#7080aa;
+  --p1:#4a9eff;--p2:#ff6b6b;--ban:#ff4466;--pick:#44ffaa;
+  --green:#44cc77;--red:#ff4455;--purple:#c060ff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Exo 2',sans-serif;min-height:100vh}
+
+header{display:flex;align-items:center;justify-content:space-between;padding:.8rem 1.5rem;
+  border-bottom:1px solid var(--border);background:var(--bg);
+  position:sticky;top:0;z-index:100}
+h1{font-family:'Cinzel Decorative',serif;font-size:clamp(1rem,2.5vw,1.5rem);
+  color:var(--gold);text-shadow:0 0 30px rgba(245,200,66,.4);letter-spacing:.05em}
+.back-btn{background:transparent;border:1px solid var(--border);color:var(--text-muted);
+  padding:.4rem .9rem;border-radius:8px;font-family:'Exo 2',sans-serif;font-size:.8rem;
+  font-weight:700;cursor:pointer;text-decoration:none;transition:all .15s;letter-spacing:.04em}
+.back-btn:hover{border-color:var(--text);color:var(--text)}
+
+main{max-width:1300px;margin:0 auto;padding:1.4rem 1rem}
+
+/* ── Controls ── */
+.controls{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin-bottom:1.2rem}
+.ctrl-label{font-size:.72rem;color:var(--text-muted);letter-spacing:.08em;text-transform:uppercase;margin-right:.2rem}
+.seg{display:flex;gap:2px;background:var(--surface2);border:1px solid var(--border);
+  border-radius:999px;padding:2px}
+.seg button{padding:.22rem .65rem;border-radius:999px;border:none;cursor:pointer;
+  font-family:'Exo 2',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.04em;
+  background:transparent;color:var(--text-muted);transition:all .15s;text-transform:uppercase}
+.seg button.active{background:var(--surface);color:var(--gold);box-shadow:0 1px 4px rgba(0,0,0,.4)}
+#search{background:var(--surface2);border:1px solid var(--border);border-radius:8px;
+  padding:.3rem .75rem;color:var(--text);font-family:'Exo 2',sans-serif;font-size:.8rem;
+  outline:none;transition:border-color .2s;width:160px;margin-left:auto}
+#search:focus{border-color:var(--gold)}
+
+/* ── Summary bar ── */
+.summary{display:flex;gap:1.2rem;flex-wrap:wrap;margin-bottom:1.2rem}
+.stat-pill{background:var(--surface);border:1px solid var(--border);border-radius:10px;
+  padding:.55rem 1rem;font-size:.82rem}
+.stat-pill span{color:var(--gold);font-weight:700}
+
+/* ── Table ── */
+.tbl-wrap{overflow-x:auto;border-radius:12px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:.82rem}
+thead th{background:var(--surface2);padding:.65rem .9rem;text-align:left;
+  font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);
+  white-space:nowrap;cursor:pointer;user-select:none;border-bottom:1px solid var(--border);
+  transition:color .15s}
+thead th:hover{color:var(--gold)}
+thead th.sorted{color:var(--gold)}
+thead th .sort-arrow{margin-left:.3rem;opacity:.6;font-size:.65rem}
+tbody tr{border-bottom:1px solid var(--border);transition:background .12s}
+tbody tr:last-child{border-bottom:none}
+tbody tr:hover{background:var(--surface2)}
+td{padding:.55rem .9rem;vertical-align:middle;white-space:nowrap}
+
+/* card name cell */
+.card-cell{display:flex;align-items:center;gap:.55rem}
+.card-cell img{width:38px;height:38px;border-radius:6px;object-fit:contain;background:#000;
+  border:1px solid var(--border)}
+.card-cell .cn{font-weight:600;font-size:.83rem}
+.card-cell .cr{font-size:.62rem;color:var(--text-muted)}
+.elixir-pip{display:inline-block;background:#7b35c4;border-radius:4px;
+  padding:1px 6px;font-size:.68rem;font-weight:700;min-width:22px;text-align:center}
+
+/* rate bars */
+.bar-wrap{display:flex;align-items:center;gap:.5rem;min-width:110px}
+.bar-track{flex:1;height:6px;background:var(--surface2);border-radius:3px;overflow:hidden;min-width:60px}
+.bar-fill{height:100%;border-radius:3px;transition:width .4s}
+.bar-pct{font-size:.75rem;font-weight:700;min-width:38px;text-align:right}
+.fill-play{background:var(--p1)}
+.fill-win {background:var(--green)}
+.fill-ban {background:var(--ban)}
+
+/* rarity colours */
+.r-Common   {color:#aaa}
+.r-Rare     {color:var(--p1)}
+.r-Epic     {color:var(--purple)}
+.r-Legendary{color:var(--gold)}
+.r-Champion {color:var(--red)}
+
+/* tier badge */
+.tier-badge{display:inline-block;padding:1px 6px;border-radius:4px;font-size:.65rem;
+  font-weight:800;letter-spacing:.06em}
+.tier-Sp{background:rgba(255,68,102,.2);color:#ff4466}
+.tier-S {background:rgba(255,140,66,.2);color:#ff8c42}
+.tier-A {background:rgba(245,200,66,.2);color:#f5c842}
+.tier-B {background:rgba(68,221,136,.2);color:#44dd88}
+.tier-C {background:rgba(74,158,255,.2);color:#4a9eff}
+.tier-D {background:rgba(155,127,232,.2);color:#9b7fe8}
+.tier-F {background:rgba(120,120,120,.15);color:#888}
+
+/* ── Player filter ── */
+#player-seg{display:flex;gap:2px;background:var(--surface2);border:1px solid var(--border);
+  border-radius:999px;padding:2px;flex-wrap:wrap}
+#player-seg button{padding:.22rem .65rem;border-radius:999px;border:none;cursor:pointer;
+  font-family:'Exo 2',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.04em;
+  background:transparent;color:var(--text-muted);transition:all .15s;text-transform:uppercase}
+#player-seg button.active{background:var(--surface);color:var(--p1);box-shadow:0 1px 4px rgba(0,0,0,.4)}
+
+/* no-data */
+.no-data{text-align:center;padding:3rem;color:var(--text-muted);font-size:.9rem}
+
+/* loading */
+#loading{text-align:center;padding:4rem;color:var(--text-muted);font-size:.9rem;
+  font-family:'Cinzel Decorative',serif;letter-spacing:.1em}
+</style>
+</head>
+<body>
+<header>
+  <h1>⚔️ Card Stats</h1>
+  <a href="/" class="back-btn">← Back to Draft</a>
+</header>
+<main>
+  <div id="loading">Loading stats…</div>
+  <div id="content" style="display:none">
+    <div class="summary" id="summary"></div>
+    <div class="controls">
+      <span class="ctrl-label">Tier</span>
+      <div class="seg" id="tier-seg">
+        <button class="active" data-tier="All">All</button>
+        <button data-tier="S+">S+</button>
+        <button data-tier="S">S</button>
+        <button data-tier="A">A</button>
+        <button data-tier="B">B</button>
+        <button data-tier="C">C</button>
+        <button data-tier="D">D</button>
+        <button data-tier="F">F</button>
+      </div>
+      <span class="ctrl-label" style="margin-left:.4rem">Type</span>
+      <div class="seg" id="type-seg">
+        <button class="active" data-type="All">All</button>
+        <button data-type="Tower">🏰 Tower</button>
+        <button data-type="Tanks">🛡️ Tanks</button>
+        <button data-type="Ranged">🏹 Ranged</button>
+        <button data-type="Melee">⚔️ Melee</button>
+        <button data-type="Charge">💨 Charge</button>
+        <button data-type="Spells">✨ Spells</button>
+      </div>
+      <br style="width:100%;flex-basis:100%;height:0">
+      <span class="ctrl-label">Player</span>
+      <div id="player-seg">
+        <button class="active" data-player="All">All</button>
+        <button data-player="Kevin">Kevin</button>
+        <button data-player="Jason">Jason</button>
+        <button data-player="Alex">Alex</button>
+        <button data-player="Laurent">Laurent</button>
+        <button data-player="Brooks">Brooks</button>
+        <button data-player="Andrew">Andrew</button>
+      </div>
+      <input id="search" type="text" placeholder="Search card…" oninput="renderTable()">
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th data-col="name">Card <span class="sort-arrow"></span></th>
+            <th data-col="elixir"><img src="/elixir.svg" alt="elixir" style="width:14px;height:14px;vertical-align:middle;margin-right:2px"> <span class="sort-arrow"></span></th>
+            <th data-col="tier">Tier <span class="sort-arrow"></span></th>
+            <th data-col="games_played">Games <span class="sort-arrow"></span></th>
+            <th data-col="play_rate">Play Rate <span class="sort-arrow"></span></th>
+            <th data-col="win_rate">Win Rate <span class="sort-arrow"></span></th>
+            <th data-col="ban_rate">Ban Rate <span class="sort-arrow"></span></th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </div>
+</main>
+<script>
+const CARD_TIER = {};
+{
+  const tiers = {
+    "S+": ["Goblin Demolisher","Electro Wizard","Barbarian Hut","Furnace"],
+    "S":  ["Golem","Goblin Barrel","X-Bow","Baby Dragon","Vines","Goblin Hut"],
+    "A":  ["Giant","Knight","Poison","The Log","Musketeer","Tombstone","Fireball","Suspicious Bush","Dart Goblin"],
+    "B":  ["Witch","Electro Spirit","Ice Spirit","Executioner","Wizard","Flying Machine","Rascals","Rune Giant","Berserker","Goblin Giant","P.E.K.K.A"],
+    "C":  ["Princess","Goblin Drill","Zappies","Royal Giant","Graveyard","Night Witch"],
+    "D":  ["Royal Delivery","Mega Knight","Ram Rider","Lava Hound","Elixir Golem"],
+    "F":  ["Giant Snowball","Inferno Tower","Rocket","Hunter","Rage","Mother Witch","Fisherman","Ice Wizard","Mortar"]
+  };
+  for(const [tier, cards] of Object.entries(tiers)) cards.forEach(c => CARD_TIER[c] = tier);
+}
+const TIER_ORDER = {"S+":0,"S":1,"A":2,"B":3,"C":4,"D":5,"F":6};
+
+const CARD_TYPE = {
+  "Inferno Tower":"Tower","Mortar":"Tower","Goblin Hut":"Tower",
+  "Barbarian Hut":"Tower","Goblin Drill":"Tower","Tombstone":"Tower","X-Bow":"Tower",
+  "Elixir Golem":"Tanks","Golem":"Tanks","Rune Giant":"Tanks","Giant":"Tanks",
+  "Rascals":"Tanks","Royal Giant":"Tanks","Goblin Giant":"Tanks","Lava Hound":"Tanks",
+  "Mega Knight":"Tanks","P.E.K.K.A":"Tanks",
+  "Princess":"Ranged","Ice Wizard":"Ranged","Dart Goblin":"Ranged","Musketeer":"Ranged",
+  "Flying Machine":"Ranged","Baby Dragon":"Ranged","Zappies":"Ranged","Furnace":"Ranged",
+  "Hunter":"Ranged","Electro Wizard":"Ranged","Goblin Demolisher":"Ranged",
+  "Mother Witch":"Ranged","Executioner":"Ranged","Wizard":"Ranged","Witch":"Ranged",
+  "Electro Spirit":"Melee","Ice Spirit":"Melee","Berserker":"Melee",
+  "Fisherman":"Melee","Knight":"Melee","Night Witch":"Melee",
+  "Ram Rider":"Charge","Suspicious Bush":"Charge","Goblin Barrel":"Charge",
+  "The Log":"Spells","Giant Snowball":"Spells","Rage":"Spells","Vines":"Spells",
+  "Fireball":"Spells","Poison":"Spells","Graveyard":"Spells","Rocket":"Spells",
+  "Royal Delivery":"Spells"
+};
+
+let allCards   = [];
+let sortCol    = "play_rate";
+let sortAsc    = false;
+let tierFilter    = "All";
+let typeFilter    = "All";
+let playerFilter  = "All";
+
+// ── Fetch ─────────────────────────────────────────────────────────────────────
+async function loadStats(){
+  try{
+    const url = playerFilter === 'All'
+      ? '/api/card_stats'
+      : `/api/card_stats?player=${encodeURIComponent(playerFilter)}`;
+    const res = await fetch(url);
+    allCards  = await res.json();
+    if(!allCards.length){
+      document.getElementById('loading').textContent = 'No games recorded yet.';
+      document.getElementById('loading').style.display = 'block';
+      document.getElementById('content').style.display = 'none';
+      return;
+    }
+    // Enrich with tier/type
+    allCards.forEach(c => {
+      c.tier = CARD_TIER[c.name] || 'F';
+      c.type = CARD_TYPE[c.name] || 'Other';
+    });
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('content').style.display = 'block';
+    renderSummary();
+    renderTable();
+  }catch(e){
+    document.getElementById('loading').textContent = 'Failed to load stats.';
+  }
+}
+
+// ── Summary pills ─────────────────────────────────────────────────────────────
+function renderSummary(){
+  const totalGames = allCards[0]?.total_games ?? 0;
+  const totalPicks = allCards.reduce((a,c) => a + c.games_played, 0);
+  const avgPlayRate = totalGames
+    ? (allCards.reduce((a,c) => a + c.play_rate, 0) / allCards.length).toFixed(1)
+    : 0;
+  const mostPlayed = [...allCards].sort((a,b) => b.play_rate - a.play_rate)[0];
+  const mostWon    = [...allCards].filter(c=>c.games_played>0).sort((a,b) => b.win_rate - a.win_rate)[0];
+  const mostBanned = [...allCards].sort((a,b) => b.ban_rate - a.ban_rate)[0];
+  const playerLabel = playerFilter === 'All' ? 'All Players' : playerFilter;
+  document.getElementById('summary').innerHTML = `
+    <div class="stat-pill">Player <span>${playerLabel}</span></div>
+    <div class="stat-pill">Games <span>${totalGames}</span></div>
+    <div class="stat-pill">Most Played <span>${mostPlayed?.name ?? '—'} (${mostPlayed?.play_rate ?? 0}%)</span></div>
+    <div class="stat-pill">Highest Win Rate <span>${mostWon?.name ?? '—'} (${mostWon?.win_rate ?? 0}%)</span></div>
+    <div class="stat-pill">Most Banned <span>${mostBanned?.name ?? '—'} (${mostBanned?.ban_rate ?? 0}%)</span></div>
+  `;
+}
+
+// ── Filter + sort + render ────────────────────────────────────────────────────
+function getFiltered(){
+  const q = document.getElementById('search').value.toLowerCase();
+  return allCards.filter(c => {
+    if(tierFilter !== 'All' && c.tier !== tierFilter) return false;
+    if(typeFilter !== 'All' && c.type !== typeFilter) return false;
+    if(q && !c.name.toLowerCase().includes(q)) return false;
+    return true;
+  });
+}
+
+function getSorted(cards){
+  return [...cards].sort((a,b) => {
+    let av = a[sortCol], bv = b[sortCol];
+    if(sortCol === 'tier')  { av = TIER_ORDER[a.tier]??99; bv = TIER_ORDER[b.tier]??99; }
+    if(sortCol === 'name')  { av = a.name.toLowerCase(); bv = b.name.toLowerCase(); }
+    if(av < bv) return sortAsc ?  -1 : 1;
+    if(av > bv) return sortAsc ?   1 : -1;
+    return 0;
+  });
+}
+
+function bar(pct, cls, max=100){
+  const w = Math.min(100, max > 0 ? (pct/max*100) : 0);
+  return `<div class="bar-wrap">
+    <div class="bar-track"><div class="bar-fill ${cls}" style="width:${w}%"></div></div>
+    <div class="bar-pct">${pct}%</div>
+  </div>`;
+}
+
+function tierBadge(tier){
+  const key = tier.replace('+','p');
+  return `<span class="tier-badge tier-${key}">${tier}</span>`;
+}
+
+function renderTable(){
+  const rows   = getSorted(getFiltered());
+  const maxPR  = Math.max(...rows.map(c=>c.play_rate), 1);
+  const maxWR  = Math.max(...rows.map(c=>c.win_rate),  1);
+  const maxBR  = Math.max(...rows.map(c=>c.ban_rate),  1);
+  const fallback = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='38' height='38'%3E%3Crect width='38' height='38' fill='%23222'/%3E%3C/svg%3E`;
+  document.getElementById('tbody').innerHTML = rows.length
+    ? rows.map(c => `
+    <tr>
+      <td>
+        <div class="card-cell">
+          <img src="${c.iconUrl||fallback}" alt="${c.name}" onerror="this.src='${fallback}'">
+          <div>
+            <div class="cn">${c.name}</div>
+            <div class="cr r-${c.rarity}">${c.rarity} · ${CARD_TYPE[c.name]||'Other'}</div>
+          </div>
+        </div>
+      </td>
+      <td><span class="elixir-pip">${c.elixir||'?'}</span></td>
+      <td>${tierBadge(c.tier)}</td>
+      <td style="text-align:center;font-weight:700">${c.games_played}
+        <span style="color:var(--text-muted);font-weight:400;font-size:.7rem"> (${c.wins}W / ${c.losses}L)</span>
+      </td>
+      <td>${bar(c.play_rate, 'fill-play', maxPR)}</td>
+      <td>${bar(c.win_rate,  'fill-win',  maxWR)}</td>
+      <td>${bar(c.ban_rate,  'fill-ban',  maxBR)}</td>
+    </tr>`).join('')
+    : `<tr><td colspan="7" class="no-data">No cards match the current filters.</td></tr>`;
+
+  // Update sort arrows
+  document.querySelectorAll('thead th').forEach(th => {
+    const arrow = th.querySelector('.sort-arrow');
+    if(!arrow) return;
+    th.classList.toggle('sorted', th.dataset.col === sortCol);
+    arrow.textContent = th.dataset.col === sortCol ? (sortAsc ? '▲' : '▼') : '';
+  });
+}
+
+// ── Sort click ────────────────────────────────────────────────────────────────
+document.querySelectorAll('thead th[data-col]').forEach(th => {
+  th.addEventListener('click', () => {
+    if(sortCol === th.dataset.col) sortAsc = !sortAsc;
+    else { sortCol = th.dataset.col; sortAsc = false; }
+    renderTable();
+  });
+});
+
+// ── Tier filter ───────────────────────────────────────────────────────────────
+document.querySelectorAll('#tier-seg button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#tier-seg button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    tierFilter = btn.dataset.tier;
+    renderTable();
+  });
+});
+
+// ── Type filter ───────────────────────────────────────────────────────────────
+document.querySelectorAll('#type-seg button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#type-seg button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    typeFilter = btn.dataset.type;
+    renderTable();
+  });
+});
+
+// ── Player filter ────────────────────────────────────────────────────────────
+document.querySelectorAll('#player-seg button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#player-seg button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    playerFilter = btn.dataset.player;
+    loadStats();  // re-fetch from server with new player param
+  });
+});
+
+loadStats();
+</script>
+</body>
+</html>
