@@ -13,8 +13,8 @@ const CARD_TIER = {};
 {
   const tiers = {
     "S+": ["Goblin Demolisher","Electro Wizard","Barbarian Hut","Furnace"],
-    "S":  ["Golem","Goblin Barrel","X-Bow","Baby Dragon","Vines","Goblin Hut"],
-    "A":  ["Giant","Knight","Poison","The Log","Musketeer","Tombstone","Fireball","Suspicious Bush","Dart Goblin"],
+    "S":  ["Golem","Goblin Barrel","Baby Dragon","Vines","Goblin Hut"],
+    "A":  ["Giant","Knight","Poison","The Log","Musketeer","Tombstone","Fireball","Suspicious Bush","Dart Goblin","X-Bow"],
     "B":  ["Witch","Electro Spirit","Ice Spirit","Executioner","Wizard","Flying Machine","Rascals","Rune Giant","Berserker","Goblin Giant","P.E.K.K.A"],
     "C":  ["Princess","Goblin Drill","Zappies","Royal Giant","Graveyard","Night Witch"],
     "D":  ["Royal Delivery","Berserker","Mega Knight","Ram Rider","Lava Hound","Elixir Golem"],

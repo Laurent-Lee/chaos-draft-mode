@@ -27,10 +27,11 @@ cr_draft/
 │   └── elo.py           # ELO calculator (external, must export calculate_elo, OUTPUT_CSV, INPUT_CSV)
 │
 ├── frontend/
-│   ├── frontend.py      # Frontend Blueprint — serves /, /elixir.svg, /stats
+│   ├── frontend.py      # Frontend Blueprint — serves /, /player_stats, /elixir.svg, /stats
 │   ├── stats.html       # Card stats page (external, served at /stats)
 │   └── templates/
-│       └── index.html   # Entire frontend: HTML + CSS + JS in one file
+│       ├── index.html        # Main draft UI
+│       └── player_stats.html # Player leaderboard + per-player detail (Stats + Recent Matches tabs)
 │
 ├── static/
 │   ├── elixir.svg       # Elixir icon served at /elixir.svg via frontend Blueprint
@@ -180,10 +181,11 @@ The `data/` directory and CSV header row are auto-created on the first call to `
 
 ## Adding / Removing Players
 
-Players are defined in two places — both must be updated together:
+Players are defined in three places — all must be updated together:
 
 1. **`config.py`** — `PLAYERS` list (used by backend stats and ELO routes)
 2. **`frontend/templates/index.html`** — the two `<select>` dropdowns and the `const PLAYERS` JS array
+3. **`frontend/templates/player_stats.html`** — the `const PLAYERS` JS array used to build the leaderboard
 
 ---
 
@@ -194,35 +196,51 @@ If the CHAOS mode card pool changes:
 1. Update `CHAOS_CARDS` in `config.py`
 2. `CHAOS_CARD_LIST` updates automatically (it's just `sorted(CHAOS_CARDS)`)
 3. **Existing `output.csv` will be incompatible** — the column set will change. Either migrate the CSV manually or archive it and start fresh.
-4. Update the tier assignments in `TIER_CARDS` (config.py) and `CARD_TIER` / `CARD_TYPE` (index.html JS) if needed
+4. Update the tier assignments in `TIER_CARDS` (config.py) and `CARD_TIER` / `CARD_TYPE` (card_tiers.js / card_types.js) if needed
 
 ---
 
 ## Frontend Architecture
 
-The entire frontend lives in `frontend/templates/index.html` — a single-file app with inline CSS and JS. There is no build step, no bundler, no npm.
+The frontend is split across two standalone HTML templates in `frontend/templates/`. There is no build step, no bundler, no npm.
 
-### Key JS globals
-| Variable | Purpose |
-|----------|---------|
+### `index.html` — Main draft UI
+| JS Variable | Purpose |
+|-------------|---------|
 | `gState` | Last state snapshot received from the server |
 | `rarityFilter` | Active rarity filter button value |
 | `sortMode` | `"type"` \| `"tier"` \| `"elixir"` |
 | `elixirAsc` | Boolean — sort direction for elixir mode |
-| `playerStats` | Cached result of `/api/player_stats` |
-| `playerElo` | Cached result of `/api/elo` |
+
+### `player_stats.html` — Player leaderboard and detail
+A single-page app that handles two views via JS routing (no page reloads):
+- **Leaderboard** — all players ranked by ELO, click a row to drill into a player
+- **Player detail** — two tabs:
+  - **Card Stats tab** — sortable card stats table (pick %, win %, ban %) for that player's games only, using `GET /api/player_stats/<name>`
+  - **Recent Matches tab** — last 10 games using `GET /api/match_history/<name>`
+
+Key JS functions:
+```
+showLeaderboard()         → switch to leaderboard view
+showDetail(name)          → switch to player detail, triggers data loads
+switchTab('stats'|'history')  → toggle between the two detail tabs
+loadLeaderboard()         → fetches /api/player_stats + /api/elo, renders ranked table
+loadDetailStats(name)     → fetches /api/player_stats/<name>, renders stat cards + card table
+loadDetailHistory(name)   → fetches /api/match_history/<name>, renders game cards
+sortCardTable(col, id)    → re-sorts and re-renders the card stats table client-side
+```
 
 ### Static JS data files
-Tier and type data live in `static/` as standalone JS files loaded before `index.html`'s `<script>` block. They expose globals consumed by the pool rendering functions.
+Tier and type data live in `static/` as standalone JS files loaded in both templates.
 
 | File | Globals | Purpose |
 |------|---------|---------|
 | `static/card_tiers.js` | `CARD_TIER`, `TIER_ORDER`, `TIER_ICONS` | Tier per card (S+ → F), display order, emoji icons |
 | `static/card_types.js` | `CARD_TYPE`, `TYPE_ORDER`, `TYPE_ICONS` | Type per card, display order, emoji icons |
 
-These are loaded via `<script src="/static/card_tiers.js">` in `index.html`'s `<head>`. Flask serves them from `static_folder="static"` configured in `main.py`.
+Flask serves them from `static_folder="static"` configured in `main.py`.
 
-### State flow
+### Draft state flow
 ```
 startDraft() → POST /api/start → applyState(s)
 doAction(id) → POST /api/action → applyState(s)
@@ -230,7 +248,7 @@ resetDraft() → POST /api/reset → show setup screen
 declareWinner(player) → POST /api/record_winner → show banner
 ```
 
-`applyState()` is the single function that transitions the UI between phases. All render functions (`renderPool`, `renderSidebars`, `renderBanned`, `renderDone`) read from `gState`.
+`applyState()` is the single function that transitions the draft UI between phases. All render functions (`renderPool`, `renderSidebars`, `renderBanned`, `renderDone`) read from `gState`.
 
 ### Timer
 A 30-second countdown runs per turn (`TURN_SECONDS = 30`). On expiry, `autoPickRandom()` fires a random pick from the current pool. The timer uses `setInterval` + Web Audio API for tick sounds in the last 10 seconds.

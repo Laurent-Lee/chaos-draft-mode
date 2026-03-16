@@ -99,14 +99,6 @@ td{padding:.55rem .9rem;vertical-align:middle;white-space:nowrap}
 .tier-D {background:rgba(155,127,232,.2);color:#9b7fe8}
 .tier-F {background:rgba(120,120,120,.15);color:#888}
 
-/* ── Player filter ── */
-#player-seg{display:flex;gap:2px;background:var(--surface2);border:1px solid var(--border);
-  border-radius:999px;padding:2px;flex-wrap:wrap}
-#player-seg button{padding:.22rem .65rem;border-radius:999px;border:none;cursor:pointer;
-  font-family:'Exo 2',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.04em;
-  background:transparent;color:var(--text-muted);transition:all .15s;text-transform:uppercase}
-#player-seg button.active{background:var(--surface);color:var(--p1);box-shadow:0 1px 4px rgba(0,0,0,.4)}
-
 /* no-data */
 .no-data{text-align:center;padding:3rem;color:var(--text-muted);font-size:.9rem}
 
@@ -145,17 +137,6 @@ td{padding:.55rem .9rem;vertical-align:middle;white-space:nowrap}
         <button data-type="Melee">⚔️ Melee</button>
         <button data-type="Charge">💨 Charge</button>
         <button data-type="Spells">✨ Spells</button>
-      </div>
-      <br style="width:100%;flex-basis:100%;height:0">
-      <span class="ctrl-label">Player</span>
-      <div id="player-seg">
-        <button class="active" data-player="All">All</button>
-        <button data-player="Kevin">Kevin</button>
-        <button data-player="Jason">Jason</button>
-        <button data-player="Alex">Alex</button>
-        <button data-player="Laurent">Laurent</button>
-        <button data-player="Brooks">Brooks</button>
-        <button data-player="Andrew">Andrew</button>
       </div>
       <input id="search" type="text" placeholder="Search card…" oninput="renderTable()">
     </div>
@@ -214,17 +195,13 @@ const CARD_TYPE = {
 let allCards   = [];
 let sortCol    = "play_rate";
 let sortAsc    = false;
-let tierFilter    = "All";
-let typeFilter    = "All";
-let playerFilter  = "All";
+let tierFilter = "All";
+let typeFilter = "All";
 
 // ── Fetch ─────────────────────────────────────────────────────────────────────
 async function loadStats(){
   try{
-    const url = playerFilter === 'All'
-      ? '/api/card_stats'
-      : `/api/card_stats?player=${encodeURIComponent(playerFilter)}`;
-    const res = await fetch(url);
+    const res = await fetch('/api/card_stats');
     allCards  = await res.json();
     if(!allCards.length){
       document.getElementById('loading').textContent = 'No games recorded yet.';
@@ -256,9 +233,7 @@ function renderSummary(){
   const mostPlayed = [...allCards].sort((a,b) => b.play_rate - a.play_rate)[0];
   const mostWon    = [...allCards].filter(c=>c.games_played>0).sort((a,b) => b.win_rate - a.win_rate)[0];
   const mostBanned = [...allCards].sort((a,b) => b.ban_rate - a.ban_rate)[0];
-  const playerLabel = playerFilter === 'All' ? 'All Players' : playerFilter;
   document.getElementById('summary').innerHTML = `
-    <div class="stat-pill">Player <span>${playerLabel}</span></div>
     <div class="stat-pill">Games <span>${totalGames}</span></div>
     <div class="stat-pill">Most Played <span>${mostPlayed?.name ?? '—'} (${mostPlayed?.play_rate ?? 0}%)</span></div>
     <div class="stat-pill">Highest Win Rate <span>${mostWon?.name ?? '—'} (${mostWon?.win_rate ?? 0}%)</span></div>
@@ -365,16 +340,6 @@ document.querySelectorAll('#type-seg button').forEach(btn => {
     btn.classList.add('active');
     typeFilter = btn.dataset.type;
     renderTable();
-  });
-});
-
-// ── Player filter ────────────────────────────────────────────────────────────
-document.querySelectorAll('#player-seg button').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('#player-seg button').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    playerFilter = btn.dataset.player;
-    loadStats();  // re-fetch from server with new player param
   });
 });
 
