@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Player Stats — CR Draft</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet">
+<script src="/static/card_tiers.js"></script>
+<script src="/static/card_types.js"></script>
+<style>
+:root{
+  --gold:#f5c842;--gold-dark:#b8902a;
+  --bg:#141720;--surface:#1c2030;--surface2:#222840;
+  --border:#2a3050;--text:#e8ecff;--text-muted:#7080aa;
+  --p1:#4a9eff;--p2:#ff6b6b;--ban:#ff4466;--pick:#44ffaa;
+  --win:#44dd88;--loss:#ff4466;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Exo 2',sans-serif;min-height:100vh;}
+header{display:flex;align-items:center;justify-content:space-between;padding:.8rem 1.5rem;
+  border-bottom:1px solid var(--border);background:var(--bg);
+  position:sticky;top:0;z-index:100;}
+h1{font-family:'Cinzel Decorative',serif;font-size:clamp(1.1rem,3vw,1.8rem);color:var(--gold);
+  text-shadow:0 0 30px rgba(245,200,66,.4);letter-spacing:.05em}
+main{max-width:1100px;margin:0 auto;padding:1.5rem 1rem}
+
+/* ── Buttons ── */
+.btn{display:inline-block;padding:.5rem 1.1rem;border-radius:8px;border:none;cursor:pointer;
+  font-family:'Exo 2',sans-serif;font-weight:700;font-size:.82rem;letter-spacing:.04em;
+  transition:all .15s;text-transform:uppercase;text-decoration:none}
+.btn-ghost{background:transparent;border:1px solid var(--border);color:var(--text-muted)}
+.btn-ghost:hover{border-color:var(--text-muted);color:var(--text)}
+.btn-back{background:transparent;border:1px solid var(--border);color:var(--text-muted);
+  font-size:.78rem;padding:.35rem .8rem}
+.btn-back:hover{border-color:var(--gold);color:var(--gold)}
+
+/* ── Section title ── */
+.section-title{font-family:'Cinzel Decorative',serif;color:var(--gold);font-size:1.1rem;
+  margin-bottom:1.2rem;letter-spacing:.05em}
+
+/* ── Leaderboard ── */
+#leaderboard-screen{}
+.leaderboard-table{width:100%;border-collapse:collapse}
+.leaderboard-table th{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--text-muted);padding:.55rem .9rem;text-align:left;
+  border-bottom:1px solid var(--border);font-weight:600}
+.leaderboard-table th.right{text-align:right}
+.leaderboard-table td{padding:.7rem .9rem;border-bottom:1px solid rgba(42,48,80,.6);
+  font-size:.88rem;vertical-align:middle}
+.leaderboard-table td.right{text-align:right}
+.leaderboard-table tr:hover td{background:var(--surface2);cursor:pointer}
+.rank-cell{font-family:'Cinzel Decorative',serif;font-size:.85rem;color:var(--text-muted);width:2.5rem}
+.rank-1{color:#ffd700}.rank-2{color:#c0c0c0}.rank-3{color:#cd7f32}
+.player-name-cell{font-weight:700;font-size:.95rem}
+.elo-cell{font-family:'Cinzel Decorative',serif;font-size:1rem;color:var(--gold);font-weight:900}
+.elo-delta{font-size:.7rem;margin-left:.35rem}
+.elo-delta.up{color:var(--win)}.elo-delta.down{color:var(--loss)}
+.win-cell{color:var(--win);font-weight:700}
+.loss-cell{color:var(--loss);font-weight:700}
+.winpct-cell{color:var(--text-muted)}
+.winpct-cell.high{color:var(--win)}
+.games-cell{color:var(--text-muted);font-size:.82rem}
+
+/* ── Win rate bar ── */
+.wr-bar-wrap{display:flex;align-items:center;gap:.55rem}
+.wr-bar{height:6px;border-radius:3px;background:var(--border);flex:1;overflow:hidden;min-width:60px}
+.wr-bar-fill{height:100%;border-radius:3px;background:var(--win);transition:width .4s}
+.wr-pct{font-size:.8rem;font-weight:700;min-width:3.2rem;text-align:right}
+.wr-pct.high{color:var(--win)}.wr-pct.low{color:var(--loss)}.wr-pct.mid{color:var(--gold)}
+
+/* ── Player detail ── */
+#detail-screen{}
+.detail-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.detail-name{font-family:'Cinzel Decorative',serif;font-size:1.6rem;color:var(--gold)}
+.stat-cards{display:flex;gap:.9rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;
+  padding:.9rem 1.2rem;flex:1;min-width:110px;text-align:center}
+.stat-card .value{font-family:'Cinzel Decorative',serif;font-size:1.4rem;font-weight:900;
+  color:var(--gold);line-height:1.1}
+.stat-card .value.green{color:var(--win)}
+.stat-card .value.red{color:var(--loss)}
+.stat-card .value.blue{color:var(--p1)}
+.stat-card .label{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--text-muted);margin-top:.3rem}
+
+/* ── Tabs ── */
+.tabs{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:1.4rem}
+.tab-btn{padding:.6rem 1.3rem;border:none;background:transparent;color:var(--text-muted);
+  font-family:'Exo 2',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.06em;
+  text-transform:uppercase;cursor:pointer;border-bottom:2px solid transparent;
+  margin-bottom:-1px;transition:all .15s}
+.tab-btn:hover{color:var(--text)}
+.tab-btn.active{color:var(--gold);border-bottom-color:var(--gold)}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+
+/* ── Card stats table ── */
+.card-table{width:100%;border-collapse:collapse}
+.card-table th{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);
+  padding:.5rem .75rem;text-align:left;border-bottom:1px solid var(--border);
+  font-weight:600;cursor:pointer;user-select:none;white-space:nowrap}
+.card-table th:hover{color:var(--text)}
+.card-table th.sorted{color:var(--gold)}
+.card-table th.right,.card-table td.right{text-align:right}
+.card-table td{padding:.5rem .75rem;border-bottom:1px solid rgba(42,48,80,.5);
+  font-size:.82rem;vertical-align:middle}
+.card-table tr:hover td{background:var(--surface2)}
+.card-icon{width:32px;height:32px;border-radius:5px;object-fit:contain;
+  background:#000;vertical-align:middle;margin-right:.45rem}
+.card-name-cell{white-space:nowrap}
+.zero{color:var(--text-muted);opacity:.4}
+
+/* ── Match history ── */
+.mh-game{background:var(--surface);border:1px solid var(--border);border-radius:12px;
+  margin-bottom:.75rem;overflow:hidden}
+.mh-header{display:flex;align-items:center;justify-content:space-between;
+  padding:.45rem .9rem;background:var(--surface2);font-size:.72rem;color:var(--text-muted);
+  border-bottom:1px solid var(--border)}
+.mh-winner-tag{color:var(--gold);font-weight:700}
+.mh-body{display:grid;grid-template-columns:1fr auto 1fr;gap:.5rem;
+  padding:.65rem .9rem;align-items:start}
+.mh-player-col{min-width:0;border-radius:8px;padding:.4rem .5rem}
+.mh-player-col.mh-won{background:rgba(68,180,100,.12);border:1px solid rgba(68,180,100,.25)}
+.mh-player-col.mh-lost{background:rgba(200,60,60,.1);border:1px solid rgba(200,60,60,.2)}
+.mh-player-name{font-size:.8rem;font-weight:700;margin-bottom:.4rem;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mh-player-name.winner{color:var(--gold)}.mh-player-name.loser{color:var(--text-muted)}
+.mh-divider{display:flex;align-items:center;justify-content:center;
+  font-size:1rem;color:var(--text-muted);padding-top:.6rem}
+.mh-card-row{display:flex;flex-wrap:wrap;gap:3px;margin-bottom:.3rem}
+.mh-ban-row{display:flex;flex-wrap:wrap;gap:3px}
+.mh-card-img{width:32px;height:32px;border-radius:4px;object-fit:contain;
+  background:#000;border:1px solid var(--border)}
+.mh-ban-img{width:28px;height:28px;border-radius:4px;object-fit:contain;
+  background:#000;border:1px solid rgba(255,68,102,.4);opacity:.7;filter:grayscale(.4)}
+.mh-section-label{font-size:.6rem;color:var(--text-muted);letter-spacing:.08em;
+  text-transform:uppercase;margin-bottom:2px}
+
+/* ── Empty / loading states ── */
+.empty{color:var(--text-muted);font-size:.88rem;padding:2rem;text-align:center}
+.loading{color:var(--text-muted);font-size:.88rem;padding:1.5rem;text-align:center;
+  letter-spacing:.05em;text-transform:uppercase;font-size:.72rem}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>👤 Player Stats</h1>
+  <a href="/" class="btn btn-ghost" style="font-size:.78rem">⚔️ Back to Draft</a>
+</header>
+
+<main>
+
+<!-- LEADERBOARD -->
+<div id="leaderboard-screen">
+  <h2 class="section-title">🏆 Leaderboard</h2>
+  <div id="leaderboard-content"><div class="loading">Loading…</div></div>
+</div>
+
+<!-- PLAYER DETAIL -->
+<div id="detail-screen" style="display:none">
+  <div class="detail-header">
+    <button class="btn btn-back" onclick="showLeaderboard()">← All Players</button>
+    <div class="detail-name" id="detail-name"></div>
+  </div>
+
+  <div class="stat-cards" id="detail-stat-cards"></div>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('stats')">📊 Card Stats</button>
+    <button class="tab-btn" onclick="switchTab('history')">📜 Recent Matches</button>
+  </div>
+
+  <div id="tab-stats" class="tab-panel active">
+    <div id="detail-card-stats-content"><div class="loading">Loading…</div></div>
+  </div>
+
+  <div id="tab-history" class="tab-panel">
+    <div id="detail-history-content"><div class="loading">Loading…</div></div>
+  </div>
+</div>
+
+</main>
+
+<script>
+const PLAYERS = ['Kevin','Jason','Alex','Laurent','Brooks','Andrew'];
+
+// ── Routing ──────────────────────────────────────────────────────────────────
+
+function showLeaderboard(){
+  document.getElementById('leaderboard-screen').style.display = '';
+  document.getElementById('detail-screen').style.display = 'none';
+  document.title = 'Player Stats — CR Draft';
+}
+
+function showDetail(name){
+  document.getElementById('leaderboard-screen').style.display = 'none';
+  document.getElementById('detail-screen').style.display = '';
+  document.getElementById('detail-name').textContent = name;
+  document.title = `${name} — CR Draft`;
+  switchTab('stats');
+  loadDetailStats(name);
+  loadDetailHistory(name);
+}
+
+function switchTab(tab){
+  document.querySelectorAll('.tab-btn').forEach((b,i) => {
+    b.classList.toggle('active', (i===0 && tab==='stats') || (i===1 && tab==='history'));
+  });
+  document.getElementById('tab-stats').classList.toggle('active', tab==='stats');
+  document.getElementById('tab-history').classList.toggle('active', tab==='history');
+}
+
+// ── API ───────────────────────────────────────────────────────────────────────
+
+async function api(path){
+  const r = await fetch(path);
+  if(!r.ok) throw new Error(`HTTP ${r.status} from ${path}`);
+  return r.json();
+}
+
+// ── Leaderboard ───────────────────────────────────────────────────────────────
+
+async function loadLeaderboard(){
+  const [statsMap, eloMap] = await Promise.all([
+    api('/api/player_stats'),
+    api('/api/elo'),
+  ]);
+
+  const rows = PLAYERS.map(name => {
+    const s   = statsMap[name] || {wins:0, losses:0};
+    const elo = eloMap[name]   || 1000;
+    const gp  = s.wins + s.losses;
+    const wp  = gp ? Math.round(s.wins / gp * 100) : 0;
+    return { name, elo, wins: s.wins, losses: s.losses, gp, wp };
+  }).sort((a,b) => b.elo - a.elo);
+
+  const container = document.getElementById('leaderboard-content');
+  if(!rows.length){ container.innerHTML = '<div class="empty">No games recorded yet.</div>'; return; }
+
+  const rankEmoji = ['🥇','🥈','🥉'];
+
+  container.innerHTML = `
+  <table class="leaderboard-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Player</th>
+        <th class="right">ELO</th>
+        <th class="right">W</th>
+        <th class="right">L</th>
+        <th class="right">GP</th>
+        <th>Win Rate</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${rows.map((r,i) => {
+        const wpClass = r.wp >= 60 ? 'high' : r.wp < 40 ? 'low' : 'mid';
+        const fillW   = r.gp ? r.wp : 0;
+        return `
+        <tr onclick="showDetail('${r.name}')">
+          <td class="rank-cell rank-${i+1}">${rankEmoji[i] || i+1}</td>
+          <td class="player-name-cell">${r.name}</td>
+          <td class="elo-cell right">${r.elo}</td>
+          <td class="win-cell right">${r.wins}</td>
+          <td class="loss-cell right">${r.losses}</td>
+          <td class="games-cell right">${r.gp}</td>
+          <td style="min-width:140px">
+            <div class="wr-bar-wrap">
+              <div class="wr-bar"><div class="wr-bar-fill" style="width:${fillW}%"></div></div>
+              <span class="wr-pct ${wpClass}">${r.gp ? r.wp+'%' : '—'}</span>
+            </div>
+          </td>
+        </tr>`;
+      }).join('')}
+    </tbody>
+  </table>`;
+}
+
+// ── Player detail — stat cards ────────────────────────────────────────────────
+
+async function loadDetailStats(name){
+  document.getElementById('detail-stat-cards').innerHTML = '';
+  document.getElementById('detail-card-stats-content').innerHTML = '<div class="loading">Loading…</div>';
+
+  let data;
+  try {
+    data = await api(`/api/player_stats/${encodeURIComponent(name)}`);
+  } catch(e) {
+    document.getElementById('detail-card-stats-content').innerHTML = `<div class="empty">Failed to load stats: ${e.message}</div>`;
+    return;
+  }
+
+  if(data.error){
+    document.getElementById('detail-stat-cards').innerHTML = `<div class="empty">${data.error}</div>`;
+    document.getElementById('detail-card-stats-content').innerHTML = '';
+    return;
+  }
+
+  // Stat summary cards
+  const wpClass  = data.win_pct >= 60 ? 'green' : data.win_pct < 40 ? 'red' : '';
+  document.getElementById('detail-stat-cards').innerHTML = `
+    <div class="stat-card">
+      <div class="value blue">${data.elo}</div>
+      <div class="label">ELO</div>
+    </div>
+    <div class="stat-card">
+      <div class="value">${data.total_games}</div>
+      <div class="label">Games</div>
+    </div>
+    <div class="stat-card">
+      <div class="value green">${data.wins}</div>
+      <div class="label">Wins</div>
+    </div>
+    <div class="stat-card">
+      <div class="value red">${data.losses}</div>
+      <div class="label">Losses</div>
+    </div>
+    <div class="stat-card">
+      <div class="value ${wpClass}">${data.total_games ? data.win_pct+'%' : '—'}</div>
+      <div class="label">Win Rate</div>
+    </div>
+    <div class="stat-card">
+      <div class="value ${data.loss_pct>=60?'red':''}">${data.total_games ? data.loss_pct+'%' : '—'}</div>
+      <div class="label">Loss Rate</div>
+    </div>`;
+
+  renderCardStatsTable(data.cards, 'detail-card-stats-content');
+}
+
+// ── Card stats table (shared renderer) ───────────────────────────────────────
+
+let cardSortCol  = 'play_rate';
+let cardSortAsc  = false;
+let lastCardData = [];
+
+function renderCardStatsTable(cards, containerId){
+  lastCardData = cards;
+  _drawCardTable(containerId);
+}
+
+function _drawCardTable(containerId){
+  const cards   = [...lastCardData];
+  const col     = cardSortCol;
+  const asc     = cardSortAsc;
+
+  cards.sort((a,b) => {
+    const av = a[col] ?? (typeof a[col]==='string' ? '' : -1);
+    const bv = b[col] ?? (typeof b[col]==='string' ? '' : -1);
+    if(typeof av === 'string') return asc ? av.localeCompare(bv) : bv.localeCompare(av);
+    return asc ? av - bv : bv - av;
+  });
+
+  const cols = [
+    { key:'name',        label:'Card',      cls:'' },
+    { key:'games_played',label:'GP',        cls:'right' },
+    { key:'wins',        label:'W',         cls:'right' },
+    { key:'losses',      label:'L',         cls:'right' },
+    { key:'play_rate',   label:'Pick %',    cls:'right' },
+    { key:'win_rate',    label:'Win %',     cls:'right' },
+    { key:'ban_rate',    label:'Ban %',     cls:'right' },
+    { key:'player_bans', label:'Bans',      cls:'right' },
+  ];
+
+  const arrow = asc ? ' ▲' : ' ▼';
+
+  const thead = cols.map(c =>
+    `<th class="${c.cls}${cardSortCol===c.key?' sorted':''}" onclick="sortCardTable('${c.key}','${containerId}')">${c.label}${cardSortCol===c.key?arrow:''}</th>`
+  ).join('');
+
+  const fallback = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Crect width='32' height='32' fill='%23222'/%3E%3C/svg%3E`;
+
+  const tbody = cards.map(c => {
+    const wpClass = c.games_played===0 ? 'zero' : c.win_rate>=60 ? 'win-cell' : c.win_rate<40 ? 'loss-cell' : '';
+    const zero    = v => v===0 ? `<span class="zero">${v}</span>` : v;
+    return `<tr>
+      <td class="card-name-cell">
+        <img class="card-icon" src="${c.iconUrl||fallback}" alt="${c.name}" onerror="this.src='${fallback}'">
+        ${c.name}
+      </td>
+      <td class="right">${zero(c.games_played)}</td>
+      <td class="right win-cell">${zero(c.wins)}</td>
+      <td class="right loss-cell">${zero(c.losses)}</td>
+      <td class="right">${c.games_played ? c.play_rate+'%' : '<span class="zero">—</span>'}</td>
+      <td class="right ${wpClass}">${c.games_played ? c.win_rate+'%' : '<span class="zero">—</span>'}</td>
+      <td class="right">${c.games_played||c.player_bans ? c.ban_rate+'%' : '<span class="zero">—</span>'}</td>
+      <td class="right">${zero(c.player_bans)}</td>
+    </tr>`;
+  }).join('');
+
+  document.getElementById(containerId).innerHTML = `
+    <table class="card-table">
+      <thead><tr>${thead}</tr></thead>
+      <tbody>${tbody}</tbody>
+    </table>`;
+}
+
+function sortCardTable(col, containerId){
+  if(cardSortCol === col){
+    cardSortAsc = !cardSortAsc;
+  } else {
+    cardSortCol = col;
+    cardSortAsc = col === 'name';
+  }
+  _drawCardTable(containerId);
+}
+
+// ── Player detail — match history ─────────────────────────────────────────────
+
+async function loadDetailHistory(name){
+  document.getElementById('detail-history-content').innerHTML = '<div class="loading">Loading…</div>';
+  let games;
+  try {
+    games = await api(`/api/match_history/${encodeURIComponent(name)}`);
+  } catch(e) {
+    document.getElementById('detail-history-content').innerHTML = `<div class="empty">Failed to load history: ${e.message}</div>`;
+    return;
+  }
+  const el = document.getElementById('detail-history-content');
+  if(!games.length){ el.innerHTML = '<div class="empty">No games recorded yet.</div>'; return; }
+
+  const fallback = sz => `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='${sz}' height='${sz}'%3E%3Crect width='${sz}' height='${sz}' fill='%23222'/%3E%3C/svg%3E`;
+
+  const cardThumb = (c, isBan) => {
+    const cls  = isBan ? 'mh-ban-img' : 'mh-card-img';
+    const size = isBan ? 28 : 32;
+    const fb   = fallback(size);
+    return `<img class="${cls}" src="${c.iconUrl||fb}" alt="${c.name}" title="${c.name}" onerror="this.src='${fb}'">`;
+  };
+
+  el.innerHTML = games.map(g => {
+    const firstName      = g['1st_pick'] || '?';
+    const secondName     = g['2nd_pick'] || '?';
+    const firstWon       = g.winner === firstName;
+    const firstPicksHtml  = (g.first_picks  || []).map(c => cardThumb(c, false)).join('');
+    const firstBansHtml   = (g.first_bans   || []).map(c => cardThumb(c, true)).join('');
+    const secondPicksHtml = (g.second_picks || []).map(c => cardThumb(c, false)).join('');
+    const secondBansHtml  = (g.second_bans  || []).map(c => cardThumb(c, true)).join('');
+    const randomBansHtml  = (g.random_bans  || []).map(c => cardThumb(c, true)).join('');
+    return `
+    <div class="mh-game">
+      <div class="mh-header">
+        <span class="mh-winner-tag">🏆 ${g.winner || '?'} wins</span>
+      </div>
+      ${randomBansHtml ? `<div style="display:flex;align-items:center;gap:.5rem;padding:.4rem .9rem .1rem;flex-wrap:wrap">
+        <span style="font-size:.6rem;color:#ff9944;letter-spacing:.08em;text-transform:uppercase">🎲 Random Bans</span>
+        <div style="display:flex;gap:3px;flex-wrap:wrap">${randomBansHtml}</div></div>` : ''}
+      <div class="mh-body">
+        <div class="mh-player-col ${firstWon?'mh-won':'mh-lost'}">
+          <div class="mh-player-name ${firstWon?'winner':'loser'}">${firstName}${firstWon?' 🏆':''}</div>
+          ${firstPicksHtml ? `<div class="mh-section-label">Picks</div><div class="mh-card-row">${firstPicksHtml}</div>` : ''}
+          ${firstBansHtml  ? `<div class="mh-section-label" style="margin-top:4px">Bans</div><div class="mh-ban-row">${firstBansHtml}</div>` : ''}
+        </div>
+        <div class="mh-divider">⚔️</div>
+        <div class="mh-player-col ${!firstWon?'mh-won':'mh-lost'}" style="text-align:right">
+          <div class="mh-player-name ${!firstWon?'winner':'loser'}">${!firstWon?' 🏆':''}${secondName}</div>
+          ${secondPicksHtml ? `<div class="mh-section-label">Picks</div><div class="mh-card-row" style="justify-content:flex-end">${secondPicksHtml}</div>` : ''}
+          ${secondBansHtml  ? `<div class="mh-section-label" style="margin-top:4px">Bans</div><div class="mh-ban-row" style="justify-content:flex-end">${secondBansHtml}</div>` : ''}
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ── Init ──────────────────────────────────────────────────────────────────────
+loadLeaderboard();
+</script>
+</body>
+</html>

@@ -2,9 +2,10 @@
 frontend.py — Blueprint that serves the frontend HTML and static assets.
 
 Routes:
-  GET /           → renders frontend/templates/index.html
-  GET /elixir.svg → serves static/elixir.svg
-  GET /stats      → serves frontend/stats.html
+  GET /              → renders frontend/templates/index.html
+  GET /elixir.svg    → serves static/elixir.svg
+  GET /stats         → serves frontend/stats.html
+  GET /player_stats  → renders frontend/templates/player_stats.html
 """
 
 import os
@@ -31,6 +32,11 @@ def elixir_svg():
     if os.path.exists(svg_path):
         return send_file(svg_path, mimetype="image/svg+xml")
     return "", 404
+
+
+@frontend_bp.route("/player_stats")
+def player_stats_page():
+    return render_template("player_stats.html")
 
 
 @frontend_bp.route("/stats")

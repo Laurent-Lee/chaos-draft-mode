@@ -21,7 +21,8 @@ cr_draft/
 │   ├── frontend.py      # Blueprint serving the HTML frontend and stats page
 │   ├── stats.html       # Card stats page (bring your own, see Setup)
 │   └── templates/
-│       └── index.html   # Main draft UI
+│       ├── index.html        # Main draft UI
+│       └── player_stats.html # Player leaderboard + per-player detail page
 │
 ├── static/
 │   ├── elixir.svg       # Elixir icon used in the UI
@@ -97,7 +98,17 @@ The app will open automatically at http://127.0.0.1:5050. Press `Ctrl+C` to stop
 | `POST` | `/api/action` | Ban or pick a card |
 | `POST` | `/api/reset` | Reset to setup screen |
 | `POST` | `/api/record_winner` | Save match result to CSV |
-| `GET` | `/api/match_history` | Recent games with card thumbnails |
-| `GET` | `/api/card_stats` | Per-card win/pick/ban rates |
-| `GET` | `/api/player_stats` | Per-player win/loss counts |
+| `GET` | `/api/match_history` | Recent games (all players) with card thumbnails |
+| `GET` | `/api/match_history/<name>` | Recent games for a specific player |
+| `GET` | `/api/card_stats` | Per-card win/pick/ban rates (all games) |
+| `GET` | `/api/player_stats` | Per-player win/loss counts (all players) |
+| `GET` | `/api/player_stats/<name>` | Full stats for one player: ELO, W/L, win%, card stats |
 | `GET` | `/api/elo` | Current ELO ratings for all players |
+
+## Pages
+
+| URL | Description |
+|-----|-------------|
+| `/` | Main draft UI |
+| `/player_stats` | Player leaderboard ranked by ELO, click any player for their detail page |
+| `/stats` | Card stats page (requires `frontend/stats.html`) |

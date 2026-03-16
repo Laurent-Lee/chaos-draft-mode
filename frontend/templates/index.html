@@ -289,7 +289,10 @@ main{max-width:1400px;margin:0 auto;padding:1.2rem 1rem}
     </select></div>
   <div id="setup-error"></div>
   <button class="btn btn-gold" onclick="startDraft()">⚔️ Begin Draft</button>
-  <a href="/stats" target="_blank" class="btn btn-ghost" style="display:block;margin-top:.6rem;padding:.55rem;text-align:center;text-decoration:none;font-size:.82rem">📊 Card Stats</a>
+  <div style="display:flex;gap:.5rem;margin-top:.6rem">
+    <a href="/stats" class="btn btn-ghost" style="flex:1;padding:.55rem;text-align:center;text-decoration:none;font-size:.82rem">📊 Card Stats</a>
+    <a href="/player_stats" class="btn btn-ghost" style="flex:1;padding:.55rem;text-align:center;text-decoration:none;font-size:.82rem">👤 Players</a>
+  </div>
 </div>
 <div id="match-history">
   <h2>📜 Match History</h2>
@@ -397,8 +400,6 @@ let gState = null, rarityFilter = 'All', sortMode = 'type', elixirAsc = true;
 const PLAYERS = ['Kevin','Jason','Alex','Laurent','Brooks','Andrew'];
 
 // ── Win/loss stats for dropdowns ─────────────────────────────────────────────
-let playerStats = {};
-let playerElo = {};
 let mhLimit = 10;
 let mhTotal = 0;
 
@@ -466,20 +467,8 @@ function cardThumb(c, isBan){
 }
 
 async function loadPlayerStats(){
-  try{
-    [playerStats, playerElo] = await Promise.all([
-      api('/api/player_stats'),
-      api('/api/elo')
-    ]);
-  }catch(e){ playerStats = {}; playerElo = {}; }
   rebuildDropdowns();
   loadMatchHistory();
-}
-
-function playerLabel(name){
-  const s   = playerStats[name] || {wins:0, losses:0};
-  const elo = playerElo[name]   || 1000;
-  return `${name.padEnd(10)}  ELO: ${String(elo).padStart(4)}   W: ${s.wins}  L: ${s.losses}`;
 }
 
 function rebuildDropdowns(){
@@ -487,7 +476,7 @@ function rebuildDropdowns(){
     const sel = document.getElementById(id);
     const cur = sel.value;
     sel.innerHTML = PLAYERS.map(p =>
-      `<option value="${p}"${p===cur?' selected':''}>${playerLabel(p)}</option>`
+      `<option value="${p}"${p===cur?' selected':''}>${p}</option>`
     ).join('');
   });
 }
