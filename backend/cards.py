@@ -3,7 +3,7 @@ cards.py — CR API fetching and deck link generation.
 """
 
 import requests as req
-from config import CR_API_TOKEN, CHAOS_CARDS
+from config import CR_API_TOKEN, CHAOS_CARDS  # noqa: E402
 
 
 def fetch_cards():

@@ -5,6 +5,9 @@ config.py — All constants and configuration for the CR Draft app.
 import os
 from dotenv import load_dotenv
 
+# Absolute path to the project root (directory containing this file)
+_ROOT = os.path.dirname(os.path.abspath(__file__))
+
 load_dotenv()
 
 CR_API_TOKEN  = os.getenv("CR_API_TOKEN", "")
@@ -22,7 +25,7 @@ BAN_SEQUENCE  = [1, 2, 2, 1]
 PICK_SEQUENCE = [1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1]
 
 # ── CSV / ELO ─────────────────────────────────────────────────────────────────
-CSV_FILE    = "output.csv"
+CSV_FILE     = os.path.join(_ROOT, "data", "output.csv")
 ELO_STARTING = 1000
 
 # ── All 50 official C.H.A.O.S mode cards (March 2026) ─────────────────────────

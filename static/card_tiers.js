@@ -1,0 +1,25 @@
+/**
+ * card_tiers.js — CHAOS mode card tier assignments.
+ *
+ * Edit this file to update the tier list without touching index.html.
+ * TIER_ORDER and TIER_ICONS control display — add a new key to both if
+ * you introduce a new tier.
+ */
+
+const TIER_ORDER = { "S+": 0, "S": 1, "A": 2, "B": 3, "C": 4, "D": 5, "F": 6 };
+const TIER_ICONS = { "S+": "💎", "S": "🥇", "A": "🥈", "B": "🥉", "C": "🔵", "D": "🟣", "F": "⬛" };
+
+const CARD_TIER = {};
+{
+  const tiers = {
+    "S+": ["Goblin Demolisher","Electro Wizard","Barbarian Hut","Furnace"],
+    "S":  ["Golem","Goblin Barrel","X-Bow","Baby Dragon","Vines","Goblin Hut"],
+    "A":  ["Giant","Knight","Poison","The Log","Musketeer","Tombstone","Fireball","Suspicious Bush","Dart Goblin"],
+    "B":  ["Witch","Electro Spirit","Ice Spirit","Executioner","Wizard","Flying Machine","Rascals","Rune Giant","Berserker","Goblin Giant","P.E.K.K.A"],
+    "C":  ["Princess","Goblin Drill","Zappies","Royal Giant","Graveyard","Night Witch"],
+    "D":  ["Royal Delivery","Berserker","Mega Knight","Ram Rider","Lava Hound","Elixir Golem"],
+    "F":  ["Giant Snowball","Inferno Tower","Rocket","Hunter","Rage","Mother Witch","Fisherman","Ice Wizard","Mortar"]
+  };
+  for (const [tier, cards] of Object.entries(tiers))
+    cards.forEach(c => CARD_TIER[c] = tier);
+}

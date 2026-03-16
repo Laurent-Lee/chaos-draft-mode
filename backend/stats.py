@@ -12,16 +12,16 @@ Routes:
 import os
 import csv
 from flask import Blueprint, jsonify, request
-from config import CSV_FILE, CHAOS_CARD_LIST, PLAYERS, ELO_STARTING
-from draft import state
+from config import CSV_FILE, CHAOS_CARD_LIST, PLAYERS, ELO_STARTING, _ROOT
+from backend.draft import state
 
-# Import ELO calculator — elo.py must sit in the same directory
+# Import ELO calculator — elo.py lives in backend/
 try:
-    from elo import calculate_elo, OUTPUT_CSV as ELO_CSV, INPUT_CSV as ELO_INPUT
+    from backend.elo import calculate_elo, OUTPUT_CSV as ELO_CSV, INPUT_CSV as ELO_INPUT
 except ImportError:
     calculate_elo = None
-    ELO_CSV       = "elo.csv"
-    ELO_INPUT     = "output.csv"
+    ELO_CSV       = os.path.join(_ROOT, "data", "elo.csv")
+    ELO_INPUT     = os.path.join(_ROOT, "data", "output.csv")
 
 stats_bp = Blueprint("stats", __name__)
 
@@ -45,7 +45,8 @@ def _csv_headers():
 
 
 def _ensure_csv_headers():
-    """Write the header row only if the file does not exist yet."""
+    """Create the data/ directory and write the header row if the file doesn't exist yet."""
+    os.makedirs(os.path.dirname(CSV_FILE), exist_ok=True)
     if not os.path.exists(CSV_FILE):
         with open(CSV_FILE, "w", newline="", encoding="utf-8") as f:
             csv.writer(f).writerow(_csv_headers())

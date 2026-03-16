@@ -7,8 +7,8 @@ Then open: http://127.0.0.1:5050
 Setup:
   1. Get a free API token at https://developer.clashroyale.com
      (whitelist your current IP address there)
-  2. Add CR_API_TOKEN to a .env file or export it:
-       export CR_API_TOKEN=your_token_here
+  2. Add CR_API_TOKEN to a .env file in the project root:
+       CR_API_TOKEN=your_token_here
   3. python main.py
 
 Draft format:
@@ -27,13 +27,13 @@ from flask import Flask
 from flask_cors import CORS
 
 from config import CR_API_TOKEN, PORT
-from cards import fetch_cards
-from draft import draft_bp, state
-from stats import stats_bp
-from frontend import frontend_bp
+from backend.cards import fetch_cards
+from backend.draft import draft_bp, state
+from backend.stats import stats_bp
+from frontend.frontend import frontend_bp
 
 # ── App factory ───────────────────────────────────────────────────────────────
-app = Flask(__name__, template_folder="templates")
+app = Flask(__name__, static_folder="static")
 CORS(app)
 
 app.register_blueprint(draft_bp)
@@ -45,7 +45,7 @@ app.register_blueprint(frontend_bp)
 if __name__ == "__main__":
     if not CR_API_TOKEN:
         print("\n⚠️  WARNING: CR_API_TOKEN environment variable is not set!")
-        print("   Export it before running: export CR_API_TOKEN=your_token_here")
+        print("   Add it to your .env file: CR_API_TOKEN=your_token_here")
         print("   Get one at: https://developer.clashroyale.com\n")
 
     # Pre-load card data so match history icons work before any draft is started

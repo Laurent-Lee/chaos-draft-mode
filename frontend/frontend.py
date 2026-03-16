@@ -2,17 +2,22 @@
 frontend.py — Blueprint that serves the frontend HTML and static assets.
 
 Routes:
-  GET /           → renders templates/index.html
-  GET /elixir.svg → serves elixir.svg from the project root
-  GET /stats      → serves stats.html from the project root
+  GET /           → renders frontend/templates/index.html
+  GET /elixir.svg → serves static/elixir.svg
+  GET /stats      → serves frontend/stats.html
 """
 
 import os
 from flask import Blueprint, render_template, send_file
 
-frontend_bp = Blueprint("frontend", __name__)
+_HERE    = os.path.dirname(os.path.abspath(__file__))
+_ROOT    = os.path.dirname(_HERE)
 
-_BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+frontend_bp = Blueprint(
+    "frontend",
+    __name__,
+    template_folder=os.path.join(_HERE, "templates"),
+)
 
 
 @frontend_bp.route("/")
@@ -22,7 +27,7 @@ def index():
 
 @frontend_bp.route("/elixir.svg")
 def elixir_svg():
-    svg_path = os.path.join(_BASE_DIR, "elixir.svg")
+    svg_path = os.path.join(_ROOT, "static", "elixir.svg")
     if os.path.exists(svg_path):
         return send_file(svg_path, mimetype="image/svg+xml")
     return "", 404
@@ -30,8 +35,8 @@ def elixir_svg():
 
 @frontend_bp.route("/stats")
 def stats_page():
-    stats_path = os.path.join(_BASE_DIR, "stats.html")
+    stats_path = os.path.join(_HERE, "stats.html")
     if os.path.exists(stats_path):
         with open(stats_path, "r", encoding="utf-8") as f:
             return f.read()
-    return "<h1>stats.html not found — place it in the same folder as main.py</h1>", 404
+    return "<h1>stats.html not found — place it in the frontend/ folder</h1>", 404
