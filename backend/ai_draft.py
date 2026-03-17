@@ -2,134 +2,142 @@
 ai_draft.py — AI draft logic using Ollama for local LLM inference.
 
 Public API:
-    get_card_stats(csv_path) -> dict
-    get_matchup_stats(card_data_csv) -> dict
-    ai_decide(phase, pool, my_picks, opp_picks, card_stats, model, matchup_stats=None) -> (card_id, reason)
+    get_card_stats(csv_path)           -> dict   (alias for get_card_win_rates)
+    get_matchup_stats(card_data_csv)   -> dict   (alias for get_matchup_win_rates)
+    ai_decide(phase, pool, my_picks, opp_picks, card_stats, model,
+              matchup_stats=None)      -> (card_id, reason)
+
+NOTE: Modifier data is intentionally excluded from this entire module.
+      Modifier columns in output.csv are incomplete and unreliable — see
+      CLAUDE.md "Known Issue: Modifier Data Not Reliable".
 """
 
-import csv
 import json
 import random
 import re
 
+from config import TIER_CARDS, TYPING_OF_CHAOS_CARD, CSV_FILE, CARD_DATA_CSV
+from backend.get_card_data import (
+    get_card_win_rates    as get_card_stats,      # preserves existing public alias
+    get_matchup_win_rates as get_matchup_stats,   # preserves existing public alias
+    get_card_type_relative_win_rates,
+    get_overall_ratings,
+)
 
-# ── Card stats from output.csv ─────────────────────────────────────────────────
+# ── Reverse lookup dicts (built once at module load) ──────────────────────────
 
-def get_card_stats(csv_path):
+# card_name -> type string  (e.g. "Goblin Hut" -> "Tower")
+type_lookup = {
+    card: type_name
+    for type_name, cards in TYPING_OF_CHAOS_CARD.items()
+    for card in cards
+}
+
+# card_name -> tier string  (e.g. "Electro Wizard" -> "S+")
+tier_lookup = {
+    card: tier
+    for tier, cards in TIER_CARDS.items()
+    for card in cards
+}
+
+
+# ── Context selection ─────────────────────────────────────────────────────────
+
+def _select_ban_context(pool_names, overall_ratings, n=12):
     """
-    Read output.csv and return per-card win statistics.
+    Return the top-N pool cards by overall_rating for the ban phase.
 
-    Returns a dict keyed by card name:
-      {
-        "Poison": {"win_rate": 0.72, "games_played": 11, "ban_rate": 0.25},
-        ...
-      }
-    Cards with no games played have win_rate=None.
+    Ban decisions are purely rating-driven — the LLM should deny the opponent
+    the strongest available cards, so we show only the highest-rated ones.
+    Counter/matchup data is irrelevant here.
     """
-    try:
-        with open(csv_path, newline='', encoding='utf-8') as f:
-            reader = csv.DictReader(f)
-            rows = sorted(
-                list(reader),
-                key=lambda r: r.get('timestamp', '') or ''
-            )
-    except FileNotFoundError:
-        return {}
+    def rating_key(name):
+        return overall_ratings.get(name) or 0.0
 
-    total_games = len(rows)
-    if total_games == 0 or not rows:
-        return {}
-
-    # Identify card names from _W columns
-    card_names = [col[:-2] for col in rows[0].keys() if col.endswith('_W')]
-
-    stats = {}
-    for name in card_names:
-        w_col   = f"{name}_W"
-        l_col   = f"{name}_L"
-        ban_col = f"{name}_BANNED"
-        wins    = 0
-        losses  = 0
-        bans    = 0
-
-        for row in rows:
-            try:
-                if int(row.get(w_col, 0)) == 1:
-                    wins += 1
-                if int(row.get(l_col, 0)) == 1:
-                    losses += 1
-                ban_val = row.get(ban_col, '0')
-                if str(ban_val) in ('1', '-1'):
-                    bans += 1
-            except (ValueError, TypeError):
-                pass
-
-        games_played = wins + losses
-        stats[name] = {
-            "win_rate":     round(wins / games_played, 3) if games_played > 0 else None,
-            "games_played": games_played,
-            "ban_rate":     round(bans / total_games, 3) if total_games > 0 else 0.0,
-        }
-
-    return stats
+    return sorted(pool_names, key=rating_key, reverse=True)[:n]
 
 
-# ── Head-to-head matchup stats from card_data.csv ─────────────────────────────
-
-def get_matchup_stats(card_data_csv):
+def _select_pick_context(pool_names, opp_picks, matchup_stats, overall_ratings):
     """
-    Read card_data.csv and return head-to-head win rates for every card pair.
+    Return a focused subset of pool_names for the pick phase.
 
-    Returns a nested dict:
-      {
-        "Poison": {
-          "Fireball": 0.65,   # Poison's deck won 65% of games where Fireball was on the opposing deck
-          "Giant":    0.40,
-          ...
-        },
-        ...
-      }
-    Only includes pairs with at least 1 game of head-to-head data.
+    Selection logic:
+      1. Top 10 pool cards by overall_rating (highest first).
+      2. For each card in opp_picks, add the pool card with the best
+         matchup_rating against it (as a counter option).
+      3. Deduplicate; order: top-rated first, then counter-only additions.
     """
-    stats = {}
-    try:
-        with open(card_data_csv, newline='', encoding='utf-8') as f:
-            for row in csv.DictReader(f):
-                c1 = row.get("card_1", "").strip()
-                c2 = row.get("card_2", "").strip()
-                try:
-                    gp = int(row.get("Games Played", 0) or 0)
-                    w  = int(row.get("card_1_W", 0) or 0)
-                except (ValueError, TypeError):
-                    continue
-                if not c1 or not c2 or gp == 0:
-                    continue
-                stats.setdefault(c1, {})[c2] = round(w / gp, 3)
-    except FileNotFoundError:
-        pass
-    return stats
+    def rating_key(name):
+        return overall_ratings.get(name) or 0.0
+
+    sorted_pool = sorted(pool_names, key=rating_key, reverse=True)
+    top10       = sorted_pool[:10]
+
+    # Best counter per opponent pick (by matchup_rating, fall back to win_rate)
+    seen            = set(top10)
+    unique_counters = []
+    for opp in opp_picks:
+        best_card   = None
+        best_rating = -1.0
+        for card in pool_names:
+            mu = matchup_stats.get(card, {}).get(opp)
+            if mu is None:
+                continue
+            mr = mu.get("matchup_rating")
+            if mr is None:
+                mr = mu.get("win_rate", 0.0)
+            if mr > best_rating:
+                best_rating = mr
+                best_card   = card
+        if best_card and best_card not in seen:
+            seen.add(best_card)
+            unique_counters.append(best_card)
+
+    return top10 + unique_counters
 
 
 # ── Prompt builder ─────────────────────────────────────────────────────────────
 
-def _format_card_list(pool_names, card_stats):
-    """Format pool cards with their stats, sorted by win rate descending."""
+def _format_card_list(pool_names, card_stats, type_lookup, tier_lookup,
+                      type_deltas=None, overall_ratings=None):
+    """
+    Format pool cards with extended stats, sorted by overall rating descending.
+
+    Line format:
+      Goblin Hut [Tower] (S): 65% WR | rating: 0.61 | +10.2% vs Tower avg
+      Giant [Tanks] (B): no data | rating: 0.56
+    """
     rows = []
     for name in pool_names:
-        s = card_stats.get(name)
-        if s and s["win_rate"] is not None:
-            rows.append((name, s["win_rate"], s["games_played"]))
-        else:
-            rows.append((name, -1.0, 0))
+        s      = card_stats.get(name)
+        rating = (overall_ratings or {}).get(name)
+        rating = rating if rating is not None else 0.0
+        rows.append((name, rating, s))
 
     rows.sort(key=lambda x: x[1], reverse=True)
 
     lines = []
-    for name, wr, gp in rows:
-        if wr >= 0:
-            lines.append(f"  {name}: {wr * 100:.0f}% WR ({gp} games)")
+    for name, rating, s in rows:
+        ctype = type_lookup.get(name, "?")
+        tier  = tier_lookup.get(name, "?")
+
+        if s and s["win_rate"] is not None:
+            wr_str = f"{s['win_rate'] * 100:.0f}% WR"
         else:
-            lines.append(f"  {name}: no data")
+            wr_str = "no data"
+
+        rating_str = f"rating: {rating:.2f}"
+
+        delta = (type_deltas or {}).get(name)
+        if delta is not None:
+            sign      = "+" if delta >= 0 else ""
+            delta_str = f" | {sign}{delta * 100:.1f}% vs {ctype} avg"
+        else:
+            delta_str = ""
+
+        lines.append(
+            f"  {name} [{ctype}] ({tier}): {wr_str} | {rating_str}{delta_str}"
+        )
     return "\n".join(lines)
 
 
@@ -138,10 +146,6 @@ def _format_counter_analysis(pool_names, opp_picks, matchup_stats):
     For the pick phase: rank each pool card by its historical win rate when
     facing the opponent's already-picked cards.
 
-    A high counter score means this card's deck historically beats decks
-    containing the opponent's picks. Pick high-counter cards to exploit
-    weaknesses in the opponent's current lineup.
-
     Returns a formatted string section, or "" if there is no matchup data.
     """
     if not opp_picks or not matchup_stats:
@@ -149,14 +153,16 @@ def _format_counter_analysis(pool_names, opp_picks, matchup_stats):
 
     rows = []
     for card in pool_names:
-        card_mu = matchup_stats.get(card, {})
-        matchups = [(opp, card_mu[opp]) for opp in opp_picks if opp in card_mu]
+        card_mu  = matchup_stats.get(card, {})
+        matchups = [
+            (opp, card_mu[opp]["win_rate"])
+            for opp in opp_picks
+            if opp in card_mu
+        ]
         if not matchups:
             continue
         avg_wr = sum(wr for _, wr in matchups) / len(matchups)
-        detail = ", ".join(
-            f"vs {opp}: {wr * 100:.0f}%" for opp, wr in matchups
-        )
+        detail = ", ".join(f"vs {opp}: {wr * 100:.0f}%" for opp, wr in matchups)
         rows.append((card, avg_wr, len(matchups), detail))
 
     if not rows:
@@ -177,111 +183,130 @@ def _format_counter_analysis(pool_names, opp_picks, matchup_stats):
     return "\n".join(lines)
 
 
-def _format_threat_analysis(pool_names, my_picks, matchup_stats):
+
+def build_ban_prompt(pool_names, my_picks, opp_picks, card_stats,
+                     type_deltas=None, overall_ratings=None):
     """
-    For the ban phase: rank each pool card by how threatening it is to the
-    current player's deck. Cards with a high win rate against my picks are
-    the most dangerous ones the opponent could grab — ban them first.
+    Build the LLM prompt for a ban decision.
 
-    Returns a formatted string section, or "" if there is no matchup data.
-    """
-    if not my_picks or not matchup_stats:
-        return ""
-
-    rows = []
-    for card in pool_names:
-        card_mu = matchup_stats.get(card, {})
-        matchups = [(mine, card_mu[mine]) for mine in my_picks if mine in card_mu]
-        if not matchups:
-            continue
-        avg_wr = sum(wr for _, wr in matchups) / len(matchups)
-        detail = ", ".join(
-            f"vs {mine}: {wr * 100:.0f}%" for mine, wr in matchups
-        )
-        rows.append((card, avg_wr, len(matchups), detail))
-
-    if not rows:
-        return ""
-
-    rows.sort(key=lambda x: x[1], reverse=True)
-
-    lines = [
-        f"\nThreat analysis — pool cards that most threaten your deck "
-        f"({', '.join(my_picks)}):",
-        "  (Higher % = this card's decks historically beat decks with your cards — ban these)",
-    ]
-    for card, avg_wr, n, detail in rows:
-        lines.append(
-            f"  {card}: {avg_wr * 100:.0f}% threat "
-            f"[{detail}] ({n} matchup{'s' if n != 1 else ''} with data)"
-        )
-    return "\n".join(lines)
-
-
-def build_prompt(phase, pool_names, my_picks, opp_picks, card_stats, matchup_stats=None):
-    """
-    Build the LLM prompt for a ban or pick decision.
+    Shows only the top-rated pool cards. Ban strategy is purely rating-driven:
+    deny the opponent the strongest available card.
 
     Args:
-        phase:         "ban" or "pick"
-        pool_names:    list of card names still in the pool
-        my_picks:      list of card names already in the AI's deck
-        opp_picks:     list of card names already in the opponent's deck
-        card_stats:    dict from get_card_stats()
-        matchup_stats: dict from get_matchup_stats(), optional
+        pool_names:      full list of card names still in the pool
+        my_picks:        list of card names already in the AI's deck
+        opp_picks:       list of card names already in the opponent's deck
+        card_stats:      dict from get_card_stats()
+        type_deltas:     dict from get_card_type_relative_win_rates(), optional
+        overall_ratings: dict from get_overall_ratings(), optional
 
     Returns:
         str prompt
     """
-    card_list = _format_card_list(pool_names, card_stats)
-    my_str    = ", ".join(my_picks) if my_picks else "none yet"
-    opp_str   = ", ".join(opp_picks) if opp_picks else "none yet"
+    context_names = _select_ban_context(pool_names, overall_ratings or {})
 
-    if phase == "ban":
-        matchup_section = _format_threat_analysis(pool_names, my_picks, matchup_stats)
-        task = (
-            "Your task: choose ONE card to BAN from the available pool.\n"
-            "Strategy:\n"
-            "  1. Deny the opponent their most powerful win condition — ban high win-rate cards.\n"
-            "  2. Use the threat analysis below (if available) to prioritise banning cards that\n"
-            "     specifically counter YOUR current picks.\n"
-            "  3. If no picks are made yet, focus on eliminating elite-tier cards.\n"
-            "Do NOT attempt to ban a card not listed in the pool.\n"
-            f"Your current picks so far: {my_str}\n"
-            f"Opponent's current picks so far: {opp_str}"
-            f"{matchup_section}"
-        )
-    else:
-        matchup_section = _format_counter_analysis(pool_names, opp_picks, matchup_stats)
-        task = (
-            "Your task: choose ONE card to PICK for your deck.\n"
-            "Strategy:\n"
-            "  1. COUNTER the opponent — prioritise cards with a high counter score against\n"
-            "     the opponent's current picks (see counter-pick analysis below).\n"
-            "  2. Build a balanced deck — include win conditions (tanks, buildings, spells)\n"
-            "     and support troops across your 8 picks.\n"
-            "  3. Use overall win rate as a tiebreaker when counter data is limited.\n"
-            "Do NOT attempt to pick a card not listed in the pool.\n"
-            f"Your current picks so far: {my_str}\n"
-            f"Opponent's current picks so far: {opp_str}"
-            f"{matchup_section}"
-        )
+    card_list = _format_card_list(
+        context_names, card_stats, type_lookup, tier_lookup,
+        type_deltas=type_deltas, overall_ratings=overall_ratings,
+    )
+    my_str  = ", ".join(my_picks)  if my_picks  else "none yet"
+    opp_str = ", ".join(opp_picks) if opp_picks else "none yet"
+
+    task = (
+        "Your task: choose ONE card to BAN from the available pool.\n"
+        "Strategy:\n"
+        "  Ban the card with the HIGHEST overall rating from the list above.\n"
+        "  The cards are already sorted highest-rated first — ban the top card\n"
+        "  unless you have a strong reason to prefer the second or third.\n"
+        "  Trust the rating — it reflects LOCAL win-rate data, not the general\n"
+        "  Clash Royale meta. Ignore your prior knowledge of card strength.\n"
+        "Do NOT attempt to ban a card not listed in the pool.\n"
+        f"Your current picks so far: {my_str}\n"
+        f"Opponent's current picks so far: {opp_str}"
+    )
+
+    prompt = f"""You are a Clash Royale CHAOS mode draft expert.
+
+Game context:
+- 50-card CHAOS pool. Players first ban 4 cards total (2 each), then snake-draft 16 picks (8 per player).
+- Historical ratings come from real games played with this card pool — trust them over general meta knowledge.
+
+Top-rated cards remaining in the pool (sorted by overall rating, highest first):
+{card_list}
+
+{task}
+
+Respond with ONLY valid JSON in exactly this format (no other text, no markdown):
+{{"card": "Exact Card Name", "reason": "brief one-line reason"}}
+
+The card name MUST exactly match one of the names listed above."""
+
+    return prompt
+
+
+def build_pick_prompt(pool_names, my_picks, opp_picks, card_stats,
+                      type_deltas=None, overall_ratings=None, matchup_stats=None):
+    """
+    Build the LLM prompt for a pick decision.
+
+    Shows the top-rated cards plus the best counter per opponent pick.
+    Pick strategy is counter-driven with deck balance as a secondary goal.
+
+    Args:
+        pool_names:      full list of card names still in the pool
+        my_picks:        list of card names already in the AI's deck
+        opp_picks:       list of card names already in the opponent's deck
+        card_stats:      dict from get_card_stats()
+        type_deltas:     dict from get_card_type_relative_win_rates(), optional
+        overall_ratings: dict from get_overall_ratings(), optional
+        matchup_stats:   dict from get_matchup_stats(), optional
+
+    Returns:
+        str prompt
+    """
+    context_names = _select_pick_context(
+        pool_names, opp_picks, matchup_stats or {}, overall_ratings or {}
+    )
+
+    card_list       = _format_card_list(
+        context_names, card_stats, type_lookup, tier_lookup,
+        type_deltas=type_deltas, overall_ratings=overall_ratings,
+    )
+    matchup_section = _format_counter_analysis(context_names, opp_picks, matchup_stats)
+    my_str          = ", ".join(my_picks)  if my_picks  else "none yet"
+    opp_str         = ", ".join(opp_picks) if opp_picks else "none yet"
+
+    task = (
+        "Your task: choose ONE card to PICK for your deck.\n"
+        "Strategy:\n"
+        "  1. COUNTER the opponent — prioritise cards with a high counter score against\n"
+        "     the opponent's current picks (see counter-pick analysis below).\n"
+        "  2. Build a balanced deck — aim for: 1× Tank, 2× Spells, 1× Ranged, 1× Melee,\n"
+        "     1× Tower. The remaining 2 cards can be any type except a second Tank.\n"
+        "  3. Use overall rating as a tiebreaker when counter data is limited.\n"
+        "Do NOT attempt to pick a card not listed in the pool.\n"
+        f"Your current picks so far: {my_str}\n"
+        f"Opponent's current picks so far: {opp_str}"
+        f"{matchup_section}"
+    )
 
     prompt = f"""You are a Clash Royale CHAOS mode draft expert.
 
 Game context:
 - 50-card CHAOS pool. Players first ban 4 cards total (2 each), then snake-draft 16 picks (8 per player).
 - CHAOS mode uses modifiers that amplify certain card types each game.
-- A strong deck needs: 1-2 win conditions, support troops, at least 1 spell, and reasonable elixir cost.
-- Historical win rates come from real games played with this card pool.
+- A strong deck consists of: 1× Tank, 2× Spells, 1× Ranged, 1× Melee, 1× Tower.
+  The remaining 2 cards can be any type except a second Tank.
+- Each card's type is shown in [brackets]. Use this to track your deck balance across picks.
+- Historical win rates and ratings come from real games played with this card pool.
 
-Available cards in the pool (sorted by overall win rate, highest first):
+Available cards in the pool (sorted by overall rating, highest first):
 {card_list}
 
 {task}
 
 Respond with ONLY valid JSON in exactly this format (no other text, no markdown):
-{{"card": "Exact Card Name", "reason": "brief one-line reason mentioning counter-pick or threat logic if applicable"}}
+{{"card": "Exact Card Name", "reason": "brief one-line reason mentioning counter-pick logic if applicable"}}
 
 The card name MUST exactly match one of the names listed above."""
 
@@ -306,8 +331,25 @@ def _fuzzy_match(name, pool_names):
     return None
 
 
-def _best_card_by_winrate(pool, card_stats):
-    """Return (card_id, reason) for the highest win-rate card in the pool."""
+def _best_ban_card(pool, overall_ratings):
+    """Fallback for ban: return the pool card with the highest overall_rating."""
+    best        = None
+    best_rating = -1.0
+    for c in pool:
+        r = overall_ratings.get(c["name"]) or 0.0
+        if r > best_rating:
+            best_rating = r
+            best        = c
+    if best:
+        return best["id"], f"fallback: highest-rated card available (rating: {best_rating:.2f})"
+    if pool:
+        c = random.choice(pool)
+        return c["id"], "fallback: random ban (no rating data)"
+    return None, ""
+
+
+def _best_pick_card(pool, card_stats):
+    """Fallback for pick: return the pool card with the highest win rate."""
     best    = None
     best_wr = -1.0
     for c in pool:
@@ -329,6 +371,10 @@ def ai_decide(phase, pool, my_picks, opp_picks, card_stats, model, matchup_stats
     """
     Ask Ollama to choose the next ban or pick card.
 
+    Ban and pick use entirely separate prompt strategies:
+    - Ban:  top-rated cards shown; strategy is to ban the highest-rated card.
+    - Pick: top-rated + counters shown; strategy is counter-pick + deck balance.
+
     Args:
         phase:         "ban" or "pick"
         pool:          list of card dicts (id, name, elixir, ...)
@@ -336,22 +382,38 @@ def ai_decide(phase, pool, my_picks, opp_picks, card_stats, model, matchup_stats
         opp_picks:     list of card dicts in the opponent's deck so far
         card_stats:    dict from get_card_stats()
         model:         Ollama model name string (e.g. "llama3.2")
-        matchup_stats: dict from get_matchup_stats(), optional — enables counter-pick reasoning
+        matchup_stats: dict from get_matchup_stats(), optional (used for pick only)
 
     Returns:
         (card_id, reason) tuple. card_id is None if pool is empty.
-        Falls back to the highest win-rate card on any Ollama error.
+        Falls back to highest-rated card (ban) or highest win-rate card (pick)
+        on any Ollama error.
     """
     if not pool:
         return None, ""
 
-    pool_names = [c["name"] for c in pool]
-    my_names   = [c["name"] for c in my_picks]
-    opp_names  = [c["name"] for c in opp_picks]
-    prompt     = build_prompt(phase, pool_names, my_names, opp_names, card_stats, matchup_stats)
+    pool_names      = [c["name"] for c in pool]
+    my_names        = [c["name"] for c in my_picks]
+    opp_names       = [c["name"] for c in opp_picks]
+    type_deltas     = get_card_type_relative_win_rates(CSV_FILE)
+    overall_ratings = get_overall_ratings(CARD_DATA_CSV)
+
+    if phase == "ban":
+        prompt   = build_ban_prompt(
+            pool_names, my_names, opp_names, card_stats,
+            type_deltas=type_deltas, overall_ratings=overall_ratings,
+        )
+        fallback = lambda: _best_ban_card(pool, overall_ratings)
+    else:
+        prompt   = build_pick_prompt(
+            pool_names, my_names, opp_names, card_stats,
+            type_deltas=type_deltas, overall_ratings=overall_ratings,
+            matchup_stats=matchup_stats,
+        )
+        fallback = lambda: _best_pick_card(pool, card_stats)
 
     try:
-        import ollama  # lazy import — missing package falls through to best-by-winrate
+        import ollama  # lazy import — missing package falls through to fallback
 
         response = ollama.chat(
             model=model,
@@ -373,8 +435,8 @@ def ai_decide(phase, pool, my_picks, opp_picks, card_stats, model, matchup_stats
         print(f"[ai_draft] LLM returned '{chosen_name}' which isn't in pool; falling back.")
 
     except ImportError:
-        print("[ai_draft] 'ollama' package not installed — falling back to best win-rate card.")
+        print("[ai_draft] 'ollama' package not installed — falling back.")
     except Exception as e:
-        print(f"[ai_draft] Ollama error ({e}) — falling back to best win-rate card.")
+        print(f"[ai_draft] Ollama error ({e}) — falling back.")
 
-    return _best_card_by_winrate(pool, card_stats)
+    return fallback()
