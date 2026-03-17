@@ -39,6 +39,11 @@ def player_stats_page():
     return render_template("player_stats.html")
 
 
+@frontend_bp.route("/card/<card_name>")
+def card_detail_page(card_name):
+    return render_template("card_detail.html", card_name=card_name)
+
+
 @frontend_bp.route("/stats")
 def stats_page():
     stats_path = os.path.join(_HERE, "stats.html")

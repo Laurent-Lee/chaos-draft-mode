@@ -1,4 +1,4 @@
-# CLAUDE.md — CR Draft Codebase Guide
+# CLAUDE.md — CHAOS Mode Draft Codebase Guide
 
 This file is the authoritative reference for working on the CR Draft codebase. Read it fully before making any changes.
 
@@ -23,15 +23,16 @@ cr_draft/
 ├── backend/
 │   ├── cards.py         # CR API fetch + deck link generation
 │   ├── draft.py         # Global state dict, draft logic, draft API Blueprint
-│   ├── stats.py         # CSV I/O, match history, card/player stats, ELO Blueprint
-│   └── elo.py           # ELO calculator (external, must export calculate_elo, OUTPUT_CSV, INPUT_CSV)
+│   ├── modifiers.py     # Modifier name mapping and modifiers_data.csv aggregation
+│   └── stats.py         # CSV I/O, match history, card/player stats, ELO Blueprint
 │
 ├── frontend/
-│   ├── frontend.py      # Frontend Blueprint — serves /, /player_stats, /elixir.svg, /stats
+│   ├── frontend.py      # Frontend Blueprint — serves /, /player_stats, /card/<n>, /elixir.svg, /stats
 │   ├── stats.html       # Card stats page (external, served at /stats)
 │   └── templates/
 │       ├── index.html        # Main draft UI
-│       └── player_stats.html # Player leaderboard + per-player detail (Stats + Recent Matches tabs)
+│       ├── player_stats.html # Player leaderboard + per-player detail (Stats + Recent Matches tabs)
+│       └── card_detail.html  # Per-card profile page — stats + head-to-head matchup table
 │
 ├── static/
 │   ├── elixir.svg       # Elixir icon served at /elixir.svg via frontend Blueprint
@@ -39,8 +40,12 @@ cr_draft/
 │   └── card_types.js    # CARD_TYPE, TYPE_ORDER, TYPE_ICONS — edit to reclassify cards
 │
 └── data/
-    ├── output.csv        # Match history — auto-created on first recorded game
-    └── elo.csv           # ELO ratings — written by elo.py after each match
+    ├── output.csv             # Match history — 165 columns, auto-created on first recorded game
+    ├── modifiers_data.csv     # Modifier aggregate stats — rewritten after each match
+    ├── card_data.csv          # Card matchup matrix — 2500 rows, rewritten after each match
+    ├── elo.csv                # ELO ratings — written by elo.py after each match
+    ├── player_tags.json       # App player name → CR player tag (#TAG) mapping
+    └── backfill_modifiers.py  # One-off script: populate modifier data for old output.csv rows
 ```
 
 ---
@@ -152,6 +157,7 @@ Each row represents one completed match. Columns:
 
 | Column | Values | Meaning |
 |--------|--------|---------|
+| `timestamp` | ISO 8601 UTC string e.g. `2026-03-16T14:32:05Z` | when the match was recorded; empty on rows predating this column |
 | `1st_pick` | player name | player who picked first in PICK_SEQUENCE |
 | `2nd_pick` | player name | player who picked second |
 | `winner` | player name | |
@@ -159,10 +165,73 @@ Each row represents one completed match. Columns:
 | `{CardName}_W` | `0` or `1` | card was in the winner's deck |
 | `{CardName}_L` | `0` or `1` | card was in the loser's deck |
 | `{CardName}_BANNED` | `0`, `1`, `-1`, `"R"` | `0` = not banned, `1` = banned by winner, `-1` = banned by loser, `"R"` = random pre-ban |
+| `Modifier_1_W` … `Modifier_5_W` | internal modifier string e.g. `"Poison3"` | winner's modifiers in pick order; empty if game not yet matched from CR API |
+| `Modifier_1_L` … `Modifier_5_L` | internal modifier string | loser's modifiers in pick order |
 
-There are 50 `_W` columns, 50 `_L` columns, and 50 `_BANNED` columns — **154 columns total**. Column order mirrors `CHAOS_CARD_LIST` (alphabetical).
+There are 50 `_W` columns, 50 `_L` columns, 50 `_BANNED` columns, and 10 modifier columns — **165 columns total**. Column order mirrors `CHAOS_CARD_LIST` (alphabetical) for the card columns.
 
-The `data/` directory and CSV header row are auto-created on the first call to `/api/record_winner`.
+The `data/` directory and CSV header row are auto-created on the first call to `/api/record_winner`. Existing CSVs with only 155 columns are automatically migrated to 165 columns on the next recorded match.
+
+Both `stats.py` and `elo.py` sort rows by `timestamp` before processing, so concatenated files from multiple machines are always handled in true chronological order. Rows with an empty `timestamp` sort to the top and are treated as the oldest games.
+
+---
+
+## Modifier Data (`data/modifiers_data.csv`)
+
+Aggregated modifier statistics, rewritten after every match (like `card_data.csv`).
+
+| Column | Meaning |
+|--------|---------|
+| `modifier_name` | Human-readable display name, e.g. `"Poison III"`, `"Flying Machine I"` |
+| `total_games_played` | Games in which this modifier appeared on either side |
+| `Modifier_1_W` … `Modifier_5_W` | Times this modifier was at position 1–5 for the **winning** team |
+| `Modifier_1_L` … `Modifier_5_L` | Times this modifier was at position 1–5 for the **losing** team |
+
+Each modifier variant (card + tier) is one row. With 50 CHAOS cards × 3 tiers = up to **150 modifier rows**, each with 10 data columns = **1,500 data points** total. The file only contains rows for modifiers observed so far; rows for unseen modifiers are added automatically as new games are recorded.
+
+### Internal → display name mapping
+The CR API returns identifiers like `"BlowdartGoblin3"` or `"DartBarrell1"`. These are parsed by `backend/modifiers.py`:
+- Base name stripped of trailing digit → looked up in `MODIFIER_BASE_TO_DISPLAY`
+- Tier digit converted to Roman numeral (`1`→`I`, `2`→`II`, `3`→`III`)
+- Known non-obvious mappings: `BlowdartGoblin` → Dart Goblin, `DartBarrell` → Flying Machine, `AxeMan` → Executioner, `IceSpirits` → Ice Spirit, `Xbow` → X-Bow, `Pekka` → P.E.K.K.A, `Log` → The Log
+
+Add new entries to `MODIFIER_BASE_TO_DISPLAY` in `backend/modifiers.py` as previously unseen modifiers appear.
+
+---
+
+## Player Tag Mapping (`data/player_tags.json`)
+
+Maps each app player name to their Clash Royale player tag. Used by modifier matching to locate the right battle in the CR API battle logs.
+
+```json
+{
+    "Kevin":   "#JGPUGCUP",
+    "Andrew":  "#P2PRRVLP",
+    ...
+}
+```
+
+Update this file when players join or change accounts. The backfill script and `record_winner` both read from this file at runtime.
+
+---
+
+## Modifier Matching Flow
+
+When `/api/record_winner` is called:
+1. Winner and loser card sets are built from the draft state
+2. `_fetch_battle_modifiers()` in `stats.py` fetches the winner's CR battle log (falls back to the loser's log if the winner has privacy on)
+3. The most recent `Crazy_Arena` battle against the correct opponent whose card sets match exactly and whose crowns confirm the winner is selected
+4. Modifier strings are extracted by player tag from the `modifiers` field
+5. Values are written to `Modifier_1_W … Modifier_5_W` and `Modifier_1_L … Modifier_5_L` in `output.csv`
+6. `modifiers_data.csv` is regenerated via `refresh_modifiers()`
+
+If no matching battle is found (privacy enabled, log rolled off, etc.) the modifier columns are left empty and the match is still recorded normally.
+
+### Backfilling old rows
+```bash
+python3 data/backfill_modifiers.py
+```
+Fetches battle logs for all unmatched rows in `output.csv` and regenerates `modifiers_data.csv`.
 
 ---
 
@@ -176,6 +245,8 @@ The `data/` directory and CSV header row are auto-created on the first call to `
 `_refresh_elo()` in `stats.py` calls `calculate_elo` after every recorded match. If `elo.py` is missing, the app degrades gracefully — ELO ratings default to `ELO_STARTING = 1000` for all players.
 
 `/api/elo` reads the **last row** of `elo.csv` to get current ratings — the assumption is that `elo.py` appends a new row per game with all player ELOs as columns.
+
+`elo.py` sorts rows by `timestamp` before processing so ELO is always calculated in true chronological order, even after CSVs from multiple machines are concatenated.
 
 ---
 
@@ -202,7 +273,7 @@ If the CHAOS mode card pool changes:
 
 ## Frontend Architecture
 
-The frontend is split across two standalone HTML templates in `frontend/templates/`. There is no build step, no bundler, no npm.
+The frontend is split across standalone HTML templates in `frontend/templates/` and one static file in `frontend/`. There is no build step, no bundler, no npm.
 
 ### `index.html` — Main draft UI
 | JS Variable | Purpose |
@@ -229,6 +300,20 @@ loadDetailStats(name)     → fetches /api/player_stats/<name>, renders stat car
 loadDetailHistory(name)   → fetches /api/match_history/<name>, renders game cards
 sortCardTable(col, id)    → re-sorts and re-renders the card stats table client-side
 ```
+
+### `card_detail.html` — Per-card profile page
+Served at `/card/<card_name>`. Each card has its own URL (e.g. `/card/Electro Wizard`). Reached by clicking any card row in `stats.html`.
+
+Fetches a single endpoint `GET /api/card_detail/<card_name>` which returns:
+- **Overall stats** — play rate, win rate, ban rate, wins, losses, total games
+- **49 matchup rows** — from `card_data.csv`, one row per opponent card
+
+The page applies a tier-keyed colour theme (CSS `--tier-color` variable) so each card's profile has a distinct accent colour. The matchup table defaults to a grouped view — Favourable (≥55% WR) / Even (45–55%) / Unfavourable (<45%) — with a toggle to show unseen matchups.
+
+**Important:** `card_detail.html` inlines its own copies of `CARD_TIER` and `CARD_TYPE` because it is a Jinja2 template and cannot load `/static/` JS files at parse time. If you update card tiers or types, update `card_tiers.js`, `card_types.js`, **and** the inline copies in `card_detail.html`.
+
+### `stats.html` — Card stats overview (static file)
+Served at `/stats` directly from `frontend/stats.html` (not a Jinja2 template). Clicking any card row navigates to that card's `/card/<n>` detail page.
 
 ### Static JS data files
 Tier and type data live in `static/` as standalone JS files loaded in both templates.
@@ -275,10 +360,18 @@ Edit the `random.sample(splus_pool, ...)` call in `start_draft()` in `backend/dr
 Edit `PORT` in `config.py`.
 
 ### Update card tier assignments
-Edit `static/card_tiers.js` — move card names between tier arrays in the `tiers` object. `TIER_ORDER` and `TIER_ICONS` only need changing if you add or remove a tier entirely.
+Edit `static/card_tiers.js` — move card names between tier arrays in the `tiers` object. Also update the inline `CARD_TIER` copy in `frontend/templates/card_detail.html`. `TIER_ORDER` and `TIER_ICONS` only need changing if you add or remove a tier entirely.
 
 ### Update card type assignments
-Edit `static/card_types.js` — change the value for any card name in `CARD_TYPE`. `TYPE_ORDER` controls the display order of groups; `TYPE_ICONS` controls the emoji shown next to each group header.
+Edit `static/card_types.js` — change the value for any card name in `CARD_TYPE`. Also update the inline `CARD_TYPE` copy in `frontend/templates/card_detail.html`. `TYPE_ORDER` controls the display order of groups; `TYPE_ICONS` controls the emoji shown next to each group header.
+
+### Regenerate card_data.csv manually
+If you concatenate CSVs from multiple machines and want to regenerate `card_data.csv` before starting the app:
+```bash
+cd cr_draft
+python3 -c "from backend.stats import _write_matchups_csv; _write_matchups_csv()"
+```
+Alternatively, use the **⬇ Export card_data.csv** button on the `/stats` page once the server is running.
 
 ---
 
@@ -288,5 +381,6 @@ Edit `static/card_types.js` — change the value for any card name in `CARD_TYPE
 - **Don't modify `CHAOS_CARD_LIST` ordering.** The CSV column layout depends on it being `sorted(CHAOS_CARDS)`.
 - **Don't add a second global state dict.** All draft state flows through `state` in `backend/draft.py`. `stats.py` imports it directly.
 - **Don't add a templating engine or build step** to the frontend without significant justification — the single-file approach is intentional for portability.
-- **Don't inline tier or type data back into `index.html`.** They live in `static/card_tiers.js` and `static/card_types.js` precisely so they can be edited without touching the main template.
+- **Don't inline tier or type data back into `index.html`.** They live in `static/card_tiers.js` and `static/card_types.js` precisely so they can be edited without touching the main template. `card_detail.html` is the only justified exception because it cannot load static JS files as a Jinja2 template.
+- **Don't update tier or type data in only one place.** Changes must be made in `card_tiers.js` / `card_types.js` **and** the inline copies in `card_detail.html`.
 - **Don't commit `.env`.** It contains the CR API token and a whitelisted IP.
