@@ -19,6 +19,7 @@ from itertools import product as iproduct
 from flask import Blueprint, jsonify, request
 from config import CSV_FILE, CHAOS_CARD_LIST, PLAYERS, ELO_STARTING, _ROOT, CR_API_TOKEN, PLAYER_TAGS_FILE
 from backend.draft import state
+from backend.modifiers import refresh_modifiers
 
 # Import ELO calculator -- elo.py lives in backend/
 try:
@@ -100,11 +101,60 @@ def _fetch_player_battles(player_tag):
         return []
 
 
+def _extract_modifiers_from_battle(battle, winner_tag, loser_tag,
+                                   winner_cards, loser_cards, winner_is_team):
+    """
+    Try to extract modifier data from a single battle dict.
+    winner_is_team=True  → battle fetched from winner's log (team = winner)
+    winner_is_team=False → battle fetched from loser's log  (team = loser)
+    Returns (winner_mods, loser_mods) or None if the battle doesn't match.
+    """
+    if battle.get("gameMode", {}).get("name") != CHAOS_GAME_MODE:
+        return None
+    team_list = battle.get("team", [])
+    opp_list  = battle.get("opponent", [])
+    if not team_list or not opp_list:
+        return None
+
+    if winner_is_team:
+        if opp_list[0].get("tag") != loser_tag:
+            return None
+        if team_list[0].get("crowns", 0) == 0:
+            return None
+        api_w = {c["name"] for c in team_list[0].get("cards", [])}
+        api_l = {c["name"] for c in opp_list[0].get("cards", [])}
+    else:
+        # Fetched from loser's perspective: team = loser, opponent = winner
+        if opp_list[0].get("tag") != winner_tag:
+            return None
+        if opp_list[0].get("crowns", 0) == 0:
+            return None
+        api_w = {c["name"] for c in opp_list[0].get("cards", [])}
+        api_l = {c["name"] for c in team_list[0].get("cards", [])}
+
+    if api_w != winner_cards or api_l != loser_cards:
+        return None
+
+    winner_mods, loser_mods = [], []
+    for md in battle.get("modifiers", []):
+        t = md.get("tag")
+        if t == winner_tag:
+            winner_mods = md.get("modifiers", [])
+        elif t == loser_tag:
+            loser_mods  = md.get("modifiers", [])
+    return winner_mods[:5], loser_mods[:5]
+
+
 def _fetch_battle_modifiers(winner_name, loser_name, winner_cards, loser_cards):
     """
     Find the most recent Crazy_Arena battle between winner and loser whose card sets
-    match the draft and whose result matches. Returns (winner_mods, loser_mods) as
-    lists of up to 5 modifier strings, or (None, None) if no match is found.
+    match the draft and whose result matches.
+
+    First tries the winner's battle log; if that yields no match (e.g. privacy is on),
+    falls back to the loser's log.
+
+    Returns (winner_mods, loser_mods) as lists of up to 5 modifier strings,
+    or (None, None) if no match is found.
     """
     tags = _load_player_tags()
     winner_tag = tags.get(winner_name)
@@ -112,40 +162,23 @@ def _fetch_battle_modifiers(winner_name, loser_name, winner_cards, loser_cards):
     if not winner_tag or not loser_tag:
         return None, None
 
-    battles = _fetch_player_battles(winner_tag)
-    for battle in battles:
-        if battle.get("gameMode", {}).get("name") != CHAOS_GAME_MODE:
-            continue
-        team_list = battle.get("team", [])
-        opp_list  = battle.get("opponent", [])
-        if not team_list or not opp_list:
-            continue
+    # Try winner's log first
+    for battle in _fetch_player_battles(winner_tag):
+        result = _extract_modifiers_from_battle(
+            battle, winner_tag, loser_tag, winner_cards, loser_cards,
+            winner_is_team=True
+        )
+        if result is not None:
+            return result
 
-        # Confirm this battle was against the loser
-        if opp_list[0].get("tag") != loser_tag:
-            continue
-
-        # Confirm our player won (team crowns > 0)
-        if team_list[0].get("crowns", 0) == 0:
-            continue
-
-        # Match card sets — both sides must match exactly
-        api_winner_cards = {c["name"] for c in team_list[0].get("cards", [])}
-        api_loser_cards  = {c["name"] for c in opp_list[0].get("cards", [])}
-        if api_winner_cards != winner_cards or api_loser_cards != loser_cards:
-            continue
-
-        # Extract modifiers by tag
-        winner_mods = []
-        loser_mods  = []
-        for md in battle.get("modifiers", []):
-            t = md.get("tag")
-            if t == winner_tag:
-                winner_mods = md.get("modifiers", [])
-            elif t == loser_tag:
-                loser_mods  = md.get("modifiers", [])
-
-        return winner_mods[:5], loser_mods[:5]
+    # Fallback: try loser's log (handles winner having battle log privacy on)
+    for battle in _fetch_player_battles(loser_tag):
+        result = _extract_modifiers_from_battle(
+            battle, winner_tag, loser_tag, winner_cards, loser_cards,
+            winner_is_team=False
+        )
+        if result is not None:
+            return result
 
     return None, None
 
@@ -233,6 +266,7 @@ def record_winner():
 
     _refresh_elo()
     _refresh_matchups()
+    refresh_modifiers()
     return jsonify({"status": "saved", "winner": winner_name, "loser": loser_name})
 
 

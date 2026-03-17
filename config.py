@@ -25,9 +25,10 @@ BAN_SEQUENCE  = [1, 2, 2, 1]
 PICK_SEQUENCE = [1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1]
 
 # ── CSV / ELO ─────────────────────────────────────────────────────────────────
-CSV_FILE         = os.path.join(_ROOT, "data", "output.csv")
-PLAYER_TAGS_FILE = os.path.join(_ROOT, "data", "player_tags.json")
-ELO_STARTING     = 1000
+CSV_FILE          = os.path.join(_ROOT, "data", "output.csv")
+MODIFIERS_CSV     = os.path.join(_ROOT, "data", "modifiers_data.csv")
+PLAYER_TAGS_FILE  = os.path.join(_ROOT, "data", "player_tags.json")
+ELO_STARTING      = 1000
 
 # ── All 50 official C.H.A.O.S mode cards (March 2026) ─────────────────────────
 CHAOS_CARDS = {

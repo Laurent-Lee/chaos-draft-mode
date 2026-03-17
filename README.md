@@ -14,6 +14,7 @@ cr_draft/
 ├── backend/
 │   ├── cards.py         # CR API fetching and deck link generation
 │   ├── draft.py         # Draft state, game logic, and draft API routes
+│   ├── modifiers.py     # Modifier name mapping and modifiers_data.csv aggregation
 │   ├── stats.py         # CSV recording, match history, card/player stats, ELO
 │   └── elo.py           # ELO calculator (bring your own, see Setup)
 │
@@ -31,11 +32,12 @@ cr_draft/
 │   └── card_types.js    # Card type assignments (Tower/Tanks/Ranged/etc) — edit to update types
 │
 └── data/
-│   ├── output.csv        # Match history (auto-created on first recorded game)
-│   ├─── elo.csv           # ELO ratings (auto-created by elo.py)
-│   ├── card_data.csv    # card_data (auto-created by stats.py) 
-│   └── elo.py           # ELO calculator (bring your own, see Setup)
-│
+    ├── output.csv             # Match history — 165 columns (auto-created on first game)
+    ├── modifiers_data.csv     # Modifier aggregate stats — auto-updated after each match
+    ├── card_data.csv          # Card matchup matrix — auto-updated after each match
+    ├── elo.csv                # ELO ratings — written by elo.py after each match
+    ├── player_tags.json       # App player name → CR player tag mapping
+    └── backfill_modifiers.py  # One-off script to populate modifier data for old rows
 ```
 
 ## Setup

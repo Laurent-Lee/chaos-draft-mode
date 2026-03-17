@@ -23,8 +23,8 @@ cr_draft/
 ├── backend/
 │   ├── cards.py         # CR API fetch + deck link generation
 │   ├── draft.py         # Global state dict, draft logic, draft API Blueprint
+│   ├── modifiers.py     # Modifier name mapping and modifiers_data.csv aggregation
 │   └── stats.py         # CSV I/O, match history, card/player stats, ELO Blueprint
-│   
 │
 ├── frontend/
 │   ├── frontend.py      # Frontend Blueprint — serves /, /player_stats, /card/<n>, /elixir.svg, /stats
@@ -40,10 +40,12 @@ cr_draft/
 │   └── card_types.js    # CARD_TYPE, TYPE_ORDER, TYPE_ICONS — edit to reclassify cards
 │
 └── data/
-    ├── output.csv        # Match history — auto-created on first recorded game
-    ├── elo.csv           # ELO ratings — written by elo.py after each match
-    ├── card_data.csv     # Card matchup matrix — 2500 rows, rewritten after each match
-    └── elo.py           # ELO calculator (external, must export calculate_elo, OUTPUT_CSV, INPUT_CSV)
+    ├── output.csv             # Match history — 165 columns, auto-created on first recorded game
+    ├── modifiers_data.csv     # Modifier aggregate stats — rewritten after each match
+    ├── card_data.csv          # Card matchup matrix — 2500 rows, rewritten after each match
+    ├── elo.csv                # ELO ratings — written by elo.py after each match
+    ├── player_tags.json       # App player name → CR player tag (#TAG) mapping
+    └── backfill_modifiers.py  # One-off script: populate modifier data for old output.csv rows
 ```
 
 ---
@@ -163,12 +165,73 @@ Each row represents one completed match. Columns:
 | `{CardName}_W` | `0` or `1` | card was in the winner's deck |
 | `{CardName}_L` | `0` or `1` | card was in the loser's deck |
 | `{CardName}_BANNED` | `0`, `1`, `-1`, `"R"` | `0` = not banned, `1` = banned by winner, `-1` = banned by loser, `"R"` = random pre-ban |
+| `Modifier_1_W` … `Modifier_5_W` | internal modifier string e.g. `"Poison3"` | winner's modifiers in pick order; empty if game not yet matched from CR API |
+| `Modifier_1_L` … `Modifier_5_L` | internal modifier string | loser's modifiers in pick order |
 
-There are 50 `_W` columns, 50 `_L` columns, and 50 `_BANNED` columns — **155 columns total** (154 card columns + `timestamp`). Column order mirrors `CHAOS_CARD_LIST` (alphabetical).
+There are 50 `_W` columns, 50 `_L` columns, 50 `_BANNED` columns, and 10 modifier columns — **165 columns total**. Column order mirrors `CHAOS_CARD_LIST` (alphabetical) for the card columns.
 
-The `data/` directory and CSV header row are auto-created on the first call to `/api/record_winner`.
+The `data/` directory and CSV header row are auto-created on the first call to `/api/record_winner`. Existing CSVs with only 155 columns are automatically migrated to 165 columns on the next recorded match.
 
 Both `stats.py` and `elo.py` sort rows by `timestamp` before processing, so concatenated files from multiple machines are always handled in true chronological order. Rows with an empty `timestamp` sort to the top and are treated as the oldest games.
+
+---
+
+## Modifier Data (`data/modifiers_data.csv`)
+
+Aggregated modifier statistics, rewritten after every match (like `card_data.csv`).
+
+| Column | Meaning |
+|--------|---------|
+| `modifier_name` | Human-readable display name, e.g. `"Poison III"`, `"Flying Machine I"` |
+| `total_games_played` | Games in which this modifier appeared on either side |
+| `Modifier_1_W` … `Modifier_5_W` | Times this modifier was at position 1–5 for the **winning** team |
+| `Modifier_1_L` … `Modifier_5_L` | Times this modifier was at position 1–5 for the **losing** team |
+
+Each modifier variant (card + tier) is one row. With 50 CHAOS cards × 3 tiers = up to **150 modifier rows**, each with 10 data columns = **1,500 data points** total. The file only contains rows for modifiers observed so far; rows for unseen modifiers are added automatically as new games are recorded.
+
+### Internal → display name mapping
+The CR API returns identifiers like `"BlowdartGoblin3"` or `"DartBarrell1"`. These are parsed by `backend/modifiers.py`:
+- Base name stripped of trailing digit → looked up in `MODIFIER_BASE_TO_DISPLAY`
+- Tier digit converted to Roman numeral (`1`→`I`, `2`→`II`, `3`→`III`)
+- Known non-obvious mappings: `BlowdartGoblin` → Dart Goblin, `DartBarrell` → Flying Machine, `AxeMan` → Executioner, `IceSpirits` → Ice Spirit, `Xbow` → X-Bow, `Pekka` → P.E.K.K.A, `Log` → The Log
+
+Add new entries to `MODIFIER_BASE_TO_DISPLAY` in `backend/modifiers.py` as previously unseen modifiers appear.
+
+---
+
+## Player Tag Mapping (`data/player_tags.json`)
+
+Maps each app player name to their Clash Royale player tag. Used by modifier matching to locate the right battle in the CR API battle logs.
+
+```json
+{
+    "Kevin":   "#JGPUGCUP",
+    "Andrew":  "#P2PRRVLP",
+    ...
+}
+```
+
+Update this file when players join or change accounts. The backfill script and `record_winner` both read from this file at runtime.
+
+---
+
+## Modifier Matching Flow
+
+When `/api/record_winner` is called:
+1. Winner and loser card sets are built from the draft state
+2. `_fetch_battle_modifiers()` in `stats.py` fetches the winner's CR battle log (falls back to the loser's log if the winner has privacy on)
+3. The most recent `Crazy_Arena` battle against the correct opponent whose card sets match exactly and whose crowns confirm the winner is selected
+4. Modifier strings are extracted by player tag from the `modifiers` field
+5. Values are written to `Modifier_1_W … Modifier_5_W` and `Modifier_1_L … Modifier_5_L` in `output.csv`
+6. `modifiers_data.csv` is regenerated via `refresh_modifiers()`
+
+If no matching battle is found (privacy enabled, log rolled off, etc.) the modifier columns are left empty and the match is still recorded normally.
+
+### Backfilling old rows
+```bash
+python3 data/backfill_modifiers.py
+```
+Fetches battle logs for all unmatched rows in `output.csv` and regenerates `modifiers_data.csv`.
 
 ---
 
