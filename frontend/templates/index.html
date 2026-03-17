@@ -149,6 +149,10 @@ main{max-width:1400px;margin:0 auto;padding:1.2rem 1rem}
   font-size:.68rem;font-weight:700;min-width:18px;text-align:center}
 .avg-elixir{font-size:.72rem;color:var(--text-muted);margin-top:.35rem}
 .avg-elixir span{color:#c060ff;font-weight:700}
+.type-divider{font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--text-muted);display:flex;align-items:center;gap:.35rem;
+  margin:.45rem 0 .2rem;opacity:.75}
+.type-divider::before,.type-divider::after{content:'';flex:1;height:1px;background:var(--border)}
 
 /* ── Pool ── */
 #pool-area h3{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;
@@ -261,7 +265,7 @@ main{max-width:1400px;margin:0 auto;padding:1.2rem 1rem}
   background:rgba(74,158,255,.12);border:1px solid rgba(74,158,255,.3);
   border-radius:999px;padding:1px 8px;margin-left:.4rem;vertical-align:middle}
 
-/* ── AI chat log ── */
+/* ── AI chat log (live, during draft) ── */
 #ai-chat{display:none;margin-top:.9rem;background:var(--surface);
   border:1px solid var(--border);border-radius:10px;padding:.75rem 1rem}
 #ai-chat-header{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;
@@ -274,6 +278,30 @@ main{max-width:1400px;margin:0 auto;padding:1.2rem 1rem}
 .ai-entry-action{flex-shrink:0}
 .ai-entry-card{font-weight:600;flex-shrink:0}
 .ai-entry-reason{color:var(--text-muted);font-size:.78rem}
+
+/* ── AI reasoning panel (post-draft done screen) ── */
+#done-ai-log{display:none;margin-top:1.6rem;background:var(--surface);
+  border:1px solid rgba(74,158,255,.3);border-radius:12px;overflow:hidden}
+#done-ai-log-header{display:flex;align-items:center;justify-content:space-between;
+  padding:.75rem 1.1rem;background:rgba(74,158,255,.08);border-bottom:1px solid rgba(74,158,255,.2);
+  cursor:pointer;user-select:none}
+#done-ai-log-header span{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--p1);font-weight:700}
+#done-ai-log-toggle{font-size:.72rem;color:var(--text-muted);transition:transform .2s}
+#done-ai-log-toggle.open{transform:rotate(180deg)}
+#done-ai-log-body{padding:.85rem 1.1rem;display:flex;flex-direction:column;gap:.0rem}
+.done-ai-phase-label{font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--text-muted);padding:.55rem 0 .28rem;border-bottom:1px solid var(--border);
+  margin-bottom:.4rem;display:flex;align-items:center;gap:.4rem}
+.done-ai-phase-label:not(:first-child){margin-top:.7rem}
+.done-ai-entry{display:grid;grid-template-columns:auto auto 1fr;align-items:baseline;
+  gap:.45rem;padding:.32rem .45rem;border-radius:6px;font-size:.85rem;
+  background:var(--surface2);border:1px solid var(--border);margin-bottom:.3rem}
+.done-ai-entry-who{font-weight:700;white-space:nowrap}
+.done-ai-entry-action{white-space:nowrap}
+.done-ai-entry-card{font-weight:600;white-space:nowrap}
+.done-ai-entry-reason{grid-column:1/-1;color:var(--text-muted);font-size:.78rem;
+  padding-left:.1rem;line-height:1.4}
 
 /* ── Sort toggle button ── */
 .sort-toggle{display:flex;gap:.3rem;background:var(--surface2);border:1px solid var(--border);
@@ -339,6 +367,7 @@ main{max-width:1400px;margin:0 auto;padding:1.2rem 1rem}
     <div class="turn-text" id="turn-text"></div>
     <div class="progress-dots" id="progress-dots"></div>
     <div id="timer-block">
+      <button class="btn-timer" id="btn-undo" onclick="undoAction()" title="Undo last pick or ban" disabled>↩ Undo</button>
       <button class="btn-timer" id="btn-pause" onclick="toggleTimer()">⏸ Pause</button>
       <div id="timer-display" class="ok">30</div>
     </div>
@@ -425,6 +454,14 @@ main{max-width:1400px;margin:0 auto;padding:1.2rem 1rem}
       <button id="winner-btn-2" class="btn btn-winner" onclick="declareWinner(2)">🏆 <span id="winner-btn-2-label">Player 2</span> Wins!</button>
     </div>
   </div>
+  <div id="done-ai-log">
+    <div id="done-ai-log-header" onclick="toggleDoneAiLog()">
+      <span>🤖 AI Draft Reasoning</span>
+      <span id="done-ai-log-toggle">▼</span>
+    </div>
+    <div id="done-ai-log-body"></div>
+  </div>
+
   <div id="winner-banner">
     <h3 id="winner-banner-text">🏆 Winner Recorded!</h3>
     <p id="winner-banner-sub">Result saved to output.csv</p>
@@ -726,6 +763,20 @@ async function doAction(id){
   applyState(s);
 }
 
+async function undoAction(){
+  const s = await api('/api/undo','POST');
+  if(s.error){alert(s.error);return;}
+  applyState(s);
+}
+
+function updateUndoBtn(s){
+  const btn = document.getElementById('btn-undo');
+  if(!btn) return;
+  // Disabled when there is nothing yet to undo (ban phase, no actions taken).
+  const nothingToUndo = s.phase === 'ban' && s.action_index === 0;
+  btn.disabled = nothingToUndo;
+}
+
 async function resetDraft(){
   stopTimer();
   await api('/api/reset','POST');
@@ -781,6 +832,7 @@ function applyState(s){
   renderSidebars(s);
   renderBanned(s);
   renderAiLog(s);
+  updateUndoBtn(s);
 }
 
 function updateBadge(ph){
@@ -910,12 +962,30 @@ function renderSidebars(s){
 
 function renderList(elId,picks,cntId,avgId){
   document.getElementById(cntId).textContent=picks.length;
-  document.getElementById(elId).innerHTML=picks.map(c=>`
-    <div class="mini-card">
-      <img src="${c.iconUrl}" alt="${c.name}" onerror="this.style.display='none'">
-      <span>${c.name}</span>
-      <span class="elixir">${c.elixir||'?'}</span>
-    </div>`).join('');
+
+  // Group picks by card type, preserving TYPE_ORDER sort
+  const groups={};
+  picks.forEach(c=>{
+    const t=CARD_TYPE[c.name]||'Other';
+    (groups[t]=groups[t]||[]).push(c);
+  });
+  const sortedTypes=Object.keys(groups).sort(
+    (a,b)=>(TYPE_ORDER[a]??99)-(TYPE_ORDER[b]??99)
+  );
+
+  const html=sortedTypes.map(type=>{
+    const icon=TYPE_ICONS[type]||'';
+    const divider=`<div class="type-divider"><span>${icon} ${type}</span></div>`;
+    const cards=groups[type].map(c=>`
+      <div class="mini-card">
+        <img src="${c.iconUrl}" alt="${c.name}" onerror="this.style.display='none'">
+        <span>${c.name}</span>
+        <span class="elixir">${c.elixir||'?'}</span>
+      </div>`).join('');
+    return divider+cards;
+  }).join('');
+
+  document.getElementById(elId).innerHTML=html;
   const e=picks.filter(c=>c.elixir>0).map(c=>c.elixir);
   document.getElementById(avgId).textContent=e.length?(e.reduce((a,b)=>a+b,0)/e.length).toFixed(1):'—';
 }
@@ -979,6 +1049,47 @@ function renderDone(s){
   document.getElementById('winner-btn-1').disabled=false;
   document.getElementById('winner-btn-2').disabled=false;
   document.getElementById('winner-banner').style.display='none';
+  renderDoneAiLog(s);
+}
+
+function renderDoneAiLog(s){
+  const panel = document.getElementById('done-ai-log');
+  if(!s.ai_mode || !s.ai_log || !s.ai_log.length){ panel.style.display='none'; return; }
+  panel.style.display='block';
+
+  const bans  = s.ai_log.filter(e=>e.phase==='ban');
+  const picks = s.ai_log.filter(e=>e.phase==='pick');
+
+  function entryHtml(e){
+    const color  = e.player===1 ? 'var(--p1)' : 'var(--p2)';
+    const action = e.phase==='ban' ? '🚫 banned' : '✅ picked';
+    const reason = e.reason ? `<div class="done-ai-entry-reason">${e.reason}</div>` : '';
+    return `<div class="done-ai-entry">
+      <span class="done-ai-entry-who" style="color:${color}">${e.player_name}</span>
+      <span class="done-ai-entry-action">${action}</span>
+      <span class="done-ai-entry-card">${e.card}</span>
+      ${reason}
+    </div>`;
+  }
+
+  let html = '';
+  if(bans.length){
+    html += '<div class="done-ai-phase-label">🚫 Ban Phase</div>';
+    html += bans.map(entryHtml).join('');
+  }
+  if(picks.length){
+    html += '<div class="done-ai-phase-label">✅ Pick Phase</div>';
+    html += picks.map(entryHtml).join('');
+  }
+  document.getElementById('done-ai-log-body').innerHTML = html;
+}
+
+function toggleDoneAiLog(){
+  const body    = document.getElementById('done-ai-log-body');
+  const toggle  = document.getElementById('done-ai-log-toggle');
+  const open    = body.style.display !== 'none';
+  body.style.display   = open ? 'none' : 'flex';
+  toggle.classList.toggle('open', !open);
 }
 
 function generateQR(containerId, url){
