@@ -21,10 +21,14 @@ cr_draft/
 ├── .env                 # CR API token (never commit this)
 │
 ├── backend/
-│   ├── cards.py         # CR API fetch + deck link generation
-│   ├── draft.py         # Global state dict, draft logic, draft API Blueprint
-│   ├── modifiers.py     # Modifier name mapping and modifiers_data.csv aggregation
-│   └── stats.py         # CSV I/O, match history, card/player stats, ELO Blueprint
+│   ├── cards.py          # CR API fetch + deck link generation
+│   ├── draft.py          # Global state dict, draft logic, draft API Blueprint
+│   ├── modifiers.py      # Modifier name mapping and modifiers_data.csv aggregation
+│   ├── stats.py          # CSV I/O, match history, card/player stats, ELO Blueprint
+│   ├── elo.py            # ELO calculator — exports calculate_elo, OUTPUT_CSV, INPUT_CSV
+│   ├── ai_draft.py       # AI draft logic — Ollama integration, context filtering, prompt builder
+│   ├── get_card_data.py  # Card/matchup stat readers — get_card_win_rates, get_matchup_win_rates, get_card_type_relative_win_rates, get_overall_ratings
+│   └── tier_calculator.py # Bayesian rating calculator — appends card_1_overall_rating and card_1_matchup_rating to card_data.csv
 │
 ├── frontend/
 │   ├── frontend.py      # Frontend Blueprint — serves /, /player_stats, /card/<n>, /elixir.svg, /stats
@@ -42,7 +46,7 @@ cr_draft/
 └── data/
     ├── output.csv             # Match history — 165 columns, auto-created on first recorded game
     ├── modifiers_data.csv     # Modifier aggregate stats — rewritten after each match
-    ├── card_data.csv          # Card matchup matrix — 2500 rows, rewritten after each match
+    ├── card_data.csv          # Card matchup matrix — 2500 rows + 2 rating columns, rewritten after each match
     ├── elo.csv                # ELO ratings — written by elo.py after each match
     ├── player_tags.json       # App player name → CR player tag (#TAG) mapping
     └── backfill_modifiers.py  # One-off script: populate modifier data for old output.csv rows
@@ -157,6 +161,7 @@ Each row represents one completed match. Columns:
 
 | Column | Values | Meaning |
 |--------|--------|---------|
+| `game_mode` | `"Normal Draft"` or `"AI Draft"` | draft mode used; empty on rows predating this column |
 | `timestamp` | ISO 8601 UTC string e.g. `2026-03-16T14:32:05Z` | when the match was recorded; empty on rows predating this column |
 | `1st_pick` | player name | player who picked first in PICK_SEQUENCE |
 | `2nd_pick` | player name | player who picked second |
@@ -168,11 +173,90 @@ Each row represents one completed match. Columns:
 | `Modifier_1_W` … `Modifier_5_W` | internal modifier string e.g. `"Poison3"` | winner's modifiers in pick order; empty if game not yet matched from CR API |
 | `Modifier_1_L` … `Modifier_5_L` | internal modifier string | loser's modifiers in pick order |
 
-There are 50 `_W` columns, 50 `_L` columns, 50 `_BANNED` columns, and 10 modifier columns — **165 columns total**. Column order mirrors `CHAOS_CARD_LIST` (alphabetical) for the card columns.
+There are 50 `_W` columns, 50 `_L` columns, 50 `_BANNED` columns, and 10 modifier columns — **166 columns total** (including `game_mode`). Column order mirrors `CHAOS_CARD_LIST` (alphabetical) for the card columns.
 
 The `data/` directory and CSV header row are auto-created on the first call to `/api/record_winner`. Existing CSVs with only 155 columns are automatically migrated to 165 columns on the next recorded match.
 
 Both `stats.py` and `elo.py` sort rows by `timestamp` before processing, so concatenated files from multiple machines are always handled in true chronological order. Rows with an empty `timestamp` sort to the top and are treated as the oldest games.
+
+---
+
+## ⚠️ Known Issue: Modifier Data Not Reliable
+
+`data/modifiers_data.csv` is currently **not reliable**. The CR API modifier matching logic in `backend/stats.py` (`_fetch_battle_modifiers`) is incomplete and frequently fails to find the matching battle, leaving modifier columns empty. Do **not** use `modifiers_data.csv` as a data source for AI or analysis until the matching logic is fixed.
+
+---
+
+## AI Draft Mode
+
+The app supports an **AI Draft Mode** where Ollama (a free local LLM runner) drafts both teams automatically. This uses the `backend/ai_draft.py` module and the `/api/ai_action` route in `backend/draft.py`.
+
+### Setup
+
+1. Install Ollama: https://ollama.com
+2. Pull a model: `ollama pull llama3.2`
+3. Install the Python package: `pip install ollama`
+
+### Usage
+
+Click **🤖 AI Draft** on the setup screen. The draft runs automatically — the AI bans and picks for both teams based on historical win rates from `data/output.csv`. You can still record a winner at the end as normal.
+
+### Configuration
+
+Change the model in `config.py`:
+
+```python
+OLLAMA_MODEL = "llama3.2"   # or "qwen2.5:3b" for faster/smaller
+```
+
+### Graceful fallback
+
+If Ollama is not running or `ollama` is not installed, the AI falls back to picking the highest win-rate card available in the pool. The draft always completes.
+
+### Key files
+
+| File | Purpose |
+|------|---------|
+| `backend/ai_draft.py` | `ai_decide()` calls Ollama and returns `(card_id, reason)`; `build_prompt()` formats the LLM prompt with filtered context; `_select_ai_context()` filters the card pool to a high-signal subset |
+| `backend/get_card_data.py` | `get_card_win_rates()`, `get_matchup_win_rates()`, `get_card_type_relative_win_rates()`, `get_overall_ratings()` — all card/matchup stat readers |
+| `backend/tier_calculator.py` | `calculate_ratings(card_data_csv, output_csv)` — appends `card_1_overall_rating` and `card_1_matchup_rating` to `card_data.csv` using Bayesian formula |
+| `config.py` | `OLLAMA_MODEL` — change to swap the model |
+| `backend/draft.py` | `POST /api/ai_action` — triggers one AI turn; `ai_mode` and `ai_log` in state |
+| `frontend/templates/index.html` | `startAiDraft()`, `triggerAiIfNeeded()`, `showAiThinking()`, `renderAiLog()` — auto-loop, overlay, and chat panel |
+
+### AI context filtering
+
+`_select_ai_context()` in `ai_draft.py` limits which pool cards are shown to the LLM each turn:
+1. **Top counter per opponent pick** — for each card the opponent has picked, find the pool card with the highest `matchup_rating` against it
+2. **Top 10 by overall rating** — remaining pool cards sorted by `overall_ratings` descending
+
+This keeps the LLM focused on relevant options rather than all 50 pool cards, reducing hallucinations.
+
+### Bayesian rating formula
+
+```
+rating = ((n + 3) / (n + 4))^2 * win_rate
+```
+- `n == 0` → `win_rate = 1.0` (optimistic prior → `0.5625`)
+- `n > 0` → actual win rate
+
+`card_1_overall_rating`: n = card's total games across all matches; win rate = card's overall win rate
+`card_1_matchup_rating`: n = games played for the specific (card_1, card_2) pair; win rate = matchup win rate
+
+---
+
+## Card Matchup Data (`data/card_data.csv`)
+
+2500 rows (50×50 card pairs). Rewritten by `_write_matchups_csv()` in `stats.py` after every recorded match. `tier_calculator.py` then appends two Bayesian rating columns.
+
+| Column | Description |
+|--------|-------------|
+| `card_1` / `card_2` | Card names for this pair |
+| `Games Played` | Head-to-head games where both cards appeared on opposing sides |
+| `card_1 Wins` / `card_2 Wins` | Win counts |
+| `card_1_matchup_winrate` | `card_1 Wins / Games Played`; empty if 0 games |
+| `card_1_overall_rating` | Bayesian-adjusted overall win rate for card_1 (same value on every row for the same card_1) |
+| `card_1_matchup_rating` | Bayesian-adjusted matchup win rate for this specific (card_1, card_2) pair |
 
 ---
 
@@ -310,7 +394,7 @@ Fetches a single endpoint `GET /api/card_detail/<card_name>` which returns:
 
 The page applies a tier-keyed colour theme (CSS `--tier-color` variable) so each card's profile has a distinct accent colour. The matchup table defaults to a grouped view — Favourable (≥55% WR) / Even (45–55%) / Unfavourable (<45%) — with a toggle to show unseen matchups.
 
-**Important:** `card_detail.html` inlines its own copies of `CARD_TIER` and `CARD_TYPE` because it is a Jinja2 template and cannot load `/static/` JS files at parse time. If you update card tiers or types, update `card_tiers.js`, `card_types.js`, **and** the inline copies in `card_detail.html`.
+**Important:** `card_tiers.js` and `card_types.js` are the single source of truth for tier and type data. All pages (`index.html`, `player_stats.html`, `stats.html`, `card_detail.html`) load them via `<script src="/static/card_tiers.js">`. `config.py` parses `card_tiers.js` at startup — no inline copies exist anywhere.
 
 ### `stats.html` — Card stats overview (static file)
 Served at `/stats` directly from `frontend/stats.html` (not a Jinja2 template). Clicking any card row navigates to that card's `/card/<n>` detail page.
@@ -382,5 +466,5 @@ Alternatively, use the **⬇ Export card_data.csv** button on the `/stats` page 
 - **Don't add a second global state dict.** All draft state flows through `state` in `backend/draft.py`. `stats.py` imports it directly.
 - **Don't add a templating engine or build step** to the frontend without significant justification — the single-file approach is intentional for portability.
 - **Don't inline tier or type data back into `index.html`.** They live in `static/card_tiers.js` and `static/card_types.js` precisely so they can be edited without touching the main template. `card_detail.html` is the only justified exception because it cannot load static JS files as a Jinja2 template.
-- **Don't update tier or type data in only one place.** Changes must be made in `card_tiers.js` / `card_types.js` **and** the inline copies in `card_detail.html`.
+- **Don't re-introduce inline tier/type data anywhere.** Edit only `card_tiers.js` / `card_types.js` — all pages and `config.py` read from those files automatically.
 - **Don't commit `.env`.** It contains the CR API token and a whitelisted IP.

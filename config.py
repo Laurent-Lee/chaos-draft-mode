@@ -2,7 +2,9 @@
 config.py — All constants and configuration for the CR Draft app.
 """
 
+import json
 import os
+import re
 from dotenv import load_dotenv
 
 # Absolute path to the project root (directory containing this file)
@@ -11,12 +13,7 @@ _ROOT = os.path.dirname(os.path.abspath(__file__))
 load_dotenv()
 
 CR_API_TOKEN  = os.getenv("CR_API_TOKEN", "")
-PLAYER1_NAME  = "Kevin"
-PLAYER2_NAME  = "Jason"
 PORT          = 5050
-
-# ── Known players ─────────────────────────────────────────────────────────────
-PLAYERS = ["Kevin", "Jason", "Alex", "Laurent", "Brooks", "Andrew"]
 
 # ── Draft sequences ───────────────────────────────────────────────────────────
 # Ban:  P1 bans 1, P2 bans 2, P1 bans 1
@@ -26,9 +23,23 @@ PICK_SEQUENCE = [1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1]
 
 # ── CSV / ELO ─────────────────────────────────────────────────────────────────
 CSV_FILE          = os.path.join(_ROOT, "data", "output.csv")
+CARD_DATA_CSV     = os.path.join(_ROOT, "data", "card_data.csv")
 MODIFIERS_CSV     = os.path.join(_ROOT, "data", "modifiers_data.csv")
 PLAYER_TAGS_FILE  = os.path.join(_ROOT, "data", "player_tags.json")
 ELO_STARTING      = 1000
+ELO_NORMAL_CSV    = os.path.join(_ROOT, "data", "elo_normal_draft.csv")
+ELO_AI_CSV        = os.path.join(_ROOT, "data", "elo_ai_draft.csv")
+
+# ── Known players (loaded from data/player_tags.json) ─────────────────────────
+def _load_players():
+    try:
+        with open(PLAYER_TAGS_FILE, "r", encoding="utf-8") as f:
+            return list(json.load(f).keys())
+    except (FileNotFoundError, json.JSONDecodeError):
+        return []
+
+PLAYERS = _load_players()
+OLLAMA_MODEL      = "llama3.2"   # swap to e.g. "qwen2.5:3b" for a faster/smaller model
 
 # ── All 50 official C.H.A.O.S mode cards (March 2026) ─────────────────────────
 CHAOS_CARDS = {
@@ -47,11 +58,24 @@ CHAOS_CARDS = {
 # Stable sorted list of all 50 CHAOS cards for consistent CSV column ordering
 CHAOS_CARD_LIST = sorted(CHAOS_CARDS)
 
-# ── Tier data (used for random pre-bans) ──────────────────────────────────────
-TIER_CARDS = {
-    "S+": ["Goblin Demolisher", "Electro Wizard", "Barbarian Hut", "Furnace"],
-    "S":  ["Golem", "Goblin Barrel", "X-Bow", "Baby Dragon", "Vines", "Goblin Hut"],
-}
+# ── Tier data (parsed from static/card_tiers.js — single source of truth) ─────
+def _load_tier_cards():
+    """Read the tiers object out of card_tiers.js and return it as a plain dict."""
+    tiers_js = os.path.join(_ROOT, "static", "card_tiers.js")
+    try:
+        with open(tiers_js, encoding="utf-8") as f:
+            content = f.read()
+        match = re.search(r'const tiers\s*=\s*(\{[^;]+\})\s*;', content, re.DOTALL)
+        if match:
+            return json.loads(match.group(1))
+    except Exception as e:
+        print(f"[config] Warning: could not parse card_tiers.js ({e}); using fallback tiers.")
+    return {
+        "S+": ["Goblin Demolisher", "Electro Wizard", "Barbarian Hut", "Furnace"],
+        "S":  ["Golem", "Goblin Barrel", "Baby Dragon", "Vines", "Goblin Hut"],
+    }
+
+TIER_CARDS = _load_tier_cards()
 
 # ── Card type mapping ─────────────────────────────────────────────────────────
 TYPING_OF_CHAOS_CARD = {

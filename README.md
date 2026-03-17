@@ -15,8 +15,11 @@ cr_draft/
 │   ├── cards.py         # CR API fetching and deck link generation
 │   ├── draft.py         # Draft state, game logic, and draft API routes
 │   ├── modifiers.py     # Modifier name mapping and modifiers_data.csv aggregation
-│   ├── stats.py         # CSV recording, match history, card/player stats, ELO
-│   └── elo.py           # ELO calculator (bring your own, see Setup)
+│   ├── stats.py          # CSV recording, match history, card/player stats, ELO
+│   ├── elo.py            # ELO calculator — exports calculate_elo, OUTPUT_CSV, INPUT_CSV
+│   ├── ai_draft.py       # AI draft logic — Ollama integration, context filtering, prompt builder
+│   ├── get_card_data.py  # Card/matchup stat readers used by AI draft
+│   └── tier_calculator.py # Bayesian rating calculator — appends ratings to card_data.csv
 │
 ├── frontend/
 │   ├── frontend.py      # Blueprint serving the HTML frontend and stats page
@@ -32,9 +35,9 @@ cr_draft/
 │   └── card_types.js    # Card type assignments (Tower/Tanks/Ranged/etc) — edit to update types
 │
 └── data/
-    ├── output.csv             # Match history — 165 columns (auto-created on first game)
+    ├── output.csv             # Match history — 166 columns (auto-created on first game)
     ├── modifiers_data.csv     # Modifier aggregate stats — auto-updated after each match
-    ├── card_data.csv          # Card matchup matrix — auto-updated after each match
+    ├── card_data.csv          # Card matchup matrix + Bayesian ratings — auto-updated after each match
     ├── elo.csv                # ELO ratings — written by elo.py after each match
     ├── player_tags.json       # App player name → CR player tag mapping
     └── backfill_modifiers.py  # One-off script to populate modifier data for old rows
@@ -60,7 +63,7 @@ CR_API_TOKEN=your_token_here
 ### 3. Install dependencies
 
 ```bash
-pip install flask flask-cors requests python-dotenv
+pip install flask flask-cors requests python-dotenv ollama
 ```
 
 ### 4. Add external files
@@ -69,7 +72,6 @@ Place the following files in their expected locations:
 
 | File | Location | Purpose |
 |------|----------|---------|
-| `elo.py` | `backend/` | ELO calculator — must export `calculate_elo`, `OUTPUT_CSV`, `INPUT_CSV` |
 | `stats.html` | `frontend/` | Card stats page, accessible at `/stats` |
 | `elixir.svg` | `static/` | Elixir icon shown in the card pool UI |
 
@@ -77,6 +79,7 @@ The following files are already included and can be edited directly:
 
 | File | Location | Purpose |
 |------|----------|---------|
+| `elo.py` | `backend/` | ELO calculator |
 | `card_tiers.js` | `static/` | Card tier list (S+ through F) — edit to rebalance tiers |
 | `card_types.js` | `static/` | Card type groupings — edit to reclassify cards |
 
@@ -87,6 +90,26 @@ python main.py
 ```
 
 The app will open automatically at http://127.0.0.1:5050. Press `Ctrl+C` to stop.
+
+## AI Draft Mode
+
+Click **🤖 AI Draft** on the setup screen to let Ollama draft both teams automatically. The AI bans and picks using:
+- **Bayesian-adjusted overall ratings** from `data/card_data.csv` (computed by `tier_calculator.py` after each game)
+- **Head-to-head matchup ratings** to select counters to opponent picks
+- **Type-relative win rate deltas** and local tier labels to correct for the LLM's own Clash Royale priors
+- **Context filtering** — only the top-10 rated cards plus best counters are shown each turn (not all 50)
+
+You can still record a winner at the end.
+
+**Requirements:**
+1. Install Ollama: https://ollama.com
+2. Pull a model: `ollama pull llama3.2`
+
+If Ollama is not running, the AI falls back to picking the highest win-rate card — the draft always completes.
+
+To change the model, edit `OLLAMA_MODEL` in `config.py`.
+
+> **Note:** `data/modifiers_data.csv` is not currently reliable — the CR API modifier matching is incomplete. Do not use it as a data source until the matching logic is fixed.
 
 ## Draft Format
 
@@ -99,10 +122,11 @@ The app will open automatically at http://127.0.0.1:5050. Press `Ctrl+C` to stop
 
 | Method | Route | Description |
 |--------|-------|-------------|
-| `POST` | `/api/start` | Start a new draft |
+| `POST` | `/api/start` | Start a new draft (`ai_mode: true` for AI draft) |
 | `GET` | `/api/state` | Get current draft state |
 | `POST` | `/api/action` | Ban or pick a card |
 | `POST` | `/api/reset` | Reset to setup screen |
+| `POST` | `/api/ai_action` | Trigger one AI ban/pick (used automatically by AI Draft mode) |
 | `POST` | `/api/record_winner` | Save match result to CSV |
 | `GET` | `/api/match_history` | Recent games (all players) with card thumbnails |
 | `GET` | `/api/match_history/<name>` | Recent games for a specific player |
@@ -121,7 +145,7 @@ The app will open automatically at http://127.0.0.1:5050. Press `Ctrl+C` to stop
 
 ## Merging Data from Multiple Machines
 
-Each game recorded by the app includes a `timestamp` column in `output.csv` (ISO 8601 UTC, e.g. `2026-03-16T14:32:05Z`). Both `stats.py` and `elo.py` sort by this column before processing, so ELO is always calculated in true chronological order regardless of row position in the file.
+Each game recorded by the app includes a `timestamp` column in `output.csv` (ISO 8601 UTC, e.g. `2026-03-16T14:32:05Z`). Both `stats.py` and `backend/elo.py` sort by this column before processing, so ELO is always calculated in true chronological order regardless of row position in the file.
 
 To combine two CSV files from different machines:
 

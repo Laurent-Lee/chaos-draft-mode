@@ -17,7 +17,7 @@ import urllib.request
 from datetime import datetime, timezone
 from itertools import product as iproduct
 from flask import Blueprint, jsonify, request
-from config import CSV_FILE, CHAOS_CARD_LIST, PLAYERS, ELO_STARTING, _ROOT, CR_API_TOKEN, PLAYER_TAGS_FILE
+from config import CSV_FILE, CHAOS_CARD_LIST, PLAYERS, ELO_STARTING, _ROOT, CR_API_TOKEN, PLAYER_TAGS_FILE, ELO_NORMAL_CSV, ELO_AI_CSV
 from backend.draft import state
 from backend.modifiers import refresh_modifiers
 
@@ -39,19 +39,25 @@ CR_API_BASE     = "https://api.clashroyale.com/v1"
 # -- Internal helpers ---------------------------------------------------------
 
 def _refresh_elo():
-    """Re-run the ELO calculator after every recorded match."""
-    if calculate_elo:
+    """Re-run the ELO calculator after every recorded match — all games plus per-mode."""
+    if not calculate_elo:
+        return
+    for output, mode_filter in [
+        (ELO_CSV,        None),
+        (ELO_NORMAL_CSV, "Normal Draft"),
+        (ELO_AI_CSV,     "AI Draft"),
+    ]:
         try:
-            calculate_elo(ELO_INPUT, ELO_CSV)
+            calculate_elo(ELO_INPUT, output, game_mode_filter=mode_filter)
         except Exception as e:
-            print(f"ELO refresh failed: {e}")
+            print(f"ELO refresh failed ({mode_filter or 'all'}): {e}")
 
 
 def _csv_headers():
     win_cols    = [f"{c}_W"      for c in CHAOS_CARD_LIST]
     loss_cols   = [f"{c}_L"      for c in CHAOS_CARD_LIST]
     banned_cols = [f"{c}_BANNED" for c in CHAOS_CARD_LIST]
-    return ["timestamp", "1st_pick", "2nd_pick", "winner", "loser"] + win_cols + loss_cols + banned_cols + MODIFIER_COLS
+    return ["game_mode", "timestamp", "1st_pick", "2nd_pick", "winner", "loser"] + win_cols + loss_cols + banned_cols + MODIFIER_COLS
 
 
 def _ensure_csv_headers():
@@ -190,12 +196,18 @@ def _pad_mods(mods):
     return [mods[i] if i < len(mods) else "" for i in range(5)]
 
 
-def _read_elo_for(name):
-    """Return the current ELO for a single player name."""
+def _read_elo_for(name, game_mode_filter=""):
+    """Return the current ELO for a single player name, optionally filtered by game mode."""
+    if game_mode_filter == "Normal Draft":
+        elo_file = ELO_NORMAL_CSV
+    elif game_mode_filter == "AI Draft":
+        elo_file = ELO_AI_CSV
+    else:
+        elo_file = ELO_CSV
     elo = ELO_STARTING
-    if os.path.exists(ELO_CSV):
+    if os.path.exists(elo_file):
         try:
-            with open(ELO_CSV, newline="", encoding="utf-8") as f:
+            with open(elo_file, newline="", encoding="utf-8") as f:
                 rows = list(csv.DictReader(f))
             if rows and name in rows[-1]:
                 elo = round(float(rows[-1][name]))
@@ -259,8 +271,9 @@ def record_winner():
     _ensure_csv_headers()
     timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     with open(CSV_FILE, "a", newline="", encoding="utf-8") as f:
+        game_mode = "AI Draft" if state["ai_mode"] else "Normal Draft"
         csv.writer(f).writerow(
-            [timestamp, state["1st_pick"], state["2nd_pick"], winner_name, loser_name]
+            [game_mode, timestamp, state["1st_pick"], state["2nd_pick"], winner_name, loser_name]
             + win_cols + loss_cols + banned_cols + modifier_vals
         )
 
@@ -274,6 +287,7 @@ def record_winner():
 def match_history():
     """Return recent games enriched with per-player card lists and ban lists."""
     limit = int(request.args.get("limit", 10))
+    gm    = request.args.get("game_mode", "").strip()
     rows  = []
     if not os.path.exists(CSV_FILE):
         return jsonify(rows)
@@ -283,6 +297,8 @@ def match_history():
     with open(CSV_FILE, newline="", encoding="utf-8") as f:
         reader = csv.DictReader(f)
         for row in reader:
+            if gm and row.get("game_mode", "").strip() != gm:
+                continue
             rows.append(row)
 
     rows.sort(key=lambda r: r.get("timestamp", ""))
@@ -328,6 +344,7 @@ def match_history():
             "2nd_pick":     second,
             "winner":       winner,
             "loser":        loser,
+            "game_mode":    row.get("game_mode", "").strip(),
             "first_picks":  first_picks,
             "first_bans":   first_bans,
             "second_picks": second_picks,
@@ -342,6 +359,7 @@ def match_history():
 def match_history_player(player_name):
     """Return recent games for a specific player (limit=10)."""
     limit = int(request.args.get("limit", 10))
+    gm    = request.args.get("game_mode", "").strip()
     rows  = []
     if not os.path.exists(CSV_FILE):
         return jsonify(rows)
@@ -351,6 +369,8 @@ def match_history_player(player_name):
     with open(CSV_FILE, newline="", encoding="utf-8") as f:
         reader = csv.DictReader(f)
         for row in reader:
+            if gm and row.get("game_mode", "").strip() != gm:
+                continue
             winner = row.get("winner", "").strip()
             loser  = row.get("loser",  "").strip()
             if player_name in (winner, loser):
@@ -399,6 +419,7 @@ def match_history_player(player_name):
             "2nd_pick":     second,
             "winner":       winner,
             "loser":        loser,
+            "game_mode":    row.get("game_mode", "").strip(),
             "first_picks":  first_picks,
             "first_bans":   first_bans,
             "second_picks": second_picks,
@@ -415,6 +436,7 @@ def card_stats():
     if not os.path.exists(CSV_FILE):
         return jsonify([])
 
+    gm          = request.args.get("game_mode", "").strip()
     stats       = {c: {"wins": 0, "losses": 0, "player_bans": 0, "random_bans": 0}
                    for c in CHAOS_CARD_LIST}
     total_games = 0
@@ -422,6 +444,8 @@ def card_stats():
     with open(CSV_FILE, newline="", encoding="utf-8") as f:
         reader = csv.DictReader(f)
         for row in reader:
+            if gm and row.get("game_mode", "").strip() != gm:
+                continue
             total_games += 1
             for c in CHAOS_CARD_LIST:
                 w = row.get(f"{c}_W",      "0").strip()
@@ -494,6 +518,11 @@ def _write_matchups_csv():
             writer.writerow({"card_1": c1, "card_2": c2,
                              "card_1_W": counts["card_1_W"], "card_1_L": counts["card_1_L"],
                              "Games Played": counts["games_played"]})
+    try:
+        from backend.tier_calculator import calculate_ratings
+        calculate_ratings(CARD_DATA_CSV, CSV_FILE)
+    except Exception as e:
+        print(f"Rating calculation failed: {e}")
 
 
 @stats_bp.route("/api/card_matchups", methods=["GET"])
@@ -610,11 +639,14 @@ def card_detail(card_name):
 @stats_bp.route("/api/player_stats", methods=["GET"])
 def player_stats():
     """Return win/loss counts for each known player from output.csv."""
+    gm    = request.args.get("game_mode", "").strip()
     stats = {p: {"wins": 0, "losses": 0} for p in PLAYERS}
     if os.path.exists(CSV_FILE):
         with open(CSV_FILE, "r", newline="", encoding="utf-8") as f:
             reader = csv.DictReader(f)
             for row in reader:
+                if gm and row.get("game_mode", "").strip() != gm:
+                    continue
                 w = row.get("winner", "").strip()
                 l = row.get("loser",  "").strip()
                 if w in stats:
@@ -642,11 +674,12 @@ def player_stats_detail(player_name):
                 "play_rate":0,"win_rate":0,"ban_rate":0,
             })
         return jsonify({
-            "name": player_name, "elo": _read_elo_for(player_name),
+            "name": player_name, "elo": _read_elo_for(player_name, gm),
             "wins":0,"losses":0,"total_games":0,"win_pct":0,"loss_pct":0,
             "cards": cards_result,
         })
 
+    gm          = request.args.get("game_mode", "").strip()
     record      = {"wins": 0, "losses": 0}
     card_stats_ = {c: {"wins": 0, "losses": 0, "player_bans": 0, "random_bans": 0}
                    for c in CHAOS_CARD_LIST}
@@ -655,6 +688,8 @@ def player_stats_detail(player_name):
     with open(CSV_FILE, newline="", encoding="utf-8") as f:
         reader = csv.DictReader(f)
         for row in reader:
+            if gm and row.get("game_mode", "").strip() != gm:
+                continue
             winner = row.get("winner", "").strip()
             loser  = row.get("loser",  "").strip()
             if player_name not in (winner, loser):
@@ -708,7 +743,7 @@ def player_stats_detail(player_name):
 
     return jsonify({
         "name":        player_name,
-        "elo":         _read_elo_for(player_name),
+        "elo":         _read_elo_for(player_name, gm),
         "wins":        record["wins"],
         "losses":      record["losses"],
         "total_games": total_games,
@@ -720,11 +755,18 @@ def player_stats_detail(player_name):
 
 @stats_bp.route("/api/elo", methods=["GET"])
 def get_elo():
-    """Return the latest ELO for every known player from elo.csv."""
+    """Return the latest ELO for every known player. Accepts ?game_mode= to filter by mode."""
+    gm = request.args.get("game_mode", "").strip()
+    if gm == "Normal Draft":
+        elo_file = ELO_NORMAL_CSV
+    elif gm == "AI Draft":
+        elo_file = ELO_AI_CSV
+    else:
+        elo_file = ELO_CSV
     ratings = {p: ELO_STARTING for p in PLAYERS}
-    if os.path.exists(ELO_CSV):
+    if os.path.exists(elo_file):
         try:
-            with open(ELO_CSV, newline="", encoding="utf-8") as f:
+            with open(elo_file, newline="", encoding="utf-8") as f:
                 rows = list(csv.DictReader(f))
             if rows:
                 last = rows[-1]

@@ -1,2 +1,7 @@
 .DS_Store
 .env
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+ai_plan.md
