@@ -49,15 +49,16 @@ MODIFIER_BASE_TO_DISPLAY = {
     "BarbarianHut":     "Barbarian Hut",
     "Berserker":        "Berserker",
     "BlowdartGoblin":   "Dart Goblin",       # Dart Goblin fires a blow dart
+    "DarkWitch":        "Night Witch",
     "DartBarrell":      "Flying Machine",    # Flying Machine fires dart-like shots
     "ElectroSpirit":    "Electro Spirit",
     "ElectroWizard":    "Electro Wizard",
     "ElixirGolem":      "Elixir Golem",
     "Fireball":         "Fireball",
+    "FirespiritHut":    "Furnace",           # Furnace is a hut that spawns Fire Spirits
     "Fisherman":        "Fisherman",
-    "Furnace":          "Furnace",
     "Giant":            "Giant",
-    "GiantSnowball":    "Giant Snowball",
+    "GiantBuffer":      "Rune Giant",        # Rune Giant buffs nearby allies
     "GoblinBarrel":     "Goblin Barrel",
     "GoblinDemolisher": "Goblin Demolisher",
     "GoblinDrill":      "Goblin Drill",
@@ -73,10 +74,9 @@ MODIFIER_BASE_TO_DISPLAY = {
     "LavaHound":        "Lava Hound",
     "Log":              "The Log",
     "MegaKnight":       "Mega Knight",
+    "MiniSparkys":      "Zappies",           # Zappies are mini-Sparky troops
     "Mortar":           "Mortar",
-    "MotherWitch":      "Mother Witch",
     "Musketeer":        "Musketeer",
-    "NightWitch":       "Night Witch",
     "Pekka":            "P.E.K.K.A",
     "Poison":           "Poison",
     "Princess":         "Princess",
@@ -86,14 +86,14 @@ MODIFIER_BASE_TO_DISPLAY = {
     "Rocket":           "Rocket",
     "RoyalDelivery":    "Royal Delivery",
     "RoyalGiant":       "Royal Giant",
-    "RuneGiant":        "Rune Giant",
+    "Snowball":         "Giant Snowball",
     "SuspiciousBush":   "Suspicious Bush",
     "Tombstone":        "Tombstone",
     "Vines":            "Vines",
     "Witch":            "Witch",
+    "WitchMother":      "Mother Witch",
     "Wizard":           "Wizard",
     "Xbow":             "X-Bow",
-    "Zappies":          "Zappies",
 }
 
 MODIFIER_COLS = (
