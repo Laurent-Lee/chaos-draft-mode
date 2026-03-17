@@ -261,6 +261,20 @@ main{max-width:1400px;margin:0 auto;padding:1.2rem 1rem}
   background:rgba(74,158,255,.12);border:1px solid rgba(74,158,255,.3);
   border-radius:999px;padding:1px 8px;margin-left:.4rem;vertical-align:middle}
 
+/* ── AI chat log ── */
+#ai-chat{display:none;margin-top:.9rem;background:var(--surface);
+  border:1px solid var(--border);border-radius:10px;padding:.75rem 1rem}
+#ai-chat-header{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--text-muted);margin-bottom:.55rem}
+#ai-chat-log{max-height:220px;overflow-y:auto;display:flex;flex-direction:column;gap:.3rem}
+.ai-entry{display:flex;flex-wrap:wrap;align-items:baseline;gap:.35rem;
+  padding:.28rem .4rem;border-radius:6px;font-size:.82rem;
+  background:var(--surface2);border:1px solid var(--border)}
+.ai-entry-name{font-weight:700;flex-shrink:0}
+.ai-entry-action{flex-shrink:0}
+.ai-entry-card{font-weight:600;flex-shrink:0}
+.ai-entry-reason{color:var(--text-muted);font-size:.78rem}
+
 /* ── Sort toggle button ── */
 .sort-toggle{display:flex;gap:.3rem;background:var(--surface2);border:1px solid var(--border);
   border-radius:999px;padding:2px;margin-left:auto}
@@ -369,6 +383,11 @@ main{max-width:1400px;margin:0 auto;padding:1.2rem 1rem}
       <div id="p2-picks-list"></div>
       <div class="avg-elixir">Avg: <span id="p2-avg">—</span></div>
     </div>
+  </div>
+
+  <div id="ai-chat">
+    <div id="ai-chat-header">🤖 AI Reasoning</div>
+    <div id="ai-chat-log"></div>
   </div>
 </div>
 
@@ -716,6 +735,7 @@ async function resetDraft(){
   document.getElementById('btn-ai-draft').disabled=false;
   document.getElementById('timer-block').style.display='flex';
   showAiThinking(false);
+  document.getElementById('ai-chat').style.display='none';
   ['draft-screen','done-screen'].forEach(id=>document.getElementById(id).style.display='none');
   document.getElementById('setup-wrapper').style.display='flex';
   document.getElementById('phase-badge').style.display='none';
@@ -760,6 +780,7 @@ function applyState(s){
   renderPool();
   renderSidebars(s);
   renderBanned(s);
+  renderAiLog(s);
 }
 
 function updateBadge(ph){
@@ -897,6 +918,29 @@ function renderList(elId,picks,cntId,avgId){
     </div>`).join('');
   const e=picks.filter(c=>c.elixir>0).map(c=>c.elixir);
   document.getElementById(avgId).textContent=e.length?(e.reduce((a,b)=>a+b,0)/e.length).toFixed(1):'—';
+}
+
+function renderAiLog(s){
+  const chat = document.getElementById('ai-chat');
+  if(!s.ai_mode){ chat.style.display='none'; return; }
+  chat.style.display='block';
+  const log = document.getElementById('ai-chat-log');
+  if(!s.ai_log || !s.ai_log.length){
+    log.innerHTML='<div style="color:var(--text-muted);font-size:.8rem;padding:.2rem .4rem">Waiting for AI…</div>';
+    return;
+  }
+  log.innerHTML = s.ai_log.map(e => {
+    const color  = e.player === 1 ? 'var(--p1)' : 'var(--p2)';
+    const action = e.phase === 'ban' ? '🚫 banned' : '✅ picked';
+    const reason = e.reason ? `— ${e.reason}` : '';
+    return `<div class="ai-entry">
+      <span class="ai-entry-name" style="color:${color}">${e.player_name}</span>
+      <span class="ai-entry-action">${action}</span>
+      <span class="ai-entry-card">${e.card}</span>
+      <span class="ai-entry-reason">${reason}</span>
+    </div>`;
+  }).join('');
+  log.scrollTop = log.scrollHeight;
 }
 
 function renderBanned(s){

@@ -24,7 +24,9 @@ cr_draft/
 │   ├── cards.py         # CR API fetch + deck link generation
 │   ├── draft.py         # Global state dict, draft logic, draft API Blueprint
 │   ├── modifiers.py     # Modifier name mapping and modifiers_data.csv aggregation
-│   └── stats.py         # CSV I/O, match history, card/player stats, ELO Blueprint
+│   ├── stats.py         # CSV I/O, match history, card/player stats, ELO Blueprint
+│   ├── elo.py           # ELO calculator — exports calculate_elo, OUTPUT_CSV, INPUT_CSV
+│   └── ai_draft.py      # AI draft logic — Ollama integration and card stats reader
 │
 ├── frontend/
 │   ├── frontend.py      # Frontend Blueprint — serves /, /player_stats, /card/<n>, /elixir.svg, /stats
@@ -157,6 +159,7 @@ Each row represents one completed match. Columns:
 
 | Column | Values | Meaning |
 |--------|--------|---------|
+| `game_mode` | `"Normal Draft"` or `"AI Draft"` | draft mode used; empty on rows predating this column |
 | `timestamp` | ISO 8601 UTC string e.g. `2026-03-16T14:32:05Z` | when the match was recorded; empty on rows predating this column |
 | `1st_pick` | player name | player who picked first in PICK_SEQUENCE |
 | `2nd_pick` | player name | player who picked second |
@@ -168,7 +171,7 @@ Each row represents one completed match. Columns:
 | `Modifier_1_W` … `Modifier_5_W` | internal modifier string e.g. `"Poison3"` | winner's modifiers in pick order; empty if game not yet matched from CR API |
 | `Modifier_1_L` … `Modifier_5_L` | internal modifier string | loser's modifiers in pick order |
 
-There are 50 `_W` columns, 50 `_L` columns, 50 `_BANNED` columns, and 10 modifier columns — **165 columns total**. Column order mirrors `CHAOS_CARD_LIST` (alphabetical) for the card columns.
+There are 50 `_W` columns, 50 `_L` columns, 50 `_BANNED` columns, and 10 modifier columns — **166 columns total** (including `game_mode`). Column order mirrors `CHAOS_CARD_LIST` (alphabetical) for the card columns.
 
 The `data/` directory and CSV header row are auto-created on the first call to `/api/record_winner`. Existing CSVs with only 155 columns are automatically migrated to 165 columns on the next recorded match.
 
@@ -212,10 +215,10 @@ If Ollama is not running or `ollama` is not installed, the AI falls back to pick
 
 | File | Purpose |
 |------|---------|
-| `backend/ai_draft.py` | `get_card_stats()` reads `output.csv`; `build_prompt()` formats the LLM prompt; `ai_decide()` calls Ollama and returns a card ID |
+| `backend/ai_draft.py` | `get_card_stats()` reads `output.csv`; `build_prompt()` formats the LLM prompt; `ai_decide()` calls Ollama and returns `(card_id, reason)` |
 | `config.py` | `OLLAMA_MODEL` — change to swap the model |
-| `backend/draft.py` | `POST /api/ai_action` — triggers one AI turn; `ai_mode` flag in state |
-| `frontend/templates/index.html` | `startAiDraft()`, `triggerAiIfNeeded()`, `showAiThinking()` — the auto-loop and overlay |
+| `backend/draft.py` | `POST /api/ai_action` — triggers one AI turn; `ai_mode` and `ai_log` in state |
+| `frontend/templates/index.html` | `startAiDraft()`, `triggerAiIfNeeded()`, `showAiThinking()`, `renderAiLog()` — auto-loop, overlay, and chat panel |
 
 ---
 

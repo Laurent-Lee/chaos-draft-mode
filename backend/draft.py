@@ -6,6 +6,7 @@ Routes:
   GET  /api/state
   POST /api/action
   POST /api/reset
+  POST /api/ai_action
 """
 
 import random
@@ -36,6 +37,7 @@ state = {
     "1st_pick":     _P1_DEFAULT,
     "2nd_pick":     _P2_DEFAULT,
     "ai_mode":      False,
+    "ai_log":       [],   # list of {player, player_name, phase, card, reason}
 }
 
 
@@ -60,6 +62,7 @@ def get_state_view():
         "p1_deck_link":   deck_link(state["p1_picks"]),
         "p2_deck_link":   deck_link(state["p2_picks"]),
         "ai_mode":        state["ai_mode"],
+        "ai_log":         list(state["ai_log"]),
     }
 
 
@@ -71,6 +74,7 @@ def start_draft():
     state["p1_name"] = body.get("p1_name", _P1_DEFAULT)
     state["p2_name"] = body.get("p2_name", _P2_DEFAULT)
     state["ai_mode"] = bool(body.get("ai_mode", False))
+    state["ai_log"]  = []
 
     if not state["cards"]:
         cards = fetch_cards()
@@ -162,12 +166,13 @@ def ai_action():
     if idx >= len(seq):
         return jsonify({"error": "Sequence complete"}), 400
 
-    current   = seq[idx]
-    my_picks  = state["p1_picks"] if current == 1 else state["p2_picks"]
-    opp_picks = state["p2_picks"] if current == 1 else state["p1_picks"]
+    current      = seq[idx]
+    my_picks     = state["p1_picks"] if current == 1 else state["p2_picks"]
+    opp_picks    = state["p2_picks"] if current == 1 else state["p1_picks"]
+    player_name  = state["p1_name"] if current == 1 else state["p2_name"]
 
-    card_stats = get_card_stats(CSV_FILE)
-    card_id    = ai_decide(phase, state["pool"], my_picks, opp_picks, card_stats, OLLAMA_MODEL)
+    card_stats        = get_card_stats(CSV_FILE)
+    card_id, reason   = ai_decide(phase, state["pool"], my_picks, opp_picks, card_stats, OLLAMA_MODEL)
 
     if card_id is None:
         return jsonify({"error": "No cards available"}), 400
@@ -182,6 +187,14 @@ def ai_action():
         state["banned"].append({"card": card, "by": current})
     else:
         (state["p1_picks"] if current == 1 else state["p2_picks"]).append(card)
+
+    state["ai_log"].append({
+        "player":      current,
+        "player_name": player_name,
+        "phase":       phase,
+        "card":        card["name"],
+        "reason":      reason,
+    })
 
     state["action_index"] += 1
 
@@ -204,5 +217,6 @@ def reset():
         "p2_picks":     [],
         "action_index": 0,
         "ai_mode":      False,
+        "ai_log":       [],
     })
     return jsonify({"phase": "setup"})

@@ -166,7 +166,7 @@ def _fuzzy_match(name, pool_names):
 
 
 def _best_card_by_winrate(pool, card_stats):
-    """Return the card_id of the highest win-rate card in the pool."""
+    """Return (card_id, reason) for the highest win-rate card in the pool."""
     best    = None
     best_wr = -1.0
     for c in pool:
@@ -176,8 +176,12 @@ def _best_card_by_winrate(pool, card_stats):
             best_wr = wr
             best    = c
     if best:
-        return best["id"]
-    return random.choice(pool)["id"] if pool else None
+        wr_str = f"{best_wr * 100:.0f}% WR" if best_wr >= 0 else "no data"
+        return best["id"], f"fallback: highest win-rate card available ({wr_str})"
+    if pool:
+        c = random.choice(pool)
+        return c["id"], "fallback: random pick (no win-rate data)"
+    return None, ""
 
 
 def ai_decide(phase, pool, my_picks, opp_picks, card_stats, model):
@@ -193,11 +197,11 @@ def ai_decide(phase, pool, my_picks, opp_picks, card_stats, model):
         model:       Ollama model name string (e.g. "llama3.2")
 
     Returns:
-        card_id (int) of the chosen card, or None if pool is empty.
-        Falls back to the highest win-rate card on any error.
+        (card_id, reason) tuple. card_id is None if pool is empty.
+        Falls back to the highest win-rate card on any Ollama error.
     """
     if not pool:
-        return None
+        return None, ""
 
     pool_names = [c["name"] for c in pool]
     my_names   = [c["name"] for c in my_picks]
@@ -215,13 +219,14 @@ def ai_decide(phase, pool, my_picks, opp_picks, card_stats, model):
         raw         = response["message"]["content"]
         data        = json.loads(raw)
         chosen_name = data.get("card", "")
+        reason      = data.get("reason", "")
 
         matched = _fuzzy_match(chosen_name, pool_names)
         if matched:
             card = next((c for c in pool if c["name"] == matched), None)
             if card:
-                print(f"[ai_draft] {phase.upper()}: chose '{matched}' (reason: {data.get('reason', '')})")
-                return card["id"]
+                print(f"[ai_draft] {phase.upper()}: chose '{matched}' (reason: {reason})")
+                return card["id"], reason
 
         print(f"[ai_draft] LLM returned '{chosen_name}' which isn't in pool; falling back.")
 

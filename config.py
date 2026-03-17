@@ -25,6 +25,8 @@ CSV_FILE          = os.path.join(_ROOT, "data", "output.csv")
 MODIFIERS_CSV     = os.path.join(_ROOT, "data", "modifiers_data.csv")
 PLAYER_TAGS_FILE  = os.path.join(_ROOT, "data", "player_tags.json")
 ELO_STARTING      = 1000
+ELO_NORMAL_CSV    = os.path.join(_ROOT, "data", "elo_normal_draft.csv")
+ELO_AI_CSV        = os.path.join(_ROOT, "data", "elo_ai_draft.csv")
 
 # ── Known players (loaded from data/player_tags.json) ─────────────────────────
 def _load_players():

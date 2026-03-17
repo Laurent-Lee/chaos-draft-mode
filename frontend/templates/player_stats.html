@@ -39,7 +39,6 @@ main{max-width:1100px;margin:0 auto;padding:1.5rem 1rem}
   margin-bottom:1.2rem;letter-spacing:.05em}
 
 /* ── Leaderboard ── */
-#leaderboard-screen{}
 .leaderboard-table{width:100%;border-collapse:collapse}
 .leaderboard-table th{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;
   color:var(--text-muted);padding:.55rem .9rem;text-align:left;
@@ -69,7 +68,6 @@ main{max-width:1100px;margin:0 auto;padding:1.5rem 1rem}
 .wr-pct.high{color:var(--win)}.wr-pct.low{color:var(--loss)}.wr-pct.mid{color:var(--gold)}
 
 /* ── Player detail ── */
-#detail-screen{}
 .detail-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;flex-wrap:wrap}
 .detail-name{font-family:'Cinzel Decorative',serif;font-size:1.6rem;color:var(--gold)}
 .stat-cards{display:flex;gap:.9rem;flex-wrap:wrap;margin-bottom:1.5rem}
@@ -136,6 +134,16 @@ main{max-width:1100px;margin:0 auto;padding:1.5rem 1rem}
 .mh-section-label{font-size:.6rem;color:var(--text-muted);letter-spacing:.08em;
   text-transform:uppercase;margin-bottom:2px}
 
+/* ── Mode filter ── */
+.mode-filter{display:flex;align-items:center;gap:.6rem;margin-bottom:1.2rem;flex-wrap:wrap}
+.mode-label{font-size:.7rem;color:var(--text-muted);letter-spacing:.08em;text-transform:uppercase}
+.seg{display:flex;gap:2px;background:var(--surface2);border:1px solid var(--border);
+  border-radius:999px;padding:2px}
+.seg button{padding:.22rem .7rem;border-radius:999px;border:none;cursor:pointer;
+  font-family:'Exo 2',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.04em;
+  background:transparent;color:var(--text-muted);transition:all .15s;text-transform:uppercase}
+.seg button.active{background:var(--surface);color:var(--gold);box-shadow:0 1px 4px rgba(0,0,0,.4)}
+
 /* ── Empty / loading states ── */
 .empty{color:var(--text-muted);font-size:.88rem;padding:2rem;text-align:center}
 .loading{color:var(--text-muted);font-size:.88rem;padding:1.5rem;text-align:center;
@@ -150,6 +158,16 @@ main{max-width:1100px;margin:0 auto;padding:1.5rem 1rem}
 </header>
 
 <main>
+
+<!-- MODE FILTER (persists across leaderboard and detail) -->
+<div class="mode-filter">
+  <span class="mode-label">Mode</span>
+  <div class="seg" id="mode-seg">
+    <button class="active" data-mode="All">All</button>
+    <button data-mode="Normal Draft">Normal</button>
+    <button data-mode="AI Draft">🤖 AI</button>
+  </div>
+</div>
 
 <!-- LEADERBOARD -->
 <div id="leaderboard-screen">
@@ -184,6 +202,7 @@ main{max-width:1100px;margin:0 auto;padding:1.5rem 1rem}
 
 <script>
 const PLAYERS = ['Kevin','Jason','Alex','Laurent','Brooks','Andrew'];
+let modeFilter = 'All';
 
 // ── Routing ──────────────────────────────────────────────────────────────────
 
@@ -213,6 +232,10 @@ function switchTab(tab){
 
 // ── API ───────────────────────────────────────────────────────────────────────
 
+function gmParam(){
+  return modeFilter === 'All' ? '' : `?game_mode=${encodeURIComponent(modeFilter)}`;
+}
+
 async function api(path){
   const r = await fetch(path);
   if(!r.ok) throw new Error(`HTTP ${r.status} from ${path}`);
@@ -223,8 +246,8 @@ async function api(path){
 
 async function loadLeaderboard(){
   const [statsMap, eloMap] = await Promise.all([
-    api('/api/player_stats'),
-    api('/api/elo'),
+    api(`/api/player_stats${gmParam()}`),
+    api(`/api/elo${gmParam()}`),
   ]);
 
   const rows = PLAYERS.map(name => {
@@ -285,7 +308,7 @@ async function loadDetailStats(name){
 
   let data;
   try {
-    data = await api(`/api/player_stats/${encodeURIComponent(name)}`);
+    data = await api(`/api/player_stats/${encodeURIComponent(name)}${gmParam()}`);
   } catch(e) {
     document.getElementById('detail-card-stats-content').innerHTML = `<div class="empty">Failed to load stats: ${e.message}</div>`;
     return;
@@ -411,7 +434,7 @@ async function loadDetailHistory(name){
   document.getElementById('detail-history-content').innerHTML = '<div class="loading">Loading…</div>';
   let games;
   try {
-    games = await api(`/api/match_history/${encodeURIComponent(name)}`);
+    games = await api(`/api/match_history/${encodeURIComponent(name)}${gmParam()}`);
   } catch(e) {
     document.getElementById('detail-history-content').innerHTML = `<div class="empty">Failed to load history: ${e.message}</div>`;
     return;
@@ -437,10 +460,13 @@ async function loadDetailHistory(name){
     const secondPicksHtml = (g.second_picks || []).map(c => cardThumb(c, false)).join('');
     const secondBansHtml  = (g.second_bans  || []).map(c => cardThumb(c, true)).join('');
     const randomBansHtml  = (g.random_bans  || []).map(c => cardThumb(c, true)).join('');
+    const modeBadge = g.game_mode === 'AI Draft'
+      ? '<span style="font-size:.65rem;color:var(--p1);background:rgba(74,158,255,.12);border:1px solid rgba(74,158,255,.3);border-radius:999px;padding:1px 7px;margin-left:.5rem">🤖 AI Draft</span>'
+      : '';
     return `
     <div class="mh-game">
       <div class="mh-header">
-        <span class="mh-winner-tag">🏆 ${g.winner || '?'} wins</span>
+        <span class="mh-winner-tag">🏆 ${g.winner || '?'} wins</span>${modeBadge}
       </div>
       ${randomBansHtml ? `<div style="display:flex;align-items:center;gap:.5rem;padding:.4rem .9rem .1rem;flex-wrap:wrap">
         <span style="font-size:.6rem;color:#ff9944;letter-spacing:.08em;text-transform:uppercase">🎲 Random Bans</span>
@@ -461,6 +487,23 @@ async function loadDetailHistory(name){
     </div>`;
   }).join('');
 }
+
+// ── Mode filter ───────────────────────────────────────────────────────────────
+document.querySelectorAll('#mode-seg button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#mode-seg button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    modeFilter = btn.dataset.mode;
+    const detailVisible = document.getElementById('detail-screen').style.display !== 'none';
+    if(detailVisible){
+      const name = document.getElementById('detail-name').textContent;
+      loadDetailStats(name);
+      loadDetailHistory(name);
+    } else {
+      loadLeaderboard();
+    }
+  });
+});
 
 // ── Init ──────────────────────────────────────────────────────────────────────
 loadLeaderboard();

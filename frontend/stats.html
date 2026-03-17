@@ -152,6 +152,12 @@ th[data-col="name"] .click-hint{
         <button data-type="Charge">💨 Charge</button>
         <button data-type="Spells">✨ Spells</button>
       </div>
+      <span class="ctrl-label" style="margin-left:.4rem">Mode</span>
+      <div class="seg" id="mode-seg">
+        <button class="active" data-mode="All">All</button>
+        <button data-mode="Normal Draft">Normal</button>
+        <button data-mode="AI Draft">🤖 AI</button>
+      </div>
       <input id="search" type="text" placeholder="Search card…" oninput="renderTable()">
     </div>
     <div class="tbl-wrap">
@@ -217,11 +223,13 @@ let sortCol    = "play_rate";
 let sortAsc    = false;
 let tierFilter = "All";
 let typeFilter = "All";
+let modeFilter = "All";
 
 // ── Fetch card stats ──────────────────────────────────────────────────────────
 async function loadStats(){
   try{
-    const res = await fetch('/api/card_stats');
+    const url = modeFilter === "All" ? '/api/card_stats' : `/api/card_stats?game_mode=${encodeURIComponent(modeFilter)}`;
+    const res = await fetch(url);
     allCards  = await res.json();
     if(!allCards.length){
       document.getElementById('loading').textContent = 'No games recorded yet.';
@@ -352,6 +360,16 @@ document.querySelectorAll('#type-seg button').forEach(btn => {
     btn.classList.add('active');
     typeFilter = btn.dataset.type;
     renderTable();
+  });
+});
+
+// ── Mode filter ───────────────────────────────────────────────────────────────
+document.querySelectorAll('#mode-seg button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#mode-seg button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    modeFilter = btn.dataset.mode;
+    loadStats();
   });
 });
 

@@ -57,7 +57,7 @@ def update_elo(winner_elo: float, loser_elo: float, k: int = K_FACTOR):
 
 
 # ── Main ──────────────────────────────────────────────────────────────────────
-def calculate_elo(input_path: str, output_path: str) -> None:
+def calculate_elo(input_path: str, output_path: str, game_mode_filter: str = None) -> None:
     if not os.path.exists(input_path):
         print(f"❌  Input file not found: {input_path}")
         sys.exit(1)
@@ -76,6 +76,8 @@ def calculate_elo(input_path: str, output_path: str) -> None:
 
         rows = list(reader)
         rows.sort(key=lambda r: r.get("timestamp", ""))
+        if game_mode_filter:
+            rows = [r for r in rows if r.get("game_mode", "").strip() == game_mode_filter]
 
         for game_num, row in enumerate(rows, start=1):
             winner = row["winner"].strip()

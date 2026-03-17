@@ -16,7 +16,8 @@ cr_draft/
 │   ├── draft.py         # Draft state, game logic, and draft API routes
 │   ├── modifiers.py     # Modifier name mapping and modifiers_data.csv aggregation
 │   ├── stats.py         # CSV recording, match history, card/player stats, ELO
-│   └── elo.py           # ELO calculator (bring your own, see Setup)
+│   ├── elo.py           # ELO calculator — exports calculate_elo, OUTPUT_CSV, INPUT_CSV
+│   └── ai_draft.py      # AI draft logic — Ollama integration and card stats reader
 │
 ├── frontend/
 │   ├── frontend.py      # Blueprint serving the HTML frontend and stats page
@@ -32,7 +33,7 @@ cr_draft/
 │   └── card_types.js    # Card type assignments (Tower/Tanks/Ranged/etc) — edit to update types
 │
 └── data/
-    ├── output.csv             # Match history — 165 columns (auto-created on first game)
+    ├── output.csv             # Match history — 166 columns (auto-created on first game)
     ├── modifiers_data.csv     # Modifier aggregate stats — auto-updated after each match
     ├── card_data.csv          # Card matchup matrix — auto-updated after each match
     ├── elo.csv                # ELO ratings — written by elo.py after each match
@@ -69,7 +70,6 @@ Place the following files in their expected locations:
 
 | File | Location | Purpose |
 |------|----------|---------|
-| `elo.py` | `backend/` | ELO calculator — must export `calculate_elo`, `OUTPUT_CSV`, `INPUT_CSV` |
 | `stats.html` | `frontend/` | Card stats page, accessible at `/stats` |
 | `elixir.svg` | `static/` | Elixir icon shown in the card pool UI |
 
@@ -77,6 +77,7 @@ The following files are already included and can be edited directly:
 
 | File | Location | Purpose |
 |------|----------|---------|
+| `elo.py` | `backend/` | ELO calculator |
 | `card_tiers.js` | `static/` | Card tier list (S+ through F) — edit to rebalance tiers |
 | `card_types.js` | `static/` | Card type groupings — edit to reclassify cards |
 
@@ -136,7 +137,7 @@ To change the model, edit `OLLAMA_MODEL` in `config.py`.
 
 ## Merging Data from Multiple Machines
 
-Each game recorded by the app includes a `timestamp` column in `output.csv` (ISO 8601 UTC, e.g. `2026-03-16T14:32:05Z`). Both `stats.py` and `elo.py` sort by this column before processing, so ELO is always calculated in true chronological order regardless of row position in the file.
+Each game recorded by the app includes a `timestamp` column in `output.csv` (ISO 8601 UTC, e.g. `2026-03-16T14:32:05Z`). Both `stats.py` and `backend/elo.py` sort by this column before processing, so ELO is always calculated in true chronological order regardless of row position in the file.
 
 To combine two CSV files from different machines:
 
