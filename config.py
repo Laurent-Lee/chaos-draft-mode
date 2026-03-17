@@ -2,6 +2,7 @@
 config.py — All constants and configuration for the CR Draft app.
 """
 
+import json
 import os
 from dotenv import load_dotenv
 
@@ -11,12 +12,7 @@ _ROOT = os.path.dirname(os.path.abspath(__file__))
 load_dotenv()
 
 CR_API_TOKEN  = os.getenv("CR_API_TOKEN", "")
-PLAYER1_NAME  = "Kevin"
-PLAYER2_NAME  = "Jason"
 PORT          = 5050
-
-# ── Known players ─────────────────────────────────────────────────────────────
-PLAYERS = ["Kevin", "Jason", "Alex", "Laurent", "Brooks", "Andrew"]
 
 # ── Draft sequences ───────────────────────────────────────────────────────────
 # Ban:  P1 bans 1, P2 bans 2, P1 bans 1
@@ -29,6 +25,16 @@ CSV_FILE          = os.path.join(_ROOT, "data", "output.csv")
 MODIFIERS_CSV     = os.path.join(_ROOT, "data", "modifiers_data.csv")
 PLAYER_TAGS_FILE  = os.path.join(_ROOT, "data", "player_tags.json")
 ELO_STARTING      = 1000
+
+# ── Known players (loaded from data/player_tags.json) ─────────────────────────
+def _load_players():
+    try:
+        with open(PLAYER_TAGS_FILE, "r", encoding="utf-8") as f:
+            return list(json.load(f).keys())
+    except (FileNotFoundError, json.JSONDecodeError):
+        return []
+
+PLAYERS = _load_players()
 OLLAMA_MODEL      = "llama3.2"   # swap to e.g. "qwen2.5:3b" for a faster/smaller model
 
 # ── All 50 official C.H.A.O.S mode cards (March 2026) ─────────────────────────

@@ -11,10 +11,12 @@ Routes:
 import random
 from flask import Blueprint, jsonify, request
 from config import (
-    PLAYER1_NAME, PLAYER2_NAME,
     BAN_SEQUENCE, PICK_SEQUENCE,
-    TIER_CARDS, CSV_FILE, OLLAMA_MODEL,
+    TIER_CARDS, CSV_FILE, OLLAMA_MODEL, PLAYERS,
 )
+
+_P1_DEFAULT = PLAYERS[0] if len(PLAYERS) > 0 else ""
+_P2_DEFAULT = PLAYERS[1] if len(PLAYERS) > 1 else ""
 from backend.cards import fetch_cards, deck_link
 from backend.ai_draft import get_card_stats, ai_decide
 
@@ -29,10 +31,10 @@ state = {
     "p2_picks":     [],
     "phase":        "setup",
     "action_index": 0,
-    "p1_name":      PLAYER1_NAME,
-    "p2_name":      PLAYER2_NAME,
-    "1st_pick":     PLAYER1_NAME,
-    "2nd_pick":     PLAYER2_NAME,
+    "p1_name":      _P1_DEFAULT,
+    "p2_name":      _P2_DEFAULT,
+    "1st_pick":     _P1_DEFAULT,
+    "2nd_pick":     _P2_DEFAULT,
     "ai_mode":      False,
 }
 
@@ -66,8 +68,8 @@ def get_state_view():
 @draft_bp.route("/api/start", methods=["POST"])
 def start_draft():
     body = request.json or {}
-    state["p1_name"] = body.get("p1_name", PLAYER1_NAME)
-    state["p2_name"] = body.get("p2_name", PLAYER2_NAME)
+    state["p1_name"] = body.get("p1_name", _P1_DEFAULT)
+    state["p2_name"] = body.get("p2_name", _P2_DEFAULT)
     state["ai_mode"] = bool(body.get("ai_mode", False))
 
     if not state["cards"]:

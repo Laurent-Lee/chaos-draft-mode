@@ -19,15 +19,26 @@ ELO rules:
 
 import argparse
 import csv
+import json
 import os
 import sys
 
 # ── Config ────────────────────────────────────────────────────────────────────
-PLAYERS        = ["Kevin", "Jason", "Alex", "Laurent", "Brooks", "Andrew"]
+_ROOT              = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+_PLAYER_TAGS_FILE  = os.path.join(_ROOT, "data", "player_tags.json")
+
+def _load_players():
+    try:
+        with open(_PLAYER_TAGS_FILE, "r", encoding="utf-8") as f:
+            return list(json.load(f).keys())
+    except (FileNotFoundError, json.JSONDecodeError):
+        return []
+
+PLAYERS        = _load_players()
 STARTING_ELO   = 1000
 K_FACTOR       = 32
-INPUT_CSV      = "output.csv"
-OUTPUT_CSV     = "elo.csv"
+INPUT_CSV      = os.path.join(_ROOT, "data", "output.csv")
+OUTPUT_CSV     = os.path.join(_ROOT, "data", "elo.csv")
 
 
 # ── ELO math ──────────────────────────────────────────────────────────────────
