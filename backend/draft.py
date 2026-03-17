@@ -6,16 +6,20 @@ Routes:
   GET  /api/state
   POST /api/action
   POST /api/reset
+  POST /api/ai_action
 """
 
 import random
 from flask import Blueprint, jsonify, request
 from config import (
-    PLAYER1_NAME, PLAYER2_NAME,
     BAN_SEQUENCE, PICK_SEQUENCE,
-    TIER_CARDS,
+    TIER_CARDS, CSV_FILE, CARD_DATA_CSV, OLLAMA_MODEL, PLAYERS,
 )
+
+_P1_DEFAULT = PLAYERS[0] if len(PLAYERS) > 0 else ""
+_P2_DEFAULT = PLAYERS[1] if len(PLAYERS) > 1 else ""
 from backend.cards import fetch_cards, deck_link
+from backend.ai_draft import get_card_stats, get_matchup_stats, ai_decide
 
 draft_bp = Blueprint("draft", __name__)
 
@@ -28,10 +32,12 @@ state = {
     "p2_picks":     [],
     "phase":        "setup",
     "action_index": 0,
-    "p1_name":      PLAYER1_NAME,
-    "p2_name":      PLAYER2_NAME,
-    "1st_pick":     PLAYER1_NAME,
-    "2nd_pick":     PLAYER2_NAME,
+    "p1_name":      _P1_DEFAULT,
+    "p2_name":      _P2_DEFAULT,
+    "1st_pick":     _P1_DEFAULT,
+    "2nd_pick":     _P2_DEFAULT,
+    "ai_mode":      False,
+    "ai_log":       [],   # list of {player, player_name, phase, card, reason}
 }
 
 
@@ -55,6 +61,8 @@ def get_state_view():
         "pick_sequence":  PICK_SEQUENCE,
         "p1_deck_link":   deck_link(state["p1_picks"]),
         "p2_deck_link":   deck_link(state["p2_picks"]),
+        "ai_mode":        state["ai_mode"],
+        "ai_log":         list(state["ai_log"]),
     }
 
 
@@ -63,8 +71,10 @@ def get_state_view():
 @draft_bp.route("/api/start", methods=["POST"])
 def start_draft():
     body = request.json or {}
-    state["p1_name"] = body.get("p1_name", PLAYER1_NAME)
-    state["p2_name"] = body.get("p2_name", PLAYER2_NAME)
+    state["p1_name"] = body.get("p1_name", _P1_DEFAULT)
+    state["p2_name"] = body.get("p2_name", _P2_DEFAULT)
+    state["ai_mode"] = bool(body.get("ai_mode", False))
+    state["ai_log"]  = []
 
     if not state["cards"]:
         cards = fetch_cards()
@@ -143,6 +153,128 @@ def do_action():
     return jsonify(get_state_view())
 
 
+@draft_bp.route("/api/ai_action", methods=["POST"])
+def ai_action():
+    """Perform the next ban/pick on behalf of the AI (used in AI draft mode)."""
+    phase = state["phase"]
+    if phase not in ("ban", "pick"):
+        return jsonify({"error": "No action needed"}), 400
+
+    seq = BAN_SEQUENCE if phase == "ban" else PICK_SEQUENCE
+    idx = state["action_index"]
+
+    if idx >= len(seq):
+        return jsonify({"error": "Sequence complete"}), 400
+
+    current      = seq[idx]
+    my_picks     = state["p1_picks"] if current == 1 else state["p2_picks"]
+    opp_picks    = state["p2_picks"] if current == 1 else state["p1_picks"]
+    player_name  = state["p1_name"] if current == 1 else state["p2_name"]
+
+    card_stats     = get_card_stats(CSV_FILE)
+    matchup_stats  = get_matchup_stats(CARD_DATA_CSV)
+    card_id, reason = ai_decide(phase, state["pool"], my_picks, opp_picks, card_stats, OLLAMA_MODEL, matchup_stats)
+
+    if card_id is None:
+        return jsonify({"error": "No cards available"}), 400
+
+    card = next((c for c in state["pool"] if c["id"] == card_id), None)
+    if not card:
+        return jsonify({"error": "Card not in pool"}), 400
+
+    state["pool"] = [c for c in state["pool"] if c["id"] != card_id]
+
+    if phase == "ban":
+        state["banned"].append({"card": card, "by": current})
+    else:
+        (state["p1_picks"] if current == 1 else state["p2_picks"]).append(card)
+
+    state["ai_log"].append({
+        "player":      current,
+        "player_name": player_name,
+        "phase":       phase,
+        "card":        card["name"],
+        "reason":      reason,
+    })
+
+    state["action_index"] += 1
+
+    if phase == "ban"  and state["action_index"] >= len(BAN_SEQUENCE):
+        state["phase"]        = "pick"
+        state["action_index"] = 0
+    elif phase == "pick" and state["action_index"] >= len(PICK_SEQUENCE):
+        state["phase"] = "done"
+
+    return jsonify(get_state_view())
+
+
+@draft_bp.route("/api/undo", methods=["POST"])
+def undo_action():
+    """
+    Undo the last player ban or pick (Normal Draft only).
+
+    Works across phase boundaries:
+      - Undoing when phase="pick" and action_index=0 steps back into the ban phase.
+      - Undoing when phase="done" steps back into the pick phase.
+    Random pre-bans are never undone.
+    """
+    if state["ai_mode"]:
+        return jsonify({"error": "Undo not available in AI Draft mode"}), 400
+
+    phase = state["phase"]
+    idx   = state["action_index"]
+
+    if phase == "setup":
+        return jsonify({"error": "Nothing to undo"}), 400
+
+    # Helper: pop the last player-made ban back into the pool.
+    def _undo_last_ban():
+        player_bans = [b for b in state["banned"] if b["by"] != "random"]
+        if not player_bans:
+            return False
+        last = player_bans[-1]
+        state["banned"].remove(last)
+        state["pool"].append(last["card"])
+        return True
+
+    if phase == "ban":
+        if idx == 0:
+            return jsonify({"error": "Nothing to undo"}), 400
+        if not _undo_last_ban():
+            return jsonify({"error": "Nothing to undo"}), 400
+        state["action_index"] -= 1
+
+    elif phase == "pick" and idx == 0:
+        # Step back across the ban/pick boundary.
+        if not _undo_last_ban():
+            return jsonify({"error": "Nothing to undo"}), 400
+        state["phase"]        = "ban"
+        state["action_index"] = len(BAN_SEQUENCE) - 1
+
+    elif phase == "pick":
+        prev_player = PICK_SEQUENCE[idx - 1]
+        picks_list  = state["p1_picks"] if prev_player == 1 else state["p2_picks"]
+        if not picks_list:
+            return jsonify({"error": "Nothing to undo"}), 400
+        state["pool"].append(picks_list.pop())
+        state["action_index"] -= 1
+
+    elif phase == "done":
+        # Step back across the pick/done boundary.
+        prev_player = PICK_SEQUENCE[-1]
+        picks_list  = state["p1_picks"] if prev_player == 1 else state["p2_picks"]
+        if not picks_list:
+            return jsonify({"error": "Nothing to undo"}), 400
+        state["pool"].append(picks_list.pop())
+        state["phase"]        = "pick"
+        state["action_index"] = len(PICK_SEQUENCE) - 1
+
+    else:
+        return jsonify({"error": "Nothing to undo"}), 400
+
+    return jsonify(get_state_view())
+
+
 @draft_bp.route("/api/reset", methods=["POST"])
 def reset():
     state.update({
@@ -152,5 +284,7 @@ def reset():
         "p1_picks":     [],
         "p2_picks":     [],
         "action_index": 0,
+        "ai_mode":      False,
+        "ai_log":       [],
     })
     return jsonify({"phase": "setup"})

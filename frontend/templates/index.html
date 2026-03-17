@@ -149,6 +149,10 @@ main{max-width:1400px;margin:0 auto;padding:1.2rem 1rem}
   font-size:.68rem;font-weight:700;min-width:18px;text-align:center}
 .avg-elixir{font-size:.72rem;color:var(--text-muted);margin-top:.35rem}
 .avg-elixir span{color:#c060ff;font-weight:700}
+.type-divider{font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--text-muted);display:flex;align-items:center;gap:.35rem;
+  margin:.45rem 0 .2rem;opacity:.75}
+.type-divider::before,.type-divider::after{content:'';flex:1;height:1px;background:var(--border)}
 
 /* ── Pool ── */
 #pool-area h3{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;
@@ -245,6 +249,60 @@ main{max-width:1400px;margin:0 auto;padding:1.2rem 1rem}
 .tier-D {color:#9b7fe8}
 .tier-F {color:var(--text-muted)}
 
+/* ── AI mode ── */
+.btn-ai{background:linear-gradient(135deg,#4a9eff,#1a4baa);color:#fff;
+  box-shadow:0 4px 20px rgba(74,158,255,.3);width:100%;padding:.75rem;font-size:.95rem;margin-top:.4rem}
+.btn-ai:hover{filter:brightness(1.15);transform:translateY(-1px)}
+.btn-ai:disabled{opacity:.5;cursor:not-allowed;transform:none;filter:none}
+#pool-area{position:relative}
+#ai-thinking-overlay{position:absolute;inset:0;background:rgba(14,17,26,.82);
+  display:none;align-items:center;justify-content:center;flex-direction:column;
+  gap:.6rem;border-radius:10px;z-index:10}
+#ai-thinking-overlay .ai-spinner{font-size:2rem;animation:spin 1.4s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+#ai-thinking-overlay .ai-label{font-size:.95rem;color:var(--p1);font-weight:700;letter-spacing:.06em}
+.ai-mode-tag{font-size:.7rem;color:var(--p1);opacity:.8;font-weight:600;
+  background:rgba(74,158,255,.12);border:1px solid rgba(74,158,255,.3);
+  border-radius:999px;padding:1px 8px;margin-left:.4rem;vertical-align:middle}
+
+/* ── AI chat log (live, during draft) ── */
+#ai-chat{display:none;margin-top:.9rem;background:var(--surface);
+  border:1px solid var(--border);border-radius:10px;padding:.75rem 1rem}
+#ai-chat-header{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--text-muted);margin-bottom:.55rem}
+#ai-chat-log{max-height:220px;overflow-y:auto;display:flex;flex-direction:column;gap:.3rem}
+.ai-entry{display:flex;flex-wrap:wrap;align-items:baseline;gap:.35rem;
+  padding:.28rem .4rem;border-radius:6px;font-size:.82rem;
+  background:var(--surface2);border:1px solid var(--border)}
+.ai-entry-name{font-weight:700;flex-shrink:0}
+.ai-entry-action{flex-shrink:0}
+.ai-entry-card{font-weight:600;flex-shrink:0}
+.ai-entry-reason{color:var(--text-muted);font-size:.78rem}
+
+/* ── AI reasoning panel (post-draft done screen) ── */
+#done-ai-log{display:none;margin-top:1.6rem;background:var(--surface);
+  border:1px solid rgba(74,158,255,.3);border-radius:12px;overflow:hidden}
+#done-ai-log-header{display:flex;align-items:center;justify-content:space-between;
+  padding:.75rem 1.1rem;background:rgba(74,158,255,.08);border-bottom:1px solid rgba(74,158,255,.2);
+  cursor:pointer;user-select:none}
+#done-ai-log-header span{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--p1);font-weight:700}
+#done-ai-log-toggle{font-size:.72rem;color:var(--text-muted);transition:transform .2s}
+#done-ai-log-toggle.open{transform:rotate(180deg)}
+#done-ai-log-body{padding:.85rem 1.1rem;display:flex;flex-direction:column;gap:.0rem}
+.done-ai-phase-label{font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--text-muted);padding:.55rem 0 .28rem;border-bottom:1px solid var(--border);
+  margin-bottom:.4rem;display:flex;align-items:center;gap:.4rem}
+.done-ai-phase-label:not(:first-child){margin-top:.7rem}
+.done-ai-entry{display:grid;grid-template-columns:auto auto 1fr;align-items:baseline;
+  gap:.45rem;padding:.32rem .45rem;border-radius:6px;font-size:.85rem;
+  background:var(--surface2);border:1px solid var(--border);margin-bottom:.3rem}
+.done-ai-entry-who{font-weight:700;white-space:nowrap}
+.done-ai-entry-action{white-space:nowrap}
+.done-ai-entry-card{font-weight:600;white-space:nowrap}
+.done-ai-entry-reason{grid-column:1/-1;color:var(--text-muted);font-size:.78rem;
+  padding-left:.1rem;line-height:1.4}
+
 /* ── Sort toggle button ── */
 .sort-toggle{display:flex;gap:.3rem;background:var(--surface2);border:1px solid var(--border);
   border-radius:999px;padding:2px;margin-left:auto}
@@ -288,7 +346,8 @@ main{max-width:1400px;margin:0 auto;padding:1.2rem 1rem}
       <option>Andrew</option>
     </select></div>
   <div id="setup-error"></div>
-  <button class="btn btn-gold" onclick="startDraft()">⚔️ Begin Draft</button>
+  <button class="btn btn-gold" id="btn-start-draft" onclick="startDraft()">⚔️ Begin Draft</button>
+  <button class="btn btn-ai"  id="btn-ai-draft"    onclick="startAiDraft()">🤖 AI Draft</button>
   <div style="display:flex;gap:.5rem;margin-top:.6rem">
     <a href="/stats" class="btn btn-ghost" style="flex:1;padding:.55rem;text-align:center;text-decoration:none;font-size:.82rem">📊 Card Stats</a>
     <a href="/player_stats" class="btn btn-ghost" style="flex:1;padding:.55rem;text-align:center;text-decoration:none;font-size:.82rem">👤 Players</a>
@@ -308,6 +367,7 @@ main{max-width:1400px;margin:0 auto;padding:1.2rem 1rem}
     <div class="turn-text" id="turn-text"></div>
     <div class="progress-dots" id="progress-dots"></div>
     <div id="timer-block">
+      <button class="btn-timer" id="btn-undo" onclick="undoAction()" title="Undo last pick or ban" disabled>↩ Undo</button>
       <button class="btn-timer" id="btn-pause" onclick="toggleTimer()">⏸ Pause</button>
       <div id="timer-display" class="ok">30</div>
     </div>
@@ -324,6 +384,10 @@ main{max-width:1400px;margin:0 auto;padding:1.2rem 1rem}
       <div class="avg-elixir">Avg: <span id="p1-avg">—</span></div>
     </div>
     <div id="pool-area">
+      <div id="ai-thinking-overlay">
+        <div class="ai-spinner">🤖</div>
+        <div class="ai-label">AI is thinking…</div>
+      </div>
       <div class="filters">
         <input id="search-box" type="text" placeholder="Search…" oninput="renderPool()">
         <button class="filter-btn active" data-r="All"       onclick="setFilter(this)">All</button>
@@ -348,6 +412,11 @@ main{max-width:1400px;margin:0 auto;padding:1.2rem 1rem}
       <div id="p2-picks-list"></div>
       <div class="avg-elixir">Avg: <span id="p2-avg">—</span></div>
     </div>
+  </div>
+
+  <div id="ai-chat">
+    <div id="ai-chat-header">🤖 AI Reasoning</div>
+    <div id="ai-chat-log"></div>
   </div>
 </div>
 
@@ -385,6 +454,14 @@ main{max-width:1400px;margin:0 auto;padding:1.2rem 1rem}
       <button id="winner-btn-2" class="btn btn-winner" onclick="declareWinner(2)">🏆 <span id="winner-btn-2-label">Player 2</span> Wins!</button>
     </div>
   </div>
+  <div id="done-ai-log">
+    <div id="done-ai-log-header" onclick="toggleDoneAiLog()">
+      <span>🤖 AI Draft Reasoning</span>
+      <span id="done-ai-log-toggle">▼</span>
+    </div>
+    <div id="done-ai-log-body"></div>
+  </div>
+
   <div id="winner-banner">
     <h3 id="winner-banner-text">🏆 Winner Recorded!</h3>
     <p id="winner-banner-sub">Result saved to output.csv</p>
@@ -625,7 +702,7 @@ async function startDraft(){
     return;
   }
   document.getElementById('setup-error').innerHTML='';
-  const btn = document.querySelector('#setup-screen .btn-gold');
+  const btn = document.getElementById('btn-start-draft');
   btn.textContent='Loading cards…'; btn.disabled=true;
   try{
     const s = await api('/api/start','POST',{p1_name:p1,p2_name:p2});
@@ -637,17 +714,79 @@ async function startDraft(){
   }
 }
 
+async function startAiDraft(){
+  const p1 = document.getElementById('p1-name').value;
+  const p2 = document.getElementById('p2-name').value;
+  if(p1 === p2){
+    document.getElementById('setup-error').innerHTML='<div class="error-msg">❌ Player 1 and Player 2 must be different players.</div>';
+    return;
+  }
+  document.getElementById('setup-error').innerHTML='';
+  const btn = document.getElementById('btn-ai-draft');
+  btn.textContent='Loading…'; btn.disabled=true;
+  try{
+    const s = await api('/api/start','POST',{p1_name:p1,p2_name:p2,ai_mode:true});
+    if(s.error) throw new Error(s.error);
+    applyState(s);
+    triggerAiIfNeeded();
+  }catch(e){
+    document.getElementById('setup-error').innerHTML=`<div class="error-msg">❌ ${e.message}</div>`;
+    btn.textContent='🤖 AI Draft'; btn.disabled=false;
+  }
+}
+
+function showAiThinking(visible){
+  const el = document.getElementById('ai-thinking-overlay');
+  if(el) el.style.display = visible ? 'flex' : 'none';
+}
+
+function triggerAiIfNeeded(){
+  if(!gState || !gState.ai_mode) return;
+  if(gState.phase !== 'ban' && gState.phase !== 'pick') return;
+  showAiThinking(true);
+  setTimeout(async () => {
+    try{
+      const s = await api('/api/ai_action','POST');
+      if(s && s.error){ showAiThinking(false); console.warn('AI action error:', s.error); return; }
+      applyState(s);
+      triggerAiIfNeeded();
+    }catch(e){
+      showAiThinking(false);
+      console.warn('AI action failed:', e);
+    }
+  }, 800);
+}
+
 async function doAction(id){
   const s = await api('/api/action','POST',{card_id:id});
   if(s.error){alert(s.error);return;}
   applyState(s);
 }
 
+async function undoAction(){
+  const s = await api('/api/undo','POST');
+  if(s.error){alert(s.error);return;}
+  applyState(s);
+}
+
+function updateUndoBtn(s){
+  const btn = document.getElementById('btn-undo');
+  if(!btn) return;
+  // Disabled when there is nothing yet to undo (ban phase, no actions taken).
+  const nothingToUndo = s.phase === 'ban' && s.action_index === 0;
+  btn.disabled = nothingToUndo;
+}
+
 async function resetDraft(){
   stopTimer();
   await api('/api/reset','POST');
-  const btn = document.querySelector('#setup-screen .btn-gold');
-  btn.textContent='⚔️ Begin Draft'; btn.disabled=false;
+  document.getElementById('btn-start-draft').textContent='⚔️ Begin Draft';
+  document.getElementById('btn-start-draft').disabled=false;
+  document.getElementById('btn-ai-draft').textContent='🤖 AI Draft';
+  document.getElementById('btn-ai-draft').disabled=false;
+  document.getElementById('timer-block').style.display='flex';
+  showAiThinking(false);
+  document.getElementById('ai-chat').style.display='none';
   ['draft-screen','done-screen'].forEach(id=>document.getElementById(id).style.display='none');
   document.getElementById('setup-wrapper').style.display='flex';
   document.getElementById('phase-badge').style.display='none';
@@ -668,6 +807,7 @@ _resizeObs.observe(document.getElementById('sticky-top'));
 
 function applyState(s){
   gState=s;
+  showAiThinking(false);
   document.getElementById('setup-wrapper').style.display='none';
   document.getElementById('done-screen').style.display='none';
   if(s.phase==='done'){
@@ -680,10 +820,19 @@ function applyState(s){
   updateStickyOffsets();
   updateBadge(s.phase);
   updateTurnBar(s);
-  startTimer();
+  const timerBlock = document.getElementById('timer-block');
+  if(s.ai_mode){
+    stopTimer();
+    timerBlock.style.display='none';
+  } else {
+    timerBlock.style.display='flex';
+    startTimer();
+  }
   renderPool();
   renderSidebars(s);
   renderBanned(s);
+  renderAiLog(s);
+  updateUndoBtn(s);
 }
 
 function updateBadge(ph){
@@ -698,7 +847,8 @@ function updateTurnBar(s){
   const p1t=`<span class="p1c">${s.p1_name}</span>`;
   const p2t=`<span class="p2c">${s.p2_name}</span>`;
   const act=s.phase==='ban'?'bans a card':'picks a card';
-  document.getElementById('turn-text').innerHTML=`${s.current_player===1?p1t:p2t} ${act}`;
+  const aiTag=s.ai_mode?'<span class="ai-mode-tag">🤖 AI Mode</span>':'';
+  document.getElementById('turn-text').innerHTML=`${s.current_player===1?p1t:p2t} ${act}${aiTag}`;
   const d=document.getElementById('progress-dots'); d.innerHTML='';
   seq.forEach((p,i)=>{
     const el=document.createElement('div');
@@ -812,14 +962,55 @@ function renderSidebars(s){
 
 function renderList(elId,picks,cntId,avgId){
   document.getElementById(cntId).textContent=picks.length;
-  document.getElementById(elId).innerHTML=picks.map(c=>`
-    <div class="mini-card">
-      <img src="${c.iconUrl}" alt="${c.name}" onerror="this.style.display='none'">
-      <span>${c.name}</span>
-      <span class="elixir">${c.elixir||'?'}</span>
-    </div>`).join('');
+
+  // Group picks by card type, preserving TYPE_ORDER sort
+  const groups={};
+  picks.forEach(c=>{
+    const t=CARD_TYPE[c.name]||'Other';
+    (groups[t]=groups[t]||[]).push(c);
+  });
+  const sortedTypes=Object.keys(groups).sort(
+    (a,b)=>(TYPE_ORDER[a]??99)-(TYPE_ORDER[b]??99)
+  );
+
+  const html=sortedTypes.map(type=>{
+    const icon=TYPE_ICONS[type]||'';
+    const divider=`<div class="type-divider"><span>${icon} ${type}</span></div>`;
+    const cards=groups[type].map(c=>`
+      <div class="mini-card">
+        <img src="${c.iconUrl}" alt="${c.name}" onerror="this.style.display='none'">
+        <span>${c.name}</span>
+        <span class="elixir">${c.elixir||'?'}</span>
+      </div>`).join('');
+    return divider+cards;
+  }).join('');
+
+  document.getElementById(elId).innerHTML=html;
   const e=picks.filter(c=>c.elixir>0).map(c=>c.elixir);
   document.getElementById(avgId).textContent=e.length?(e.reduce((a,b)=>a+b,0)/e.length).toFixed(1):'—';
+}
+
+function renderAiLog(s){
+  const chat = document.getElementById('ai-chat');
+  if(!s.ai_mode){ chat.style.display='none'; return; }
+  chat.style.display='block';
+  const log = document.getElementById('ai-chat-log');
+  if(!s.ai_log || !s.ai_log.length){
+    log.innerHTML='<div style="color:var(--text-muted);font-size:.8rem;padding:.2rem .4rem">Waiting for AI…</div>';
+    return;
+  }
+  log.innerHTML = s.ai_log.map(e => {
+    const color  = e.player === 1 ? 'var(--p1)' : 'var(--p2)';
+    const action = e.phase === 'ban' ? '🚫 banned' : '✅ picked';
+    const reason = e.reason ? `— ${e.reason}` : '';
+    return `<div class="ai-entry">
+      <span class="ai-entry-name" style="color:${color}">${e.player_name}</span>
+      <span class="ai-entry-action">${action}</span>
+      <span class="ai-entry-card">${e.card}</span>
+      <span class="ai-entry-reason">${reason}</span>
+    </div>`;
+  }).join('');
+  log.scrollTop = log.scrollHeight;
 }
 
 function renderBanned(s){
@@ -858,6 +1049,47 @@ function renderDone(s){
   document.getElementById('winner-btn-1').disabled=false;
   document.getElementById('winner-btn-2').disabled=false;
   document.getElementById('winner-banner').style.display='none';
+  renderDoneAiLog(s);
+}
+
+function renderDoneAiLog(s){
+  const panel = document.getElementById('done-ai-log');
+  if(!s.ai_mode || !s.ai_log || !s.ai_log.length){ panel.style.display='none'; return; }
+  panel.style.display='block';
+
+  const bans  = s.ai_log.filter(e=>e.phase==='ban');
+  const picks = s.ai_log.filter(e=>e.phase==='pick');
+
+  function entryHtml(e){
+    const color  = e.player===1 ? 'var(--p1)' : 'var(--p2)';
+    const action = e.phase==='ban' ? '🚫 banned' : '✅ picked';
+    const reason = e.reason ? `<div class="done-ai-entry-reason">${e.reason}</div>` : '';
+    return `<div class="done-ai-entry">
+      <span class="done-ai-entry-who" style="color:${color}">${e.player_name}</span>
+      <span class="done-ai-entry-action">${action}</span>
+      <span class="done-ai-entry-card">${e.card}</span>
+      ${reason}
+    </div>`;
+  }
+
+  let html = '';
+  if(bans.length){
+    html += '<div class="done-ai-phase-label">🚫 Ban Phase</div>';
+    html += bans.map(entryHtml).join('');
+  }
+  if(picks.length){
+    html += '<div class="done-ai-phase-label">✅ Pick Phase</div>';
+    html += picks.map(entryHtml).join('');
+  }
+  document.getElementById('done-ai-log-body').innerHTML = html;
+}
+
+function toggleDoneAiLog(){
+  const body    = document.getElementById('done-ai-log-body');
+  const toggle  = document.getElementById('done-ai-log-toggle');
+  const open    = body.style.display !== 'none';
+  body.style.display   = open ? 'none' : 'flex';
+  toggle.classList.toggle('open', !open);
 }
 
 function generateQR(containerId, url){

@@ -24,7 +24,9 @@ cr_draft/
 │   ├── cards.py         # CR API fetch + deck link generation
 │   ├── draft.py         # Global state dict, draft logic, draft API Blueprint
 │   ├── modifiers.py     # Modifier name mapping and modifiers_data.csv aggregation
-│   └── stats.py         # CSV I/O, match history, card/player stats, ELO Blueprint
+│   ├── stats.py         # CSV I/O, match history, card/player stats, ELO Blueprint
+│   ├── elo.py           # ELO calculator — exports calculate_elo, OUTPUT_CSV, INPUT_CSV
+│   └── ai_draft.py      # AI draft logic — Ollama integration and card stats reader
 │
 ├── frontend/
 │   ├── frontend.py      # Frontend Blueprint — serves /, /player_stats, /card/<n>, /elixir.svg, /stats
@@ -157,6 +159,7 @@ Each row represents one completed match. Columns:
 
 | Column | Values | Meaning |
 |--------|--------|---------|
+| `game_mode` | `"Normal Draft"` or `"AI Draft"` | draft mode used; empty on rows predating this column |
 | `timestamp` | ISO 8601 UTC string e.g. `2026-03-16T14:32:05Z` | when the match was recorded; empty on rows predating this column |
 | `1st_pick` | player name | player who picked first in PICK_SEQUENCE |
 | `2nd_pick` | player name | player who picked second |
@@ -168,11 +171,54 @@ Each row represents one completed match. Columns:
 | `Modifier_1_W` … `Modifier_5_W` | internal modifier string e.g. `"Poison3"` | winner's modifiers in pick order; empty if game not yet matched from CR API |
 | `Modifier_1_L` … `Modifier_5_L` | internal modifier string | loser's modifiers in pick order |
 
-There are 50 `_W` columns, 50 `_L` columns, 50 `_BANNED` columns, and 10 modifier columns — **165 columns total**. Column order mirrors `CHAOS_CARD_LIST` (alphabetical) for the card columns.
+There are 50 `_W` columns, 50 `_L` columns, 50 `_BANNED` columns, and 10 modifier columns — **166 columns total** (including `game_mode`). Column order mirrors `CHAOS_CARD_LIST` (alphabetical) for the card columns.
 
 The `data/` directory and CSV header row are auto-created on the first call to `/api/record_winner`. Existing CSVs with only 155 columns are automatically migrated to 165 columns on the next recorded match.
 
 Both `stats.py` and `elo.py` sort rows by `timestamp` before processing, so concatenated files from multiple machines are always handled in true chronological order. Rows with an empty `timestamp` sort to the top and are treated as the oldest games.
+
+---
+
+## ⚠️ Known Issue: Modifier Data Not Reliable
+
+`data/modifiers_data.csv` is currently **not reliable**. The CR API modifier matching logic in `backend/stats.py` (`_fetch_battle_modifiers`) is incomplete and frequently fails to find the matching battle, leaving modifier columns empty. Do **not** use `modifiers_data.csv` as a data source for AI or analysis until the matching logic is fixed.
+
+---
+
+## AI Draft Mode
+
+The app supports an **AI Draft Mode** where Ollama (a free local LLM runner) drafts both teams automatically. This uses the `backend/ai_draft.py` module and the `/api/ai_action` route in `backend/draft.py`.
+
+### Setup
+
+1. Install Ollama: https://ollama.com
+2. Pull a model: `ollama pull llama3.2`
+3. Install the Python package: `pip install ollama`
+
+### Usage
+
+Click **🤖 AI Draft** on the setup screen. The draft runs automatically — the AI bans and picks for both teams based on historical win rates from `data/output.csv`. You can still record a winner at the end as normal.
+
+### Configuration
+
+Change the model in `config.py`:
+
+```python
+OLLAMA_MODEL = "llama3.2"   # or "qwen2.5:3b" for faster/smaller
+```
+
+### Graceful fallback
+
+If Ollama is not running or `ollama` is not installed, the AI falls back to picking the highest win-rate card available in the pool. The draft always completes.
+
+### Key files
+
+| File | Purpose |
+|------|---------|
+| `backend/ai_draft.py` | `get_card_stats()` reads `output.csv`; `build_prompt()` formats the LLM prompt; `ai_decide()` calls Ollama and returns `(card_id, reason)` |
+| `config.py` | `OLLAMA_MODEL` — change to swap the model |
+| `backend/draft.py` | `POST /api/ai_action` — triggers one AI turn; `ai_mode` and `ai_log` in state |
+| `frontend/templates/index.html` | `startAiDraft()`, `triggerAiIfNeeded()`, `showAiThinking()`, `renderAiLog()` — auto-loop, overlay, and chat panel |
 
 ---
 

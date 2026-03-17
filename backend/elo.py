@@ -19,15 +19,26 @@ ELO rules:
 
 import argparse
 import csv
+import json
 import os
 import sys
 
 # ── Config ────────────────────────────────────────────────────────────────────
-PLAYERS        = ["Kevin", "Jason", "Alex", "Laurent", "Brooks", "Andrew"]
+_ROOT              = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+_PLAYER_TAGS_FILE  = os.path.join(_ROOT, "data", "player_tags.json")
+
+def _load_players():
+    try:
+        with open(_PLAYER_TAGS_FILE, "r", encoding="utf-8") as f:
+            return list(json.load(f).keys())
+    except (FileNotFoundError, json.JSONDecodeError):
+        return []
+
+PLAYERS        = _load_players()
 STARTING_ELO   = 1000
 K_FACTOR       = 32
-INPUT_CSV      = "output.csv"
-OUTPUT_CSV     = "elo.csv"
+INPUT_CSV      = os.path.join(_ROOT, "data", "output.csv")
+OUTPUT_CSV     = os.path.join(_ROOT, "data", "elo.csv")
 
 
 # ── ELO math ──────────────────────────────────────────────────────────────────
@@ -46,7 +57,7 @@ def update_elo(winner_elo: float, loser_elo: float, k: int = K_FACTOR):
 
 
 # ── Main ──────────────────────────────────────────────────────────────────────
-def calculate_elo(input_path: str, output_path: str) -> None:
+def calculate_elo(input_path: str, output_path: str, game_mode_filter: str = None) -> None:
     if not os.path.exists(input_path):
         print(f"❌  Input file not found: {input_path}")
         sys.exit(1)
@@ -65,6 +76,8 @@ def calculate_elo(input_path: str, output_path: str) -> None:
 
         rows = list(reader)
         rows.sort(key=lambda r: r.get("timestamp", ""))
+        if game_mode_filter:
+            rows = [r for r in rows if r.get("game_mode", "").strip() == game_mode_filter]
 
         for game_num, row in enumerate(rows, start=1):
             winner = row["winner"].strip()
