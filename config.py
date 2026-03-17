@@ -29,6 +29,7 @@ CSV_FILE          = os.path.join(_ROOT, "data", "output.csv")
 MODIFIERS_CSV     = os.path.join(_ROOT, "data", "modifiers_data.csv")
 PLAYER_TAGS_FILE  = os.path.join(_ROOT, "data", "player_tags.json")
 ELO_STARTING      = 1000
+OLLAMA_MODEL      = "llama3.2"   # swap to e.g. "qwen2.5:3b" for a faster/smaller model
 
 # ── All 50 official C.H.A.O.S mode cards (March 2026) ─────────────────────────
 CHAOS_CARDS = {

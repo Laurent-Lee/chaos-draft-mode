@@ -245,6 +245,22 @@ main{max-width:1400px;margin:0 auto;padding:1.2rem 1rem}
 .tier-D {color:#9b7fe8}
 .tier-F {color:var(--text-muted)}
 
+/* ── AI mode ── */
+.btn-ai{background:linear-gradient(135deg,#4a9eff,#1a4baa);color:#fff;
+  box-shadow:0 4px 20px rgba(74,158,255,.3);width:100%;padding:.75rem;font-size:.95rem;margin-top:.4rem}
+.btn-ai:hover{filter:brightness(1.15);transform:translateY(-1px)}
+.btn-ai:disabled{opacity:.5;cursor:not-allowed;transform:none;filter:none}
+#pool-area{position:relative}
+#ai-thinking-overlay{position:absolute;inset:0;background:rgba(14,17,26,.82);
+  display:none;align-items:center;justify-content:center;flex-direction:column;
+  gap:.6rem;border-radius:10px;z-index:10}
+#ai-thinking-overlay .ai-spinner{font-size:2rem;animation:spin 1.4s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+#ai-thinking-overlay .ai-label{font-size:.95rem;color:var(--p1);font-weight:700;letter-spacing:.06em}
+.ai-mode-tag{font-size:.7rem;color:var(--p1);opacity:.8;font-weight:600;
+  background:rgba(74,158,255,.12);border:1px solid rgba(74,158,255,.3);
+  border-radius:999px;padding:1px 8px;margin-left:.4rem;vertical-align:middle}
+
 /* ── Sort toggle button ── */
 .sort-toggle{display:flex;gap:.3rem;background:var(--surface2);border:1px solid var(--border);
   border-radius:999px;padding:2px;margin-left:auto}
@@ -288,7 +304,8 @@ main{max-width:1400px;margin:0 auto;padding:1.2rem 1rem}
       <option>Andrew</option>
     </select></div>
   <div id="setup-error"></div>
-  <button class="btn btn-gold" onclick="startDraft()">⚔️ Begin Draft</button>
+  <button class="btn btn-gold" id="btn-start-draft" onclick="startDraft()">⚔️ Begin Draft</button>
+  <button class="btn btn-ai"  id="btn-ai-draft"    onclick="startAiDraft()">🤖 AI Draft</button>
   <div style="display:flex;gap:.5rem;margin-top:.6rem">
     <a href="/stats" class="btn btn-ghost" style="flex:1;padding:.55rem;text-align:center;text-decoration:none;font-size:.82rem">📊 Card Stats</a>
     <a href="/player_stats" class="btn btn-ghost" style="flex:1;padding:.55rem;text-align:center;text-decoration:none;font-size:.82rem">👤 Players</a>
@@ -324,6 +341,10 @@ main{max-width:1400px;margin:0 auto;padding:1.2rem 1rem}
       <div class="avg-elixir">Avg: <span id="p1-avg">—</span></div>
     </div>
     <div id="pool-area">
+      <div id="ai-thinking-overlay">
+        <div class="ai-spinner">🤖</div>
+        <div class="ai-label">AI is thinking…</div>
+      </div>
       <div class="filters">
         <input id="search-box" type="text" placeholder="Search…" oninput="renderPool()">
         <button class="filter-btn active" data-r="All"       onclick="setFilter(this)">All</button>
@@ -625,7 +646,7 @@ async function startDraft(){
     return;
   }
   document.getElementById('setup-error').innerHTML='';
-  const btn = document.querySelector('#setup-screen .btn-gold');
+  const btn = document.getElementById('btn-start-draft');
   btn.textContent='Loading cards…'; btn.disabled=true;
   try{
     const s = await api('/api/start','POST',{p1_name:p1,p2_name:p2});
@@ -637,6 +658,49 @@ async function startDraft(){
   }
 }
 
+async function startAiDraft(){
+  const p1 = document.getElementById('p1-name').value;
+  const p2 = document.getElementById('p2-name').value;
+  if(p1 === p2){
+    document.getElementById('setup-error').innerHTML='<div class="error-msg">❌ Player 1 and Player 2 must be different players.</div>';
+    return;
+  }
+  document.getElementById('setup-error').innerHTML='';
+  const btn = document.getElementById('btn-ai-draft');
+  btn.textContent='Loading…'; btn.disabled=true;
+  try{
+    const s = await api('/api/start','POST',{p1_name:p1,p2_name:p2,ai_mode:true});
+    if(s.error) throw new Error(s.error);
+    applyState(s);
+    triggerAiIfNeeded();
+  }catch(e){
+    document.getElementById('setup-error').innerHTML=`<div class="error-msg">❌ ${e.message}</div>`;
+    btn.textContent='🤖 AI Draft'; btn.disabled=false;
+  }
+}
+
+function showAiThinking(visible){
+  const el = document.getElementById('ai-thinking-overlay');
+  if(el) el.style.display = visible ? 'flex' : 'none';
+}
+
+function triggerAiIfNeeded(){
+  if(!gState || !gState.ai_mode) return;
+  if(gState.phase !== 'ban' && gState.phase !== 'pick') return;
+  showAiThinking(true);
+  setTimeout(async () => {
+    try{
+      const s = await api('/api/ai_action','POST');
+      if(s && s.error){ showAiThinking(false); console.warn('AI action error:', s.error); return; }
+      applyState(s);
+      triggerAiIfNeeded();
+    }catch(e){
+      showAiThinking(false);
+      console.warn('AI action failed:', e);
+    }
+  }, 800);
+}
+
 async function doAction(id){
   const s = await api('/api/action','POST',{card_id:id});
   if(s.error){alert(s.error);return;}
@@ -646,8 +710,12 @@ async function doAction(id){
 async function resetDraft(){
   stopTimer();
   await api('/api/reset','POST');
-  const btn = document.querySelector('#setup-screen .btn-gold');
-  btn.textContent='⚔️ Begin Draft'; btn.disabled=false;
+  document.getElementById('btn-start-draft').textContent='⚔️ Begin Draft';
+  document.getElementById('btn-start-draft').disabled=false;
+  document.getElementById('btn-ai-draft').textContent='🤖 AI Draft';
+  document.getElementById('btn-ai-draft').disabled=false;
+  document.getElementById('timer-block').style.display='flex';
+  showAiThinking(false);
   ['draft-screen','done-screen'].forEach(id=>document.getElementById(id).style.display='none');
   document.getElementById('setup-wrapper').style.display='flex';
   document.getElementById('phase-badge').style.display='none';
@@ -668,6 +736,7 @@ _resizeObs.observe(document.getElementById('sticky-top'));
 
 function applyState(s){
   gState=s;
+  showAiThinking(false);
   document.getElementById('setup-wrapper').style.display='none';
   document.getElementById('done-screen').style.display='none';
   if(s.phase==='done'){
@@ -680,7 +749,14 @@ function applyState(s){
   updateStickyOffsets();
   updateBadge(s.phase);
   updateTurnBar(s);
-  startTimer();
+  const timerBlock = document.getElementById('timer-block');
+  if(s.ai_mode){
+    stopTimer();
+    timerBlock.style.display='none';
+  } else {
+    timerBlock.style.display='flex';
+    startTimer();
+  }
   renderPool();
   renderSidebars(s);
   renderBanned(s);
@@ -698,7 +774,8 @@ function updateTurnBar(s){
   const p1t=`<span class="p1c">${s.p1_name}</span>`;
   const p2t=`<span class="p2c">${s.p2_name}</span>`;
   const act=s.phase==='ban'?'bans a card':'picks a card';
-  document.getElementById('turn-text').innerHTML=`${s.current_player===1?p1t:p2t} ${act}`;
+  const aiTag=s.ai_mode?'<span class="ai-mode-tag">🤖 AI Mode</span>':'';
+  document.getElementById('turn-text').innerHTML=`${s.current_player===1?p1t:p2t} ${act}${aiTag}`;
   const d=document.getElementById('progress-dots'); d.innerHTML='';
   seq.forEach((p,i)=>{
     const el=document.createElement('div');

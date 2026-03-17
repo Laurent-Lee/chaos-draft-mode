@@ -60,7 +60,7 @@ CR_API_TOKEN=your_token_here
 ### 3. Install dependencies
 
 ```bash
-pip install flask flask-cors requests python-dotenv
+pip install flask flask-cors requests python-dotenv ollama
 ```
 
 ### 4. Add external files
@@ -88,6 +88,20 @@ python main.py
 
 The app will open automatically at http://127.0.0.1:5050. Press `Ctrl+C` to stop.
 
+## AI Draft Mode
+
+Click **🤖 AI Draft** on the setup screen to let Ollama draft both teams automatically. The AI bans and picks based on historical card win rates from `data/output.csv`. You can still record a winner at the end.
+
+**Requirements:**
+1. Install Ollama: https://ollama.com
+2. Pull a model: `ollama pull llama3.2`
+
+If Ollama is not running, the AI falls back to picking the highest win-rate card — the draft always completes.
+
+To change the model, edit `OLLAMA_MODEL` in `config.py`.
+
+> **Note:** `data/modifiers_data.csv` is not currently reliable — the CR API modifier matching is incomplete. Do not use it as a data source until the matching logic is fixed.
+
 ## Draft Format
 
 - **Ban phase** — P1 bans 1 → P2 bans 2 → P1 bans 1 (2 bans each)
@@ -99,10 +113,11 @@ The app will open automatically at http://127.0.0.1:5050. Press `Ctrl+C` to stop
 
 | Method | Route | Description |
 |--------|-------|-------------|
-| `POST` | `/api/start` | Start a new draft |
+| `POST` | `/api/start` | Start a new draft (`ai_mode: true` for AI draft) |
 | `GET` | `/api/state` | Get current draft state |
 | `POST` | `/api/action` | Ban or pick a card |
 | `POST` | `/api/reset` | Reset to setup screen |
+| `POST` | `/api/ai_action` | Trigger one AI ban/pick (used automatically by AI Draft mode) |
 | `POST` | `/api/record_winner` | Save match result to CSV |
 | `GET` | `/api/match_history` | Recent games (all players) with card thumbnails |
 | `GET` | `/api/match_history/<name>` | Recent games for a specific player |

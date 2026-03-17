@@ -176,6 +176,49 @@ Both `stats.py` and `elo.py` sort rows by `timestamp` before processing, so conc
 
 ---
 
+## ⚠️ Known Issue: Modifier Data Not Reliable
+
+`data/modifiers_data.csv` is currently **not reliable**. The CR API modifier matching logic in `backend/stats.py` (`_fetch_battle_modifiers`) is incomplete and frequently fails to find the matching battle, leaving modifier columns empty. Do **not** use `modifiers_data.csv` as a data source for AI or analysis until the matching logic is fixed.
+
+---
+
+## AI Draft Mode
+
+The app supports an **AI Draft Mode** where Ollama (a free local LLM runner) drafts both teams automatically. This uses the `backend/ai_draft.py` module and the `/api/ai_action` route in `backend/draft.py`.
+
+### Setup
+
+1. Install Ollama: https://ollama.com
+2. Pull a model: `ollama pull llama3.2`
+3. Install the Python package: `pip install ollama`
+
+### Usage
+
+Click **🤖 AI Draft** on the setup screen. The draft runs automatically — the AI bans and picks for both teams based on historical win rates from `data/output.csv`. You can still record a winner at the end as normal.
+
+### Configuration
+
+Change the model in `config.py`:
+
+```python
+OLLAMA_MODEL = "llama3.2"   # or "qwen2.5:3b" for faster/smaller
+```
+
+### Graceful fallback
+
+If Ollama is not running or `ollama` is not installed, the AI falls back to picking the highest win-rate card available in the pool. The draft always completes.
+
+### Key files
+
+| File | Purpose |
+|------|---------|
+| `backend/ai_draft.py` | `get_card_stats()` reads `output.csv`; `build_prompt()` formats the LLM prompt; `ai_decide()` calls Ollama and returns a card ID |
+| `config.py` | `OLLAMA_MODEL` — change to swap the model |
+| `backend/draft.py` | `POST /api/ai_action` — triggers one AI turn; `ai_mode` flag in state |
+| `frontend/templates/index.html` | `startAiDraft()`, `triggerAiIfNeeded()`, `showAiThinking()` — the auto-loop and overlay |
+
+---
+
 ## Modifier Data (`data/modifiers_data.csv`)
 
 Aggregated modifier statistics, rewritten after every match (like `card_data.csv`).
