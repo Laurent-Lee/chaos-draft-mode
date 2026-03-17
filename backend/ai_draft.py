@@ -57,20 +57,35 @@ def _select_ban_context(pool_names, overall_ratings, n=12):
     return sorted(pool_names, key=rating_key, reverse=True)[:n]
 
 
-def _select_pick_context(pool_names, opp_picks, matchup_stats, overall_ratings):
+def _select_pick_context(pool_names, opp_picks, matchup_stats, overall_ratings,
+                         exclude_types=None):
     """
     Return a focused subset of pool_names for the pick phase.
 
     Selection logic:
-      1. Top 10 pool cards by overall_rating (highest first).
+      1. Top 10 pool cards by overall_rating (highest first), excluding any
+         card whose type is in exclude_types (already-filled mandatory slots).
       2. For each card in opp_picks, add the pool card with the best
-         matchup_rating against it (as a counter option).
+         matchup_rating against it (as a counter option), also honouring
+         exclude_types.
       3. Deduplicate; order: top-rated first, then counter-only additions.
+
+    Args:
+        exclude_types: set of type strings to ignore (e.g. {"Tower", "Spells"}).
+                       A type is only excluded when it has reached its target
+                       count in _TARGET_COMPOSITION — caller is responsible for
+                       computing this correctly (see ai_decide).
     """
+    excluded = exclude_types or set()
+
+    def is_allowed(name):
+        return type_lookup.get(name) not in excluded
+
     def rating_key(name):
         return overall_ratings.get(name) or 0.0
 
-    sorted_pool = sorted(pool_names, key=rating_key, reverse=True)
+    eligible    = [n for n in pool_names if is_allowed(n)]
+    sorted_pool = sorted(eligible, key=rating_key, reverse=True)
     top10       = sorted_pool[:10]
 
     # Best counter per opponent pick (by matchup_rating, fall back to win_rate)
@@ -79,7 +94,7 @@ def _select_pick_context(pool_names, opp_picks, matchup_stats, overall_ratings):
     for opp in opp_picks:
         best_card   = None
         best_rating = -1.0
-        for card in pool_names:
+        for card in eligible:
             mu = matchup_stats.get(card, {}).get(opp)
             if mu is None:
                 continue
@@ -244,8 +259,69 @@ The card name MUST exactly match one of the names listed above."""
     return prompt
 
 
+_TARGET_COMPOSITION = {"Tanks": 1, "Spells": 2, "Ranged": 1, "Melee": 1, "Tower": 1}
+
+
+def _format_deck_composition(my_picks):
+    """
+    Return a structured summary of the AI's current deck including explicit
+    NEEDS / COVERED lines so small LLMs don't have to infer them.
+
+    Example output:
+      Current deck (3 cards): Giant [Tanks], Fireball [Spells], Mortar [Tower]
+      Type tally  — Tanks: 1, Spells: 1, Tower: 1
+      Still needs — Spells: 1 more, Ranged: 1, Melee: 1
+      Already covered — Tanks (1/1), Tower (1/1)
+      NOTE: Do NOT pick another Tower or Tanks — those slots are already filled.
+    """
+    if not my_picks:
+        needs = ", ".join(
+            f"{t}: {n}" for t, n in _TARGET_COMPOSITION.items()
+        )
+        return f"Current deck: none yet\n  Still needs — {needs}"
+
+    entries     = [f"{n} [{type_lookup.get(n, '?')}]" for n in my_picks]
+    type_counts: dict = {}
+    for n in my_picks:
+        t = type_lookup.get(n, "?")
+        type_counts[t] = type_counts.get(t, 0) + 1
+
+    tally = ", ".join(f"{t}: {c}" for t, c in sorted(type_counts.items()))
+
+    needs_parts    = []
+    covered_parts  = []
+    avoid_types    = []
+    for t, target in _TARGET_COMPOSITION.items():
+        have = type_counts.get(t, 0)
+        if have < target:
+            still = target - have
+            needs_parts.append(f"{t}: {still} more" if have > 0 else f"{t}: {still}")
+        else:
+            covered_parts.append(f"{t} ({have}/{target})")
+            avoid_types.append(t)
+
+    needs_str   = ", ".join(needs_parts)   if needs_parts   else "nothing — target met, pick best counter or highest-rated"
+    covered_str = ", ".join(covered_parts) if covered_parts else "none yet"
+
+    lines = [
+        f"Current deck ({len(my_picks)} card{'s' if len(my_picks) != 1 else ''}): {', '.join(entries)}",
+        f"  Type tally    — {tally}",
+        f"  Still needs   — {needs_str}",
+        f"  Already covered — {covered_str}",
+    ]
+    if avoid_types:
+        avoid_str = " or ".join(avoid_types)
+        lines.append(
+            f"  Tip: A second {avoid_str} is rarely worth it — "
+            f"{'those slots are' if len(avoid_types) > 1 else 'that slot is'} already covered. "
+            f"Prefer filling the types listed under 'Still needs' unless the counter value is exceptional."
+        )
+    return "\n".join(lines)
+
+
 def build_pick_prompt(pool_names, my_picks, opp_picks, card_stats,
-                      type_deltas=None, overall_ratings=None, matchup_stats=None):
+                      type_deltas=None, overall_ratings=None, matchup_stats=None,
+                      exclude_types=None):
     """
     Build the LLM prompt for a pick decision.
 
@@ -265,7 +341,8 @@ def build_pick_prompt(pool_names, my_picks, opp_picks, card_stats,
         str prompt
     """
     context_names = _select_pick_context(
-        pool_names, opp_picks, matchup_stats or {}, overall_ratings or {}
+        pool_names, opp_picks, matchup_stats or {}, overall_ratings or {},
+        exclude_types=exclude_types,
     )
 
     card_list       = _format_card_list(
@@ -273,8 +350,8 @@ def build_pick_prompt(pool_names, my_picks, opp_picks, card_stats,
         type_deltas=type_deltas, overall_ratings=overall_ratings,
     )
     matchup_section = _format_counter_analysis(context_names, opp_picks, matchup_stats)
-    my_str          = ", ".join(my_picks)  if my_picks  else "none yet"
-    opp_str         = ", ".join(opp_picks) if opp_picks else "none yet"
+    deck_composition = _format_deck_composition(my_picks)
+    opp_str          = ", ".join(opp_picks) if opp_picks else "none yet"
 
     task = (
         "Your task: choose ONE card to PICK for your deck.\n"
@@ -282,10 +359,12 @@ def build_pick_prompt(pool_names, my_picks, opp_picks, card_stats,
         "  1. COUNTER the opponent — prioritise cards with a high counter score against\n"
         "     the opponent's current picks (see counter-pick analysis below).\n"
         "  2. Build a balanced deck — aim for: 1× Tank, 2× Spells, 1× Ranged, 1× Melee,\n"
-        "     1× Tower. The remaining 2 cards can be any type except a second Tank.\n"
+        "     1× Tower. The remaining 2 cards should fill missing types.\n"
+        "     A second Tank is rarely correct — only pick one if the counter value is\n"
+        "     exceptional AND you already have your Spell, Ranged, Melee, and Tower slots\n"
+        "     covered. In nearly all cases, prefer a card that fills a missing type.\n"
         "  3. Use overall rating as a tiebreaker when counter data is limited.\n"
         "Do NOT attempt to pick a card not listed in the pool.\n"
-        f"Your current picks so far: {my_str}\n"
         f"Opponent's current picks so far: {opp_str}"
         f"{matchup_section}"
     )
@@ -296,9 +375,12 @@ Game context:
 - 50-card CHAOS pool. Players first ban 4 cards total (2 each), then snake-draft 16 picks (8 per player).
 - CHAOS mode uses modifiers that amplify certain card types each game.
 - A strong deck consists of: 1× Tank, 2× Spells, 1× Ranged, 1× Melee, 1× Tower.
-  The remaining 2 cards can be any type except a second Tank.
-- Each card's type is shown in [brackets]. Use this to track your deck balance across picks.
+  Fill remaining slots with missing types; a second Tank is only justified in rare cases.
+- Each card's type is shown in [brackets] in the pool list below.
 - Historical win rates and ratings come from real games played with this card pool.
+
+Your current deck:
+{deck_composition}
 
 Available cards in the pool (sorted by overall rating, highest first):
 {card_list}
@@ -405,12 +487,46 @@ def ai_decide(phase, pool, my_picks, opp_picks, card_stats, model, matchup_stats
         )
         fallback = lambda: _best_ban_card(pool, overall_ratings)
     else:
+        # Hard-enforce mandatory composition for picks 1-6.
+        # Until all required types are filled, restrict the pool to cards
+        # that satisfy a still-needed type.  Picks 7-8 are unrestricted.
+        type_counts = {}
+        for n in my_names:
+            t = type_lookup.get(n)
+            if t:
+                type_counts[t] = type_counts.get(t, 0) + 1
+
+        needed_types = {
+            t for t, target in _TARGET_COMPOSITION.items()
+            if type_counts.get(t, 0) < target
+        }
+        # Types at or above their target — exclude from context ranking so the
+        # LLM's top-10 and counter lists don't surface cards the deck doesn't need.
+        excluded_types = {
+            t for t, target in _TARGET_COMPOSITION.items()
+            if type_counts.get(t, 0) >= target
+        }
+
+        if needed_types:
+            # Restrict pool to cards that fill a needed type
+            restricted_pool       = [c for c in pool       if type_lookup.get(c["name"]) in needed_types]
+            restricted_pool_names = [n for n in pool_names if type_lookup.get(n)         in needed_types]
+            # Fall back to full pool if no matching cards exist (e.g. all Towers banned)
+            if not restricted_pool:
+                restricted_pool       = pool
+                restricted_pool_names = pool_names
+                excluded_types        = set()   # can't exclude if pool is unrestricted
+        else:
+            restricted_pool       = pool
+            restricted_pool_names = pool_names
+
         prompt   = build_pick_prompt(
-            pool_names, my_names, opp_names, card_stats,
+            restricted_pool_names, my_names, opp_names, card_stats,
             type_deltas=type_deltas, overall_ratings=overall_ratings,
             matchup_stats=matchup_stats,
+            exclude_types=excluded_types,
         )
-        fallback = lambda: _best_pick_card(pool, card_stats)
+        fallback = lambda: _best_pick_card(restricted_pool, card_stats)
 
     try:
         import ollama  # lazy import — missing package falls through to fallback
@@ -425,9 +541,11 @@ def ai_decide(phase, pool, my_picks, opp_picks, card_stats, model, matchup_stats
         chosen_name = data.get("card", "")
         reason      = data.get("reason", "")
 
-        matched = _fuzzy_match(chosen_name, pool_names)
+        valid_names = restricted_pool_names if phase == "pick" else pool_names
+        valid_pool  = restricted_pool       if phase == "pick" else pool
+        matched = _fuzzy_match(chosen_name, valid_names)
         if matched:
-            card = next((c for c in pool if c["name"] == matched), None)
+            card = next((c for c in valid_pool if c["name"] == matched), None)
             if card:
                 print(f"[ai_draft] {phase.upper()}: chose '{matched}' (reason: {reason})")
                 return card["id"], reason

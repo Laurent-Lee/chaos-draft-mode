@@ -21,12 +21,14 @@ cr_draft/
 ├── .env                 # CR API token (never commit this)
 │
 ├── backend/
-│   ├── cards.py         # CR API fetch + deck link generation
-│   ├── draft.py         # Global state dict, draft logic, draft API Blueprint
-│   ├── modifiers.py     # Modifier name mapping and modifiers_data.csv aggregation
-│   ├── stats.py         # CSV I/O, match history, card/player stats, ELO Blueprint
-│   ├── elo.py           # ELO calculator — exports calculate_elo, OUTPUT_CSV, INPUT_CSV
-│   └── ai_draft.py      # AI draft logic — Ollama integration and card stats reader
+│   ├── cards.py          # CR API fetch + deck link generation
+│   ├── draft.py          # Global state dict, draft logic, draft API Blueprint
+│   ├── modifiers.py      # Modifier name mapping and modifiers_data.csv aggregation
+│   ├── stats.py          # CSV I/O, match history, card/player stats, ELO Blueprint
+│   ├── elo.py            # ELO calculator — exports calculate_elo, OUTPUT_CSV, INPUT_CSV
+│   ├── ai_draft.py       # AI draft logic — Ollama integration, context filtering, prompt builder
+│   ├── get_card_data.py  # Card/matchup stat readers — get_card_win_rates, get_matchup_win_rates, get_card_type_relative_win_rates, get_overall_ratings
+│   └── tier_calculator.py # Bayesian rating calculator — appends card_1_overall_rating and card_1_matchup_rating to card_data.csv
 │
 ├── frontend/
 │   ├── frontend.py      # Frontend Blueprint — serves /, /player_stats, /card/<n>, /elixir.svg, /stats
@@ -44,7 +46,7 @@ cr_draft/
 └── data/
     ├── output.csv             # Match history — 165 columns, auto-created on first recorded game
     ├── modifiers_data.csv     # Modifier aggregate stats — rewritten after each match
-    ├── card_data.csv          # Card matchup matrix — 2500 rows, rewritten after each match
+    ├── card_data.csv          # Card matchup matrix — 2500 rows + 2 rating columns, rewritten after each match
     ├── elo.csv                # ELO ratings — written by elo.py after each match
     ├── player_tags.json       # App player name → CR player tag (#TAG) mapping
     └── backfill_modifiers.py  # One-off script: populate modifier data for old output.csv rows
@@ -215,10 +217,46 @@ If Ollama is not running or `ollama` is not installed, the AI falls back to pick
 
 | File | Purpose |
 |------|---------|
-| `backend/ai_draft.py` | `get_card_stats()` reads `output.csv`; `build_prompt()` formats the LLM prompt; `ai_decide()` calls Ollama and returns `(card_id, reason)` |
+| `backend/ai_draft.py` | `ai_decide()` calls Ollama and returns `(card_id, reason)`; `build_prompt()` formats the LLM prompt with filtered context; `_select_ai_context()` filters the card pool to a high-signal subset |
+| `backend/get_card_data.py` | `get_card_win_rates()`, `get_matchup_win_rates()`, `get_card_type_relative_win_rates()`, `get_overall_ratings()` — all card/matchup stat readers |
+| `backend/tier_calculator.py` | `calculate_ratings(card_data_csv, output_csv)` — appends `card_1_overall_rating` and `card_1_matchup_rating` to `card_data.csv` using Bayesian formula |
 | `config.py` | `OLLAMA_MODEL` — change to swap the model |
 | `backend/draft.py` | `POST /api/ai_action` — triggers one AI turn; `ai_mode` and `ai_log` in state |
 | `frontend/templates/index.html` | `startAiDraft()`, `triggerAiIfNeeded()`, `showAiThinking()`, `renderAiLog()` — auto-loop, overlay, and chat panel |
+
+### AI context filtering
+
+`_select_ai_context()` in `ai_draft.py` limits which pool cards are shown to the LLM each turn:
+1. **Top counter per opponent pick** — for each card the opponent has picked, find the pool card with the highest `matchup_rating` against it
+2. **Top 10 by overall rating** — remaining pool cards sorted by `overall_ratings` descending
+
+This keeps the LLM focused on relevant options rather than all 50 pool cards, reducing hallucinations.
+
+### Bayesian rating formula
+
+```
+rating = ((n + 3) / (n + 4))^2 * win_rate
+```
+- `n == 0` → `win_rate = 1.0` (optimistic prior → `0.5625`)
+- `n > 0` → actual win rate
+
+`card_1_overall_rating`: n = card's total games across all matches; win rate = card's overall win rate
+`card_1_matchup_rating`: n = games played for the specific (card_1, card_2) pair; win rate = matchup win rate
+
+---
+
+## Card Matchup Data (`data/card_data.csv`)
+
+2500 rows (50×50 card pairs). Rewritten by `_write_matchups_csv()` in `stats.py` after every recorded match. `tier_calculator.py` then appends two Bayesian rating columns.
+
+| Column | Description |
+|--------|-------------|
+| `card_1` / `card_2` | Card names for this pair |
+| `Games Played` | Head-to-head games where both cards appeared on opposing sides |
+| `card_1 Wins` / `card_2 Wins` | Win counts |
+| `card_1_matchup_winrate` | `card_1 Wins / Games Played`; empty if 0 games |
+| `card_1_overall_rating` | Bayesian-adjusted overall win rate for card_1 (same value on every row for the same card_1) |
+| `card_1_matchup_rating` | Bayesian-adjusted matchup win rate for this specific (card_1, card_2) pair |
 
 ---
 

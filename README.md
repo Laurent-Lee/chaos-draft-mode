@@ -15,9 +15,11 @@ cr_draft/
 │   ├── cards.py         # CR API fetching and deck link generation
 │   ├── draft.py         # Draft state, game logic, and draft API routes
 │   ├── modifiers.py     # Modifier name mapping and modifiers_data.csv aggregation
-│   ├── stats.py         # CSV recording, match history, card/player stats, ELO
-│   ├── elo.py           # ELO calculator — exports calculate_elo, OUTPUT_CSV, INPUT_CSV
-│   └── ai_draft.py      # AI draft logic — Ollama integration and card stats reader
+│   ├── stats.py          # CSV recording, match history, card/player stats, ELO
+│   ├── elo.py            # ELO calculator — exports calculate_elo, OUTPUT_CSV, INPUT_CSV
+│   ├── ai_draft.py       # AI draft logic — Ollama integration, context filtering, prompt builder
+│   ├── get_card_data.py  # Card/matchup stat readers used by AI draft
+│   └── tier_calculator.py # Bayesian rating calculator — appends ratings to card_data.csv
 │
 ├── frontend/
 │   ├── frontend.py      # Blueprint serving the HTML frontend and stats page
@@ -35,7 +37,7 @@ cr_draft/
 └── data/
     ├── output.csv             # Match history — 166 columns (auto-created on first game)
     ├── modifiers_data.csv     # Modifier aggregate stats — auto-updated after each match
-    ├── card_data.csv          # Card matchup matrix — auto-updated after each match
+    ├── card_data.csv          # Card matchup matrix + Bayesian ratings — auto-updated after each match
     ├── elo.csv                # ELO ratings — written by elo.py after each match
     ├── player_tags.json       # App player name → CR player tag mapping
     └── backfill_modifiers.py  # One-off script to populate modifier data for old rows
@@ -91,7 +93,13 @@ The app will open automatically at http://127.0.0.1:5050. Press `Ctrl+C` to stop
 
 ## AI Draft Mode
 
-Click **🤖 AI Draft** on the setup screen to let Ollama draft both teams automatically. The AI bans and picks based on historical card win rates from `data/output.csv`. You can still record a winner at the end.
+Click **🤖 AI Draft** on the setup screen to let Ollama draft both teams automatically. The AI bans and picks using:
+- **Bayesian-adjusted overall ratings** from `data/card_data.csv` (computed by `tier_calculator.py` after each game)
+- **Head-to-head matchup ratings** to select counters to opponent picks
+- **Type-relative win rate deltas** and local tier labels to correct for the LLM's own Clash Royale priors
+- **Context filtering** — only the top-10 rated cards plus best counters are shown each turn (not all 50)
+
+You can still record a winner at the end.
 
 **Requirements:**
 1. Install Ollama: https://ollama.com
