@@ -25,6 +25,7 @@ def _bayesian_rating(n, win_rate):
     """
     if n == 0:
         win_rate = 1.0
+    win_rate = max(win_rate, 0.35)
     return round(((n + 3) / (n + 4)) ** 2 * win_rate, 4)
 
 
