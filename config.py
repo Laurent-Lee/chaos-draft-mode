@@ -4,6 +4,7 @@ config.py — All constants and configuration for the CR Draft app.
 
 import json
 import os
+import re
 from dotenv import load_dotenv
 
 # Absolute path to the project root (directory containing this file)
@@ -57,11 +58,24 @@ CHAOS_CARDS = {
 # Stable sorted list of all 50 CHAOS cards for consistent CSV column ordering
 CHAOS_CARD_LIST = sorted(CHAOS_CARDS)
 
-# ── Tier data (used for random pre-bans) ──────────────────────────────────────
-TIER_CARDS = {
-    "S+": ["Goblin Demolisher", "Electro Wizard", "Barbarian Hut", "Furnace"],
-    "S":  ["Golem", "Goblin Barrel", "X-Bow", "Baby Dragon", "Vines", "Goblin Hut"],
-}
+# ── Tier data (parsed from static/card_tiers.js — single source of truth) ─────
+def _load_tier_cards():
+    """Read the tiers object out of card_tiers.js and return it as a plain dict."""
+    tiers_js = os.path.join(_ROOT, "static", "card_tiers.js")
+    try:
+        with open(tiers_js, encoding="utf-8") as f:
+            content = f.read()
+        match = re.search(r'const tiers\s*=\s*(\{[^;]+\})\s*;', content, re.DOTALL)
+        if match:
+            return json.loads(match.group(1))
+    except Exception as e:
+        print(f"[config] Warning: could not parse card_tiers.js ({e}); using fallback tiers.")
+    return {
+        "S+": ["Goblin Demolisher", "Electro Wizard", "Barbarian Hut", "Furnace"],
+        "S":  ["Golem", "Goblin Barrel", "Baby Dragon", "Vines", "Goblin Hut"],
+    }
+
+TIER_CARDS = _load_tier_cards()
 
 # ── Card type mapping ─────────────────────────────────────────────────────────
 TYPING_OF_CHAOS_CARD = {

@@ -356,7 +356,7 @@ Fetches a single endpoint `GET /api/card_detail/<card_name>` which returns:
 
 The page applies a tier-keyed colour theme (CSS `--tier-color` variable) so each card's profile has a distinct accent colour. The matchup table defaults to a grouped view — Favourable (≥55% WR) / Even (45–55%) / Unfavourable (<45%) — with a toggle to show unseen matchups.
 
-**Important:** `card_detail.html` inlines its own copies of `CARD_TIER` and `CARD_TYPE` because it is a Jinja2 template and cannot load `/static/` JS files at parse time. If you update card tiers or types, update `card_tiers.js`, `card_types.js`, **and** the inline copies in `card_detail.html`.
+**Important:** `card_tiers.js` and `card_types.js` are the single source of truth for tier and type data. All pages (`index.html`, `player_stats.html`, `stats.html`, `card_detail.html`) load them via `<script src="/static/card_tiers.js">`. `config.py` parses `card_tiers.js` at startup — no inline copies exist anywhere.
 
 ### `stats.html` — Card stats overview (static file)
 Served at `/stats` directly from `frontend/stats.html` (not a Jinja2 template). Clicking any card row navigates to that card's `/card/<n>` detail page.
@@ -428,5 +428,5 @@ Alternatively, use the **⬇ Export card_data.csv** button on the `/stats` page 
 - **Don't add a second global state dict.** All draft state flows through `state` in `backend/draft.py`. `stats.py` imports it directly.
 - **Don't add a templating engine or build step** to the frontend without significant justification — the single-file approach is intentional for portability.
 - **Don't inline tier or type data back into `index.html`.** They live in `static/card_tiers.js` and `static/card_types.js` precisely so they can be edited without touching the main template. `card_detail.html` is the only justified exception because it cannot load static JS files as a Jinja2 template.
-- **Don't update tier or type data in only one place.** Changes must be made in `card_tiers.js` / `card_types.js` **and** the inline copies in `card_detail.html`.
+- **Don't re-introduce inline tier/type data anywhere.** Edit only `card_tiers.js` / `card_types.js` — all pages and `config.py` read from those files automatically.
 - **Don't commit `.env`.** It contains the CR API token and a whitelisted IP.

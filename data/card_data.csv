@@ -1,14 +1,14 @@
 card_1,card_2,card_1_W,card_1_L,Games Played
 Baby Dragon,Barbarian Hut,0,0,0
 Baby Dragon,Berserker,1,0,1
-Baby Dragon,Dart Goblin,1,0,1
-Baby Dragon,Electro Spirit,0,3,3
-Baby Dragon,Electro Wizard,0,1,1
+Baby Dragon,Dart Goblin,2,0,2
+Baby Dragon,Electro Spirit,1,4,5
+Baby Dragon,Electro Wizard,1,1,2
 Baby Dragon,Elixir Golem,0,0,0
 Baby Dragon,Executioner,0,0,0
-Baby Dragon,Fireball,2,0,2
+Baby Dragon,Fireball,3,0,3
 Baby Dragon,Fisherman,0,0,0
-Baby Dragon,Flying Machine,1,0,1
+Baby Dragon,Flying Machine,1,1,2
 Baby Dragon,Furnace,0,0,0
 Baby Dragon,Giant,0,0,0
 Baby Dragon,Giant Snowball,0,0,0
@@ -16,48 +16,48 @@ Baby Dragon,Goblin Barrel,1,1,2
 Baby Dragon,Goblin Demolisher,0,1,1
 Baby Dragon,Goblin Drill,0,0,0
 Baby Dragon,Goblin Giant,0,0,0
-Baby Dragon,Goblin Hut,0,2,2
-Baby Dragon,Golem,1,2,3
-Baby Dragon,Graveyard,0,0,0
+Baby Dragon,Goblin Hut,2,3,5
+Baby Dragon,Golem,3,2,5
+Baby Dragon,Graveyard,0,1,1
 Baby Dragon,Hunter,0,0,0
-Baby Dragon,Ice Spirit,1,1,2
+Baby Dragon,Ice Spirit,2,2,4
 Baby Dragon,Ice Wizard,0,0,0
 Baby Dragon,Inferno Tower,0,0,0
-Baby Dragon,Knight,0,1,1
+Baby Dragon,Knight,1,2,3
 Baby Dragon,Lava Hound,0,0,0
 Baby Dragon,Mega Knight,0,0,0
 Baby Dragon,Mortar,0,0,0
 Baby Dragon,Mother Witch,0,0,0
-Baby Dragon,Musketeer,2,3,5
+Baby Dragon,Musketeer,3,3,6
 Baby Dragon,Night Witch,0,0,0
 Baby Dragon,P.E.K.K.A,0,0,0
 Baby Dragon,Poison,1,2,3
 Baby Dragon,Princess,0,0,0
 Baby Dragon,Rage,0,0,0
 Baby Dragon,Ram Rider,0,0,0
-Baby Dragon,Rascals,1,1,2
+Baby Dragon,Rascals,3,1,4
 Baby Dragon,Rocket,0,0,0
 Baby Dragon,Royal Delivery,0,0,0
 Baby Dragon,Royal Giant,1,0,1
 Baby Dragon,Rune Giant,0,0,0
 Baby Dragon,Suspicious Bush,2,1,3
-Baby Dragon,The Log,1,3,4
-Baby Dragon,Tombstone,0,0,0
-Baby Dragon,Vines,0,2,2
-Baby Dragon,Witch,0,0,0
+Baby Dragon,The Log,1,4,5
+Baby Dragon,Tombstone,1,1,2
+Baby Dragon,Vines,1,2,3
+Baby Dragon,Witch,1,0,1
 Baby Dragon,Wizard,0,0,0
 Baby Dragon,X-Bow,0,0,0
 Baby Dragon,Zappies,0,0,0
 Barbarian Hut,Baby Dragon,0,0,0
 Barbarian Hut,Berserker,0,0,0
 Barbarian Hut,Dart Goblin,0,0,0
-Barbarian Hut,Electro Spirit,1,0,1
+Barbarian Hut,Electro Spirit,1,1,2
 Barbarian Hut,Electro Wizard,1,1,2
 Barbarian Hut,Elixir Golem,0,0,0
 Barbarian Hut,Executioner,0,0,0
 Barbarian Hut,Fireball,2,0,2
 Barbarian Hut,Fisherman,0,0,0
-Barbarian Hut,Flying Machine,0,0,0
+Barbarian Hut,Flying Machine,0,1,1
 Barbarian Hut,Furnace,0,0,0
 Barbarian Hut,Giant,0,0,0
 Barbarian Hut,Giant Snowball,0,0,0
@@ -65,14 +65,14 @@ Barbarian Hut,Goblin Barrel,2,0,2
 Barbarian Hut,Goblin Demolisher,1,0,1
 Barbarian Hut,Goblin Drill,0,0,0
 Barbarian Hut,Goblin Giant,0,0,0
-Barbarian Hut,Goblin Hut,0,1,1
+Barbarian Hut,Goblin Hut,0,2,2
 Barbarian Hut,Golem,1,0,1
-Barbarian Hut,Graveyard,0,0,0
+Barbarian Hut,Graveyard,0,1,1
 Barbarian Hut,Hunter,1,0,1
-Barbarian Hut,Ice Spirit,1,1,2
+Barbarian Hut,Ice Spirit,1,2,3
 Barbarian Hut,Ice Wizard,0,0,0
 Barbarian Hut,Inferno Tower,0,0,0
-Barbarian Hut,Knight,1,0,1
+Barbarian Hut,Knight,1,1,2
 Barbarian Hut,Lava Hound,0,0,0
 Barbarian Hut,Mega Knight,0,0,0
 Barbarian Hut,Mortar,1,0,1
@@ -90,8 +90,8 @@ Barbarian Hut,Royal Delivery,0,0,0
 Barbarian Hut,Royal Giant,0,0,0
 Barbarian Hut,Rune Giant,0,0,0
 Barbarian Hut,Suspicious Bush,0,1,1
-Barbarian Hut,The Log,1,1,2
-Barbarian Hut,Tombstone,1,0,1
+Barbarian Hut,The Log,1,2,3
+Barbarian Hut,Tombstone,1,1,2
 Barbarian Hut,Vines,0,0,0
 Barbarian Hut,Witch,0,0,0
 Barbarian Hut,Wizard,1,0,1
@@ -146,16 +146,16 @@ Berserker,Witch,0,0,0
 Berserker,Wizard,0,0,0
 Berserker,X-Bow,0,0,0
 Berserker,Zappies,0,0,0
-Dart Goblin,Baby Dragon,0,1,1
+Dart Goblin,Baby Dragon,0,2,2
 Dart Goblin,Barbarian Hut,0,0,0
 Dart Goblin,Berserker,0,0,0
-Dart Goblin,Electro Spirit,1,3,4
+Dart Goblin,Electro Spirit,1,4,5
 Dart Goblin,Electro Wizard,0,2,2
 Dart Goblin,Elixir Golem,0,0,0
 Dart Goblin,Executioner,0,0,0
 Dart Goblin,Fireball,2,1,3
 Dart Goblin,Fisherman,0,0,0
-Dart Goblin,Flying Machine,1,1,2
+Dart Goblin,Flying Machine,1,2,3
 Dart Goblin,Furnace,1,0,1
 Dart Goblin,Giant,0,0,0
 Dart Goblin,Giant Snowball,0,0,0
@@ -165,20 +165,20 @@ Dart Goblin,Goblin Drill,0,0,0
 Dart Goblin,Goblin Giant,0,0,0
 Dart Goblin,Goblin Hut,1,3,4
 Dart Goblin,Golem,0,1,1
-Dart Goblin,Graveyard,0,1,1
+Dart Goblin,Graveyard,0,2,2
 Dart Goblin,Hunter,0,0,0
 Dart Goblin,Ice Spirit,1,1,2
 Dart Goblin,Ice Wizard,0,0,0
 Dart Goblin,Inferno Tower,0,0,0
-Dart Goblin,Knight,1,3,4
+Dart Goblin,Knight,1,4,5
 Dart Goblin,Lava Hound,0,0,0
 Dart Goblin,Mega Knight,0,0,0
 Dart Goblin,Mortar,0,0,0
 Dart Goblin,Mother Witch,0,0,0
-Dart Goblin,Musketeer,2,4,6
+Dart Goblin,Musketeer,2,5,7
 Dart Goblin,Night Witch,0,0,0
 Dart Goblin,P.E.K.K.A,1,0,1
-Dart Goblin,Poison,1,3,4
+Dart Goblin,Poison,1,4,5
 Dart Goblin,Princess,0,0,0
 Dart Goblin,Rage,0,0,0
 Dart Goblin,Ram Rider,0,0,0
@@ -188,72 +188,72 @@ Dart Goblin,Royal Delivery,1,1,2
 Dart Goblin,Royal Giant,0,0,0
 Dart Goblin,Rune Giant,0,0,0
 Dart Goblin,Suspicious Bush,3,2,5
-Dart Goblin,The Log,1,4,5
+Dart Goblin,The Log,1,5,6
 Dart Goblin,Tombstone,0,0,0
 Dart Goblin,Vines,2,3,5
 Dart Goblin,Witch,0,0,0
 Dart Goblin,Wizard,1,0,1
 Dart Goblin,X-Bow,1,0,1
 Dart Goblin,Zappies,0,0,0
-Electro Spirit,Baby Dragon,3,0,3
-Electro Spirit,Barbarian Hut,0,1,1
+Electro Spirit,Baby Dragon,4,1,5
+Electro Spirit,Barbarian Hut,1,1,2
 Electro Spirit,Berserker,3,0,3
-Electro Spirit,Dart Goblin,3,1,4
-Electro Spirit,Electro Wizard,0,2,2
+Electro Spirit,Dart Goblin,4,1,5
+Electro Spirit,Electro Wizard,1,2,3
 Electro Spirit,Elixir Golem,0,0,0
 Electro Spirit,Executioner,0,0,0
-Electro Spirit,Fireball,5,2,7
+Electro Spirit,Fireball,6,2,8
 Electro Spirit,Fisherman,0,0,0
-Electro Spirit,Flying Machine,4,2,6
+Electro Spirit,Flying Machine,5,3,8
 Electro Spirit,Furnace,0,0,0
 Electro Spirit,Giant,2,1,3
 Electro Spirit,Giant Snowball,0,0,0
 Electro Spirit,Goblin Barrel,4,1,5
-Electro Spirit,Goblin Demolisher,1,1,2
+Electro Spirit,Goblin Demolisher,1,2,3
 Electro Spirit,Goblin Drill,0,0,0
 Electro Spirit,Goblin Giant,0,0,0
-Electro Spirit,Goblin Hut,1,2,3
-Electro Spirit,Golem,1,0,1
-Electro Spirit,Graveyard,0,1,1
+Electro Spirit,Goblin Hut,2,2,4
+Electro Spirit,Golem,3,0,3
+Electro Spirit,Graveyard,1,3,4
 Electro Spirit,Hunter,1,0,1
-Electro Spirit,Ice Spirit,3,1,4
+Electro Spirit,Ice Spirit,5,3,8
 Electro Spirit,Ice Wizard,0,0,0
 Electro Spirit,Inferno Tower,0,0,0
-Electro Spirit,Knight,4,3,7
+Electro Spirit,Knight,4,4,8
 Electro Spirit,Lava Hound,0,0,0
 Electro Spirit,Mega Knight,0,0,0
 Electro Spirit,Mortar,1,0,1
-Electro Spirit,Mother Witch,0,1,1
-Electro Spirit,Musketeer,3,5,8
+Electro Spirit,Mother Witch,2,1,3
+Electro Spirit,Musketeer,6,5,11
 Electro Spirit,Night Witch,0,0,0
-Electro Spirit,P.E.K.K.A,1,1,2
-Electro Spirit,Poison,2,3,5
+Electro Spirit,P.E.K.K.A,2,1,3
+Electro Spirit,Poison,5,4,9
 Electro Spirit,Princess,0,0,0
 Electro Spirit,Rage,0,0,0
 Electro Spirit,Ram Rider,0,0,0
-Electro Spirit,Rascals,1,2,3
+Electro Spirit,Rascals,3,3,6
 Electro Spirit,Rocket,0,0,0
-Electro Spirit,Royal Delivery,1,1,2
+Electro Spirit,Royal Delivery,2,1,3
 Electro Spirit,Royal Giant,1,0,1
 Electro Spirit,Rune Giant,0,0,0
 Electro Spirit,Suspicious Bush,4,2,6
-Electro Spirit,The Log,3,5,8
-Electro Spirit,Tombstone,0,1,1
-Electro Spirit,Vines,2,1,3
-Electro Spirit,Witch,0,0,0
+Electro Spirit,The Log,5,7,12
+Electro Spirit,Tombstone,2,3,5
+Electro Spirit,Vines,3,1,4
+Electro Spirit,Witch,3,2,5
 Electro Spirit,Wizard,1,0,1
 Electro Spirit,X-Bow,1,0,1
 Electro Spirit,Zappies,0,0,0
-Electro Wizard,Baby Dragon,1,0,1
+Electro Wizard,Baby Dragon,1,1,2
 Electro Wizard,Barbarian Hut,1,1,2
 Electro Wizard,Berserker,1,0,1
 Electro Wizard,Dart Goblin,2,0,2
-Electro Wizard,Electro Spirit,2,0,2
+Electro Wizard,Electro Spirit,2,1,3
 Electro Wizard,Elixir Golem,0,0,0
 Electro Wizard,Executioner,0,0,0
 Electro Wizard,Fireball,3,0,3
 Electro Wizard,Fisherman,0,0,0
-Electro Wizard,Flying Machine,1,1,2
+Electro Wizard,Flying Machine,2,2,4
 Electro Wizard,Furnace,1,0,1
 Electro Wizard,Giant,1,0,1
 Electro Wizard,Giant Snowball,0,0,0
@@ -262,34 +262,34 @@ Electro Wizard,Goblin Demolisher,0,0,0
 Electro Wizard,Goblin Drill,0,0,0
 Electro Wizard,Goblin Giant,0,0,0
 Electro Wizard,Goblin Hut,2,0,2
-Electro Wizard,Golem,0,0,0
-Electro Wizard,Graveyard,0,0,0
+Electro Wizard,Golem,1,0,1
+Electro Wizard,Graveyard,1,1,2
 Electro Wizard,Hunter,0,0,0
-Electro Wizard,Ice Spirit,0,0,0
+Electro Wizard,Ice Spirit,1,0,1
 Electro Wizard,Ice Wizard,0,0,0
 Electro Wizard,Inferno Tower,0,0,0
-Electro Wizard,Knight,2,1,3
+Electro Wizard,Knight,2,2,4
 Electro Wizard,Lava Hound,0,0,0
 Electro Wizard,Mega Knight,0,0,0
 Electro Wizard,Mortar,0,0,0
-Electro Wizard,Mother Witch,0,0,0
-Electro Wizard,Musketeer,0,1,1
+Electro Wizard,Mother Witch,1,0,1
+Electro Wizard,Musketeer,2,2,4
 Electro Wizard,Night Witch,0,0,0
-Electro Wizard,P.E.K.K.A,0,1,1
-Electro Wizard,Poison,0,1,1
+Electro Wizard,P.E.K.K.A,1,1,2
+Electro Wizard,Poison,2,2,4
 Electro Wizard,Princess,0,0,0
 Electro Wizard,Rage,0,0,0
 Electro Wizard,Ram Rider,0,0,0
 Electro Wizard,Rascals,1,0,1
 Electro Wizard,Rocket,0,0,0
-Electro Wizard,Royal Delivery,0,0,0
+Electro Wizard,Royal Delivery,1,0,1
 Electro Wizard,Royal Giant,0,0,0
 Electro Wizard,Rune Giant,0,0,0
 Electro Wizard,Suspicious Bush,2,0,2
-Electro Wizard,The Log,0,1,1
-Electro Wizard,Tombstone,0,0,0
-Electro Wizard,Vines,2,1,3
-Electro Wizard,Witch,0,0,0
+Electro Wizard,The Log,2,2,4
+Electro Wizard,Tombstone,1,0,1
+Electro Wizard,Vines,3,1,4
+Electro Wizard,Witch,1,0,1
 Electro Wizard,Wizard,0,0,0
 Electro Wizard,X-Bow,1,0,1
 Electro Wizard,Zappies,0,0,0
@@ -351,7 +351,7 @@ Executioner,Electro Wizard,0,0,0
 Executioner,Elixir Golem,0,0,0
 Executioner,Fireball,1,0,1
 Executioner,Fisherman,0,0,0
-Executioner,Flying Machine,1,0,1
+Executioner,Flying Machine,2,0,2
 Executioner,Furnace,0,0,0
 Executioner,Giant,0,0,0
 Executioner,Giant Snowball,0,0,0
@@ -360,7 +360,7 @@ Executioner,Goblin Demolisher,0,0,0
 Executioner,Goblin Drill,0,0,0
 Executioner,Goblin Giant,0,0,0
 Executioner,Goblin Hut,0,0,0
-Executioner,Golem,0,0,0
+Executioner,Golem,1,0,1
 Executioner,Graveyard,0,0,0
 Executioner,Hunter,0,0,0
 Executioner,Ice Spirit,1,0,1
@@ -371,36 +371,36 @@ Executioner,Lava Hound,0,0,0
 Executioner,Mega Knight,0,0,0
 Executioner,Mortar,0,0,0
 Executioner,Mother Witch,0,0,0
-Executioner,Musketeer,1,0,1
+Executioner,Musketeer,2,0,2
 Executioner,Night Witch,0,0,0
-Executioner,P.E.K.K.A,0,0,0
-Executioner,Poison,1,0,1
+Executioner,P.E.K.K.A,1,0,1
+Executioner,Poison,2,0,2
 Executioner,Princess,0,0,0
 Executioner,Rage,0,0,0
 Executioner,Ram Rider,0,0,0
 Executioner,Rascals,1,0,1
 Executioner,Rocket,0,0,0
-Executioner,Royal Delivery,0,0,0
+Executioner,Royal Delivery,1,0,1
 Executioner,Royal Giant,0,0,0
 Executioner,Rune Giant,0,0,0
 Executioner,Suspicious Bush,1,0,1
-Executioner,The Log,0,0,0
+Executioner,The Log,1,0,1
 Executioner,Tombstone,0,0,0
 Executioner,Vines,0,0,0
-Executioner,Witch,0,0,0
+Executioner,Witch,1,0,1
 Executioner,Wizard,0,0,0
 Executioner,X-Bow,0,0,0
 Executioner,Zappies,0,0,0
-Fireball,Baby Dragon,0,2,2
+Fireball,Baby Dragon,0,3,3
 Fireball,Barbarian Hut,0,2,2
 Fireball,Berserker,0,1,1
 Fireball,Dart Goblin,1,2,3
-Fireball,Electro Spirit,2,5,7
+Fireball,Electro Spirit,2,6,8
 Fireball,Electro Wizard,0,3,3
 Fireball,Elixir Golem,0,0,0
 Fireball,Executioner,0,1,1
 Fireball,Fisherman,0,0,0
-Fireball,Flying Machine,0,2,2
+Fireball,Flying Machine,0,4,4
 Fireball,Furnace,1,0,1
 Fireball,Giant,0,0,0
 Fireball,Giant Snowball,0,0,0
@@ -408,22 +408,22 @@ Fireball,Goblin Barrel,2,3,5
 Fireball,Goblin Demolisher,0,1,1
 Fireball,Goblin Drill,0,0,0
 Fireball,Goblin Giant,1,0,1
-Fireball,Goblin Hut,0,3,3
+Fireball,Goblin Hut,0,4,4
 Fireball,Golem,0,1,1
-Fireball,Graveyard,1,0,1
+Fireball,Graveyard,2,2,4
 Fireball,Hunter,0,0,0
-Fireball,Ice Spirit,0,2,2
+Fireball,Ice Spirit,1,4,5
 Fireball,Ice Wizard,0,0,0
 Fireball,Inferno Tower,0,0,0
-Fireball,Knight,2,4,6
+Fireball,Knight,2,5,7
 Fireball,Lava Hound,0,0,0
 Fireball,Mega Knight,0,0,0
 Fireball,Mortar,0,0,0
-Fireball,Mother Witch,0,0,0
-Fireball,Musketeer,1,6,7
+Fireball,Mother Witch,1,0,1
+Fireball,Musketeer,2,6,8
 Fireball,Night Witch,0,0,0
 Fireball,P.E.K.K.A,1,1,2
-Fireball,Poison,0,7,7
+Fireball,Poison,1,8,9
 Fireball,Princess,0,0,0
 Fireball,Rage,0,0,0
 Fireball,Ram Rider,0,0,0
@@ -433,10 +433,10 @@ Fireball,Royal Delivery,2,0,2
 Fireball,Royal Giant,0,1,1
 Fireball,Rune Giant,0,0,0
 Fireball,Suspicious Bush,1,1,2
-Fireball,The Log,1,6,7
-Fireball,Tombstone,1,3,4
-Fireball,Vines,3,4,7
-Fireball,Witch,0,0,0
+Fireball,The Log,2,8,10
+Fireball,Tombstone,2,5,7
+Fireball,Vines,4,4,8
+Fireball,Witch,0,1,1
 Fireball,Wizard,1,0,1
 Fireball,X-Bow,1,1,2
 Fireball,Zappies,0,0,0
@@ -489,52 +489,52 @@ Fisherman,Witch,0,0,0
 Fisherman,Wizard,0,0,0
 Fisherman,X-Bow,0,0,0
 Fisherman,Zappies,0,0,0
-Flying Machine,Baby Dragon,0,1,1
-Flying Machine,Barbarian Hut,0,0,0
+Flying Machine,Baby Dragon,1,1,2
+Flying Machine,Barbarian Hut,1,0,1
 Flying Machine,Berserker,1,0,1
-Flying Machine,Dart Goblin,1,1,2
-Flying Machine,Electro Spirit,2,4,6
-Flying Machine,Electro Wizard,1,1,2
+Flying Machine,Dart Goblin,2,1,3
+Flying Machine,Electro Spirit,3,5,8
+Flying Machine,Electro Wizard,2,2,4
 Flying Machine,Elixir Golem,0,0,0
-Flying Machine,Executioner,0,1,1
-Flying Machine,Fireball,2,0,2
+Flying Machine,Executioner,0,2,2
+Flying Machine,Fireball,4,0,4
 Flying Machine,Fisherman,0,0,0
 Flying Machine,Furnace,0,0,0
 Flying Machine,Giant,0,0,0
 Flying Machine,Giant Snowball,0,0,0
 Flying Machine,Goblin Barrel,2,1,3
-Flying Machine,Goblin Demolisher,0,1,1
+Flying Machine,Goblin Demolisher,0,2,2
 Flying Machine,Goblin Drill,0,0,0
 Flying Machine,Goblin Giant,0,0,0
-Flying Machine,Goblin Hut,0,2,2
-Flying Machine,Golem,2,2,4
-Flying Machine,Graveyard,1,0,1
+Flying Machine,Goblin Hut,2,3,5
+Flying Machine,Golem,4,2,6
+Flying Machine,Graveyard,2,2,4
 Flying Machine,Hunter,0,0,0
-Flying Machine,Ice Spirit,0,1,1
+Flying Machine,Ice Spirit,2,2,4
 Flying Machine,Ice Wizard,0,0,0
 Flying Machine,Inferno Tower,0,0,0
-Flying Machine,Knight,1,2,3
+Flying Machine,Knight,2,4,6
 Flying Machine,Lava Hound,0,0,0
 Flying Machine,Mega Knight,0,0,0
 Flying Machine,Mortar,0,0,0
-Flying Machine,Mother Witch,0,0,0
-Flying Machine,Musketeer,1,3,4
+Flying Machine,Mother Witch,2,0,2
+Flying Machine,Musketeer,4,3,7
 Flying Machine,Night Witch,0,0,0
 Flying Machine,P.E.K.K.A,0,0,0
-Flying Machine,Poison,0,2,2
+Flying Machine,Poison,2,2,4
 Flying Machine,Princess,1,0,1
 Flying Machine,Rage,0,0,0
 Flying Machine,Ram Rider,0,0,0
-Flying Machine,Rascals,1,1,2
+Flying Machine,Rascals,4,3,7
 Flying Machine,Rocket,0,0,0
 Flying Machine,Royal Delivery,1,0,1
 Flying Machine,Royal Giant,1,0,1
 Flying Machine,Rune Giant,0,0,0
 Flying Machine,Suspicious Bush,1,1,2
-Flying Machine,The Log,1,4,5
-Flying Machine,Tombstone,1,1,2
-Flying Machine,Vines,1,2,3
-Flying Machine,Witch,0,0,0
+Flying Machine,The Log,2,5,7
+Flying Machine,Tombstone,3,3,6
+Flying Machine,Vines,3,2,5
+Flying Machine,Witch,2,1,3
 Flying Machine,Wizard,1,0,1
 Flying Machine,X-Bow,1,1,2
 Flying Machine,Zappies,0,0,0
@@ -601,17 +601,17 @@ Giant,Flying Machine,0,0,0
 Giant,Furnace,0,0,0
 Giant,Giant Snowball,0,0,0
 Giant,Goblin Barrel,1,1,2
-Giant,Goblin Demolisher,0,1,1
+Giant,Goblin Demolisher,0,2,2
 Giant,Goblin Drill,0,0,0
 Giant,Goblin Giant,0,0,0
 Giant,Goblin Hut,0,1,1
 Giant,Golem,0,1,1
-Giant,Graveyard,1,0,1
+Giant,Graveyard,1,1,2
 Giant,Hunter,0,0,0
-Giant,Ice Spirit,0,1,1
+Giant,Ice Spirit,0,2,2
 Giant,Ice Wizard,0,0,0
 Giant,Inferno Tower,0,0,0
-Giant,Knight,1,0,1
+Giant,Knight,1,1,2
 Giant,Lava Hound,0,0,0
 Giant,Mega Knight,0,0,0
 Giant,Mortar,0,0,0
@@ -623,16 +623,16 @@ Giant,Poison,0,2,2
 Giant,Princess,0,0,0
 Giant,Rage,0,0,0
 Giant,Ram Rider,0,0,0
-Giant,Rascals,1,1,2
+Giant,Rascals,1,2,3
 Giant,Rocket,0,0,0
 Giant,Royal Delivery,1,0,1
 Giant,Royal Giant,0,0,0
 Giant,Rune Giant,0,0,0
 Giant,Suspicious Bush,0,0,0
-Giant,The Log,0,2,2
-Giant,Tombstone,0,0,0
+Giant,The Log,0,3,3
+Giant,Tombstone,0,1,1
 Giant,Vines,1,1,2
-Giant,Witch,0,0,0
+Giant,Witch,0,1,1
 Giant,Wizard,0,0,0
 Giant,X-Bow,1,0,1
 Giant,Zappies,0,0,0
@@ -738,35 +738,35 @@ Goblin Demolisher,Baby Dragon,1,0,1
 Goblin Demolisher,Barbarian Hut,0,1,1
 Goblin Demolisher,Berserker,1,1,2
 Goblin Demolisher,Dart Goblin,1,0,1
-Goblin Demolisher,Electro Spirit,1,1,2
+Goblin Demolisher,Electro Spirit,2,1,3
 Goblin Demolisher,Electro Wizard,0,0,0
 Goblin Demolisher,Elixir Golem,0,0,0
 Goblin Demolisher,Executioner,0,0,0
 Goblin Demolisher,Fireball,1,0,1
 Goblin Demolisher,Fisherman,0,0,0
-Goblin Demolisher,Flying Machine,1,0,1
+Goblin Demolisher,Flying Machine,2,0,2
 Goblin Demolisher,Furnace,1,0,1
-Goblin Demolisher,Giant,1,0,1
+Goblin Demolisher,Giant,2,0,2
 Goblin Demolisher,Giant Snowball,0,0,0
 Goblin Demolisher,Goblin Barrel,2,0,2
 Goblin Demolisher,Goblin Drill,0,0,0
 Goblin Demolisher,Goblin Giant,1,0,1
-Goblin Demolisher,Goblin Hut,0,0,0
+Goblin Demolisher,Goblin Hut,1,0,1
 Goblin Demolisher,Golem,0,0,0
-Goblin Demolisher,Graveyard,0,0,0
+Goblin Demolisher,Graveyard,1,0,1
 Goblin Demolisher,Hunter,0,0,0
-Goblin Demolisher,Ice Spirit,0,0,0
+Goblin Demolisher,Ice Spirit,1,0,1
 Goblin Demolisher,Ice Wizard,0,0,0
 Goblin Demolisher,Inferno Tower,0,0,0
 Goblin Demolisher,Knight,1,0,1
 Goblin Demolisher,Lava Hound,0,0,0
 Goblin Demolisher,Mega Knight,0,0,0
 Goblin Demolisher,Mortar,0,0,0
-Goblin Demolisher,Mother Witch,0,0,0
-Goblin Demolisher,Musketeer,0,1,1
+Goblin Demolisher,Mother Witch,1,0,1
+Goblin Demolisher,Musketeer,2,1,3
 Goblin Demolisher,Night Witch,0,0,0
 Goblin Demolisher,P.E.K.K.A,0,0,0
-Goblin Demolisher,Poison,0,1,1
+Goblin Demolisher,Poison,2,1,3
 Goblin Demolisher,Princess,0,0,0
 Goblin Demolisher,Rage,0,0,0
 Goblin Demolisher,Ram Rider,0,0,0
@@ -775,13 +775,13 @@ Goblin Demolisher,Rocket,1,0,1
 Goblin Demolisher,Royal Delivery,0,0,0
 Goblin Demolisher,Royal Giant,0,1,1
 Goblin Demolisher,Rune Giant,0,0,0
-Goblin Demolisher,Suspicious Bush,0,0,0
-Goblin Demolisher,The Log,0,0,0
-Goblin Demolisher,Tombstone,1,1,2
-Goblin Demolisher,Vines,2,1,3
+Goblin Demolisher,Suspicious Bush,1,0,1
+Goblin Demolisher,The Log,1,0,1
+Goblin Demolisher,Tombstone,2,1,3
+Goblin Demolisher,Vines,3,1,4
 Goblin Demolisher,Witch,0,0,0
 Goblin Demolisher,Wizard,0,0,0
-Goblin Demolisher,X-Bow,0,0,0
+Goblin Demolisher,X-Bow,1,0,1
 Goblin Demolisher,Zappies,0,0,0
 Goblin Drill,Baby Dragon,0,0,0
 Goblin Drill,Barbarian Hut,0,0,0
@@ -881,66 +881,66 @@ Goblin Giant,Witch,0,0,0
 Goblin Giant,Wizard,0,0,0
 Goblin Giant,X-Bow,0,0,0
 Goblin Giant,Zappies,0,0,0
-Goblin Hut,Baby Dragon,2,0,2
-Goblin Hut,Barbarian Hut,1,0,1
+Goblin Hut,Baby Dragon,3,2,5
+Goblin Hut,Barbarian Hut,2,0,2
 Goblin Hut,Berserker,4,0,4
 Goblin Hut,Dart Goblin,3,1,4
-Goblin Hut,Electro Spirit,2,1,3
+Goblin Hut,Electro Spirit,2,2,4
 Goblin Hut,Electro Wizard,0,2,2
 Goblin Hut,Elixir Golem,0,0,0
 Goblin Hut,Executioner,0,0,0
-Goblin Hut,Fireball,3,0,3
+Goblin Hut,Fireball,4,0,4
 Goblin Hut,Fisherman,0,0,0
-Goblin Hut,Flying Machine,2,0,2
+Goblin Hut,Flying Machine,3,2,5
 Goblin Hut,Furnace,0,0,0
 Goblin Hut,Giant,1,0,1
 Goblin Hut,Giant Snowball,0,0,0
 Goblin Hut,Goblin Barrel,4,2,6
-Goblin Hut,Goblin Demolisher,0,0,0
+Goblin Hut,Goblin Demolisher,0,1,1
 Goblin Hut,Goblin Drill,0,0,0
 Goblin Hut,Goblin Giant,0,0,0
-Goblin Hut,Golem,1,0,1
-Goblin Hut,Graveyard,1,0,1
+Goblin Hut,Golem,2,0,2
+Goblin Hut,Graveyard,2,3,5
 Goblin Hut,Hunter,0,0,0
-Goblin Hut,Ice Spirit,1,0,1
+Goblin Hut,Ice Spirit,2,2,4
 Goblin Hut,Ice Wizard,0,0,0
 Goblin Hut,Inferno Tower,0,0,0
-Goblin Hut,Knight,4,1,5
+Goblin Hut,Knight,4,3,7
 Goblin Hut,Lava Hound,0,0,0
 Goblin Hut,Mega Knight,0,0,0
 Goblin Hut,Mortar,0,0,0
-Goblin Hut,Mother Witch,0,0,0
-Goblin Hut,Musketeer,2,2,4
+Goblin Hut,Mother Witch,2,0,2
+Goblin Hut,Musketeer,5,3,8
 Goblin Hut,Night Witch,0,0,0
-Goblin Hut,P.E.K.K.A,1,0,1
-Goblin Hut,Poison,1,2,3
+Goblin Hut,P.E.K.K.A,2,0,2
+Goblin Hut,Poison,4,4,8
 Goblin Hut,Princess,0,0,0
 Goblin Hut,Rage,0,0,0
 Goblin Hut,Ram Rider,0,0,0
-Goblin Hut,Rascals,1,1,2
+Goblin Hut,Rascals,2,2,4
 Goblin Hut,Rocket,0,0,0
-Goblin Hut,Royal Delivery,2,0,2
+Goblin Hut,Royal Delivery,3,0,3
 Goblin Hut,Royal Giant,1,0,1
 Goblin Hut,Rune Giant,0,0,0
 Goblin Hut,Suspicious Bush,2,0,2
-Goblin Hut,The Log,2,2,4
-Goblin Hut,Tombstone,0,1,1
-Goblin Hut,Vines,4,1,5
-Goblin Hut,Witch,0,0,0
+Goblin Hut,The Log,4,5,9
+Goblin Hut,Tombstone,1,3,4
+Goblin Hut,Vines,5,1,6
+Goblin Hut,Witch,2,2,4
 Goblin Hut,Wizard,1,0,1
 Goblin Hut,X-Bow,2,0,2
 Goblin Hut,Zappies,0,0,0
-Golem,Baby Dragon,2,1,3
+Golem,Baby Dragon,2,3,5
 Golem,Barbarian Hut,0,1,1
 Golem,Berserker,2,0,2
 Golem,Dart Goblin,1,0,1
-Golem,Electro Spirit,0,1,1
-Golem,Electro Wizard,0,0,0
+Golem,Electro Spirit,0,3,3
+Golem,Electro Wizard,0,1,1
 Golem,Elixir Golem,0,0,0
-Golem,Executioner,0,0,0
+Golem,Executioner,0,1,1
 Golem,Fireball,1,0,1
 Golem,Fisherman,0,0,0
-Golem,Flying Machine,2,2,4
+Golem,Flying Machine,2,4,6
 Golem,Furnace,0,0,0
 Golem,Giant,1,0,1
 Golem,Giant Snowball,0,0,0
@@ -948,85 +948,85 @@ Golem,Goblin Barrel,2,1,3
 Golem,Goblin Demolisher,0,0,0
 Golem,Goblin Drill,0,0,0
 Golem,Goblin Giant,0,0,0
-Golem,Goblin Hut,0,1,1
-Golem,Graveyard,0,0,0
+Golem,Goblin Hut,0,2,2
+Golem,Graveyard,0,3,3
 Golem,Hunter,0,0,0
-Golem,Ice Spirit,1,0,1
+Golem,Ice Spirit,1,1,2
 Golem,Ice Wizard,0,0,0
 Golem,Inferno Tower,0,0,0
-Golem,Knight,1,2,3
+Golem,Knight,1,4,5
 Golem,Lava Hound,0,0,0
 Golem,Mega Knight,0,0,0
 Golem,Mortar,0,0,0
 Golem,Mother Witch,0,0,0
-Golem,Musketeer,0,1,1
+Golem,Musketeer,0,2,2
 Golem,Night Witch,0,0,0
 Golem,P.E.K.K.A,0,1,1
-Golem,Poison,1,2,3
+Golem,Poison,1,4,5
 Golem,Princess,0,0,0
 Golem,Rage,0,0,0
 Golem,Ram Rider,0,0,0
-Golem,Rascals,0,0,0
+Golem,Rascals,0,1,1
 Golem,Rocket,0,0,0
 Golem,Royal Delivery,0,0,0
 Golem,Royal Giant,0,0,0
 Golem,Rune Giant,0,0,0
 Golem,Suspicious Bush,0,0,0
-Golem,The Log,0,1,1
-Golem,Tombstone,0,0,0
+Golem,The Log,0,3,3
+Golem,Tombstone,0,2,2
 Golem,Vines,1,2,3
-Golem,Witch,0,0,0
+Golem,Witch,0,1,1
 Golem,Wizard,0,0,0
 Golem,X-Bow,1,0,1
 Golem,Zappies,0,0,0
-Graveyard,Baby Dragon,0,0,0
-Graveyard,Barbarian Hut,0,0,0
+Graveyard,Baby Dragon,1,0,1
+Graveyard,Barbarian Hut,1,0,1
 Graveyard,Berserker,0,0,0
-Graveyard,Dart Goblin,1,0,1
-Graveyard,Electro Spirit,1,0,1
-Graveyard,Electro Wizard,0,0,0
+Graveyard,Dart Goblin,2,0,2
+Graveyard,Electro Spirit,3,1,4
+Graveyard,Electro Wizard,1,1,2
 Graveyard,Elixir Golem,0,0,0
 Graveyard,Executioner,0,0,0
-Graveyard,Fireball,0,1,1
+Graveyard,Fireball,2,2,4
 Graveyard,Fisherman,0,0,0
-Graveyard,Flying Machine,0,1,1
+Graveyard,Flying Machine,2,2,4
 Graveyard,Furnace,1,0,1
-Graveyard,Giant,0,1,1
+Graveyard,Giant,1,1,2
 Graveyard,Giant Snowball,0,0,0
 Graveyard,Goblin Barrel,1,0,1
-Graveyard,Goblin Demolisher,0,0,0
+Graveyard,Goblin Demolisher,0,1,1
 Graveyard,Goblin Drill,0,0,0
 Graveyard,Goblin Giant,1,0,1
-Graveyard,Goblin Hut,0,1,1
-Graveyard,Golem,0,0,0
+Graveyard,Goblin Hut,3,2,5
+Graveyard,Golem,3,0,3
 Graveyard,Hunter,0,0,0
-Graveyard,Ice Spirit,0,0,0
+Graveyard,Ice Spirit,1,0,1
 Graveyard,Ice Wizard,0,0,0
 Graveyard,Inferno Tower,0,0,0
-Graveyard,Knight,1,0,1
+Graveyard,Knight,2,1,3
 Graveyard,Lava Hound,0,0,0
 Graveyard,Mega Knight,0,0,0
 Graveyard,Mortar,0,0,0
-Graveyard,Mother Witch,0,1,1
-Graveyard,Musketeer,1,1,2
+Graveyard,Mother Witch,1,1,2
+Graveyard,Musketeer,5,1,6
 Graveyard,Night Witch,0,0,0
-Graveyard,P.E.K.K.A,1,0,1
-Graveyard,Poison,0,0,0
+Graveyard,P.E.K.K.A,2,0,2
+Graveyard,Poison,3,0,3
 Graveyard,Princess,0,0,0
 Graveyard,Rage,0,0,0
 Graveyard,Ram Rider,0,0,0
-Graveyard,Rascals,0,0,0
+Graveyard,Rascals,3,1,4
 Graveyard,Rocket,1,0,1
-Graveyard,Royal Delivery,1,0,1
+Graveyard,Royal Delivery,2,0,2
 Graveyard,Royal Giant,0,0,0
 Graveyard,Rune Giant,0,0,0
-Graveyard,Suspicious Bush,1,1,2
-Graveyard,The Log,1,1,2
-Graveyard,Tombstone,1,0,1
-Graveyard,Vines,2,0,2
-Graveyard,Witch,0,0,0
+Graveyard,Suspicious Bush,2,1,3
+Graveyard,The Log,2,1,3
+Graveyard,Tombstone,2,0,2
+Graveyard,Vines,3,0,3
+Graveyard,Witch,3,0,3
 Graveyard,Wizard,1,0,1
-Graveyard,X-Bow,0,0,0
+Graveyard,X-Bow,1,0,1
 Graveyard,Zappies,0,0,0
 Hunter,Baby Dragon,0,0,0
 Hunter,Barbarian Hut,0,1,1
@@ -1077,54 +1077,54 @@ Hunter,Witch,0,0,0
 Hunter,Wizard,0,0,0
 Hunter,X-Bow,0,0,0
 Hunter,Zappies,0,0,0
-Ice Spirit,Baby Dragon,1,1,2
-Ice Spirit,Barbarian Hut,1,1,2
+Ice Spirit,Baby Dragon,2,2,4
+Ice Spirit,Barbarian Hut,2,1,3
 Ice Spirit,Berserker,2,1,3
 Ice Spirit,Dart Goblin,1,1,2
-Ice Spirit,Electro Spirit,1,3,4
-Ice Spirit,Electro Wizard,0,0,0
+Ice Spirit,Electro Spirit,3,5,8
+Ice Spirit,Electro Wizard,0,1,1
 Ice Spirit,Elixir Golem,0,0,0
 Ice Spirit,Executioner,0,1,1
-Ice Spirit,Fireball,2,0,2
+Ice Spirit,Fireball,4,1,5
 Ice Spirit,Fisherman,0,0,0
-Ice Spirit,Flying Machine,1,0,1
+Ice Spirit,Flying Machine,2,2,4
 Ice Spirit,Furnace,0,0,0
-Ice Spirit,Giant,1,0,1
+Ice Spirit,Giant,2,0,2
 Ice Spirit,Giant Snowball,0,0,0
 Ice Spirit,Goblin Barrel,2,0,2
-Ice Spirit,Goblin Demolisher,0,0,0
+Ice Spirit,Goblin Demolisher,0,1,1
 Ice Spirit,Goblin Drill,0,0,0
 Ice Spirit,Goblin Giant,0,0,0
-Ice Spirit,Goblin Hut,0,1,1
-Ice Spirit,Golem,0,1,1
-Ice Spirit,Graveyard,0,0,0
+Ice Spirit,Goblin Hut,2,2,4
+Ice Spirit,Golem,1,1,2
+Ice Spirit,Graveyard,0,1,1
 Ice Spirit,Hunter,0,0,0
 Ice Spirit,Ice Wizard,0,0,0
 Ice Spirit,Inferno Tower,0,0,0
-Ice Spirit,Knight,2,2,4
+Ice Spirit,Knight,3,4,7
 Ice Spirit,Lava Hound,0,0,0
 Ice Spirit,Mega Knight,0,0,0
 Ice Spirit,Mortar,0,0,0
-Ice Spirit,Mother Witch,0,0,0
-Ice Spirit,Musketeer,0,2,2
+Ice Spirit,Mother Witch,1,0,1
+Ice Spirit,Musketeer,3,3,6
 Ice Spirit,Night Witch,0,0,0
 Ice Spirit,P.E.K.K.A,0,0,0
-Ice Spirit,Poison,0,1,1
+Ice Spirit,Poison,2,2,4
 Ice Spirit,Princess,0,0,0
 Ice Spirit,Rage,0,0,0
 Ice Spirit,Ram Rider,0,0,0
-Ice Spirit,Rascals,0,0,0
+Ice Spirit,Rascals,2,1,3
 Ice Spirit,Rocket,0,0,0
 Ice Spirit,Royal Delivery,0,0,0
 Ice Spirit,Royal Giant,0,1,1
 Ice Spirit,Rune Giant,0,0,0
-Ice Spirit,Suspicious Bush,0,1,1
-Ice Spirit,The Log,0,2,2
+Ice Spirit,Suspicious Bush,1,1,2
+Ice Spirit,The Log,0,3,3
 Ice Spirit,Tombstone,0,2,2
-Ice Spirit,Vines,2,2,4
-Ice Spirit,Witch,0,0,0
+Ice Spirit,Vines,3,2,5
+Ice Spirit,Witch,1,0,1
 Ice Spirit,Wizard,0,0,0
-Ice Spirit,X-Bow,0,1,1
+Ice Spirit,X-Bow,1,1,2
 Ice Spirit,Zappies,0,0,0
 Ice Wizard,Baby Dragon,0,0,0
 Ice Wizard,Barbarian Hut,0,0,0
@@ -1224,54 +1224,54 @@ Inferno Tower,Witch,0,0,0
 Inferno Tower,Wizard,0,0,0
 Inferno Tower,X-Bow,0,0,0
 Inferno Tower,Zappies,0,0,0
-Knight,Baby Dragon,1,0,1
-Knight,Barbarian Hut,0,1,1
+Knight,Baby Dragon,2,1,3
+Knight,Barbarian Hut,1,1,2
 Knight,Berserker,2,1,3
-Knight,Dart Goblin,3,1,4
-Knight,Electro Spirit,3,4,7
-Knight,Electro Wizard,1,2,3
+Knight,Dart Goblin,4,1,5
+Knight,Electro Spirit,4,4,8
+Knight,Electro Wizard,2,2,4
 Knight,Elixir Golem,0,0,0
 Knight,Executioner,0,0,0
-Knight,Fireball,4,2,6
+Knight,Fireball,5,2,7
 Knight,Fisherman,0,0,0
-Knight,Flying Machine,2,1,3
+Knight,Flying Machine,4,2,6
 Knight,Furnace,2,0,2
-Knight,Giant,0,1,1
+Knight,Giant,1,1,2
 Knight,Giant Snowball,0,0,0
 Knight,Goblin Barrel,4,1,5
 Knight,Goblin Demolisher,0,1,1
 Knight,Goblin Drill,0,0,0
 Knight,Goblin Giant,1,0,1
-Knight,Goblin Hut,1,4,5
-Knight,Golem,2,1,3
-Knight,Graveyard,0,1,1
+Knight,Goblin Hut,3,4,7
+Knight,Golem,4,1,5
+Knight,Graveyard,1,2,3
 Knight,Hunter,0,0,0
-Knight,Ice Spirit,2,2,4
+Knight,Ice Spirit,4,3,7
 Knight,Ice Wizard,0,0,0
 Knight,Inferno Tower,0,0,0
 Knight,Lava Hound,0,0,0
 Knight,Mega Knight,0,0,0
 Knight,Mortar,0,0,0
-Knight,Mother Witch,0,1,1
-Knight,Musketeer,2,5,7
+Knight,Mother Witch,2,1,3
+Knight,Musketeer,6,5,11
 Knight,Night Witch,0,0,0
-Knight,P.E.K.K.A,0,0,0
-Knight,Poison,2,5,7
+Knight,P.E.K.K.A,1,0,1
+Knight,Poison,6,6,12
 Knight,Princess,1,0,1
 Knight,Rage,0,0,0
 Knight,Ram Rider,0,0,0
-Knight,Rascals,2,3,5
+Knight,Rascals,4,3,7
 Knight,Rocket,1,0,1
-Knight,Royal Delivery,0,0,0
+Knight,Royal Delivery,1,0,1
 Knight,Royal Giant,1,1,2
 Knight,Rune Giant,0,0,0
-Knight,Suspicious Bush,3,2,5
-Knight,The Log,1,4,5
-Knight,Tombstone,2,1,3
-Knight,Vines,2,2,4
-Knight,Witch,0,1,1
+Knight,Suspicious Bush,4,2,6
+Knight,The Log,3,5,8
+Knight,Tombstone,4,2,6
+Knight,Vines,3,2,5
+Knight,Witch,3,2,5
 Knight,Wizard,1,0,1
-Knight,X-Bow,2,0,2
+Knight,X-Bow,3,0,3
 Knight,Zappies,0,0,0
 Lava Hound,Baby Dragon,0,0,0
 Lava Hound,Barbarian Hut,0,0,0
@@ -1424,28 +1424,28 @@ Mother Witch,Baby Dragon,0,0,0
 Mother Witch,Barbarian Hut,0,0,0
 Mother Witch,Berserker,0,0,0
 Mother Witch,Dart Goblin,0,0,0
-Mother Witch,Electro Spirit,1,0,1
-Mother Witch,Electro Wizard,0,0,0
+Mother Witch,Electro Spirit,1,2,3
+Mother Witch,Electro Wizard,0,1,1
 Mother Witch,Elixir Golem,0,0,0
 Mother Witch,Executioner,0,0,0
-Mother Witch,Fireball,0,0,0
+Mother Witch,Fireball,0,1,1
 Mother Witch,Fisherman,0,0,0
-Mother Witch,Flying Machine,0,0,0
+Mother Witch,Flying Machine,0,2,2
 Mother Witch,Furnace,0,0,0
 Mother Witch,Giant,0,0,0
 Mother Witch,Giant Snowball,0,0,0
 Mother Witch,Goblin Barrel,1,0,1
-Mother Witch,Goblin Demolisher,0,0,0
+Mother Witch,Goblin Demolisher,0,1,1
 Mother Witch,Goblin Drill,0,0,0
 Mother Witch,Goblin Giant,0,0,0
-Mother Witch,Goblin Hut,0,0,0
+Mother Witch,Goblin Hut,0,2,2
 Mother Witch,Golem,0,0,0
-Mother Witch,Graveyard,1,0,1
+Mother Witch,Graveyard,1,1,2
 Mother Witch,Hunter,0,0,0
-Mother Witch,Ice Spirit,0,0,0
+Mother Witch,Ice Spirit,0,1,1
 Mother Witch,Ice Wizard,0,0,0
 Mother Witch,Inferno Tower,0,0,0
-Mother Witch,Knight,1,0,1
+Mother Witch,Knight,1,2,3
 Mother Witch,Lava Hound,0,0,0
 Mother Witch,Mega Knight,0,0,0
 Mother Witch,Mortar,0,0,0
@@ -1456,65 +1456,65 @@ Mother Witch,Poison,0,0,0
 Mother Witch,Princess,0,0,0
 Mother Witch,Rage,0,0,0
 Mother Witch,Ram Rider,0,0,0
-Mother Witch,Rascals,1,0,1
+Mother Witch,Rascals,1,1,2
 Mother Witch,Rocket,0,0,0
 Mother Witch,Royal Delivery,1,0,1
 Mother Witch,Royal Giant,0,0,0
 Mother Witch,Rune Giant,0,0,0
 Mother Witch,Suspicious Bush,0,0,0
-Mother Witch,The Log,0,0,0
-Mother Witch,Tombstone,0,0,0
+Mother Witch,The Log,0,1,1
+Mother Witch,Tombstone,0,1,1
 Mother Witch,Vines,1,0,1
 Mother Witch,Witch,0,0,0
 Mother Witch,Wizard,0,0,0
 Mother Witch,X-Bow,1,0,1
 Mother Witch,Zappies,0,0,0
-Musketeer,Baby Dragon,3,2,5
+Musketeer,Baby Dragon,3,3,6
 Musketeer,Barbarian Hut,1,0,1
 Musketeer,Berserker,3,0,3
-Musketeer,Dart Goblin,4,2,6
-Musketeer,Electro Spirit,5,3,8
-Musketeer,Electro Wizard,1,0,1
+Musketeer,Dart Goblin,5,2,7
+Musketeer,Electro Spirit,5,6,11
+Musketeer,Electro Wizard,2,2,4
 Musketeer,Elixir Golem,0,0,0
-Musketeer,Executioner,0,1,1
-Musketeer,Fireball,6,1,7
+Musketeer,Executioner,0,2,2
+Musketeer,Fireball,6,2,8
 Musketeer,Fisherman,0,0,0
-Musketeer,Flying Machine,3,1,4
+Musketeer,Flying Machine,3,4,7
 Musketeer,Furnace,2,0,2
 Musketeer,Giant,2,0,2
 Musketeer,Giant Snowball,0,0,0
 Musketeer,Goblin Barrel,7,1,8
-Musketeer,Goblin Demolisher,1,0,1
+Musketeer,Goblin Demolisher,1,2,3
 Musketeer,Goblin Drill,0,0,0
 Musketeer,Goblin Giant,1,0,1
-Musketeer,Goblin Hut,2,2,4
-Musketeer,Golem,1,0,1
-Musketeer,Graveyard,1,1,2
+Musketeer,Goblin Hut,3,5,8
+Musketeer,Golem,2,0,2
+Musketeer,Graveyard,1,5,6
 Musketeer,Hunter,1,0,1
-Musketeer,Ice Spirit,2,0,2
+Musketeer,Ice Spirit,3,3,6
 Musketeer,Ice Wizard,0,0,0
 Musketeer,Inferno Tower,0,0,0
-Musketeer,Knight,5,2,7
+Musketeer,Knight,5,6,11
 Musketeer,Lava Hound,0,0,0
 Musketeer,Mega Knight,0,0,0
 Musketeer,Mortar,1,0,1
 Musketeer,Mother Witch,0,0,0
 Musketeer,Night Witch,0,0,0
 Musketeer,P.E.K.K.A,0,0,0
-Musketeer,Poison,1,2,3
+Musketeer,Poison,1,3,4
 Musketeer,Princess,1,0,1
 Musketeer,Rage,0,0,0
 Musketeer,Ram Rider,0,0,0
-Musketeer,Rascals,2,1,3
+Musketeer,Rascals,3,4,7
 Musketeer,Rocket,1,0,1
 Musketeer,Royal Delivery,1,0,1
 Musketeer,Royal Giant,0,0,0
 Musketeer,Rune Giant,0,0,0
 Musketeer,Suspicious Bush,2,0,2
-Musketeer,The Log,1,1,2
-Musketeer,Tombstone,2,1,3
+Musketeer,The Log,1,4,5
+Musketeer,Tombstone,3,5,8
 Musketeer,Vines,5,1,6
-Musketeer,Witch,0,1,1
+Musketeer,Witch,1,3,4
 Musketeer,Wizard,1,0,1
 Musketeer,X-Bow,3,1,4
 Musketeer,Zappies,0,0,0
@@ -1571,10 +1571,10 @@ P.E.K.K.A,Baby Dragon,0,0,0
 P.E.K.K.A,Barbarian Hut,0,0,0
 P.E.K.K.A,Berserker,0,0,0
 P.E.K.K.A,Dart Goblin,0,1,1
-P.E.K.K.A,Electro Spirit,1,1,2
-P.E.K.K.A,Electro Wizard,1,0,1
+P.E.K.K.A,Electro Spirit,1,2,3
+P.E.K.K.A,Electro Wizard,1,1,2
 P.E.K.K.A,Elixir Golem,0,0,0
-P.E.K.K.A,Executioner,0,0,0
+P.E.K.K.A,Executioner,0,1,1
 P.E.K.K.A,Fireball,1,1,2
 P.E.K.K.A,Fisherman,0,0,0
 P.E.K.K.A,Flying Machine,0,0,0
@@ -1585,14 +1585,14 @@ P.E.K.K.A,Goblin Barrel,1,0,1
 P.E.K.K.A,Goblin Demolisher,0,0,0
 P.E.K.K.A,Goblin Drill,0,0,0
 P.E.K.K.A,Goblin Giant,0,0,0
-P.E.K.K.A,Goblin Hut,0,1,1
+P.E.K.K.A,Goblin Hut,0,2,2
 P.E.K.K.A,Golem,1,0,1
-P.E.K.K.A,Graveyard,0,1,1
+P.E.K.K.A,Graveyard,0,2,2
 P.E.K.K.A,Hunter,0,0,0
 P.E.K.K.A,Ice Spirit,0,0,0
 P.E.K.K.A,Ice Wizard,0,0,0
 P.E.K.K.A,Inferno Tower,0,0,0
-P.E.K.K.A,Knight,0,0,0
+P.E.K.K.A,Knight,0,1,1
 P.E.K.K.A,Lava Hound,0,0,0
 P.E.K.K.A,Mega Knight,0,0,0
 P.E.K.K.A,Mortar,0,0,0
@@ -1603,14 +1603,14 @@ P.E.K.K.A,Poison,0,1,1
 P.E.K.K.A,Princess,1,0,1
 P.E.K.K.A,Rage,0,0,0
 P.E.K.K.A,Ram Rider,0,0,0
-P.E.K.K.A,Rascals,0,1,1
+P.E.K.K.A,Rascals,0,2,2
 P.E.K.K.A,Rocket,0,0,0
 P.E.K.K.A,Royal Delivery,0,0,0
 P.E.K.K.A,Royal Giant,0,0,0
 P.E.K.K.A,Rune Giant,0,0,0
 P.E.K.K.A,Suspicious Bush,0,0,0
 P.E.K.K.A,The Log,0,0,0
-P.E.K.K.A,Tombstone,1,0,1
+P.E.K.K.A,Tombstone,1,1,2
 P.E.K.K.A,Vines,0,0,0
 P.E.K.K.A,Witch,0,1,1
 P.E.K.K.A,Wizard,1,0,1
@@ -1619,49 +1619,49 @@ P.E.K.K.A,Zappies,0,0,0
 Poison,Baby Dragon,2,1,3
 Poison,Barbarian Hut,1,0,1
 Poison,Berserker,3,0,3
-Poison,Dart Goblin,3,1,4
-Poison,Electro Spirit,3,2,5
-Poison,Electro Wizard,1,0,1
+Poison,Dart Goblin,4,1,5
+Poison,Electro Spirit,4,5,9
+Poison,Electro Wizard,2,2,4
 Poison,Elixir Golem,0,0,0
-Poison,Executioner,0,1,1
-Poison,Fireball,7,0,7
+Poison,Executioner,0,2,2
+Poison,Fireball,8,1,9
 Poison,Fisherman,0,0,0
-Poison,Flying Machine,2,0,2
+Poison,Flying Machine,2,2,4
 Poison,Furnace,1,0,1
 Poison,Giant,2,0,2
 Poison,Giant Snowball,0,0,0
 Poison,Goblin Barrel,4,0,4
-Poison,Goblin Demolisher,1,0,1
+Poison,Goblin Demolisher,1,2,3
 Poison,Goblin Drill,0,0,0
 Poison,Goblin Giant,0,0,0
-Poison,Goblin Hut,2,1,3
-Poison,Golem,2,1,3
-Poison,Graveyard,0,0,0
+Poison,Goblin Hut,4,4,8
+Poison,Golem,4,1,5
+Poison,Graveyard,0,3,3
 Poison,Hunter,1,0,1
-Poison,Ice Spirit,1,0,1
+Poison,Ice Spirit,2,2,4
 Poison,Ice Wizard,0,0,0
 Poison,Inferno Tower,0,0,0
-Poison,Knight,5,2,7
+Poison,Knight,6,6,12
 Poison,Lava Hound,0,0,0
 Poison,Mega Knight,0,0,0
 Poison,Mortar,1,0,1
 Poison,Mother Witch,0,0,0
-Poison,Musketeer,2,1,3
+Poison,Musketeer,3,1,4
 Poison,Night Witch,0,0,0
 Poison,P.E.K.K.A,1,0,1
 Poison,Princess,1,0,1
 Poison,Rage,0,0,0
 Poison,Ram Rider,0,0,0
-Poison,Rascals,1,0,1
+Poison,Rascals,3,3,6
 Poison,Rocket,0,0,0
 Poison,Royal Delivery,1,0,1
 Poison,Royal Giant,1,0,1
 Poison,Rune Giant,0,0,0
 Poison,Suspicious Bush,4,1,5
-Poison,The Log,3,2,5
-Poison,Tombstone,1,1,2
-Poison,Vines,4,1,5
-Poison,Witch,0,0,0
+Poison,The Log,3,4,7
+Poison,Tombstone,2,4,6
+Poison,Vines,5,1,6
+Poison,Witch,1,1,2
 Poison,Wizard,2,0,2
 Poison,X-Bow,1,1,2
 Poison,Zappies,0,0,0
@@ -1812,54 +1812,54 @@ Ram Rider,Witch,0,0,0
 Ram Rider,Wizard,0,0,0
 Ram Rider,X-Bow,0,0,0
 Ram Rider,Zappies,0,0,0
-Rascals,Baby Dragon,1,1,2
+Rascals,Baby Dragon,1,3,4
 Rascals,Barbarian Hut,1,0,1
 Rascals,Berserker,1,0,1
 Rascals,Dart Goblin,3,2,5
-Rascals,Electro Spirit,2,1,3
+Rascals,Electro Spirit,3,3,6
 Rascals,Electro Wizard,0,1,1
 Rascals,Elixir Golem,0,0,0
 Rascals,Executioner,0,1,1
 Rascals,Fireball,2,1,3
 Rascals,Fisherman,0,0,0
-Rascals,Flying Machine,1,1,2
+Rascals,Flying Machine,3,4,7
 Rascals,Furnace,1,0,1
-Rascals,Giant,1,1,2
+Rascals,Giant,2,1,3
 Rascals,Giant Snowball,0,0,0
 Rascals,Goblin Barrel,2,1,3
 Rascals,Goblin Demolisher,0,0,0
 Rascals,Goblin Drill,0,0,0
 Rascals,Goblin Giant,1,0,1
-Rascals,Goblin Hut,1,1,2
-Rascals,Golem,0,0,0
-Rascals,Graveyard,0,0,0
+Rascals,Goblin Hut,2,2,4
+Rascals,Golem,1,0,1
+Rascals,Graveyard,1,3,4
 Rascals,Hunter,0,0,0
-Rascals,Ice Spirit,0,0,0
+Rascals,Ice Spirit,1,2,3
 Rascals,Ice Wizard,0,0,0
 Rascals,Inferno Tower,0,0,0
-Rascals,Knight,3,2,5
+Rascals,Knight,3,4,7
 Rascals,Lava Hound,0,0,0
 Rascals,Mega Knight,0,0,0
 Rascals,Mortar,0,0,0
-Rascals,Mother Witch,0,1,1
-Rascals,Musketeer,1,2,3
+Rascals,Mother Witch,1,1,2
+Rascals,Musketeer,4,3,7
 Rascals,Night Witch,0,0,0
-Rascals,P.E.K.K.A,1,0,1
-Rascals,Poison,0,1,1
+Rascals,P.E.K.K.A,2,0,2
+Rascals,Poison,3,3,6
 Rascals,Princess,0,0,0
 Rascals,Rage,0,0,0
 Rascals,Ram Rider,0,0,0
 Rascals,Rocket,1,0,1
-Rascals,Royal Delivery,1,0,1
+Rascals,Royal Delivery,2,0,2
 Rascals,Royal Giant,0,0,0
 Rascals,Rune Giant,0,0,0
-Rascals,Suspicious Bush,2,1,3
-Rascals,The Log,1,3,4
-Rascals,Tombstone,1,2,3
-Rascals,Vines,3,0,3
-Rascals,Witch,0,0,0
+Rascals,Suspicious Bush,3,1,4
+Rascals,The Log,3,6,9
+Rascals,Tombstone,2,4,6
+Rascals,Vines,4,0,4
+Rascals,Witch,1,1,2
 Rascals,Wizard,1,0,1
-Rascals,X-Bow,0,1,1
+Rascals,X-Bow,1,1,2
 Rascals,Zappies,0,0,0
 Rocket,Baby Dragon,0,0,0
 Rocket,Barbarian Hut,0,0,0
@@ -1914,10 +1914,10 @@ Royal Delivery,Baby Dragon,0,0,0
 Royal Delivery,Barbarian Hut,0,0,0
 Royal Delivery,Berserker,0,0,0
 Royal Delivery,Dart Goblin,1,1,2
-Royal Delivery,Electro Spirit,1,1,2
-Royal Delivery,Electro Wizard,0,0,0
+Royal Delivery,Electro Spirit,1,2,3
+Royal Delivery,Electro Wizard,0,1,1
 Royal Delivery,Elixir Golem,0,0,0
-Royal Delivery,Executioner,0,0,0
+Royal Delivery,Executioner,0,1,1
 Royal Delivery,Fireball,0,2,2
 Royal Delivery,Fisherman,0,0,0
 Royal Delivery,Flying Machine,0,1,1
@@ -1928,14 +1928,14 @@ Royal Delivery,Goblin Barrel,1,0,1
 Royal Delivery,Goblin Demolisher,0,0,0
 Royal Delivery,Goblin Drill,0,0,0
 Royal Delivery,Goblin Giant,1,0,1
-Royal Delivery,Goblin Hut,0,2,2
+Royal Delivery,Goblin Hut,0,3,3
 Royal Delivery,Golem,0,0,0
-Royal Delivery,Graveyard,0,1,1
+Royal Delivery,Graveyard,0,2,2
 Royal Delivery,Hunter,0,0,0
 Royal Delivery,Ice Spirit,0,0,0
 Royal Delivery,Ice Wizard,0,0,0
 Royal Delivery,Inferno Tower,0,0,0
-Royal Delivery,Knight,0,0,0
+Royal Delivery,Knight,0,1,1
 Royal Delivery,Lava Hound,0,0,0
 Royal Delivery,Mega Knight,0,0,0
 Royal Delivery,Mortar,0,0,0
@@ -1947,13 +1947,13 @@ Royal Delivery,Poison,0,1,1
 Royal Delivery,Princess,0,0,0
 Royal Delivery,Rage,0,0,0
 Royal Delivery,Ram Rider,0,0,0
-Royal Delivery,Rascals,0,1,1
+Royal Delivery,Rascals,0,2,2
 Royal Delivery,Rocket,1,0,1
 Royal Delivery,Royal Giant,0,0,0
 Royal Delivery,Rune Giant,0,0,0
 Royal Delivery,Suspicious Bush,0,1,1
 Royal Delivery,The Log,0,1,1
-Royal Delivery,Tombstone,1,0,1
+Royal Delivery,Tombstone,1,1,2
 Royal Delivery,Vines,1,0,1
 Royal Delivery,Witch,0,1,1
 Royal Delivery,Wizard,0,0,0
@@ -2072,17 +2072,17 @@ Suspicious Bush,Furnace,0,0,0
 Suspicious Bush,Giant,0,0,0
 Suspicious Bush,Giant Snowball,0,0,0
 Suspicious Bush,Goblin Barrel,3,3,6
-Suspicious Bush,Goblin Demolisher,0,0,0
+Suspicious Bush,Goblin Demolisher,0,1,1
 Suspicious Bush,Goblin Drill,0,0,0
 Suspicious Bush,Goblin Giant,0,0,0
 Suspicious Bush,Goblin Hut,0,2,2
 Suspicious Bush,Golem,0,0,0
-Suspicious Bush,Graveyard,1,1,2
+Suspicious Bush,Graveyard,1,2,3
 Suspicious Bush,Hunter,0,0,0
-Suspicious Bush,Ice Spirit,1,0,1
+Suspicious Bush,Ice Spirit,1,1,2
 Suspicious Bush,Ice Wizard,0,0,0
 Suspicious Bush,Inferno Tower,0,0,0
-Suspicious Bush,Knight,2,3,5
+Suspicious Bush,Knight,2,4,6
 Suspicious Bush,Lava Hound,0,0,0
 Suspicious Bush,Mega Knight,0,0,0
 Suspicious Bush,Mortar,0,0,0
@@ -2094,142 +2094,142 @@ Suspicious Bush,Poison,1,4,5
 Suspicious Bush,Princess,0,0,0
 Suspicious Bush,Rage,0,0,0
 Suspicious Bush,Ram Rider,0,0,0
-Suspicious Bush,Rascals,1,2,3
+Suspicious Bush,Rascals,1,3,4
 Suspicious Bush,Rocket,0,0,0
 Suspicious Bush,Royal Delivery,1,0,1
 Suspicious Bush,Royal Giant,0,0,0
 Suspicious Bush,Rune Giant,0,0,0
-Suspicious Bush,The Log,0,3,3
-Suspicious Bush,Tombstone,0,2,2
+Suspicious Bush,The Log,0,4,4
+Suspicious Bush,Tombstone,0,3,3
 Suspicious Bush,Vines,2,2,4
-Suspicious Bush,Witch,0,1,1
+Suspicious Bush,Witch,0,2,2
 Suspicious Bush,Wizard,0,0,0
 Suspicious Bush,X-Bow,2,1,3
 Suspicious Bush,Zappies,0,0,0
-The Log,Baby Dragon,3,1,4
-The Log,Barbarian Hut,1,1,2
+The Log,Baby Dragon,4,1,5
+The Log,Barbarian Hut,2,1,3
 The Log,Berserker,3,1,4
-The Log,Dart Goblin,4,1,5
-The Log,Electro Spirit,5,3,8
-The Log,Electro Wizard,1,0,1
+The Log,Dart Goblin,5,1,6
+The Log,Electro Spirit,7,5,12
+The Log,Electro Wizard,2,2,4
 The Log,Elixir Golem,0,0,0
-The Log,Executioner,0,0,0
-The Log,Fireball,6,1,7
+The Log,Executioner,0,1,1
+The Log,Fireball,8,2,10
 The Log,Fisherman,0,0,0
-The Log,Flying Machine,4,1,5
+The Log,Flying Machine,5,2,7
 The Log,Furnace,2,0,2
-The Log,Giant,2,0,2
+The Log,Giant,3,0,3
 The Log,Giant Snowball,0,0,0
 The Log,Goblin Barrel,7,1,8
-The Log,Goblin Demolisher,0,0,0
+The Log,Goblin Demolisher,0,1,1
 The Log,Goblin Drill,0,0,0
 The Log,Goblin Giant,1,0,1
-The Log,Goblin Hut,2,2,4
-The Log,Golem,1,0,1
-The Log,Graveyard,1,1,2
+The Log,Goblin Hut,5,4,9
+The Log,Golem,3,0,3
+The Log,Graveyard,1,2,3
 The Log,Hunter,0,0,0
-The Log,Ice Spirit,2,0,2
+The Log,Ice Spirit,3,0,3
 The Log,Ice Wizard,0,0,0
 The Log,Inferno Tower,0,0,0
-The Log,Knight,4,1,5
+The Log,Knight,5,3,8
 The Log,Lava Hound,0,0,0
 The Log,Mega Knight,0,0,0
 The Log,Mortar,0,0,0
-The Log,Mother Witch,0,0,0
-The Log,Musketeer,1,1,2
+The Log,Mother Witch,1,0,1
+The Log,Musketeer,4,1,5
 The Log,Night Witch,0,0,0
 The Log,P.E.K.K.A,0,0,0
-The Log,Poison,2,3,5
+The Log,Poison,4,3,7
 The Log,Princess,1,0,1
 The Log,Rage,0,0,0
 The Log,Ram Rider,0,0,0
-The Log,Rascals,3,1,4
+The Log,Rascals,6,3,9
 The Log,Rocket,1,0,1
 The Log,Royal Delivery,1,0,1
 The Log,Royal Giant,0,1,1
 The Log,Rune Giant,0,0,0
-The Log,Suspicious Bush,3,0,3
-The Log,Tombstone,2,1,3
-The Log,Vines,5,2,7
-The Log,Witch,0,1,1
+The Log,Suspicious Bush,4,0,4
+The Log,Tombstone,3,2,5
+The Log,Vines,6,2,8
+The Log,Witch,2,1,3
 The Log,Wizard,1,0,1
-The Log,X-Bow,3,0,3
+The Log,X-Bow,4,0,4
 The Log,Zappies,0,0,0
-Tombstone,Baby Dragon,0,0,0
-Tombstone,Barbarian Hut,0,1,1
+Tombstone,Baby Dragon,1,1,2
+Tombstone,Barbarian Hut,1,1,2
 Tombstone,Berserker,0,0,0
 Tombstone,Dart Goblin,0,0,0
-Tombstone,Electro Spirit,1,0,1
-Tombstone,Electro Wizard,0,0,0
+Tombstone,Electro Spirit,3,2,5
+Tombstone,Electro Wizard,0,1,1
 Tombstone,Elixir Golem,0,0,0
 Tombstone,Executioner,0,0,0
-Tombstone,Fireball,3,1,4
+Tombstone,Fireball,5,2,7
 Tombstone,Fisherman,0,0,0
-Tombstone,Flying Machine,1,1,2
+Tombstone,Flying Machine,3,3,6
 Tombstone,Furnace,1,0,1
-Tombstone,Giant,0,0,0
+Tombstone,Giant,1,0,1
 Tombstone,Giant Snowball,0,0,0
 Tombstone,Goblin Barrel,2,0,2
-Tombstone,Goblin Demolisher,1,1,2
+Tombstone,Goblin Demolisher,1,2,3
 Tombstone,Goblin Drill,0,0,0
 Tombstone,Goblin Giant,0,0,0
-Tombstone,Goblin Hut,1,0,1
-Tombstone,Golem,0,0,0
-Tombstone,Graveyard,0,1,1
+Tombstone,Goblin Hut,3,1,4
+Tombstone,Golem,2,0,2
+Tombstone,Graveyard,0,2,2
 Tombstone,Hunter,1,0,1
 Tombstone,Ice Spirit,2,0,2
 Tombstone,Ice Wizard,0,0,0
 Tombstone,Inferno Tower,0,0,0
-Tombstone,Knight,1,2,3
+Tombstone,Knight,2,4,6
 Tombstone,Lava Hound,0,0,0
 Tombstone,Mega Knight,0,0,0
 Tombstone,Mortar,1,0,1
-Tombstone,Mother Witch,0,0,0
-Tombstone,Musketeer,1,2,3
+Tombstone,Mother Witch,1,0,1
+Tombstone,Musketeer,5,3,8
 Tombstone,Night Witch,0,0,0
-Tombstone,P.E.K.K.A,0,1,1
-Tombstone,Poison,1,1,2
+Tombstone,P.E.K.K.A,1,1,2
+Tombstone,Poison,4,2,6
 Tombstone,Princess,0,0,0
 Tombstone,Rage,0,0,0
 Tombstone,Ram Rider,0,0,0
-Tombstone,Rascals,2,1,3
+Tombstone,Rascals,4,2,6
 Tombstone,Rocket,0,0,0
-Tombstone,Royal Delivery,0,1,1
+Tombstone,Royal Delivery,1,1,2
 Tombstone,Royal Giant,0,0,0
 Tombstone,Rune Giant,0,0,0
-Tombstone,Suspicious Bush,2,0,2
-Tombstone,The Log,1,2,3
-Tombstone,Vines,1,1,2
-Tombstone,Witch,0,0,0
+Tombstone,Suspicious Bush,3,0,3
+Tombstone,The Log,2,3,5
+Tombstone,Vines,2,1,3
+Tombstone,Witch,2,0,2
 Tombstone,Wizard,0,0,0
-Tombstone,X-Bow,1,0,1
+Tombstone,X-Bow,2,0,2
 Tombstone,Zappies,0,0,0
-Vines,Baby Dragon,2,0,2
+Vines,Baby Dragon,2,1,3
 Vines,Barbarian Hut,0,0,0
 Vines,Berserker,2,0,2
 Vines,Dart Goblin,3,2,5
-Vines,Electro Spirit,1,2,3
-Vines,Electro Wizard,1,2,3
+Vines,Electro Spirit,1,3,4
+Vines,Electro Wizard,1,3,4
 Vines,Elixir Golem,0,0,0
 Vines,Executioner,0,0,0
-Vines,Fireball,4,3,7
+Vines,Fireball,4,4,8
 Vines,Fisherman,0,0,0
-Vines,Flying Machine,2,1,3
+Vines,Flying Machine,2,3,5
 Vines,Furnace,0,0,0
 Vines,Giant,1,1,2
 Vines,Giant Snowball,0,0,0
 Vines,Goblin Barrel,3,1,4
-Vines,Goblin Demolisher,1,2,3
+Vines,Goblin Demolisher,1,3,4
 Vines,Goblin Drill,0,0,0
 Vines,Goblin Giant,0,0,0
-Vines,Goblin Hut,1,4,5
+Vines,Goblin Hut,1,5,6
 Vines,Golem,2,1,3
-Vines,Graveyard,0,2,2
+Vines,Graveyard,0,3,3
 Vines,Hunter,1,0,1
-Vines,Ice Spirit,2,2,4
+Vines,Ice Spirit,2,3,5
 Vines,Ice Wizard,0,0,0
 Vines,Inferno Tower,0,0,0
-Vines,Knight,2,2,4
+Vines,Knight,2,3,5
 Vines,Lava Hound,0,0,0
 Vines,Mega Knight,0,0,0
 Vines,Mortar,1,0,1
@@ -2237,70 +2237,70 @@ Vines,Mother Witch,0,1,1
 Vines,Musketeer,1,5,6
 Vines,Night Witch,0,0,0
 Vines,P.E.K.K.A,0,0,0
-Vines,Poison,1,4,5
+Vines,Poison,1,5,6
 Vines,Princess,1,0,1
 Vines,Rage,0,0,0
 Vines,Ram Rider,0,0,0
-Vines,Rascals,0,3,3
+Vines,Rascals,0,4,4
 Vines,Rocket,0,0,0
 Vines,Royal Delivery,0,1,1
 Vines,Royal Giant,1,0,1
 Vines,Rune Giant,0,0,0
 Vines,Suspicious Bush,2,2,4
-Vines,The Log,2,5,7
-Vines,Tombstone,1,1,2
-Vines,Witch,0,1,1
+Vines,The Log,2,6,8
+Vines,Tombstone,1,2,3
+Vines,Witch,0,2,2
 Vines,Wizard,1,0,1
 Vines,X-Bow,1,0,1
 Vines,Zappies,0,0,0
-Witch,Baby Dragon,0,0,0
+Witch,Baby Dragon,0,1,1
 Witch,Barbarian Hut,0,0,0
 Witch,Berserker,0,0,0
 Witch,Dart Goblin,0,0,0
-Witch,Electro Spirit,0,0,0
-Witch,Electro Wizard,0,0,0
+Witch,Electro Spirit,2,3,5
+Witch,Electro Wizard,0,1,1
 Witch,Elixir Golem,0,0,0
-Witch,Executioner,0,0,0
-Witch,Fireball,0,0,0
+Witch,Executioner,0,1,1
+Witch,Fireball,1,0,1
 Witch,Fisherman,0,0,0
-Witch,Flying Machine,0,0,0
+Witch,Flying Machine,1,2,3
 Witch,Furnace,0,0,0
-Witch,Giant,0,0,0
+Witch,Giant,1,0,1
 Witch,Giant Snowball,0,0,0
 Witch,Goblin Barrel,0,0,0
 Witch,Goblin Demolisher,0,0,0
 Witch,Goblin Drill,0,0,0
 Witch,Goblin Giant,0,0,0
-Witch,Goblin Hut,0,0,0
-Witch,Golem,0,0,0
-Witch,Graveyard,0,0,0
+Witch,Goblin Hut,2,2,4
+Witch,Golem,1,0,1
+Witch,Graveyard,0,3,3
 Witch,Hunter,0,0,0
-Witch,Ice Spirit,0,0,0
+Witch,Ice Spirit,0,1,1
 Witch,Ice Wizard,0,0,0
 Witch,Inferno Tower,0,0,0
-Witch,Knight,1,0,1
+Witch,Knight,2,3,5
 Witch,Lava Hound,0,0,0
 Witch,Mega Knight,0,0,0
 Witch,Mortar,0,0,0
 Witch,Mother Witch,0,0,0
-Witch,Musketeer,1,0,1
+Witch,Musketeer,3,1,4
 Witch,Night Witch,0,0,0
 Witch,P.E.K.K.A,1,0,1
-Witch,Poison,0,0,0
+Witch,Poison,1,1,2
 Witch,Princess,0,0,0
 Witch,Rage,0,0,0
 Witch,Ram Rider,0,0,0
-Witch,Rascals,0,0,0
+Witch,Rascals,1,1,2
 Witch,Rocket,0,0,0
 Witch,Royal Delivery,1,0,1
 Witch,Royal Giant,0,0,0
 Witch,Rune Giant,0,0,0
-Witch,Suspicious Bush,1,0,1
-Witch,The Log,1,0,1
-Witch,Tombstone,0,0,0
-Witch,Vines,1,0,1
+Witch,Suspicious Bush,2,0,2
+Witch,The Log,1,2,3
+Witch,Tombstone,0,2,2
+Witch,Vines,2,0,2
 Witch,Wizard,1,0,1
-Witch,X-Bow,0,0,0
+Witch,X-Bow,1,0,1
 Witch,Zappies,0,0,0
 Wizard,Baby Dragon,0,0,0
 Wizard,Barbarian Hut,0,1,1
@@ -2366,17 +2366,17 @@ X-Bow,Furnace,0,0,0
 X-Bow,Giant,0,1,1
 X-Bow,Giant Snowball,0,0,0
 X-Bow,Goblin Barrel,1,1,2
-X-Bow,Goblin Demolisher,0,0,0
+X-Bow,Goblin Demolisher,0,1,1
 X-Bow,Goblin Drill,0,0,0
 X-Bow,Goblin Giant,0,0,0
 X-Bow,Goblin Hut,0,2,2
 X-Bow,Golem,0,1,1
-X-Bow,Graveyard,0,0,0
+X-Bow,Graveyard,0,1,1
 X-Bow,Hunter,0,0,0
-X-Bow,Ice Spirit,1,0,1
+X-Bow,Ice Spirit,1,1,2
 X-Bow,Ice Wizard,0,0,0
 X-Bow,Inferno Tower,0,0,0
-X-Bow,Knight,0,2,2
+X-Bow,Knight,0,3,3
 X-Bow,Lava Hound,0,0,0
 X-Bow,Mega Knight,0,0,0
 X-Bow,Mortar,0,0,0
@@ -2388,16 +2388,16 @@ X-Bow,Poison,1,1,2
 X-Bow,Princess,0,0,0
 X-Bow,Rage,0,0,0
 X-Bow,Ram Rider,0,0,0
-X-Bow,Rascals,1,0,1
+X-Bow,Rascals,1,1,2
 X-Bow,Rocket,0,0,0
 X-Bow,Royal Delivery,0,0,0
 X-Bow,Royal Giant,0,0,0
 X-Bow,Rune Giant,0,0,0
 X-Bow,Suspicious Bush,1,2,3
-X-Bow,The Log,0,3,3
-X-Bow,Tombstone,0,1,1
+X-Bow,The Log,0,4,4
+X-Bow,Tombstone,0,2,2
 X-Bow,Vines,0,1,1
-X-Bow,Witch,0,0,0
+X-Bow,Witch,0,1,1
 X-Bow,Wizard,0,0,0
 X-Bow,Zappies,0,0,0
 Zappies,Baby Dragon,0,0,0

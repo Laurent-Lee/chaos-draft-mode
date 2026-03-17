@@ -67,6 +67,10 @@ main{max-width:1400px;margin:0 auto;padding:1.2rem 1rem}
   color:var(--text-muted);border-radius:8px;padding:.45rem;font-size:.78rem;
   font-family:"Exo 2",sans-serif;cursor:pointer;margin-top:.2rem;transition:all .15s}
 .mh-show-more:hover{border-color:var(--gold);color:var(--gold)}
+.mode-badge{font-size:.63rem;font-weight:700;letter-spacing:.06em;border-radius:999px;
+  padding:1px 7px;white-space:nowrap}
+.mode-badge-normal{color:var(--gold);background:rgba(245,200,66,.12);border:1px solid rgba(245,200,66,.3)}
+.mode-badge-ai{color:var(--p1);background:rgba(74,158,255,.12);border:1px solid rgba(74,158,255,.3)}
 .field{margin-bottom:.9rem;text-align:left}
 .field label{display:block;font-size:.75rem;color:var(--text-muted);margin-bottom:.3rem;
   letter-spacing:.05em;text-transform:uppercase}
@@ -513,10 +517,16 @@ function renderMatchHistory(games){
     const secondPicksHtml = (g.second_picks || []).map(c => cardThumb(c, false)).join('');
     const secondBansHtml  = (g.second_bans  || []).map(c => cardThumb(c, true)).join('');
     const randomBansHtml = (g.random_bans || []).map(c => cardThumb(c, true)).join('');
+    const modeBadge = g.game_mode === 'AI Draft'
+      ? '<span class="mode-badge mode-badge-ai">🤖 AI Draft</span>'
+      : g.game_mode === 'Normal Draft'
+        ? '<span class="mode-badge mode-badge-normal">⚔️ Normal Draft</span>'
+        : '';
     return `
     <div class="mh-game">
       <div class="mh-header">
         <span class="mh-winner-tag">🏆 ${g.winner || '?'} wins</span>
+        ${modeBadge}
       </div>
       ${randomBansHtml ? `<div style="display:flex;align-items:center;gap:.5rem;padding:.4rem .9rem .1rem;flex-wrap:wrap"><span style="font-size:.6rem;color:#ff9944;letter-spacing:.08em;text-transform:uppercase">🎲 Random Bans</span><div style="display:flex;gap:3px;flex-wrap:wrap">${randomBansHtml}</div></div>` : ''}
       <div class="mh-body">

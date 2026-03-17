@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Card Detail — CR Draft</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Exo+2:wght@300;400;600;700;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+<script src="/static/card_tiers.js"></script>
 <style>
 /* ── Design tokens ── */
 :root {
@@ -334,19 +335,6 @@ const TIER_COLORS = {
   "D":  {color:"#9b7fe8", glow:"rgba(155,127,232,.3)"},
   "F":  {color:"#7a8aaa", glow:"rgba(122,138,170,.2)"},
 };
-const CARD_TIER = {};
-{
-  const tiers = {
-    "S+": ["Goblin Demolisher","Electro Wizard","Barbarian Hut","Furnace"],
-    "S":  ["Golem","Goblin Barrel","X-Bow","Baby Dragon","Vines","Goblin Hut"],
-    "A":  ["Giant","Knight","Poison","The Log","Musketeer","Tombstone","Fireball","Suspicious Bush","Dart Goblin"],
-    "B":  ["Witch","Electro Spirit","Ice Spirit","Executioner","Wizard","Flying Machine","Rascals","Rune Giant","Berserker","Goblin Giant","P.E.K.K.A"],
-    "C":  ["Princess","Goblin Drill","Zappies","Royal Giant","Graveyard","Night Witch"],
-    "D":  ["Royal Delivery","Mega Knight","Ram Rider","Lava Hound","Elixir Golem"],
-    "F":  ["Giant Snowball","Inferno Tower","Rocket","Hunter","Rage","Mother Witch","Fisherman","Ice Wizard","Mortar"]
-  };
-  for(const [tier,cards] of Object.entries(tiers)) cards.forEach(c => CARD_TIER[c]=tier);
-}
 
 // ── State ─────────────────────────────────────────────────────────────────────
 const cardName   = decodeURIComponent(location.pathname.split('/card/')[1] || '');
