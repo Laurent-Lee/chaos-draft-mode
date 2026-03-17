@@ -235,10 +235,12 @@ This keeps the LLM focused on relevant options rather than all 50 pool cards, re
 ### Bayesian rating formula
 
 ```
-rating = ((n + 3) / (n + 4))^2 * win_rate
+confidence = ((n + 3) / (n + 4))^2
+rating     = confidence * max(win_rate, 0.35) + (1 - confidence) * 0.5
 ```
-- `n == 0` → `win_rate = 1.0` (optimistic prior → `0.5625`)
-- `n > 0` → actual win rate
+- `n == 0` → returns `0.5625` (optimistic prior)
+- `n > 0` → blends actual win rate (floored at 0.35) with a 0.5 neutral prior weighted by confidence
+- At n → ∞ with 0% win rate, rating converges to 0.35 (the floor)
 
 `card_1_overall_rating`: n = card's total games across all matches; win rate = card's overall win rate
 `card_1_matchup_rating`: n = games played for the specific (card_1, card_2) pair; win rate = matchup win rate
