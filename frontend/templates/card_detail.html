@@ -117,10 +117,11 @@ main{max-width:1280px;margin:0 auto;padding:2rem 1.2rem 4rem}
 
 .stat-cards-grid{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
+  grid-template-columns:repeat(5,1fr);
   gap:.85rem;
 }
-@media(max-width:900px){.stat-cards-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:1100px){.stat-cards-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:700px){.stat-cards-grid{grid-template-columns:repeat(2,1fr)}}
 
 .stat-card{
   background:var(--surface);border:1px solid var(--border2);border-radius:14px;
@@ -297,6 +298,7 @@ td{padding:.55rem 1rem;vertical-align:middle}
       <div class="mu-controls">
         <div class="mu-seg" id="mu-group-seg">
           <button class="active" data-group="win_rate">By Win Rate</button>
+          <button data-group="matchup_rating">By Rating</button>
           <button data-group="name">Alphabetical</button>
           <button data-group="games_played">By Games</button>
         </div>
@@ -314,6 +316,7 @@ td{padding:.55rem 1rem;vertical-align:middle}
               <th data-sort="card_1_W" style="text-align:center">W <span class="arr"></span></th>
               <th data-sort="card_1_L" style="text-align:center">L <span class="arr"></span></th>
               <th data-sort="win_rate" style="text-align:center">Win % <span class="arr"></span></th>
+              <th data-sort="matchup_rating" style="text-align:center">Rating <span class="arr"></span></th>
             </tr>
           </thead>
           <tbody id="matchup-tbody"></tbody>
@@ -406,6 +409,10 @@ function renderHero(o){
   // Stat cards
   const gp      = o.games_played;
   const wpClass = o.win_rate >= 55 ? 'sc-green' : o.win_rate <= 40 ? 'sc-red' : 'sc-gold';
+  const ratingVal = o.overall_rating != null ? (o.overall_rating * 100).toFixed(1) : '—';
+  const ratingClass = o.overall_rating == null ? 'sc-gold'
+    : o.overall_rating * 100 >= 55 ? 'sc-green'
+    : o.overall_rating * 100 <= 40 ? 'sc-red' : 'sc-gold';
   document.getElementById('stat-cards-grid').innerHTML = `
     <div class="stat-card">
       <div class="sc-value sc-gold">${o.total_games}</div>
@@ -422,6 +429,10 @@ function renderHero(o){
     <div class="stat-card">
       <div class="sc-value sc-red">${o.losses}</div>
       <div class="sc-label">Losses</div>
+    </div>
+    <div class="stat-card">
+      <div class="sc-value ${ratingClass}">${ratingVal}</div>
+      <div class="sc-label">Overall Rating</div>
     </div>`;
 
   // Stat bars
@@ -468,6 +479,11 @@ function renderMatchups(){
         if(bv !== av) return bv - av;
         return b.games_played - a.games_played;
       }
+      if(groupMode === 'matchup_rating'){
+        const av = a.matchup_rating ?? -1, bv = b.matchup_rating ?? -1;
+        if(bv !== av) return bv - av;
+        return b.games_played - a.games_played;
+      }
       if(groupMode === 'name')
         return a.card_2.localeCompare(b.card_2);
       if(groupMode === 'games_played')
@@ -483,6 +499,14 @@ function renderMatchups(){
     return              `<span class="wr-chip wr-cold">${wr}%</span>`;
   }
 
+  function mrChip(mr){
+    if(mr == null) return `<span class="wr-chip wr-none">—</span>`;
+    const pct = (mr * 100).toFixed(1);
+    if(mr >= 0.60)  return `<span class="wr-chip wr-hot">${pct}%</span>`;
+    if(mr >= 0.45)  return `<span class="wr-chip wr-warm">${pct}%</span>`;
+    return              `<span class="wr-chip wr-cold">${pct}%</span>`;
+  }
+
   function rowHtml(r){
     const fb = fallback(34);
     return `<tr>
@@ -495,6 +519,7 @@ function renderMatchups(){
       <td class="w-cell">${r.games_played ? (r.card_1_W||'<span style="opacity:.5">0</span>') : '<span style="opacity:.35">—</span>'}</td>
       <td class="l-cell">${r.games_played ? (r.card_1_L||'<span style="opacity:.5">0</span>') : '<span style="opacity:.35">—</span>'}</td>
       <td style="text-align:center">${wrChip(r.win_rate, r.games_played)}</td>
+      <td style="text-align:center">${mrChip(r.matchup_rating)}</td>
     </tr>`;
   }
 
@@ -506,26 +531,26 @@ function renderMatchups(){
     const unfav      = sortRows(seen.filter(r => r.win_rate < 45));
 
     if(favourable.length){
-      html += `<tr class="group-header"><td colspan="5" style="color:var(--green)">✅ Favourable (${favourable.length})</td></tr>`;
+      html += `<tr class="group-header"><td colspan="6" style="color:var(--green)">✅ Favourable (${favourable.length})</td></tr>`;
       html += favourable.map(rowHtml).join('');
     }
     if(even.length){
-      html += `<tr class="group-header"><td colspan="5" style="color:var(--gold)">⚖️ Even (${even.length})</td></tr>`;
+      html += `<tr class="group-header"><td colspan="6" style="color:var(--gold)">⚖️ Even (${even.length})</td></tr>`;
       html += even.map(rowHtml).join('');
     }
     if(unfav.length){
-      html += `<tr class="group-header"><td colspan="5" style="color:var(--red)">❌ Unfavourable (${unfav.length})</td></tr>`;
+      html += `<tr class="group-header"><td colspan="6" style="color:var(--red)">❌ Unfavourable (${unfav.length})</td></tr>`;
       html += unfav.map(rowHtml).join('');
     }
     if(seen.length === 0)
-      html = `<tr><td colspan="5" class="empty">No matchup data yet.</td></tr>`;
+      html = `<tr><td colspan="6" class="empty">No matchup data yet.</td></tr>`;
   } else {
     html = sortRows(seen).map(rowHtml).join('');
-    if(!html) html = `<tr><td colspan="5" class="empty">No matchup data yet.</td></tr>`;
+    if(!html) html = `<tr><td colspan="6" class="empty">No matchup data yet.</td></tr>`;
   }
 
   if(showZero && unseen.length){
-    html += `<tr class="group-header"><td colspan="5" style="color:var(--text-muted)">🔲 Not Yet Seen (${unseen.length})</td></tr>`;
+    html += `<tr class="group-header"><td colspan="6" style="color:var(--text-muted)">🔲 Not Yet Seen (${unseen.length})</td></tr>`;
     html += sortRows(unseen).map(rowHtml).join('');
   }
 

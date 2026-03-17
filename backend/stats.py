@@ -456,6 +456,10 @@ def card_stats():
                 if b in ("1", "-1"): stats[c]["player_bans"] += 1
                 if b == "R":         stats[c]["random_bans"]  += 1
 
+    CARD_DATA_CSV = os.path.join(_ROOT, "data", "card_data.csv")
+    from backend.get_card_data import get_overall_ratings
+    overall_ratings = get_overall_ratings(CARD_DATA_CSV)
+
     card_lookup = {c["name"]: c for c in state.get("cards", [])}
     result = []
     for c in CHAOS_CARD_LIST:
@@ -466,19 +470,20 @@ def card_stats():
         ban_rate     = round(s["player_bans"] / total_games * 100, 1) if total_games else 0
         meta         = card_lookup.get(c, {})
         result.append({
-            "name":         c,
-            "iconUrl":      meta.get("iconUrl", ""),
-            "elixir":       meta.get("elixir", 0),
-            "rarity":       meta.get("rarity", ""),
-            "games_played": games_played,
-            "wins":         s["wins"],
-            "losses":       s["losses"],
-            "player_bans":  s["player_bans"],
-            "random_bans":  s["random_bans"],
-            "total_games":  total_games,
-            "play_rate":    play_rate,
-            "win_rate":     win_rate,
-            "ban_rate":     ban_rate,
+            "name":           c,
+            "iconUrl":        meta.get("iconUrl", ""),
+            "elixir":         meta.get("elixir", 0),
+            "rarity":         meta.get("rarity", ""),
+            "games_played":   games_played,
+            "wins":           s["wins"],
+            "losses":         s["losses"],
+            "player_bans":    s["player_bans"],
+            "random_bans":    s["random_bans"],
+            "total_games":    total_games,
+            "play_rate":      play_rate,
+            "win_rate":       win_rate,
+            "ban_rate":       ban_rate,
+            "overall_rating": overall_ratings.get(c),
         })
 
     return jsonify(result)
@@ -587,17 +592,19 @@ def card_detail(card_name):
                 if b in ("1", "-1"): player_bans += 1
                 if b == "R":         random_bans  += 1
 
-    games_played = wins + losses
-    meta         = card_lookup.get(card_name, {})
+    games_played   = wins + losses
+    meta           = card_lookup.get(card_name, {})
+    overall_rating = None
     overall = {
         "name": card_name, "iconUrl": meta.get("iconUrl",""),
         "elixir": meta.get("elixir",0), "rarity": meta.get("rarity",""),
         "total_games": total_games, "games_played": games_played,
         "wins": wins, "losses": losses,
         "player_bans": player_bans, "random_bans": random_bans,
-        "play_rate": round(games_played/total_games*100,1) if total_games else 0,
-        "win_rate":  round(wins/games_played*100,1)        if games_played else 0,
-        "ban_rate":  round(player_bans/total_games*100,1)  if total_games else 0,
+        "play_rate":      round(games_played/total_games*100,1) if total_games else 0,
+        "win_rate":       round(wins/games_played*100,1)        if games_played else 0,
+        "ban_rate":       round(player_bans/total_games*100,1)  if total_games else 0,
+        "overall_rating": None,
     }
 
     # Matchup rows — prefer card_data.csv, fall back to live computation
@@ -607,15 +614,30 @@ def card_detail(card_name):
             for row in csv.DictReader(f):
                 if row.get("card_1","").strip() != card_name:
                     continue
+                if overall_rating is None:
+                    raw_or = row.get("card_1_overall_rating", None)
+                    if raw_or not in (None, ""):
+                        try:
+                            overall_rating = float(raw_or)
+                        except (ValueError, TypeError):
+                            pass
                 c2 = row["card_2"].strip()
                 gp = int(row.get("Games Played",0) or 0)
                 w  = int(row.get("card_1_W",0)     or 0)
                 l  = int(row.get("card_1_L",0)     or 0)
+                mr = None
+                raw_mr = row.get("card_1_matchup_rating", None)
+                if raw_mr not in (None, ""):
+                    try:
+                        mr = float(raw_mr)
+                    except (ValueError, TypeError):
+                        pass
                 m2 = card_lookup.get(c2, {})
                 matchups.append({"card_2": c2, "card_2_iconUrl": m2.get("iconUrl",""),
                     "card_2_elixir": m2.get("elixir",0),
                     "card_1_W": w, "card_1_L": l, "games_played": gp,
-                    "win_rate": round(w/gp*100,1) if gp else None})
+                    "win_rate": round(w/gp*100,1) if gp else None,
+                    "matchup_rating": mr})
     else:
         agg2 = {c2: {"W":0,"L":0,"GP":0} for c2 in CHAOS_CARD_LIST if c2 != card_name}
         if os.path.exists(CSV_FILE):
@@ -631,8 +653,10 @@ def card_detail(card_name):
             matchups.append({"card_2":c2,"card_2_iconUrl":m2.get("iconUrl",""),
                 "card_2_elixir":m2.get("elixir",0),
                 "card_1_W":w,"card_1_L":d["L"],"games_played":gp,
-                "win_rate":round(w/gp*100,1) if gp else None})
+                "win_rate":round(w/gp*100,1) if gp else None,
+                "matchup_rating": None})
 
+    overall["overall_rating"] = overall_rating
     return jsonify({"overall": overall, "matchups": matchups})
 
 
