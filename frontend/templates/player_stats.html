@@ -102,6 +102,7 @@ main{max-width:1100px;margin:0 auto;padding:1.5rem 1rem}
 .card-table th.right,.card-table td.right{text-align:right}
 .card-table td{padding:.5rem .75rem;border-bottom:1px solid rgba(42,48,80,.5);
   font-size:.82rem;vertical-align:middle}
+.card-table tbody tr{cursor:pointer}
 .card-table tr:hover td{background:var(--surface2)}
 .card-icon{width:32px;height:32px;border-radius:5px;object-fit:contain;
   background:#000;vertical-align:middle;margin-right:.45rem}
@@ -401,7 +402,7 @@ function _drawCardTable(containerId){
   const tbody = cards.map(c => {
     const wpClass = c.games_played===0 ? 'zero' : c.win_rate>=60 ? 'win-cell' : c.win_rate<40 ? 'loss-cell' : '';
     const zero    = v => v===0 ? `<span class="zero">${v}</span>` : v;
-    return `<tr>
+    return `<tr onclick="window.location.href='/card/'+encodeURIComponent('${c.name.replace(/'/g,"\\'")}')">
       <td class="card-name-cell">
         <img class="card-icon" src="${c.iconUrl||fallback}" alt="${c.name}" onerror="this.src='${fallback}'">
         ${c.name}

@@ -413,21 +413,16 @@ def _fuzzy_match(name, pool_names):
     return None
 
 
-def _best_ban_card(pool, overall_ratings):
-    """Fallback for ban: return the pool card with the highest overall_rating."""
-    best        = None
-    best_rating = -1.0
-    for c in pool:
-        r = overall_ratings.get(c["name"]) or 0.0
-        if r > best_rating:
-            best_rating = r
-            best        = c
-    if best:
-        return best["id"], f"fallback: highest-rated card available (rating: {best_rating:.2f})"
-    if pool:
-        c = random.choice(pool)
-        return c["id"], "fallback: random ban (no rating data)"
-    return None, ""
+def _random_top3_ban_card(pool, overall_ratings):
+    """Ban: sort pool by overall_rating desc, pick randomly from the top 3."""
+    if not pool:
+        return None, ""
+    sorted_pool = sorted(pool, key=lambda c: overall_ratings.get(c["name"]) or 0.0, reverse=True)
+    top3        = sorted_pool[:3]
+    chosen      = random.choice(top3)
+    rating      = overall_ratings.get(chosen["name"]) or 0.0
+    top3_names  = ", ".join(c["name"] for c in top3)
+    return chosen["id"], f"randomly selected from top 3 by rating [{top3_names}] (chose {chosen['name']}: {rating:.4f})"
 
 
 def _best_pick_card(pool, card_stats):
@@ -481,11 +476,9 @@ def ai_decide(phase, pool, my_picks, opp_picks, card_stats, model, matchup_stats
     overall_ratings = get_overall_ratings(CARD_DATA_CSV)
 
     if phase == "ban":
-        prompt   = build_ban_prompt(
-            pool_names, my_names, opp_names, card_stats,
-            type_deltas=type_deltas, overall_ratings=overall_ratings,
-        )
-        fallback = lambda: _best_ban_card(pool, overall_ratings)
+        card_id, reason = _random_top3_ban_card(pool, overall_ratings)
+        print(f"[ai_draft] BAN: {reason}")
+        return card_id, reason
     else:
         # Hard-enforce mandatory composition for picks 1-6.
         # Until all required types are filled, restrict the pool to cards

@@ -340,6 +340,9 @@ main{max-width:1400px;margin:0 auto;padding:1.2rem 1rem}
       <option>Brooks</option>
       <option>Andrew</option>
     </select></div>
+  <div style="display:flex;justify-content:center;margin:.1rem 0">
+    <button onclick="swapPlayers()" title="Swap players" style="background:transparent;border:1px solid var(--border);border-radius:999px;color:var(--text-muted);cursor:pointer;font-size:.85rem;padding:.25rem .75rem;transition:all .15s" onmouseover="this.style.borderColor='var(--gold)';this.style.color='var(--gold)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text-muted)'">⇅ Swap</button>
+  </div>
   <div class="field"><label>Player 2 Name</label>
     <select id="p2-name" onchange="syncDropdowns()">
       <option>Kevin</option>
@@ -566,6 +569,15 @@ function rebuildDropdowns(){
       `<option value="${p}"${p===cur?' selected':''}>${p}</option>`
     ).join('');
   });
+}
+
+function swapPlayers(){
+  const p1 = document.getElementById('p1-name');
+  const p2 = document.getElementById('p2-name');
+  const tmp = p1.value;
+  p1.value = p2.value;
+  p2.value = tmp;
+  syncDropdowns();
 }
 
 function syncDropdowns(){
