@@ -63,7 +63,10 @@ def calculate_elo(input_path: str, output_path: str) -> None:
             print("❌  output.csv is missing the 'winner' column — is it empty?")
             sys.exit(1)
 
-        for game_num, row in enumerate(reader, start=1):
+        rows = list(reader)
+        rows.sort(key=lambda r: r.get("timestamp", ""))
+
+        for game_num, row in enumerate(rows, start=1):
             winner = row["winner"].strip()
             loser  = row["loser"].strip()
 
@@ -88,6 +91,7 @@ def calculate_elo(input_path: str, output_path: str) -> None:
             # Snapshot: ELO for every player after this game
             snap = {
                 "game":         game_num,
+                "timestamp":    row.get("timestamp", ""),
                 "winner":       winner,
                 "loser":        loser,
                 "winner_delta": f"+{delta_winner}" if delta_winner >= 0 else str(delta_winner),
@@ -107,7 +111,7 @@ def calculate_elo(input_path: str, output_path: str) -> None:
 
     # Build column order: metadata first, then players sorted by final ELO desc
     player_cols = sorted(elo, key=lambda p: elo[p], reverse=True)
-    fieldnames  = ["game", "winner", "loser", "winner_delta", "loser_delta"] + player_cols
+    fieldnames  = ["game", "timestamp", "winner", "loser", "winner_delta", "loser_delta"] + player_cols
 
     with open(output_path, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
