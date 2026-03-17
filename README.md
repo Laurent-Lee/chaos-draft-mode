@@ -22,6 +22,7 @@ cr_draft/
 │   ├── stats.html       # Card stats page (bring your own, see Setup)
 │   └── templates/
 │       ├── index.html        # Main draft UI
+│       ├── card_detail.html  # card details html
 │       └── player_stats.html # Player leaderboard + per-player detail page
 │
 ├── static/
@@ -30,8 +31,11 @@ cr_draft/
 │   └── card_types.js    # Card type assignments (Tower/Tanks/Ranged/etc) — edit to update types
 │
 └── data/
-    ├── output.csv        # Match history (auto-created on first recorded game)
-    └── elo.csv           # ELO ratings (auto-created by elo.py)
+│   ├── output.csv        # Match history (auto-created on first recorded game)
+│   ├─── elo.csv           # ELO ratings (auto-created by elo.py)
+│   ├── card_data.csv    # card_data (auto-created by stats.py) 
+│   └── elo.py           # ELO calculator (bring your own, see Setup)
+│
 ```
 
 ## Setup

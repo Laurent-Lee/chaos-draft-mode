@@ -99,12 +99,26 @@ td{padding:.55rem .9rem;vertical-align:middle;white-space:nowrap}
 .tier-D {background:rgba(155,127,232,.2);color:#9b7fe8}
 .tier-F {background:rgba(120,120,120,.15);color:#888}
 
-/* no-data */
+/* no-data / loading */
 .no-data{text-align:center;padding:3rem;color:var(--text-muted);font-size:.9rem}
-
-/* loading */
 #loading{text-align:center;padding:4rem;color:var(--text-muted);font-size:.9rem;
   font-family:'Cinzel Decorative',serif;letter-spacing:.1em}
+
+/* ── Click hint on card column header ── */
+th[data-col="name"] .click-hint{
+  font-size:.6rem;font-weight:400;letter-spacing:.04em;text-transform:none;
+  color:var(--text-muted);opacity:.7;margin-left:.4rem;font-family:'Exo 2',sans-serif;
+}
+
+/* ── Export button ── */
+.export-btn{
+  background:transparent;border:1px solid var(--border);color:var(--text-muted);
+  border-radius:6px;padding:.3rem .8rem;font-family:'Exo 2',sans-serif;
+  font-size:.72rem;font-weight:700;cursor:pointer;transition:all .15s;
+  margin-left:auto;letter-spacing:.04em;text-transform:uppercase;
+}
+.export-btn:hover{border-color:var(--pick);color:var(--pick)}
+
 </style>
 </head>
 <body>
@@ -141,10 +155,10 @@ td{padding:.55rem .9rem;vertical-align:middle;white-space:nowrap}
       <input id="search" type="text" placeholder="Search card…" oninput="renderTable()">
     </div>
     <div class="tbl-wrap">
-      <table>
+      <table id="main-table">
         <thead>
           <tr>
-            <th data-col="name">Card <span class="sort-arrow"></span></th>
+            <th data-col="name">Card <span class="sort-arrow"></span><span class="click-hint">click to view detail →</span></th>
             <th data-col="elixir"><img src="/elixir.svg" alt="elixir" style="width:14px;height:14px;vertical-align:middle;margin-right:2px"> <span class="sort-arrow"></span></th>
             <th data-col="tier">Tier <span class="sort-arrow"></span></th>
             <th data-col="games_played">Games <span class="sort-arrow"></span></th>
@@ -156,7 +170,13 @@ td{padding:.55rem .9rem;vertical-align:middle;white-space:nowrap}
         <tbody id="tbody"></tbody>
       </table>
     </div>
-  </div>
+
+    <!-- ── Export ── -->
+    <div style="display:flex;justify-content:flex-end;margin-top:1rem">
+      <button class="export-btn" onclick="exportMatchups()">⬇ Export card_data.csv</button>
+    </div>
+
+  </div><!-- #content -->
 </main>
 <script>
 const CARD_TIER = {};
@@ -198,7 +218,7 @@ let sortAsc    = false;
 let tierFilter = "All";
 let typeFilter = "All";
 
-// ── Fetch ─────────────────────────────────────────────────────────────────────
+// ── Fetch card stats ──────────────────────────────────────────────────────────
 async function loadStats(){
   try{
     const res = await fetch('/api/card_stats');
@@ -209,7 +229,6 @@ async function loadStats(){
       document.getElementById('content').style.display = 'none';
       return;
     }
-    // Enrich with tier/type
     allCards.forEach(c => {
       c.tier = CARD_TIER[c.name] || 'F';
       c.type = CARD_TYPE[c.name] || 'Other';
@@ -226,10 +245,6 @@ async function loadStats(){
 // ── Summary pills ─────────────────────────────────────────────────────────────
 function renderSummary(){
   const totalGames = allCards[0]?.total_games ?? 0;
-  const totalPicks = allCards.reduce((a,c) => a + c.games_played, 0);
-  const avgPlayRate = totalGames
-    ? (allCards.reduce((a,c) => a + c.play_rate, 0) / allCards.length).toFixed(1)
-    : 0;
   const mostPlayed = [...allCards].sort((a,b) => b.play_rate - a.play_rate)[0];
   const mostWon    = [...allCards].filter(c=>c.games_played>0).sort((a,b) => b.win_rate - a.win_rate)[0];
   const mostBanned = [...allCards].sort((a,b) => b.ban_rate - a.ban_rate)[0];
@@ -255,10 +270,10 @@ function getFiltered(){
 function getSorted(cards){
   return [...cards].sort((a,b) => {
     let av = a[sortCol], bv = b[sortCol];
-    if(sortCol === 'tier')  { av = TIER_ORDER[a.tier]??99; bv = TIER_ORDER[b.tier]??99; }
-    if(sortCol === 'name')  { av = a.name.toLowerCase(); bv = b.name.toLowerCase(); }
-    if(av < bv) return sortAsc ?  -1 : 1;
-    if(av > bv) return sortAsc ?   1 : -1;
+    if(sortCol === 'tier') { av = TIER_ORDER[a.tier]??99; bv = TIER_ORDER[b.tier]??99; }
+    if(sortCol === 'name') { av = a.name.toLowerCase(); bv = b.name.toLowerCase(); }
+    if(av < bv) return sortAsc ? -1 : 1;
+    if(av > bv) return sortAsc ?  1 : -1;
     return 0;
   });
 }
@@ -277,14 +292,14 @@ function tierBadge(tier){
 }
 
 function renderTable(){
-  const rows   = getSorted(getFiltered());
-  const maxPR  = Math.max(...rows.map(c=>c.play_rate), 1);
-  const maxWR  = Math.max(...rows.map(c=>c.win_rate),  1);
-  const maxBR  = Math.max(...rows.map(c=>c.ban_rate),  1);
+  const rows  = getSorted(getFiltered());
+  const maxPR = Math.max(...rows.map(c=>c.play_rate), 1);
+  const maxWR = Math.max(...rows.map(c=>c.win_rate),  1);
+  const maxBR = Math.max(...rows.map(c=>c.ban_rate),  1);
   const fallback = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='38' height='38'%3E%3Crect width='38' height='38' fill='%23222'/%3E%3C/svg%3E`;
   document.getElementById('tbody').innerHTML = rows.length
     ? rows.map(c => `
-    <tr>
+    <tr class="card-row" onclick="selectCard('${c.name.replace(/'/g,"\\'")}')">
       <td>
         <div class="card-cell">
           <img src="${c.iconUrl||fallback}" alt="${c.name}" onerror="this.src='${fallback}'">
@@ -305,8 +320,7 @@ function renderTable(){
     </tr>`).join('')
     : `<tr><td colspan="7" class="no-data">No cards match the current filters.</td></tr>`;
 
-  // Update sort arrows
-  document.querySelectorAll('thead th').forEach(th => {
+  document.querySelectorAll('#main-table thead th').forEach(th => {
     const arrow = th.querySelector('.sort-arrow');
     if(!arrow) return;
     th.classList.toggle('sorted', th.dataset.col === sortCol);
@@ -314,8 +328,8 @@ function renderTable(){
   });
 }
 
-// ── Sort click ────────────────────────────────────────────────────────────────
-document.querySelectorAll('thead th[data-col]').forEach(th => {
+// ── Sort click (main table) ───────────────────────────────────────────────────
+document.querySelectorAll('#main-table thead th[data-col]').forEach(th => {
   th.addEventListener('click', () => {
     if(sortCol === th.dataset.col) sortAsc = !sortAsc;
     else { sortCol = th.dataset.col; sortAsc = false; }
@@ -323,7 +337,7 @@ document.querySelectorAll('thead th[data-col]').forEach(th => {
   });
 });
 
-// ── Tier filter ───────────────────────────────────────────────────────────────
+// ── Tier / Type filters ───────────────────────────────────────────────────────
 document.querySelectorAll('#tier-seg button').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('#tier-seg button').forEach(b => b.classList.remove('active'));
@@ -332,8 +346,6 @@ document.querySelectorAll('#tier-seg button').forEach(btn => {
     renderTable();
   });
 });
-
-// ── Type filter ───────────────────────────────────────────────────────────────
 document.querySelectorAll('#type-seg button').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('#type-seg button').forEach(b => b.classList.remove('active'));
@@ -343,7 +355,33 @@ document.querySelectorAll('#type-seg button').forEach(btn => {
   });
 });
 
+// ── Card click → detail page ──────────────────────────────────────────────────
+function selectCard(name){
+  window.location.href = '/card/' + encodeURIComponent(name);
+}
+
+// ── Export ────────────────────────────────────────────────────────────────────
+async function exportMatchups(){
+  const btn = document.querySelector('.export-btn');
+  btn.textContent = '⏳ Exporting…';
+  btn.disabled = true;
+  try {
+    const res  = await fetch('/api/card_matchups/export', {method:'POST'});
+    const data = await res.json();
+    btn.textContent = `✅ Exported ${data.rows} rows`;
+    setTimeout(() => { btn.textContent = '⬇ Export card_data.csv'; btn.disabled = false; }, 3000);
+  } catch(e) {
+    btn.textContent = '❌ Export failed';
+    setTimeout(() => { btn.textContent = '⬇ Export card_data.csv'; btn.disabled = false; }, 3000);
+  }
+}
+
 loadStats();
 </script>
+<style>
+/* card row pointer cursor */
+.card-row{cursor:pointer}
+.card-row:hover td{background:var(--surface2)}
+</style>
 </body>
 </html>

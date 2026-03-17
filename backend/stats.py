@@ -12,9 +12,12 @@ Routes:
 
 import os
 import csv
+import json
+import urllib.request
 from datetime import datetime, timezone
+from itertools import product as iproduct
 from flask import Blueprint, jsonify, request
-from config import CSV_FILE, CHAOS_CARD_LIST, PLAYERS, ELO_STARTING, _ROOT
+from config import CSV_FILE, CHAOS_CARD_LIST, PLAYERS, ELO_STARTING, _ROOT, CR_API_TOKEN, PLAYER_TAGS_FILE
 from backend.draft import state
 
 # Import ELO calculator -- elo.py lives in backend/
@@ -26,6 +29,10 @@ except ImportError:
     ELO_INPUT     = os.path.join(_ROOT, "data", "output.csv")
 
 stats_bp = Blueprint("stats", __name__)
+
+MODIFIER_COLS = [f"Modifier_{i}_W" for i in range(1, 6)] + [f"Modifier_{i}_L" for i in range(1, 6)]
+CHAOS_GAME_MODE = "Crazy_Arena"
+CR_API_BASE     = "https://api.clashroyale.com/v1"
 
 
 # -- Internal helpers ---------------------------------------------------------
@@ -43,15 +50,111 @@ def _csv_headers():
     win_cols    = [f"{c}_W"      for c in CHAOS_CARD_LIST]
     loss_cols   = [f"{c}_L"      for c in CHAOS_CARD_LIST]
     banned_cols = [f"{c}_BANNED" for c in CHAOS_CARD_LIST]
-    return ["timestamp", "1st_pick", "2nd_pick", "winner", "loser"] + win_cols + loss_cols + banned_cols
+    return ["timestamp", "1st_pick", "2nd_pick", "winner", "loser"] + win_cols + loss_cols + banned_cols + MODIFIER_COLS
 
 
 def _ensure_csv_headers():
-    """Create the data/ directory and write the header row if the file does not exist yet."""
+    """Create the data/ directory and write the header row if needed. Migrates existing CSV to add new columns."""
     os.makedirs(os.path.dirname(CSV_FILE), exist_ok=True)
+    expected = _csv_headers()
     if not os.path.exists(CSV_FILE):
         with open(CSV_FILE, "w", newline="", encoding="utf-8") as f:
-            csv.writer(f).writerow(_csv_headers())
+            csv.writer(f).writerow(expected)
+        return
+    # File exists — check if header needs migration
+    with open(CSV_FILE, newline="", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        existing_fields = list(reader.fieldnames or [])
+        rows = list(reader)
+    missing = [col for col in expected if col not in existing_fields]
+    if not missing:
+        return
+    # Rewrite with updated header, preserving all existing data
+    with open(CSV_FILE, "w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=expected, extrasaction="ignore")
+        writer.writeheader()
+        for row in rows:
+            writer.writerow(row)
+
+
+def _load_player_tags():
+    """Return {name: "#TAG"} mapping from data/player_tags.json."""
+    if not os.path.exists(PLAYER_TAGS_FILE):
+        return {}
+    with open(PLAYER_TAGS_FILE, encoding="utf-8") as f:
+        return json.load(f)
+
+
+def _fetch_player_battles(player_tag):
+    """Fetch the battle log for a player tag from the CR API. Returns a list or []."""
+    if not CR_API_TOKEN:
+        return []
+    encoded = player_tag.replace("#", "%23")
+    url = f"{CR_API_BASE}/players/{encoded}/battlelog"
+    try:
+        req = urllib.request.Request(url, headers={"Authorization": f"Bearer {CR_API_TOKEN}"})
+        with urllib.request.urlopen(req, timeout=8) as resp:
+            return json.loads(resp.read())
+    except Exception as e:
+        print(f"[modifier] Battle log fetch failed for {player_tag}: {e}")
+        return []
+
+
+def _fetch_battle_modifiers(winner_name, loser_name, winner_cards, loser_cards):
+    """
+    Find the most recent Crazy_Arena battle between winner and loser whose card sets
+    match the draft and whose result matches. Returns (winner_mods, loser_mods) as
+    lists of up to 5 modifier strings, or (None, None) if no match is found.
+    """
+    tags = _load_player_tags()
+    winner_tag = tags.get(winner_name)
+    loser_tag  = tags.get(loser_name)
+    if not winner_tag or not loser_tag:
+        return None, None
+
+    battles = _fetch_player_battles(winner_tag)
+    for battle in battles:
+        if battle.get("gameMode", {}).get("name") != CHAOS_GAME_MODE:
+            continue
+        team_list = battle.get("team", [])
+        opp_list  = battle.get("opponent", [])
+        if not team_list or not opp_list:
+            continue
+
+        # Confirm this battle was against the loser
+        if opp_list[0].get("tag") != loser_tag:
+            continue
+
+        # Confirm our player won (team crowns > 0)
+        if team_list[0].get("crowns", 0) == 0:
+            continue
+
+        # Match card sets — both sides must match exactly
+        api_winner_cards = {c["name"] for c in team_list[0].get("cards", [])}
+        api_loser_cards  = {c["name"] for c in opp_list[0].get("cards", [])}
+        if api_winner_cards != winner_cards or api_loser_cards != loser_cards:
+            continue
+
+        # Extract modifiers by tag
+        winner_mods = []
+        loser_mods  = []
+        for md in battle.get("modifiers", []):
+            t = md.get("tag")
+            if t == winner_tag:
+                winner_mods = md.get("modifiers", [])
+            elif t == loser_tag:
+                loser_mods  = md.get("modifiers", [])
+
+        return winner_mods[:5], loser_mods[:5]
+
+    return None, None
+
+
+def _pad_mods(mods):
+    """Pad or truncate a modifier list to exactly 5 entries (empty string for missing)."""
+    if not mods:
+        return [""] * 5
+    return [mods[i] if i < len(mods) else "" for i in range(5)]
 
 
 def _read_elo_for(name):
@@ -109,15 +212,27 @@ def record_winner():
         for c in CHAOS_CARD_LIST
     ]
 
+    # Fetch modifier data from CR API before writing (best-effort)
+    try:
+        w_mods, l_mods = _fetch_battle_modifiers(
+            winner_name, loser_name, winner_card_names, loser_card_names
+        )
+    except Exception as e:
+        print(f"[modifier] Unexpected error: {e}")
+        w_mods, l_mods = None, None
+
+    modifier_vals = _pad_mods(w_mods) + _pad_mods(l_mods)
+
     _ensure_csv_headers()
     timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     with open(CSV_FILE, "a", newline="", encoding="utf-8") as f:
         csv.writer(f).writerow(
             [timestamp, state["1st_pick"], state["2nd_pick"], winner_name, loser_name]
-            + win_cols + loss_cols + banned_cols
+            + win_cols + loss_cols + banned_cols + modifier_vals
         )
 
     _refresh_elo()
+    _refresh_matchups()
     return jsonify({"status": "saved", "winner": winner_name, "loser": loser_name})
 
 
@@ -136,7 +251,7 @@ def match_history():
         for row in reader:
             rows.append(row)
 
-    rows.sort(key=lambda r: r.get("timestamp", ""), reverse=False)
+    rows.sort(key=lambda r: r.get("timestamp", ""))
     rows = list(reversed(rows))  # newest first
     if limit > 0:
         rows = rows[:limit]
@@ -207,7 +322,7 @@ def match_history_player(player_name):
             if player_name in (winner, loser):
                 rows.append(row)
 
-    rows.sort(key=lambda r: r.get("timestamp", ""), reverse=False)
+    rows.sort(key=lambda r: r.get("timestamp", ""))
     rows = list(reversed(rows))
     if limit > 0:
         rows = rows[:limit]
@@ -309,6 +424,153 @@ def card_stats():
         })
 
     return jsonify(result)
+
+
+
+def _refresh_matchups():
+    """Recompute card_data.csv after every recorded match."""
+    try:
+        _write_matchups_csv()
+    except Exception as e:
+        print(f"Matchup refresh failed: {e}")
+
+
+def _write_matchups_csv():
+    """Compute all 2500 ordered card-pair rows and write data/card_data.csv."""
+    CARD_DATA_CSV = os.path.join(_ROOT, "data", "card_data.csv")
+    os.makedirs(os.path.dirname(CARD_DATA_CSV), exist_ok=True)
+    agg = {
+        (c1, c2): {"card_1_W": 0, "card_1_L": 0, "games_played": 0}
+        for c1 in CHAOS_CARD_LIST for c2 in CHAOS_CARD_LIST if c1 != c2
+    }
+    if os.path.exists(CSV_FILE):
+        with open(CSV_FILE, newline="", encoding="utf-8") as f:
+            for row in csv.DictReader(f):
+                wcs = [c for c in CHAOS_CARD_LIST if row.get(f"{c}_W", "0").strip() == "1"]
+                lcs = [c for c in CHAOS_CARD_LIST if row.get(f"{c}_L", "0").strip() == "1"]
+                for wc, lc in iproduct(wcs, lcs):
+                    agg[(wc, lc)]["card_1_W"]    += 1
+                    agg[(wc, lc)]["games_played"] += 1
+                    agg[(lc, wc)]["card_1_L"]    += 1
+                    agg[(lc, wc)]["games_played"] += 1
+    with open(CARD_DATA_CSV, "w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=["card_1","card_2","card_1_W","card_1_L","Games Played"])
+        writer.writeheader()
+        for (c1, c2), counts in agg.items():
+            writer.writerow({"card_1": c1, "card_2": c2,
+                             "card_1_W": counts["card_1_W"], "card_1_L": counts["card_1_L"],
+                             "Games Played": counts["games_played"]})
+
+
+@stats_bp.route("/api/card_matchups", methods=["GET"])
+def card_matchups():
+    """Return all 2500 card-vs-card matchup rows."""
+    agg = {
+        (c1, c2): {"card_1_W": 0, "card_1_L": 0, "games_played": 0}
+        for c1 in CHAOS_CARD_LIST for c2 in CHAOS_CARD_LIST if c1 != c2
+    }
+    if os.path.exists(CSV_FILE):
+        with open(CSV_FILE, newline="", encoding="utf-8") as f:
+            for row in csv.DictReader(f):
+                wcs = [c for c in CHAOS_CARD_LIST if row.get(f"{c}_W", "0").strip() == "1"]
+                lcs = [c for c in CHAOS_CARD_LIST if row.get(f"{c}_L", "0").strip() == "1"]
+                for wc, lc in iproduct(wcs, lcs):
+                    agg[(wc, lc)]["card_1_W"]    += 1
+                    agg[(wc, lc)]["games_played"] += 1
+                    agg[(lc, wc)]["card_1_L"]    += 1
+                    agg[(lc, wc)]["games_played"] += 1
+    card_lookup = {c["name"]: c for c in state.get("cards", [])}
+    result = []
+    for (c1, c2), counts in agg.items():
+        gp = counts["games_played"]; w = counts["card_1_W"]
+        m1 = card_lookup.get(c1, {}); m2 = card_lookup.get(c2, {})
+        result.append({"card_1": c1, "card_2": c2,
+            "card_1_W": w, "card_1_L": counts["card_1_L"], "games_played": gp,
+            "win_rate": round(w/gp*100,1) if gp else 0,
+            "card_1_iconUrl": m1.get("iconUrl",""), "card_2_iconUrl": m2.get("iconUrl","")})
+    return jsonify(result)
+
+
+@stats_bp.route("/api/card_matchups/export", methods=["POST"])
+def export_card_matchups():
+    """Trigger rewrite of data/card_data.csv."""
+    try:
+        _write_matchups_csv()
+        CARD_DATA_CSV = os.path.join(_ROOT, "data", "card_data.csv")
+        with open(CARD_DATA_CSV, newline="", encoding="utf-8") as f:
+            rows = sum(1 for _ in csv.reader(f)) - 1
+        return jsonify({"status": "exported", "path": CARD_DATA_CSV, "rows": rows})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+@stats_bp.route("/api/card_detail/<card_name>", methods=["GET"])
+def card_detail(card_name):
+    """Return overall stats + all 49 matchup rows for a single card."""
+    CARD_DATA_CSV = os.path.join(_ROOT, "data", "card_data.csv")
+    card_lookup   = {c["name"]: c for c in state.get("cards", [])}
+
+    # Overall stats from output.csv
+    wins = losses = player_bans = random_bans = total_games = 0
+    if os.path.exists(CSV_FILE):
+        with open(CSV_FILE, newline="", encoding="utf-8") as f:
+            for row in csv.DictReader(f):
+                total_games += 1
+                w = row.get(f"{card_name}_W",      "0").strip()
+                l = row.get(f"{card_name}_L",      "0").strip()
+                b = row.get(f"{card_name}_BANNED", "0").strip()
+                if w == "1":         wins        += 1
+                if l == "1":         losses      += 1
+                if b in ("1", "-1"): player_bans += 1
+                if b == "R":         random_bans  += 1
+
+    games_played = wins + losses
+    meta         = card_lookup.get(card_name, {})
+    overall = {
+        "name": card_name, "iconUrl": meta.get("iconUrl",""),
+        "elixir": meta.get("elixir",0), "rarity": meta.get("rarity",""),
+        "total_games": total_games, "games_played": games_played,
+        "wins": wins, "losses": losses,
+        "player_bans": player_bans, "random_bans": random_bans,
+        "play_rate": round(games_played/total_games*100,1) if total_games else 0,
+        "win_rate":  round(wins/games_played*100,1)        if games_played else 0,
+        "ban_rate":  round(player_bans/total_games*100,1)  if total_games else 0,
+    }
+
+    # Matchup rows — prefer card_data.csv, fall back to live computation
+    matchups = []
+    if os.path.exists(CARD_DATA_CSV):
+        with open(CARD_DATA_CSV, newline="", encoding="utf-8") as f:
+            for row in csv.DictReader(f):
+                if row.get("card_1","").strip() != card_name:
+                    continue
+                c2 = row["card_2"].strip()
+                gp = int(row.get("Games Played",0) or 0)
+                w  = int(row.get("card_1_W",0)     or 0)
+                l  = int(row.get("card_1_L",0)     or 0)
+                m2 = card_lookup.get(c2, {})
+                matchups.append({"card_2": c2, "card_2_iconUrl": m2.get("iconUrl",""),
+                    "card_2_elixir": m2.get("elixir",0),
+                    "card_1_W": w, "card_1_L": l, "games_played": gp,
+                    "win_rate": round(w/gp*100,1) if gp else None})
+    else:
+        agg2 = {c2: {"W":0,"L":0,"GP":0} for c2 in CHAOS_CARD_LIST if c2 != card_name}
+        if os.path.exists(CSV_FILE):
+            with open(CSV_FILE, newline="", encoding="utf-8") as f:
+                for row in csv.DictReader(f):
+                    wcs = [c for c in CHAOS_CARD_LIST if row.get(f"{c}_W","0").strip()=="1"]
+                    lcs = [c for c in CHAOS_CARD_LIST if row.get(f"{c}_L","0").strip()=="1"]
+                    for wc,lc in iproduct(wcs,lcs):
+                        if wc==card_name and lc in agg2: agg2[lc]["W"]+=1; agg2[lc]["GP"]+=1
+                        if lc==card_name and wc in agg2: agg2[wc]["L"]+=1; agg2[wc]["GP"]+=1
+        for c2,d in agg2.items():
+            gp=d["GP"]; w=d["W"]; m2=card_lookup.get(c2,{})
+            matchups.append({"card_2":c2,"card_2_iconUrl":m2.get("iconUrl",""),
+                "card_2_elixir":m2.get("elixir",0),
+                "card_1_W":w,"card_1_L":d["L"],"games_played":gp,
+                "win_rate":round(w/gp*100,1) if gp else None})
+
+    return jsonify({"overall": overall, "matchups": matchups})
 
 
 @stats_bp.route("/api/player_stats", methods=["GET"])
