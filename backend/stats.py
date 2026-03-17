@@ -518,6 +518,11 @@ def _write_matchups_csv():
             writer.writerow({"card_1": c1, "card_2": c2,
                              "card_1_W": counts["card_1_W"], "card_1_L": counts["card_1_L"],
                              "Games Played": counts["games_played"]})
+    try:
+        from backend.tier_calculator import calculate_ratings
+        calculate_ratings(CARD_DATA_CSV, CSV_FILE)
+    except Exception as e:
+        print(f"Rating calculation failed: {e}")
 
 
 @stats_bp.route("/api/card_matchups", methods=["GET"])
