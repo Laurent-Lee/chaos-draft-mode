@@ -501,10 +501,10 @@ function renderMatchups(){
 
   function mrChip(mr){
     if(mr == null) return `<span class="wr-chip wr-none">—</span>`;
-    const pct = (mr * 100).toFixed(1);
-    if(mr >= 0.60)  return `<span class="wr-chip wr-hot">${pct}%</span>`;
-    if(mr >= 0.45)  return `<span class="wr-chip wr-warm">${pct}%</span>`;
-    return              `<span class="wr-chip wr-cold">${pct}%</span>`;
+    const val = (mr * 100).toFixed(1);
+    if(mr >= 0.60)  return `<span class="wr-chip wr-hot">${val}</span>`;
+    if(mr >= 0.45)  return `<span class="wr-chip wr-warm">${val}</span>`;
+    return              `<span class="wr-chip wr-cold">${val}</span>`;
   }
 
   function rowHtml(r){
