@@ -112,3 +112,22 @@ The app will open automatically at http://127.0.0.1:5050. Press `Ctrl+C` to stop
 | `/` | Main draft UI |
 | `/player_stats` | Player leaderboard ranked by ELO, click any player for their detail page |
 | `/stats` | Card stats page (requires `frontend/stats.html`) |
+
+## Merging Data from Multiple Machines
+
+Each game recorded by the app includes a `timestamp` column in `output.csv` (ISO 8601 UTC, e.g. `2026-03-16T14:32:05Z`). Both `stats.py` and `elo.py` sort by this column before processing, so ELO is always calculated in true chronological order regardless of row position in the file.
+
+To combine two CSV files from different machines:
+
+```bash
+# Keep the header from one file, strip it from the other, then concatenate
+head -1 machine_a.csv > combined.csv
+tail -n +2 machine_a.csv >> combined.csv
+tail -n +2 machine_b.csv >> combined.csv
+```
+
+Replace `data/output.csv` with `combined.csv` and restart the app. No further sorting is needed — the app handles it automatically.
+
+**Notes:**
+- Old rows recorded before the timestamp column was added have an empty `timestamp` cell. They sort to the top and are treated as the oldest games, which is the safest assumption.
+- Do not manually reorder rows or strip the header — the column order in `output.csv` is fixed and must not change.

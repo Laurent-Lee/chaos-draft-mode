@@ -12,6 +12,7 @@ Routes:
 
 import os
 import csv
+from datetime import datetime, timezone
 from flask import Blueprint, jsonify, request
 from config import CSV_FILE, CHAOS_CARD_LIST, PLAYERS, ELO_STARTING, _ROOT
 from backend.draft import state
@@ -42,7 +43,7 @@ def _csv_headers():
     win_cols    = [f"{c}_W"      for c in CHAOS_CARD_LIST]
     loss_cols   = [f"{c}_L"      for c in CHAOS_CARD_LIST]
     banned_cols = [f"{c}_BANNED" for c in CHAOS_CARD_LIST]
-    return ["1st_pick", "2nd_pick", "winner", "loser"] + win_cols + loss_cols + banned_cols
+    return ["timestamp", "1st_pick", "2nd_pick", "winner", "loser"] + win_cols + loss_cols + banned_cols
 
 
 def _ensure_csv_headers():
@@ -109,9 +110,10 @@ def record_winner():
     ]
 
     _ensure_csv_headers()
+    timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     with open(CSV_FILE, "a", newline="", encoding="utf-8") as f:
         csv.writer(f).writerow(
-            [state["1st_pick"], state["2nd_pick"], winner_name, loser_name]
+            [timestamp, state["1st_pick"], state["2nd_pick"], winner_name, loser_name]
             + win_cols + loss_cols + banned_cols
         )
 
@@ -134,6 +136,7 @@ def match_history():
         for row in reader:
             rows.append(row)
 
+    rows.sort(key=lambda r: r.get("timestamp", ""), reverse=False)
     rows = list(reversed(rows))  # newest first
     if limit > 0:
         rows = rows[:limit]
@@ -204,6 +207,7 @@ def match_history_player(player_name):
             if player_name in (winner, loser):
                 rows.append(row)
 
+    rows.sort(key=lambda r: r.get("timestamp", ""), reverse=False)
     rows = list(reversed(rows))
     if limit > 0:
         rows = rows[:limit]
