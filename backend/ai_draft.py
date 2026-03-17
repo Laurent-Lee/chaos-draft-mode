@@ -3,7 +3,8 @@ ai_draft.py — AI draft logic using Ollama for local LLM inference.
 
 Public API:
     get_card_stats(csv_path) -> dict
-    ai_decide(phase, pool, my_picks, opp_picks, card_stats, model) -> card_id | None
+    get_matchup_stats(card_data_csv) -> dict
+    ai_decide(phase, pool, my_picks, opp_picks, card_stats, model, matchup_stats=None) -> (card_id, reason)
 """
 
 import csv
@@ -73,6 +74,42 @@ def get_card_stats(csv_path):
     return stats
 
 
+# ── Head-to-head matchup stats from card_data.csv ─────────────────────────────
+
+def get_matchup_stats(card_data_csv):
+    """
+    Read card_data.csv and return head-to-head win rates for every card pair.
+
+    Returns a nested dict:
+      {
+        "Poison": {
+          "Fireball": 0.65,   # Poison's deck won 65% of games where Fireball was on the opposing deck
+          "Giant":    0.40,
+          ...
+        },
+        ...
+      }
+    Only includes pairs with at least 1 game of head-to-head data.
+    """
+    stats = {}
+    try:
+        with open(card_data_csv, newline='', encoding='utf-8') as f:
+            for row in csv.DictReader(f):
+                c1 = row.get("card_1", "").strip()
+                c2 = row.get("card_2", "").strip()
+                try:
+                    gp = int(row.get("Games Played", 0) or 0)
+                    w  = int(row.get("card_1_W", 0) or 0)
+                except (ValueError, TypeError):
+                    continue
+                if not c1 or not c2 or gp == 0:
+                    continue
+                stats.setdefault(c1, {})[c2] = round(w / gp, 3)
+    except FileNotFoundError:
+        pass
+    return stats
+
+
 # ── Prompt builder ─────────────────────────────────────────────────────────────
 
 def _format_card_list(pool_names, card_stats):
@@ -96,16 +133,102 @@ def _format_card_list(pool_names, card_stats):
     return "\n".join(lines)
 
 
-def build_prompt(phase, pool_names, my_picks, opp_picks, card_stats):
+def _format_counter_analysis(pool_names, opp_picks, matchup_stats):
+    """
+    For the pick phase: rank each pool card by its historical win rate when
+    facing the opponent's already-picked cards.
+
+    A high counter score means this card's deck historically beats decks
+    containing the opponent's picks. Pick high-counter cards to exploit
+    weaknesses in the opponent's current lineup.
+
+    Returns a formatted string section, or "" if there is no matchup data.
+    """
+    if not opp_picks or not matchup_stats:
+        return ""
+
+    rows = []
+    for card in pool_names:
+        card_mu = matchup_stats.get(card, {})
+        matchups = [(opp, card_mu[opp]) for opp in opp_picks if opp in card_mu]
+        if not matchups:
+            continue
+        avg_wr = sum(wr for _, wr in matchups) / len(matchups)
+        detail = ", ".join(
+            f"vs {opp}: {wr * 100:.0f}%" for opp, wr in matchups
+        )
+        rows.append((card, avg_wr, len(matchups), detail))
+
+    if not rows:
+        return ""
+
+    rows.sort(key=lambda x: x[1], reverse=True)
+
+    lines = [
+        f"\nCounter-pick analysis — pool cards ranked by win rate against "
+        f"opponent's picks ({', '.join(opp_picks)}):",
+        "  (Higher % = historically beats decks containing those opponent cards)",
+    ]
+    for card, avg_wr, n, detail in rows:
+        lines.append(
+            f"  {card}: {avg_wr * 100:.0f}% avg "
+            f"[{detail}] ({n} matchup{'s' if n != 1 else ''} with data)"
+        )
+    return "\n".join(lines)
+
+
+def _format_threat_analysis(pool_names, my_picks, matchup_stats):
+    """
+    For the ban phase: rank each pool card by how threatening it is to the
+    current player's deck. Cards with a high win rate against my picks are
+    the most dangerous ones the opponent could grab — ban them first.
+
+    Returns a formatted string section, or "" if there is no matchup data.
+    """
+    if not my_picks or not matchup_stats:
+        return ""
+
+    rows = []
+    for card in pool_names:
+        card_mu = matchup_stats.get(card, {})
+        matchups = [(mine, card_mu[mine]) for mine in my_picks if mine in card_mu]
+        if not matchups:
+            continue
+        avg_wr = sum(wr for _, wr in matchups) / len(matchups)
+        detail = ", ".join(
+            f"vs {mine}: {wr * 100:.0f}%" for mine, wr in matchups
+        )
+        rows.append((card, avg_wr, len(matchups), detail))
+
+    if not rows:
+        return ""
+
+    rows.sort(key=lambda x: x[1], reverse=True)
+
+    lines = [
+        f"\nThreat analysis — pool cards that most threaten your deck "
+        f"({', '.join(my_picks)}):",
+        "  (Higher % = this card's decks historically beat decks with your cards — ban these)",
+    ]
+    for card, avg_wr, n, detail in rows:
+        lines.append(
+            f"  {card}: {avg_wr * 100:.0f}% threat "
+            f"[{detail}] ({n} matchup{'s' if n != 1 else ''} with data)"
+        )
+    return "\n".join(lines)
+
+
+def build_prompt(phase, pool_names, my_picks, opp_picks, card_stats, matchup_stats=None):
     """
     Build the LLM prompt for a ban or pick decision.
 
     Args:
-        phase:       "ban" or "pick"
-        pool_names:  list of card names still in the pool
-        my_picks:    list of card names already in the AI's deck
-        opp_picks:   list of card names already in the opponent's deck
-        card_stats:  dict from get_card_stats()
+        phase:         "ban" or "pick"
+        pool_names:    list of card names still in the pool
+        my_picks:      list of card names already in the AI's deck
+        opp_picks:     list of card names already in the opponent's deck
+        card_stats:    dict from get_card_stats()
+        matchup_stats: dict from get_matchup_stats(), optional
 
     Returns:
         str prompt
@@ -115,32 +238,50 @@ def build_prompt(phase, pool_names, my_picks, opp_picks, card_stats):
     opp_str   = ", ".join(opp_picks) if opp_picks else "none yet"
 
     if phase == "ban":
+        matchup_section = _format_threat_analysis(pool_names, my_picks, matchup_stats)
         task = (
             "Your task: choose ONE card to BAN from the available pool.\n"
-            "Strategy: ban the highest win-rate card the opponent could use against you.\n"
+            "Strategy:\n"
+            "  1. Deny the opponent their most powerful win condition — ban high win-rate cards.\n"
+            "  2. Use the threat analysis below (if available) to prioritise banning cards that\n"
+            "     specifically counter YOUR current picks.\n"
+            "  3. If no picks are made yet, focus on eliminating elite-tier cards.\n"
             "Do NOT attempt to ban a card not listed in the pool.\n"
             f"Your current picks so far: {my_str}\n"
             f"Opponent's current picks so far: {opp_str}"
+            f"{matchup_section}"
         )
     else:
+        matchup_section = _format_counter_analysis(pool_names, opp_picks, matchup_stats)
         task = (
             "Your task: choose ONE card to PICK for your deck.\n"
-            "Strategy: pick the card with the best win rate that fits your current deck.\n"
+            "Strategy:\n"
+            "  1. COUNTER the opponent — prioritise cards with a high counter score against\n"
+            "     the opponent's current picks (see counter-pick analysis below).\n"
+            "  2. Build a balanced deck — include win conditions (tanks, buildings, spells)\n"
+            "     and support troops across your 8 picks.\n"
+            "  3. Use overall win rate as a tiebreaker when counter data is limited.\n"
             "Do NOT attempt to pick a card not listed in the pool.\n"
             f"Your current picks so far: {my_str}\n"
             f"Opponent's current picks so far: {opp_str}"
+            f"{matchup_section}"
         )
 
-    prompt = f"""You are drafting a deck in Clash Royale CHAOS mode.
-Context: 50-card pool, players take turns banning (2 each) then picking cards in a snake draft (8 picks each). Higher win-rate cards win more games historically.
+    prompt = f"""You are a Clash Royale CHAOS mode draft expert.
 
-Available cards in the pool (sorted by win rate, highest first):
+Game context:
+- 50-card CHAOS pool. Players first ban 4 cards total (2 each), then snake-draft 16 picks (8 per player).
+- CHAOS mode uses modifiers that amplify certain card types each game.
+- A strong deck needs: 1-2 win conditions, support troops, at least 1 spell, and reasonable elixir cost.
+- Historical win rates come from real games played with this card pool.
+
+Available cards in the pool (sorted by overall win rate, highest first):
 {card_list}
 
 {task}
 
 Respond with ONLY valid JSON in exactly this format (no other text, no markdown):
-{{"card": "Exact Card Name", "reason": "brief one-line reason"}}
+{{"card": "Exact Card Name", "reason": "brief one-line reason mentioning counter-pick or threat logic if applicable"}}
 
 The card name MUST exactly match one of the names listed above."""
 
@@ -184,17 +325,18 @@ def _best_card_by_winrate(pool, card_stats):
     return None, ""
 
 
-def ai_decide(phase, pool, my_picks, opp_picks, card_stats, model):
+def ai_decide(phase, pool, my_picks, opp_picks, card_stats, model, matchup_stats=None):
     """
     Ask Ollama to choose the next ban or pick card.
 
     Args:
-        phase:       "ban" or "pick"
-        pool:        list of card dicts (id, name, elixir, ...)
-        my_picks:    list of card dicts already in the current player's deck
-        opp_picks:   list of card dicts in the opponent's deck so far
-        card_stats:  dict from get_card_stats()
-        model:       Ollama model name string (e.g. "llama3.2")
+        phase:         "ban" or "pick"
+        pool:          list of card dicts (id, name, elixir, ...)
+        my_picks:      list of card dicts already in the current player's deck
+        opp_picks:     list of card dicts in the opponent's deck so far
+        card_stats:    dict from get_card_stats()
+        model:         Ollama model name string (e.g. "llama3.2")
+        matchup_stats: dict from get_matchup_stats(), optional — enables counter-pick reasoning
 
     Returns:
         (card_id, reason) tuple. card_id is None if pool is empty.
@@ -206,7 +348,7 @@ def ai_decide(phase, pool, my_picks, opp_picks, card_stats, model):
     pool_names = [c["name"] for c in pool]
     my_names   = [c["name"] for c in my_picks]
     opp_names  = [c["name"] for c in opp_picks]
-    prompt     = build_prompt(phase, pool_names, my_names, opp_names, card_stats)
+    prompt     = build_prompt(phase, pool_names, my_names, opp_names, card_stats, matchup_stats)
 
     try:
         import ollama  # lazy import — missing package falls through to best-by-winrate

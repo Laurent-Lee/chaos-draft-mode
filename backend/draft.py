@@ -13,13 +13,13 @@ import random
 from flask import Blueprint, jsonify, request
 from config import (
     BAN_SEQUENCE, PICK_SEQUENCE,
-    TIER_CARDS, CSV_FILE, OLLAMA_MODEL, PLAYERS,
+    TIER_CARDS, CSV_FILE, CARD_DATA_CSV, OLLAMA_MODEL, PLAYERS,
 )
 
 _P1_DEFAULT = PLAYERS[0] if len(PLAYERS) > 0 else ""
 _P2_DEFAULT = PLAYERS[1] if len(PLAYERS) > 1 else ""
 from backend.cards import fetch_cards, deck_link
-from backend.ai_draft import get_card_stats, ai_decide
+from backend.ai_draft import get_card_stats, get_matchup_stats, ai_decide
 
 draft_bp = Blueprint("draft", __name__)
 
@@ -171,8 +171,9 @@ def ai_action():
     opp_picks    = state["p2_picks"] if current == 1 else state["p1_picks"]
     player_name  = state["p1_name"] if current == 1 else state["p2_name"]
 
-    card_stats        = get_card_stats(CSV_FILE)
-    card_id, reason   = ai_decide(phase, state["pool"], my_picks, opp_picks, card_stats, OLLAMA_MODEL)
+    card_stats     = get_card_stats(CSV_FILE)
+    matchup_stats  = get_matchup_stats(CARD_DATA_CSV)
+    card_id, reason = ai_decide(phase, state["pool"], my_picks, opp_picks, card_stats, OLLAMA_MODEL, matchup_stats)
 
     if card_id is None:
         return jsonify({"error": "No cards available"}), 400
