@@ -72,7 +72,7 @@ def calculate_ratings(card_data_csv, output_csv):
         # Overall rating — use actual win rate if available, else n=0 prior
         if cstats and cstats["win_rate"] is not None:
             overall_n  = cstats["games_played"]
-            overall_wr = cstats["win_rate"]
+            overall_wr = min(cstats["win_rate"], 0.70)
         else:
             overall_n  = 0
             overall_wr = 1.0  # triggers n==0 branch in _bayesian_rating

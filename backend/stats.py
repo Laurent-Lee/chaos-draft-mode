@@ -2,7 +2,7 @@
 stats.py -- CSV recording, match history, card stats, player stats, and ELO.
 
 Routes:
-  POST /api/record_winner
+  POST /api/<lobby_id>/record_winner
   GET  /api/match_history
   GET  /api/card_stats
   GET  /api/player_stats
@@ -18,7 +18,7 @@ from datetime import datetime, timezone
 from itertools import product as iproduct
 from flask import Blueprint, jsonify, request
 from config import CSV_FILE, CHAOS_CARD_LIST, PLAYERS, ELO_STARTING, _ROOT, CR_API_TOKEN, PLAYER_TAGS_FILE, ELO_NORMAL_CSV, ELO_AI_CSV
-from backend.draft import state
+from backend.draft import lobbies, cards_cache
 from backend.modifiers import refresh_modifiers
 
 # Import ELO calculator -- elo.py lives in backend/
@@ -218,34 +218,38 @@ def _read_elo_for(name, game_mode_filter=""):
 
 # -- Routes -------------------------------------------------------------------
 
-@stats_bp.route("/api/record_winner", methods=["POST"])
-def record_winner():
+@stats_bp.route("/api/<lobby_id>/record_winner", methods=["POST"])
+def record_winner(lobby_id):
+    st = lobbies.get(lobby_id)
+    if st is None:
+        return jsonify({"error": "Lobby not found"}), 404
+
     body          = request.json or {}
     winner_player = body.get("winner")  # 1 or 2
 
     if winner_player not in (1, 2):
         return jsonify({"error": "winner must be 1 or 2"}), 400
-    if state["phase"] != "done":
+    if st["phase"] != "done":
         return jsonify({"error": "Draft is not finished yet"}), 400
 
     if winner_player == 1:
-        winner_name  = state["p1_name"]
-        loser_name   = state["p2_name"]
-        winner_picks = state["p1_picks"]
-        loser_picks  = state["p2_picks"]
+        winner_name  = st["p1_name"]
+        loser_name   = st["p2_name"]
+        winner_picks = st["p1_picks"]
+        loser_picks  = st["p2_picks"]
     else:
-        winner_name  = state["p2_name"]
-        loser_name   = state["p1_name"]
-        winner_picks = state["p2_picks"]
-        loser_picks  = state["p1_picks"]
+        winner_name  = st["p2_name"]
+        loser_name   = st["p1_name"]
+        winner_picks = st["p2_picks"]
+        loser_picks  = st["p1_picks"]
 
     winner_card_names = {c["name"] for c in winner_picks}
     loser_card_names  = {c["name"] for c in loser_picks}
 
-    winner_banned = {b["card"]["name"] for b in state["banned"] if b["by"] == winner_player}
+    winner_banned = {b["card"]["name"] for b in st["banned"] if b["by"] == winner_player}
     loser_player  = 2 if winner_player == 1 else 1
-    loser_banned  = {b["card"]["name"] for b in state["banned"] if b["by"] == loser_player}
-    random_banned = {b["card"]["name"] for b in state["banned"] if b["by"] == "random"}
+    loser_banned  = {b["card"]["name"] for b in st["banned"] if b["by"] == loser_player}
+    random_banned = {b["card"]["name"] for b in st["banned"] if b["by"] == "random"}
 
     win_cols    = [1 if c in winner_card_names else 0 for c in CHAOS_CARD_LIST]
     loss_cols   = [1 if c in loser_card_names  else 0 for c in CHAOS_CARD_LIST]
@@ -271,9 +275,9 @@ def record_winner():
     _ensure_csv_headers()
     timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     with open(CSV_FILE, "a", newline="", encoding="utf-8") as f:
-        game_mode = "AI Draft" if state["ai_mode"] else "Normal Draft"
+        game_mode = "AI Draft" if st["ai_mode"] else "Normal Draft"
         csv.writer(f).writerow(
-            [game_mode, timestamp, state["1st_pick"], state["2nd_pick"], winner_name, loser_name]
+            [game_mode, timestamp, st["1st_pick"], st["2nd_pick"], winner_name, loser_name]
             + win_cols + loss_cols + banned_cols + modifier_vals
         )
 
@@ -292,7 +296,7 @@ def match_history():
     if not os.path.exists(CSV_FILE):
         return jsonify(rows)
 
-    card_lookup = {c["name"]: c for c in state.get("cards", [])}
+    card_lookup = {c["name"]: c for c in cards_cache}
 
     with open(CSV_FILE, newline="", encoding="utf-8") as f:
         reader = csv.DictReader(f)
@@ -364,7 +368,7 @@ def match_history_player(player_name):
     if not os.path.exists(CSV_FILE):
         return jsonify(rows)
 
-    card_lookup = {c["name"]: c for c in state.get("cards", [])}
+    card_lookup = {c["name"]: c for c in cards_cache}
 
     with open(CSV_FILE, newline="", encoding="utf-8") as f:
         reader = csv.DictReader(f)
@@ -460,7 +464,7 @@ def card_stats():
     from backend.get_card_data import get_overall_ratings
     overall_ratings = get_overall_ratings(CARD_DATA_CSV)
 
-    card_lookup = {c["name"]: c for c in state.get("cards", [])}
+    card_lookup = {c["name"]: c for c in cards_cache}
     result = []
     for c in CHAOS_CARD_LIST:
         s            = stats[c]
@@ -547,7 +551,7 @@ def card_matchups():
                     agg[(wc, lc)]["games_played"] += 1
                     agg[(lc, wc)]["card_1_L"]    += 1
                     agg[(lc, wc)]["games_played"] += 1
-    card_lookup = {c["name"]: c for c in state.get("cards", [])}
+    card_lookup = {c["name"]: c for c in cards_cache}
     result = []
     for (c1, c2), counts in agg.items():
         gp = counts["games_played"]; w = counts["card_1_W"]
@@ -576,7 +580,7 @@ def export_card_matchups():
 def card_detail(card_name):
     """Return overall stats + all 49 matchup rows for a single card."""
     CARD_DATA_CSV = os.path.join(_ROOT, "data", "card_data.csv")
-    card_lookup   = {c["name"]: c for c in state.get("cards", [])}
+    card_lookup   = {c["name"]: c for c in cards_cache}
 
     # Overall stats from output.csv
     wins = losses = player_bans = random_bans = total_games = 0
@@ -683,7 +687,7 @@ def player_stats():
 @stats_bp.route("/api/player_stats/<player_name>", methods=["GET"])
 def player_stats_detail(player_name):
     """Return full stats for a single player: record, win%, ELO, and per-card stats."""
-    card_lookup  = {c["name"]: c for c in state.get("cards", [])}
+    card_lookup  = {c["name"]: c for c in cards_cache}
 
     # Return a valid empty payload when there is no data yet
     if not os.path.exists(CSV_FILE):
@@ -741,7 +745,7 @@ def player_stats_detail(player_name):
     win_pct      = round(record["wins"]   / games_played * 100, 1) if games_played else 0
     loss_pct     = round(record["losses"] / games_played * 100, 1) if games_played else 0
 
-    card_lookup  = {c["name"]: c for c in state.get("cards", [])}
+    card_lookup  = {c["name"]: c for c in cards_cache}
     cards_result = []
     for c in CHAOS_CARD_LIST:
         s         = card_stats_[c]

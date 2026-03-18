@@ -195,6 +195,7 @@ function AddPlayerModal({ onClose, onAdded }) {
   async function handleSubmit(e) {
     e.preventDefault()
     if (!name.trim()) { setErr('Name is required.'); return }
+    if (!tag.trim())  { setErr('Player tag is required.'); return }
     setSaving(true)
     setErr('')
     try {
@@ -234,7 +235,7 @@ function AddPlayerModal({ onClose, onAdded }) {
             />
           </div>
           <div className="field">
-            <label>Player Tag <span style={{ color: 'var(--text-muted)', fontWeight: 400 }}>(optional)</span></label>
+            <label>Player Tag</label>
             <input
               type="text" value={tag} onChange={e => setTag(e.target.value)}
               placeholder="e.g. #L990LPY2"
@@ -318,7 +319,7 @@ export default function LandingPage() {
     try {
       const s = await apiCall('/api/start', 'POST', { p1_name: p1, p2_name: p2 })
       if (s.error) throw new Error(s.error)
-      navigate('/draft', { state: { draft: s } })
+      window.open(`/draft/${s.lobby_id}`, '_blank')
     } catch (e) {
       setSetupErr(`❌ ${e.message}`)
     }
@@ -332,7 +333,7 @@ export default function LandingPage() {
     try {
       const s = await apiCall('/api/start', 'POST', { p1_name: p1, p2_name: p2, ai_mode: true })
       if (s.error) throw new Error(s.error)
-      navigate('/draft', { state: { draft: s } })
+      window.open(`/draft/${s.lobby_id}`, '_blank')
     } catch (e) {
       setSetupErr(`❌ ${e.message}`)
     }
