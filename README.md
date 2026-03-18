@@ -21,13 +21,34 @@ cr_draft/
 │   ├── get_card_data.py  # Card/matchup stat readers used by AI draft
 │   └── tier_calculator.py # Bayesian rating calculator — appends ratings to card_data.csv
 │
-├── frontend/
-│   ├── frontend.py      # Blueprint serving the HTML frontend and stats page
-│   ├── stats.html       # Card stats page (bring your own, see Setup)
+├── frontend/             # Legacy Flask/Jinja2 templates (superseded by react-frontend)
+│   ├── frontend.py      # Blueprint — still serves /elixir.svg and legacy routes
+│   ├── stats.html       # Legacy card stats page
 │   └── templates/
-│       ├── index.html        # Main draft UI
-│       ├── card_detail.html  # card details html
-│       └── player_stats.html # Player leaderboard + per-player detail page
+│       ├── index.html        # Legacy main draft UI
+│       ├── card_detail.html  # Legacy card detail page
+│       └── player_stats.html # Legacy player leaderboard
+│
+├── react-frontend/       # ✅ Active frontend — Vite + React (runs on :5173)
+│   ├── package.json      # Dependencies: react, react-router-dom, qrcode.react, vite, tailwindcss
+│   ├── vite.config.js    # Proxies /api/* and /elixir.svg to Flask on :5050
+│   ├── index.html        # HTML entry point (loads Google Fonts)
+│   └── src/
+│       ├── main.jsx          # React entry point
+│       ├── App.jsx           # React Router — 5 routes
+│       ├── styles/
+│       │   └── theme.css     # Design system CSS (tokens, components, page styles)
+│       ├── data/
+│       │   ├── cardTiers.js  # CARD_TIER, TIER_ORDER, TIER_ICONS (mirrors static/card_tiers.js)
+│       │   ├── cardTypes.js  # CARD_TYPE, TYPE_ORDER, TYPE_ICONS (mirrors static/card_types.js)
+│       │   ├── tierColors.js # Tier → hex color + glow for CSS variable theming
+│       │   └── players.js    # PLAYERS list
+│       └── pages/
+│           ├── DraftPage.jsx       # Main draft UI: setup → ban/pick → done
+│           ├── PlayerStatsPage.jsx # ELO leaderboard + per-player detail tabs
+│           ├── CardDetailPage.jsx  # Per-card profile + matchup table
+│           ├── CardStatsPage.jsx   # Card stats table with filters
+│           └── LandingPage.jsx     # Dashboard overview (stats, leaderboard, recent matches)
 │
 ├── static/
 │   ├── elixir.svg       # Elixir icon used in the UI
@@ -60,19 +81,31 @@ In the project root (`cr_draft/`), create a `.env` file:
 CR_API_TOKEN=your_token_here
 ```
 
-### 3. Install dependencies
+### 3. Install Python dependencies
 
 ```bash
 pip install flask flask-cors requests python-dotenv ollama
 ```
 
-### 4. Add external files
+### 4. Install Node.js (for the React frontend)
 
-Place the following files in their expected locations:
+```bash
+brew install node   # macOS — or download from https://nodejs.org
+```
+
+### 5. Install React frontend dependencies
+
+```bash
+cd react-frontend
+npm install
+```
+
+### 6. Add external files
+
+Place the following file in its expected location:
 
 | File | Location | Purpose |
 |------|----------|---------|
-| `stats.html` | `frontend/` | Card stats page, accessible at `/stats` |
 | `elixir.svg` | `static/` | Elixir icon shown in the card pool UI |
 
 The following files are already included and can be edited directly:
@@ -83,13 +116,22 @@ The following files are already included and can be edited directly:
 | `card_tiers.js` | `static/` | Card tier list (S+ through F) — edit to rebalance tiers |
 | `card_types.js` | `static/` | Card type groupings — edit to reclassify cards |
 
-### 5. Run the app
+### 7. Run the app
+
+Start the Flask backend:
 
 ```bash
 python main.py
 ```
 
-The app will open automatically at http://127.0.0.1:5050. Press `Ctrl+C` to stop.
+In a separate terminal, start the React dev server:
+
+```bash
+cd react-frontend
+npm run dev
+```
+
+Open **http://localhost:5173** in your browser. The React app proxies all `/api/*` calls to Flask on `:5050` automatically. Press `Ctrl+C` in each terminal to stop.
 
 ## AI Draft Mode
 
@@ -137,11 +179,15 @@ To change the model, edit `OLLAMA_MODEL` in `config.py`.
 
 ## Pages
 
-| URL | Description |
-|-----|-------------|
-| `/` | Main draft UI |
-| `/player_stats` | Player leaderboard ranked by ELO, click any player for their detail page |
-| `/stats` | Card stats page (requires `frontend/stats.html`) |
+All pages are served by the React frontend at `http://localhost:5173`.
+
+| URL | Page | Description |
+|-----|------|-------------|
+| `/` | DraftPage | Setup screen → ban/pick draft → done screen with deck links |
+| `/player_stats` | PlayerStatsPage | ELO leaderboard, click any player for their Card Stats + Recent Matches tabs |
+| `/card/:cardName` | CardDetailPage | Per-card profile with tier-color theming and head-to-head matchup table |
+| `/stats` | CardStatsPage | Card stats table with tier/type/mode filters, search, and CSV export |
+| `/dashboard` | LandingPage | Overview dashboard — summary stats, top cards, leaderboard, recent matches |
 
 ## Merging Data from Multiple Machines
 
