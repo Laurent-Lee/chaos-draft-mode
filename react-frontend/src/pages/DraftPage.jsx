@@ -421,6 +421,48 @@ function TurnBar({ draft, timerSecs, timerPaused, onTogglePause, onUndo }) {
   )
 }
 
+function DeckPanel({ playerName, picks, link, playerNum, onWin, wonAlready, onCopyLink }) {
+  const color = playerNum === 1 ? 'var(--p1)' : 'var(--p2)'
+  return (
+    <div className="deck-box">
+      <div className="deck-player-name" style={{ color }}>{playerName}</div>
+
+      <div className="done-grid">
+        {picks.map((c, i) => (
+          <div className="done-card" key={i}>
+            <img src={c.iconUrl} alt={c.name} onError={e => { e.target.style.display = 'none' }} />
+            <div className="cn">{c.name}</div>
+          </div>
+        ))}
+      </div>
+
+      <a className="deck-link-url" href={link} target="_blank" rel="noreferrer">{link}</a>
+
+      <div className="btn-row" style={{ marginTop: '.75rem' }}>
+        <button className="btn btn-copy-green" onClick={onCopyLink}>📋 COPY DECK LINK</button>
+        <a className="btn btn-open-cr" href={link} target="_blank" rel="noreferrer">📲 OPEN IN CR</a>
+      </div>
+
+      <div className="qr-section">
+        <div className="qr-label">📱 SCAN TO IMPORT DECK</div>
+        <QRCodeCanvas value={link || 'https://example.com'} size={180} />
+      </div>
+
+      <div className="avg-elixir-row">
+        Avg elixir: <span style={{ color: 'var(--gold)', fontWeight: 700 }}>{avgElixir(picks)}</span>
+      </div>
+
+      <button
+        className="btn-winner-full"
+        onClick={onWin}
+        disabled={wonAlready}
+      >
+        🏆 {playerName.toUpperCase()} WINS!
+      </button>
+    </div>
+  )
+}
+
 function DoneScreen({ draft, winnerInfo, onDeclareWinner, onReset, onCopyLink, aiLogOpen, setAiLogOpen }) {
   const p1Link = draft.p1_deck_link || '#'
   const p2Link = draft.p2_deck_link || '#'
@@ -437,71 +479,24 @@ function DoneScreen({ draft, winnerInfo, onDeclareWinner, onReset, onCopyLink, a
       </div>
 
       <div className="done-decks">
-        {/* P1 deck */}
-        <div className="deck-box">
-          <h3 className="p1" id="done-p1-name">{draft.p1_name}</h3>
-          <div className="done-grid" id="done-p1-grid">
-            {(draft.p1_picks || []).map((c, i) => (
-              <div className="done-card" key={i}>
-                <img src={c.iconUrl} alt={c.name} onError={e => { e.target.style.display = 'none' }} />
-                <div className="cn">{c.name}</div>
-              </div>
-            ))}
-          </div>
-          <a id="done-p1-link" className="deck-link" href={p1Link} target="_blank" rel="noreferrer">
-            {p1Link}
-          </a>
-          <div className="btn-row">
-            <button className="btn btn-copy" onClick={() => onCopyLink(1, p1Link)}>📋 Copy Deck Link</button>
-            <a id="done-p1-open" className="btn btn-link" href={p1Link} target="_blank" rel="noreferrer">📲 Open in CR</a>
-          </div>
-          <div className="qr-box">
-            <div className="qr-label">📱 Scan to import deck</div>
-            <QRCodeCanvas value={p1Link || 'https://example.com'} size={160} />
-          </div>
-          <div className="avg-elixir">Avg elixir: <span>{avgElixir(draft.p1_picks || [])}</span></div>
-          <button
-            id="winner-btn-1"
-            className="btn btn-winner"
-            onClick={() => onDeclareWinner(1)}
-            disabled={!!winnerInfo}
-          >
-            🏆 {draft.p1_name} Wins!
-          </button>
-        </div>
-
-        {/* P2 deck */}
-        <div className="deck-box">
-          <h3 className="p2" id="done-p2-name">{draft.p2_name}</h3>
-          <div className="done-grid" id="done-p2-grid">
-            {(draft.p2_picks || []).map((c, i) => (
-              <div className="done-card" key={i}>
-                <img src={c.iconUrl} alt={c.name} onError={e => { e.target.style.display = 'none' }} />
-                <div className="cn">{c.name}</div>
-              </div>
-            ))}
-          </div>
-          <a id="done-p2-link" className="deck-link" href={p2Link} target="_blank" rel="noreferrer">
-            {p2Link}
-          </a>
-          <div className="btn-row">
-            <button className="btn btn-copy" onClick={() => onCopyLink(2, p2Link)}>📋 Copy Deck Link</button>
-            <a id="done-p2-open" className="btn btn-link" href={p2Link} target="_blank" rel="noreferrer">📲 Open in CR</a>
-          </div>
-          <div className="qr-box">
-            <div className="qr-label">📱 Scan to import deck</div>
-            <QRCodeCanvas value={p2Link || 'https://example.com'} size={160} />
-          </div>
-          <div className="avg-elixir">Avg elixir: <span>{avgElixir(draft.p2_picks || [])}</span></div>
-          <button
-            id="winner-btn-2"
-            className="btn btn-winner"
-            onClick={() => onDeclareWinner(2)}
-            disabled={!!winnerInfo}
-          >
-            🏆 {draft.p2_name} Wins!
-          </button>
-        </div>
+        <DeckPanel
+          playerName={draft.p1_name}
+          picks={draft.p1_picks || []}
+          link={p1Link}
+          playerNum={1}
+          onWin={() => onDeclareWinner(1)}
+          wonAlready={!!winnerInfo}
+          onCopyLink={() => onCopyLink(1, p1Link)}
+        />
+        <DeckPanel
+          playerName={draft.p2_name}
+          picks={draft.p2_picks || []}
+          link={p2Link}
+          playerNum={2}
+          onWin={() => onDeclareWinner(2)}
+          wonAlready={!!winnerInfo}
+          onCopyLink={() => onCopyLink(2, p2Link)}
+        />
       </div>
 
       {/* AI reasoning log (done screen) */}

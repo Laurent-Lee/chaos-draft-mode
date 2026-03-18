@@ -305,7 +305,10 @@ export default function CardDetailPage() {
     <>
       <header>
         <div className="header-title" id="header-title">⚔️ {o.name}</div>
-        <Link to="/stats" className="back-btn">← Card Stats</Link>
+        <nav style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+          <Link to="/" style={{ color: 'var(--text-muted)', fontSize: '.85rem', textDecoration: 'none' }}>Home</Link>
+          <Link to="/stats" className="back-btn">← Card Stats</Link>
+        </nav>
       </header>
 
       <main>
