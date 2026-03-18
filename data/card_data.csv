@@ -1,29 +1,29 @@
 card_1,card_2,card_1_W,card_1_L,Games Played,card_1_overall_rating,card_1_matchup_rating
-Baby Dragon,Barbarian Hut,0,1,1,0.4202,0.404
-Baby Dragon,Berserker,1,0,1,0.4202,0.82
-Baby Dragon,Dart Goblin,2,0,2,0.4202,0.8472
+Baby Dragon,Barbarian Hut,0,1,1,0.4202,0.372
+Baby Dragon,Berserker,1,0,1,0.4202,0.576
+Baby Dragon,Dart Goblin,2,0,2,0.4202,0.625
 Baby Dragon,Electro Spirit,3,4,7,0.4202,0.441
-Baby Dragon,Electro Wizard,1,1,2,0.4202,0.5
+Baby Dragon,Electro Wizard,1,1,2,0.4202,0.4861
 Baby Dragon,Elixir Golem,0,0,0,0.4202,0.5625
 Baby Dragon,Executioner,0,0,0,0.4202,0.5625
-Baby Dragon,Fireball,5,5,10,0.4202,0.5
+Baby Dragon,Fireball,5,5,10,0.4202,0.6036
 Baby Dragon,Fisherman,0,0,0,0.4202,0.5625
-Baby Dragon,Flying Machine,2,2,4,0.4202,0.5
+Baby Dragon,Flying Machine,2,2,4,0.4202,0.5359
 Baby Dragon,Furnace,0,0,0,0.4202,0.5625
-Baby Dragon,Giant,0,2,2,0.4202,0.3958
+Baby Dragon,Giant,0,2,2,0.4202,0.3611
 Baby Dragon,Giant Snowball,0,0,0,0.4202,0.5625
-Baby Dragon,Goblin Barrel,1,2,3,0.4202,0.3898
-Baby Dragon,Goblin Demolisher,1,3,4,0.4202,0.3852
+Baby Dragon,Goblin Barrel,1,2,3,0.4202,0.3776
+Baby Dragon,Goblin Demolisher,1,3,4,0.4202,0.3469
 Baby Dragon,Goblin Drill,0,0,0,0.4202,0.5625
 Baby Dragon,Goblin Giant,0,0,0,0.4202,0.5625
 Baby Dragon,Goblin Hut,4,6,10,0.4202,0.4138
-Baby Dragon,Golem,4,2,6,0.4202,0.635
-Baby Dragon,Graveyard,0,2,2,0.4202,0.3958
+Baby Dragon,Golem,4,2,6,0.4202,0.702
+Baby Dragon,Graveyard,0,2,2,0.4202,0.3611
 Baby Dragon,Hunter,0,0,0,0.4202,0.5625
-Baby Dragon,Ice Spirit,3,6,9,0.4202,0.3722
+Baby Dragon,Ice Spirit,3,6,9,0.4202,0.358
 Baby Dragon,Ice Wizard,0,0,0,0.4202,0.5625
 Baby Dragon,Inferno Tower,0,0,0,0.4202,0.5625
-Baby Dragon,Knight,2,6,8,0.4202,0.374
+Baby Dragon,Knight,2,6,8,0.4202,0.3319
 Baby Dragon,Lava Hound,0,0,0,0.4202,0.5625
 Baby Dragon,Mega Knight,0,0,0,0.4202,0.5625
 Baby Dragon,Mortar,0,0,0,0.4202,0.5625
@@ -31,925 +31,925 @@ Baby Dragon,Mother Witch,0,0,0,0.4202,0.5625
 Baby Dragon,Musketeer,4,5,9,0.4202,0.4527
 Baby Dragon,Night Witch,0,0,0,0.4202,0.5625
 Baby Dragon,P.E.K.K.A,0,0,0,0.4202,0.5625
-Baby Dragon,Poison,1,3,4,0.4202,0.3852
+Baby Dragon,Poison,1,3,4,0.4202,0.3469
 Baby Dragon,Princess,0,0,0,0.4202,0.5625
 Baby Dragon,Rage,0,0,0,0.4202,0.5625
-Baby Dragon,Ram Rider,1,1,2,0.4202,0.5
-Baby Dragon,Rascals,5,5,10,0.4202,0.5
+Baby Dragon,Ram Rider,1,1,2,0.4202,0.4861
+Baby Dragon,Rascals,5,5,10,0.4202,0.6036
 Baby Dragon,Rocket,0,0,0,0.4202,0.5625
-Baby Dragon,Royal Delivery,1,0,1,0.4202,0.82
-Baby Dragon,Royal Giant,3,2,5,0.4202,0.579
-Baby Dragon,Rune Giant,0,2,2,0.4202,0.3958
-Baby Dragon,Suspicious Bush,4,2,6,0.4202,0.635
-Baby Dragon,The Log,1,5,6,0.4202,0.3785
-Baby Dragon,Tombstone,3,3,6,0.4202,0.5
-Baby Dragon,Vines,1,6,7,0.4202,0.376
-Baby Dragon,Witch,2,2,4,0.4202,0.5
+Baby Dragon,Royal Delivery,1,0,1,0.4202,0.576
+Baby Dragon,Royal Giant,3,2,5,0.4202,0.6321
+Baby Dragon,Rune Giant,0,2,2,0.4202,0.3611
+Baby Dragon,Suspicious Bush,4,2,6,0.4202,0.702
+Baby Dragon,The Log,1,5,6,0.4202,0.338
+Baby Dragon,Tombstone,3,3,6,0.4202,0.567
+Baby Dragon,Vines,1,6,7,0.4202,0.3347
+Baby Dragon,Witch,2,2,4,0.4202,0.5359
 Baby Dragon,Wizard,0,0,0,0.4202,0.5625
-Baby Dragon,X-Bow,1,2,3,0.4202,0.3898
+Baby Dragon,X-Bow,1,2,3,0.4202,0.3776
 Baby Dragon,Zappies,0,0,0,0.4202,0.5625
-Barbarian Hut,Baby Dragon,1,0,1,0.6701,0.82
-Barbarian Hut,Berserker,0,0,0,0.6701,0.5625
-Barbarian Hut,Dart Goblin,1,1,2,0.6701,0.5
-Barbarian Hut,Electro Spirit,4,1,5,0.6701,0.737
-Barbarian Hut,Electro Wizard,1,1,2,0.6701,0.5
-Barbarian Hut,Elixir Golem,0,0,0,0.6701,0.5625
-Barbarian Hut,Executioner,0,1,1,0.6701,0.404
-Barbarian Hut,Fireball,7,1,8,0.6701,0.8151
-Barbarian Hut,Fisherman,0,0,0,0.6701,0.5625
-Barbarian Hut,Flying Machine,3,1,4,0.6701,0.6914
-Barbarian Hut,Furnace,0,0,0,0.6701,0.5625
-Barbarian Hut,Giant,1,1,2,0.6701,0.5
-Barbarian Hut,Giant Snowball,0,0,0,0.6701,0.5625
-Barbarian Hut,Goblin Barrel,2,1,3,0.6701,0.6224
-Barbarian Hut,Goblin Demolisher,2,0,2,0.6701,0.8472
-Barbarian Hut,Goblin Drill,1,0,1,0.6701,0.82
-Barbarian Hut,Goblin Giant,0,0,0,0.6701,0.5625
-Barbarian Hut,Goblin Hut,3,3,6,0.6701,0.5
-Barbarian Hut,Golem,2,0,2,0.6701,0.8472
-Barbarian Hut,Graveyard,0,2,2,0.6701,0.3958
-Barbarian Hut,Hunter,1,0,1,0.6701,0.82
-Barbarian Hut,Ice Spirit,3,2,5,0.6701,0.579
-Barbarian Hut,Ice Wizard,1,0,1,0.6701,0.82
-Barbarian Hut,Inferno Tower,0,0,0,0.6701,0.5625
-Barbarian Hut,Knight,4,2,6,0.6701,0.635
-Barbarian Hut,Lava Hound,1,0,1,0.6701,0.82
-Barbarian Hut,Mega Knight,0,0,0,0.6701,0.5625
-Barbarian Hut,Mortar,1,0,1,0.6701,0.82
-Barbarian Hut,Mother Witch,0,0,0,0.6701,0.5625
-Barbarian Hut,Musketeer,2,1,3,0.6701,0.6224
-Barbarian Hut,Night Witch,0,1,1,0.6701,0.404
-Barbarian Hut,P.E.K.K.A,0,0,0,0.6701,0.5625
-Barbarian Hut,Poison,0,1,1,0.6701,0.404
-Barbarian Hut,Princess,1,0,1,0.6701,0.82
-Barbarian Hut,Rage,1,0,1,0.6701,0.82
-Barbarian Hut,Ram Rider,3,0,3,0.6701,0.8673
-Barbarian Hut,Rascals,3,2,5,0.6701,0.579
-Barbarian Hut,Rocket,0,0,0,0.6701,0.5625
-Barbarian Hut,Royal Delivery,2,0,2,0.6701,0.8472
-Barbarian Hut,Royal Giant,3,0,3,0.6701,0.8673
-Barbarian Hut,Rune Giant,0,0,0,0.6701,0.5625
-Barbarian Hut,Suspicious Bush,4,3,7,0.6701,0.559
-Barbarian Hut,The Log,2,4,6,0.6701,0.3785
-Barbarian Hut,Tombstone,7,3,10,0.6701,0.6724
-Barbarian Hut,Vines,1,0,1,0.6701,0.82
-Barbarian Hut,Witch,2,0,2,0.6701,0.8472
-Barbarian Hut,Wizard,1,0,1,0.6701,0.82
-Barbarian Hut,X-Bow,1,0,1,0.6701,0.82
-Barbarian Hut,Zappies,0,0,0,0.6701,0.5625
-Berserker,Baby Dragon,0,1,1,0.3785,0.404
-Berserker,Barbarian Hut,0,0,0,0.3785,0.5625
-Berserker,Dart Goblin,0,0,0,0.3785,0.5625
-Berserker,Electro Spirit,0,3,3,0.3785,0.3898
-Berserker,Electro Wizard,0,1,1,0.3785,0.404
-Berserker,Elixir Golem,0,0,0,0.3785,0.5625
-Berserker,Executioner,0,0,0,0.3785,0.5625
-Berserker,Fireball,1,1,2,0.3785,0.5
-Berserker,Fisherman,0,0,0,0.3785,0.5625
-Berserker,Flying Machine,0,1,1,0.3785,0.404
-Berserker,Furnace,0,0,0,0.3785,0.5625
-Berserker,Giant,0,0,0,0.3785,0.5625
-Berserker,Giant Snowball,0,0,0,0.3785,0.5625
-Berserker,Goblin Barrel,1,1,2,0.3785,0.5
-Berserker,Goblin Demolisher,1,1,2,0.3785,0.5
-Berserker,Goblin Drill,0,0,0,0.3785,0.5625
-Berserker,Goblin Giant,0,0,0,0.3785,0.5625
-Berserker,Goblin Hut,0,5,5,0.3785,0.3815
-Berserker,Golem,0,2,2,0.3785,0.3958
-Berserker,Graveyard,0,0,0,0.3785,0.5625
-Berserker,Hunter,1,0,1,0.3785,0.82
-Berserker,Ice Spirit,1,3,4,0.3785,0.3852
-Berserker,Ice Wizard,0,0,0,0.3785,0.5625
-Berserker,Inferno Tower,0,0,0,0.3785,0.5625
-Berserker,Knight,1,3,4,0.3785,0.3852
-Berserker,Lava Hound,0,0,0,0.3785,0.5625
-Berserker,Mega Knight,0,0,0,0.3785,0.5625
-Berserker,Mortar,1,0,1,0.3785,0.82
-Berserker,Mother Witch,0,0,0,0.3785,0.5625
-Berserker,Musketeer,0,4,4,0.3785,0.3852
-Berserker,Night Witch,0,0,0,0.3785,0.5625
-Berserker,P.E.K.K.A,0,0,0,0.3785,0.5625
-Berserker,Poison,0,3,3,0.3785,0.3898
-Berserker,Princess,0,0,0,0.3785,0.5625
-Berserker,Rage,0,0,0,0.3785,0.5625
-Berserker,Ram Rider,0,0,0,0.3785,0.5625
-Berserker,Rascals,0,1,1,0.3785,0.404
-Berserker,Rocket,0,0,0,0.3785,0.5625
-Berserker,Royal Delivery,0,0,0,0.3785,0.5625
-Berserker,Royal Giant,0,1,1,0.3785,0.404
-Berserker,Rune Giant,0,0,0,0.3785,0.5625
-Berserker,Suspicious Bush,0,2,2,0.3785,0.3958
-Berserker,The Log,1,3,4,0.3785,0.3852
-Berserker,Tombstone,0,0,0,0.3785,0.5625
-Berserker,Vines,0,2,2,0.3785,0.3958
-Berserker,Witch,0,1,1,0.3785,0.404
-Berserker,Wizard,0,0,0,0.3785,0.5625
-Berserker,X-Bow,0,1,1,0.3785,0.404
-Berserker,Zappies,0,0,0,0.3785,0.5625
-Dart Goblin,Baby Dragon,0,2,2,0.4704,0.3958
-Dart Goblin,Barbarian Hut,1,1,2,0.4704,0.5
+Barbarian Hut,Baby Dragon,1,0,1,0.8078,0.576
+Barbarian Hut,Berserker,0,0,0,0.8078,0.5625
+Barbarian Hut,Dart Goblin,1,1,2,0.8078,0.4861
+Barbarian Hut,Electro Spirit,4,1,5,0.8078,0.7111
+Barbarian Hut,Electro Wizard,3,1,4,0.8078,0.6891
+Barbarian Hut,Elixir Golem,0,0,0,0.8078,0.5625
+Barbarian Hut,Executioner,0,1,1,0.8078,0.372
+Barbarian Hut,Fireball,7,1,8,0.8078,0.7562
+Barbarian Hut,Fisherman,0,0,0,0.8078,0.5625
+Barbarian Hut,Flying Machine,3,1,4,0.8078,0.6891
+Barbarian Hut,Furnace,0,0,0,0.8078,0.5625
+Barbarian Hut,Giant,1,1,2,0.8078,0.4861
+Barbarian Hut,Giant Snowball,0,0,0,0.8078,0.5625
+Barbarian Hut,Goblin Barrel,4,1,5,0.8078,0.7111
+Barbarian Hut,Goblin Demolisher,2,0,2,0.8078,0.625
+Barbarian Hut,Goblin Drill,1,0,1,0.8078,0.576
+Barbarian Hut,Goblin Giant,0,0,0,0.8078,0.5625
+Barbarian Hut,Goblin Hut,3,3,6,0.8078,0.567
+Barbarian Hut,Golem,2,0,2,0.8078,0.625
+Barbarian Hut,Graveyard,2,2,4,0.8078,0.5359
+Barbarian Hut,Hunter,1,0,1,0.8078,0.576
+Barbarian Hut,Ice Spirit,5,2,7,0.8078,0.7438
+Barbarian Hut,Ice Wizard,1,0,1,0.8078,0.576
+Barbarian Hut,Inferno Tower,0,0,0,0.8078,0.5625
+Barbarian Hut,Knight,4,2,6,0.8078,0.702
+Barbarian Hut,Lava Hound,1,0,1,0.8078,0.576
+Barbarian Hut,Mega Knight,0,0,0,0.8078,0.5625
+Barbarian Hut,Mortar,1,0,1,0.8078,0.576
+Barbarian Hut,Mother Witch,0,0,0,0.8078,0.5625
+Barbarian Hut,Musketeer,2,1,3,0.8078,0.6367
+Barbarian Hut,Night Witch,0,1,1,0.8078,0.372
+Barbarian Hut,P.E.K.K.A,0,0,0,0.8078,0.5625
+Barbarian Hut,Poison,2,1,3,0.8078,0.6367
+Barbarian Hut,Princess,1,0,1,0.8078,0.576
+Barbarian Hut,Rage,1,0,1,0.8078,0.576
+Barbarian Hut,Ram Rider,3,0,3,0.8078,0.6612
+Barbarian Hut,Rascals,3,2,5,0.8078,0.6321
+Barbarian Hut,Rocket,0,0,0,0.8078,0.5625
+Barbarian Hut,Royal Delivery,2,0,2,0.8078,0.625
+Barbarian Hut,Royal Giant,3,0,3,0.8078,0.6612
+Barbarian Hut,Rune Giant,2,0,2,0.8078,0.625
+Barbarian Hut,Suspicious Bush,6,3,9,0.8078,0.7385
+Barbarian Hut,The Log,2,4,6,0.8078,0.365
+Barbarian Hut,Tombstone,9,3,12,0.8078,0.791
+Barbarian Hut,Vines,1,0,1,0.8078,0.576
+Barbarian Hut,Witch,2,0,2,0.8078,0.625
+Barbarian Hut,Wizard,1,0,1,0.8078,0.576
+Barbarian Hut,X-Bow,1,0,1,0.8078,0.576
+Barbarian Hut,Zappies,0,0,0,0.8078,0.5625
+Berserker,Baby Dragon,0,1,1,0.338,0.372
+Berserker,Barbarian Hut,0,0,0,0.338,0.5625
+Berserker,Dart Goblin,0,0,0,0.338,0.5625
+Berserker,Electro Spirit,0,3,3,0.338,0.3531
+Berserker,Electro Wizard,0,1,1,0.338,0.372
+Berserker,Elixir Golem,0,0,0,0.338,0.5625
+Berserker,Executioner,0,0,0,0.338,0.5625
+Berserker,Fireball,1,1,2,0.338,0.4861
+Berserker,Fisherman,0,0,0,0.338,0.5625
+Berserker,Flying Machine,0,1,1,0.338,0.372
+Berserker,Furnace,0,0,0,0.338,0.5625
+Berserker,Giant,0,0,0,0.338,0.5625
+Berserker,Giant Snowball,0,0,0,0.338,0.5625
+Berserker,Goblin Barrel,1,1,2,0.338,0.4861
+Berserker,Goblin Demolisher,1,1,2,0.338,0.4861
+Berserker,Goblin Drill,0,0,0,0.338,0.5625
+Berserker,Goblin Giant,0,0,0,0.338,0.5625
+Berserker,Goblin Hut,0,5,5,0.338,0.342
+Berserker,Golem,0,2,2,0.338,0.3611
+Berserker,Graveyard,0,0,0,0.338,0.5625
+Berserker,Hunter,1,0,1,0.338,0.576
+Berserker,Ice Spirit,1,3,4,0.338,0.3469
+Berserker,Ice Wizard,0,0,0,0.338,0.5625
+Berserker,Inferno Tower,0,0,0,0.338,0.5625
+Berserker,Knight,1,3,4,0.338,0.3469
+Berserker,Lava Hound,0,0,0,0.338,0.5625
+Berserker,Mega Knight,0,0,0,0.338,0.5625
+Berserker,Mortar,1,0,1,0.338,0.576
+Berserker,Mother Witch,0,0,0,0.338,0.5625
+Berserker,Musketeer,0,4,4,0.338,0.3469
+Berserker,Night Witch,0,0,0,0.338,0.5625
+Berserker,P.E.K.K.A,0,0,0,0.338,0.5625
+Berserker,Poison,0,3,3,0.338,0.3531
+Berserker,Princess,0,0,0,0.338,0.5625
+Berserker,Rage,0,0,0,0.338,0.5625
+Berserker,Ram Rider,0,0,0,0.338,0.5625
+Berserker,Rascals,0,1,1,0.338,0.372
+Berserker,Rocket,0,0,0,0.338,0.5625
+Berserker,Royal Delivery,0,0,0,0.338,0.5625
+Berserker,Royal Giant,0,1,1,0.338,0.372
+Berserker,Rune Giant,0,0,0,0.338,0.5625
+Berserker,Suspicious Bush,0,2,2,0.338,0.3611
+Berserker,The Log,1,3,4,0.338,0.3469
+Berserker,Tombstone,0,0,0,0.338,0.5625
+Berserker,Vines,0,2,2,0.338,0.3611
+Berserker,Witch,0,1,1,0.338,0.372
+Berserker,Wizard,0,0,0,0.338,0.5625
+Berserker,X-Bow,0,1,1,0.338,0.372
+Berserker,Zappies,0,0,0,0.338,0.5625
+Dart Goblin,Baby Dragon,0,2,2,0.4704,0.3611
+Dart Goblin,Barbarian Hut,1,1,2,0.4704,0.4861
 Dart Goblin,Berserker,0,0,0,0.4704,0.5625
-Dart Goblin,Electro Spirit,2,4,6,0.4704,0.3785
-Dart Goblin,Electro Wizard,0,2,2,0.4704,0.3958
+Dart Goblin,Electro Spirit,2,4,6,0.4704,0.365
+Dart Goblin,Electro Wizard,0,2,2,0.4704,0.3611
 Dart Goblin,Elixir Golem,0,0,0,0.4704,0.5625
-Dart Goblin,Executioner,0,1,1,0.4704,0.404
-Dart Goblin,Fireball,3,1,4,0.4704,0.6914
+Dart Goblin,Executioner,0,1,1,0.4704,0.372
+Dart Goblin,Fireball,3,1,4,0.4704,0.6891
 Dart Goblin,Fisherman,0,0,0,0.4704,0.5625
-Dart Goblin,Flying Machine,3,2,5,0.4704,0.579
-Dart Goblin,Furnace,1,0,1,0.4704,0.82
-Dart Goblin,Giant,1,1,2,0.4704,0.5
-Dart Goblin,Giant Snowball,1,0,1,0.4704,0.82
+Dart Goblin,Flying Machine,3,2,5,0.4704,0.6321
+Dart Goblin,Furnace,1,0,1,0.4704,0.576
+Dart Goblin,Giant,1,1,2,0.4704,0.4861
+Dart Goblin,Giant Snowball,1,0,1,0.4704,0.576
 Dart Goblin,Goblin Barrel,2,3,5,0.4704,0.421
-Dart Goblin,Goblin Demolisher,0,1,1,0.4704,0.404
+Dart Goblin,Goblin Demolisher,0,1,1,0.4704,0.372
 Dart Goblin,Goblin Drill,0,0,0,0.4704,0.5625
 Dart Goblin,Goblin Giant,0,0,0,0.4704,0.5625
-Dart Goblin,Goblin Hut,1,4,5,0.4704,0.3815
-Dart Goblin,Golem,0,1,1,0.4704,0.404
-Dart Goblin,Graveyard,1,3,4,0.4704,0.3852
+Dart Goblin,Goblin Hut,1,4,5,0.4704,0.342
+Dart Goblin,Golem,0,1,1,0.4704,0.372
+Dart Goblin,Graveyard,1,3,4,0.4704,0.3469
 Dart Goblin,Hunter,0,0,0,0.4704,0.5625
-Dart Goblin,Ice Spirit,5,3,8,0.4704,0.605
+Dart Goblin,Ice Spirit,5,3,8,0.4704,0.6932
 Dart Goblin,Ice Wizard,0,0,0,0.4704,0.5625
 Dart Goblin,Inferno Tower,0,0,0,0.4704,0.5625
-Dart Goblin,Knight,1,4,5,0.4704,0.3815
+Dart Goblin,Knight,1,4,5,0.4704,0.342
 Dart Goblin,Lava Hound,0,0,0,0.4704,0.5625
 Dart Goblin,Mega Knight,0,0,0,0.4704,0.5625
 Dart Goblin,Mortar,0,0,0,0.4704,0.5625
 Dart Goblin,Mother Witch,0,0,0,0.4704,0.5625
 Dart Goblin,Musketeer,4,7,11,0.4704,0.3812
 Dart Goblin,Night Witch,0,0,0,0.4704,0.5625
-Dart Goblin,P.E.K.K.A,1,0,1,0.4704,0.82
-Dart Goblin,Poison,1,4,5,0.4704,0.3815
-Dart Goblin,Princess,0,1,1,0.4704,0.404
+Dart Goblin,P.E.K.K.A,1,0,1,0.4704,0.576
+Dart Goblin,Poison,1,4,5,0.4704,0.342
+Dart Goblin,Princess,0,1,1,0.4704,0.372
 Dart Goblin,Rage,0,0,0,0.4704,0.5625
-Dart Goblin,Ram Rider,2,0,2,0.4704,0.8472
-Dart Goblin,Rascals,6,3,9,0.4704,0.642
+Dart Goblin,Ram Rider,2,0,2,0.4704,0.625
+Dart Goblin,Rascals,6,3,9,0.4704,0.7385
 Dart Goblin,Rocket,0,0,0,0.4704,0.5625
-Dart Goblin,Royal Delivery,3,2,5,0.4704,0.579
-Dart Goblin,Royal Giant,1,0,1,0.4704,0.82
-Dart Goblin,Rune Giant,0,1,1,0.4704,0.404
-Dart Goblin,Suspicious Bush,5,3,8,0.4704,0.605
-Dart Goblin,The Log,1,6,7,0.4704,0.376
-Dart Goblin,Tombstone,2,0,2,0.4704,0.8472
-Dart Goblin,Vines,5,4,9,0.4704,0.5473
-Dart Goblin,Witch,1,0,1,0.4704,0.82
-Dart Goblin,Wizard,1,0,1,0.4704,0.82
-Dart Goblin,X-Bow,1,0,1,0.4704,0.82
+Dart Goblin,Royal Delivery,3,2,5,0.4704,0.6321
+Dart Goblin,Royal Giant,1,0,1,0.4704,0.576
+Dart Goblin,Rune Giant,0,1,1,0.4704,0.372
+Dart Goblin,Suspicious Bush,5,3,8,0.4704,0.6932
+Dart Goblin,The Log,1,6,7,0.4704,0.3347
+Dart Goblin,Tombstone,2,0,2,0.4704,0.625
+Dart Goblin,Vines,5,4,9,0.4704,0.6438
+Dart Goblin,Witch,1,0,1,0.4704,0.576
+Dart Goblin,Wizard,1,0,1,0.4704,0.576
+Dart Goblin,X-Bow,1,0,1,0.4704,0.576
 Dart Goblin,Zappies,0,0,0,0.4704,0.5625
-Electro Spirit,Baby Dragon,4,3,7,0.428,0.559
-Electro Spirit,Barbarian Hut,1,4,5,0.428,0.3815
-Electro Spirit,Berserker,3,0,3,0.428,0.8673
-Electro Spirit,Dart Goblin,4,2,6,0.428,0.635
-Electro Spirit,Electro Wizard,1,2,3,0.428,0.3898
+Electro Spirit,Baby Dragon,4,3,7,0.428,0.6375
+Electro Spirit,Barbarian Hut,1,4,5,0.428,0.342
+Electro Spirit,Berserker,3,0,3,0.428,0.6612
+Electro Spirit,Dart Goblin,4,2,6,0.428,0.702
+Electro Spirit,Electro Wizard,1,2,3,0.428,0.3776
 Electro Spirit,Elixir Golem,0,0,0,0.428,0.5625
 Electro Spirit,Executioner,0,0,0,0.428,0.5625
-Electro Spirit,Fireball,6,5,11,0.428,0.5396
+Electro Spirit,Fireball,6,5,11,0.428,0.6494
 Electro Spirit,Fisherman,0,0,0,0.428,0.5625
-Electro Spirit,Flying Machine,5,5,10,0.428,0.5
+Electro Spirit,Flying Machine,5,5,10,0.428,0.6036
 Electro Spirit,Furnace,0,0,0,0.428,0.5625
-Electro Spirit,Giant,2,1,3,0.428,0.6224
+Electro Spirit,Giant,2,1,3,0.428,0.6367
 Electro Spirit,Giant Snowball,0,0,0,0.428,0.5625
-Electro Spirit,Goblin Barrel,4,3,7,0.428,0.559
-Electro Spirit,Goblin Demolisher,1,2,3,0.428,0.3898
+Electro Spirit,Goblin Barrel,4,3,7,0.428,0.6375
+Electro Spirit,Goblin Demolisher,1,2,3,0.428,0.3776
 Electro Spirit,Goblin Drill,0,0,0,0.428,0.5625
 Electro Spirit,Goblin Giant,0,0,0,0.428,0.5625
-Electro Spirit,Goblin Hut,2,4,6,0.428,0.3785
-Electro Spirit,Golem,3,1,4,0.428,0.6914
-Electro Spirit,Graveyard,1,6,7,0.428,0.376
-Electro Spirit,Hunter,1,0,1,0.428,0.82
+Electro Spirit,Goblin Hut,2,4,6,0.428,0.365
+Electro Spirit,Golem,3,1,4,0.428,0.6891
+Electro Spirit,Graveyard,1,6,7,0.428,0.3347
+Electro Spirit,Hunter,1,0,1,0.428,0.576
 Electro Spirit,Ice Spirit,5,8,13,0.428,0.3978
 Electro Spirit,Ice Wizard,0,0,0,0.428,0.5625
 Electro Spirit,Inferno Tower,0,0,0,0.428,0.5625
-Electro Spirit,Knight,4,10,14,0.428,0.3662
+Electro Spirit,Knight,4,10,14,0.428,0.3216
 Electro Spirit,Lava Hound,0,0,0,0.428,0.5625
 Electro Spirit,Mega Knight,0,0,0,0.428,0.5625
-Electro Spirit,Mortar,1,0,1,0.428,0.82
-Electro Spirit,Mother Witch,2,1,3,0.428,0.6224
+Electro Spirit,Mortar,1,0,1,0.428,0.576
+Electro Spirit,Mother Witch,2,1,3,0.428,0.6367
 Electro Spirit,Musketeer,6,10,16,0.428,0.3872
 Electro Spirit,Night Witch,0,0,0,0.428,0.5625
-Electro Spirit,P.E.K.K.A,2,1,3,0.428,0.6224
+Electro Spirit,P.E.K.K.A,2,1,3,0.428,0.6367
 Electro Spirit,Poison,5,8,13,0.428,0.3978
 Electro Spirit,Princess,0,0,0,0.428,0.5625
 Electro Spirit,Rage,0,0,0,0.428,0.5625
 Electro Spirit,Ram Rider,0,0,0,0.428,0.5625
-Electro Spirit,Rascals,3,7,10,0.428,0.3707
+Electro Spirit,Rascals,3,7,10,0.428,0.3276
 Electro Spirit,Rocket,0,0,0,0.428,0.5625
-Electro Spirit,Royal Delivery,2,1,3,0.428,0.6224
-Electro Spirit,Royal Giant,1,2,3,0.428,0.3898
-Electro Spirit,Rune Giant,0,1,1,0.428,0.404
-Electro Spirit,Suspicious Bush,4,2,6,0.428,0.635
-Electro Spirit,The Log,5,11,16,0.428,0.3646
-Electro Spirit,Tombstone,2,6,8,0.428,0.374
+Electro Spirit,Royal Delivery,2,1,3,0.428,0.6367
+Electro Spirit,Royal Giant,1,2,3,0.428,0.3776
+Electro Spirit,Rune Giant,0,1,1,0.428,0.372
+Electro Spirit,Suspicious Bush,4,2,6,0.428,0.702
+Electro Spirit,The Log,5,11,16,0.428,0.3308
+Electro Spirit,Tombstone,2,6,8,0.428,0.3319
 Electro Spirit,Vines,3,5,8,0.428,0.395
 Electro Spirit,Witch,3,5,8,0.428,0.395
-Electro Spirit,Wizard,1,1,2,0.428,0.5
-Electro Spirit,X-Bow,1,3,4,0.428,0.3852
+Electro Spirit,Wizard,1,1,2,0.428,0.4861
+Electro Spirit,X-Bow,1,3,4,0.428,0.3469
 Electro Spirit,Zappies,0,0,0,0.428,0.5625
-Electro Wizard,Baby Dragon,1,1,2,0.5862,0.5
-Electro Wizard,Barbarian Hut,1,1,2,0.5862,0.5
-Electro Wizard,Berserker,1,0,1,0.5862,0.82
-Electro Wizard,Dart Goblin,2,0,2,0.5862,0.8472
-Electro Wizard,Electro Spirit,2,1,3,0.5862,0.6224
-Electro Wizard,Elixir Golem,0,0,0,0.5862,0.5625
-Electro Wizard,Executioner,1,1,2,0.5862,0.5
-Electro Wizard,Fireball,4,1,5,0.5862,0.737
-Electro Wizard,Fisherman,0,0,0,0.5862,0.5625
-Electro Wizard,Flying Machine,2,2,4,0.5862,0.5
-Electro Wizard,Furnace,1,0,1,0.5862,0.82
-Electro Wizard,Giant,1,0,1,0.5862,0.82
-Electro Wizard,Giant Snowball,0,0,0,0.5862,0.5625
-Electro Wizard,Goblin Barrel,2,1,3,0.5862,0.6224
-Electro Wizard,Goblin Demolisher,0,0,0,0.5862,0.5625
-Electro Wizard,Goblin Drill,0,0,0,0.5862,0.5625
-Electro Wizard,Goblin Giant,0,0,0,0.5862,0.5625
-Electro Wizard,Goblin Hut,3,0,3,0.5862,0.8673
-Electro Wizard,Golem,1,1,2,0.5862,0.5
-Electro Wizard,Graveyard,1,1,2,0.5862,0.5
-Electro Wizard,Hunter,0,0,0,0.5862,0.5625
-Electro Wizard,Ice Spirit,1,0,1,0.5862,0.82
-Electro Wizard,Ice Wizard,0,0,0,0.5862,0.5625
-Electro Wizard,Inferno Tower,0,0,0,0.5862,0.5625
-Electro Wizard,Knight,3,4,7,0.5862,0.441
-Electro Wizard,Lava Hound,0,2,2,0.5862,0.3958
-Electro Wizard,Mega Knight,0,0,0,0.5862,0.5625
-Electro Wizard,Mortar,0,0,0,0.5862,0.5625
-Electro Wizard,Mother Witch,1,0,1,0.5862,0.82
-Electro Wizard,Musketeer,2,3,5,0.5862,0.421
-Electro Wizard,Night Witch,0,0,0,0.5862,0.5625
-Electro Wizard,P.E.K.K.A,1,1,2,0.5862,0.5
-Electro Wizard,Poison,2,2,4,0.5862,0.5
-Electro Wizard,Princess,0,0,0,0.5862,0.5625
-Electro Wizard,Rage,0,1,1,0.5862,0.404
-Electro Wizard,Ram Rider,0,1,1,0.5862,0.404
-Electro Wizard,Rascals,2,0,2,0.5862,0.8472
-Electro Wizard,Rocket,0,0,0,0.5862,0.5625
-Electro Wizard,Royal Delivery,1,1,2,0.5862,0.5
-Electro Wizard,Royal Giant,0,0,0,0.5862,0.5625
-Electro Wizard,Rune Giant,0,0,0,0.5862,0.5625
-Electro Wizard,Suspicious Bush,3,1,4,0.5862,0.6914
-Electro Wizard,The Log,2,2,4,0.5862,0.5
-Electro Wizard,Tombstone,1,2,3,0.5862,0.3898
-Electro Wizard,Vines,4,2,6,0.5862,0.635
-Electro Wizard,Witch,1,0,1,0.5862,0.82
-Electro Wizard,Wizard,0,0,0,0.5862,0.5625
-Electro Wizard,X-Bow,1,0,1,0.5862,0.82
-Electro Wizard,Zappies,0,0,0,0.5862,0.5625
-Elixir Golem,Baby Dragon,0,0,0,0.404,0.5625
-Elixir Golem,Barbarian Hut,0,0,0,0.404,0.5625
-Elixir Golem,Berserker,0,0,0,0.404,0.5625
-Elixir Golem,Dart Goblin,0,0,0,0.404,0.5625
-Elixir Golem,Electro Spirit,0,0,0,0.404,0.5625
-Elixir Golem,Electro Wizard,0,0,0,0.404,0.5625
-Elixir Golem,Executioner,0,0,0,0.404,0.5625
-Elixir Golem,Fireball,0,1,1,0.404,0.404
-Elixir Golem,Fisherman,0,0,0,0.404,0.5625
-Elixir Golem,Flying Machine,0,0,0,0.404,0.5625
-Elixir Golem,Furnace,0,0,0,0.404,0.5625
-Elixir Golem,Giant,0,0,0,0.404,0.5625
-Elixir Golem,Giant Snowball,0,0,0,0.404,0.5625
-Elixir Golem,Goblin Barrel,0,0,0,0.404,0.5625
-Elixir Golem,Goblin Demolisher,0,0,0,0.404,0.5625
-Elixir Golem,Goblin Drill,0,0,0,0.404,0.5625
-Elixir Golem,Goblin Giant,0,0,0,0.404,0.5625
-Elixir Golem,Goblin Hut,0,1,1,0.404,0.404
-Elixir Golem,Golem,0,0,0,0.404,0.5625
-Elixir Golem,Graveyard,0,0,0,0.404,0.5625
-Elixir Golem,Hunter,0,0,0,0.404,0.5625
-Elixir Golem,Ice Spirit,0,0,0,0.404,0.5625
-Elixir Golem,Ice Wizard,0,0,0,0.404,0.5625
-Elixir Golem,Inferno Tower,0,0,0,0.404,0.5625
-Elixir Golem,Knight,0,1,1,0.404,0.404
-Elixir Golem,Lava Hound,0,0,0,0.404,0.5625
-Elixir Golem,Mega Knight,0,1,1,0.404,0.404
-Elixir Golem,Mortar,0,0,0,0.404,0.5625
-Elixir Golem,Mother Witch,0,0,0,0.404,0.5625
-Elixir Golem,Musketeer,0,1,1,0.404,0.404
-Elixir Golem,Night Witch,0,0,0,0.404,0.5625
-Elixir Golem,P.E.K.K.A,0,0,0,0.404,0.5625
-Elixir Golem,Poison,0,0,0,0.404,0.5625
-Elixir Golem,Princess,0,1,1,0.404,0.404
-Elixir Golem,Rage,0,0,0,0.404,0.5625
-Elixir Golem,Ram Rider,0,1,1,0.404,0.404
-Elixir Golem,Rascals,0,0,0,0.404,0.5625
-Elixir Golem,Rocket,0,0,0,0.404,0.5625
-Elixir Golem,Royal Delivery,0,0,0,0.404,0.5625
-Elixir Golem,Royal Giant,0,0,0,0.404,0.5625
-Elixir Golem,Rune Giant,0,0,0,0.404,0.5625
-Elixir Golem,Suspicious Bush,0,0,0,0.404,0.5625
-Elixir Golem,The Log,0,0,0,0.404,0.5625
-Elixir Golem,Tombstone,0,0,0,0.404,0.5625
-Elixir Golem,Vines,0,1,1,0.404,0.404
-Elixir Golem,Witch,0,0,0,0.404,0.5625
-Elixir Golem,Wizard,0,0,0,0.404,0.5625
-Elixir Golem,X-Bow,0,0,0,0.404,0.5625
-Elixir Golem,Zappies,0,0,0,0.404,0.5625
-Executioner,Baby Dragon,0,0,0,0.6769,0.5625
-Executioner,Barbarian Hut,1,0,1,0.6769,0.82
-Executioner,Berserker,0,0,0,0.6769,0.5625
-Executioner,Dart Goblin,1,0,1,0.6769,0.82
-Executioner,Electro Spirit,0,0,0,0.6769,0.5625
-Executioner,Electro Wizard,1,1,2,0.6769,0.5
-Executioner,Elixir Golem,0,0,0,0.6769,0.5625
-Executioner,Fireball,3,1,4,0.6769,0.6914
-Executioner,Fisherman,0,0,0,0.6769,0.5625
-Executioner,Flying Machine,2,0,2,0.6769,0.8472
-Executioner,Furnace,0,0,0,0.6769,0.5625
-Executioner,Giant,2,0,2,0.6769,0.8472
-Executioner,Giant Snowball,0,0,0,0.6769,0.5625
-Executioner,Goblin Barrel,1,0,1,0.6769,0.82
-Executioner,Goblin Demolisher,0,0,0,0.6769,0.5625
-Executioner,Goblin Drill,0,0,0,0.6769,0.5625
-Executioner,Goblin Giant,0,0,0,0.6769,0.5625
-Executioner,Goblin Hut,3,0,3,0.6769,0.8673
-Executioner,Golem,1,0,1,0.6769,0.82
-Executioner,Graveyard,0,0,0,0.6769,0.5625
-Executioner,Hunter,0,0,0,0.6769,0.5625
-Executioner,Ice Spirit,2,2,4,0.6769,0.5
-Executioner,Ice Wizard,0,0,0,0.6769,0.5625
-Executioner,Inferno Tower,0,0,0,0.6769,0.5625
-Executioner,Knight,2,0,2,0.6769,0.8472
-Executioner,Lava Hound,1,1,2,0.6769,0.5
-Executioner,Mega Knight,0,1,1,0.6769,0.404
-Executioner,Mortar,0,0,0,0.6769,0.5625
-Executioner,Mother Witch,0,0,0,0.6769,0.5625
-Executioner,Musketeer,3,2,5,0.6769,0.579
-Executioner,Night Witch,0,0,0,0.6769,0.5625
-Executioner,P.E.K.K.A,1,0,1,0.6769,0.82
-Executioner,Poison,2,0,2,0.6769,0.8472
-Executioner,Princess,0,0,0,0.6769,0.5625
-Executioner,Rage,0,0,0,0.6769,0.5625
-Executioner,Ram Rider,2,2,4,0.6769,0.5
-Executioner,Rascals,1,0,1,0.6769,0.82
-Executioner,Rocket,0,0,0,0.6769,0.5625
-Executioner,Royal Delivery,3,1,4,0.6769,0.6914
-Executioner,Royal Giant,0,0,0,0.6769,0.5625
-Executioner,Rune Giant,1,0,1,0.6769,0.82
-Executioner,Suspicious Bush,2,0,2,0.6769,0.8472
-Executioner,The Log,1,2,3,0.6769,0.3898
-Executioner,Tombstone,1,2,3,0.6769,0.3898
-Executioner,Vines,2,1,3,0.6769,0.6224
-Executioner,Witch,1,0,1,0.6769,0.82
-Executioner,Wizard,0,0,0,0.6769,0.5625
-Executioner,X-Bow,0,0,0,0.6769,0.5625
-Executioner,Zappies,0,0,0,0.6769,0.5625
-Fireball,Baby Dragon,5,5,10,0.4166,0.5
-Fireball,Barbarian Hut,1,7,8,0.4166,0.374
-Fireball,Berserker,1,1,2,0.4166,0.5
-Fireball,Dart Goblin,1,3,4,0.4166,0.3852
-Fireball,Electro Spirit,5,6,11,0.4166,0.4604
-Fireball,Electro Wizard,1,4,5,0.4166,0.3815
-Fireball,Elixir Golem,1,0,1,0.4166,0.82
-Fireball,Executioner,1,3,4,0.4166,0.3852
-Fireball,Fisherman,1,0,1,0.4166,0.82
-Fireball,Flying Machine,4,4,8,0.4166,0.5
-Fireball,Furnace,1,0,1,0.4166,0.82
-Fireball,Giant,2,2,4,0.4166,0.5
-Fireball,Giant Snowball,2,0,2,0.4166,0.8472
-Fireball,Goblin Barrel,5,6,11,0.4166,0.4604
-Fireball,Goblin Demolisher,0,1,1,0.4166,0.404
-Fireball,Goblin Drill,0,0,0,0.4166,0.5625
-Fireball,Goblin Giant,1,0,1,0.4166,0.82
-Fireball,Goblin Hut,4,7,11,0.4166,0.3812
-Fireball,Golem,0,4,4,0.4166,0.3852
-Fireball,Graveyard,3,5,8,0.4166,0.395
-Fireball,Hunter,0,0,0,0.4166,0.5625
-Fireball,Ice Spirit,5,10,15,0.4166,0.3654
-Fireball,Ice Wizard,1,0,1,0.4166,0.82
-Fireball,Inferno Tower,1,0,1,0.4166,0.82
-Fireball,Knight,6,9,15,0.4166,0.4102
-Fireball,Lava Hound,0,1,1,0.4166,0.404
-Fireball,Mega Knight,0,1,1,0.4166,0.404
-Fireball,Mortar,0,0,0,0.4166,0.5625
-Fireball,Mother Witch,2,0,2,0.4166,0.8472
-Fireball,Musketeer,5,13,18,0.4166,0.3633
-Fireball,Night Witch,0,0,0,0.4166,0.5625
-Fireball,P.E.K.K.A,1,1,2,0.4166,0.5
-Fireball,Poison,2,11,13,0.4166,0.3671
-Fireball,Princess,1,1,2,0.4166,0.5
-Fireball,Rage,1,1,2,0.4166,0.5
-Fireball,Ram Rider,3,4,7,0.4166,0.441
-Fireball,Rascals,4,5,9,0.4166,0.4527
-Fireball,Rocket,1,0,1,0.4166,0.82
-Fireball,Royal Delivery,6,4,10,0.4166,0.5862
-Fireball,Royal Giant,1,1,2,0.4166,0.5
-Fireball,Rune Giant,1,1,2,0.4166,0.5
-Fireball,Suspicious Bush,6,3,9,0.4166,0.642
-Fireball,The Log,8,14,22,0.4166,0.3739
-Fireball,Tombstone,6,10,16,0.4166,0.3872
-Fireball,Vines,7,10,17,0.4166,0.42
-Fireball,Witch,3,1,4,0.4166,0.6914
-Fireball,Wizard,1,0,1,0.4166,0.82
-Fireball,X-Bow,1,1,2,0.4166,0.5
-Fireball,Zappies,0,0,0,0.4166,0.5625
-Fisherman,Baby Dragon,0,0,0,0.404,0.5625
-Fisherman,Barbarian Hut,0,0,0,0.404,0.5625
-Fisherman,Berserker,0,0,0,0.404,0.5625
-Fisherman,Dart Goblin,0,0,0,0.404,0.5625
-Fisherman,Electro Spirit,0,0,0,0.404,0.5625
-Fisherman,Electro Wizard,0,0,0,0.404,0.5625
-Fisherman,Elixir Golem,0,0,0,0.404,0.5625
-Fisherman,Executioner,0,0,0,0.404,0.5625
-Fisherman,Fireball,0,1,1,0.404,0.404
-Fisherman,Flying Machine,0,0,0,0.404,0.5625
-Fisherman,Furnace,0,0,0,0.404,0.5625
-Fisherman,Giant,0,0,0,0.404,0.5625
-Fisherman,Giant Snowball,0,0,0,0.404,0.5625
-Fisherman,Goblin Barrel,0,0,0,0.404,0.5625
-Fisherman,Goblin Demolisher,0,0,0,0.404,0.5625
-Fisherman,Goblin Drill,0,0,0,0.404,0.5625
-Fisherman,Goblin Giant,0,0,0,0.404,0.5625
-Fisherman,Goblin Hut,0,1,1,0.404,0.404
-Fisherman,Golem,0,0,0,0.404,0.5625
-Fisherman,Graveyard,0,0,0,0.404,0.5625
-Fisherman,Hunter,0,0,0,0.404,0.5625
-Fisherman,Ice Spirit,0,0,0,0.404,0.5625
-Fisherman,Ice Wizard,0,0,0,0.404,0.5625
-Fisherman,Inferno Tower,0,0,0,0.404,0.5625
-Fisherman,Knight,0,1,1,0.404,0.404
-Fisherman,Lava Hound,0,0,0,0.404,0.5625
-Fisherman,Mega Knight,0,1,1,0.404,0.404
-Fisherman,Mortar,0,0,0,0.404,0.5625
-Fisherman,Mother Witch,0,0,0,0.404,0.5625
-Fisherman,Musketeer,0,1,1,0.404,0.404
-Fisherman,Night Witch,0,0,0,0.404,0.5625
-Fisherman,P.E.K.K.A,0,0,0,0.404,0.5625
-Fisherman,Poison,0,0,0,0.404,0.5625
-Fisherman,Princess,0,1,1,0.404,0.404
-Fisherman,Rage,0,0,0,0.404,0.5625
-Fisherman,Ram Rider,0,1,1,0.404,0.404
-Fisherman,Rascals,0,0,0,0.404,0.5625
-Fisherman,Rocket,0,0,0,0.404,0.5625
-Fisherman,Royal Delivery,0,0,0,0.404,0.5625
-Fisherman,Royal Giant,0,0,0,0.404,0.5625
-Fisherman,Rune Giant,0,0,0,0.404,0.5625
-Fisherman,Suspicious Bush,0,0,0,0.404,0.5625
-Fisherman,The Log,0,0,0,0.404,0.5625
-Fisherman,Tombstone,0,0,0,0.404,0.5625
-Fisherman,Vines,0,1,1,0.404,0.404
-Fisherman,Witch,0,0,0,0.404,0.5625
-Fisherman,Wizard,0,0,0,0.404,0.5625
-Fisherman,X-Bow,0,0,0,0.404,0.5625
-Fisherman,Zappies,0,0,0,0.404,0.5625
-Flying Machine,Baby Dragon,2,2,4,0.3989,0.5
-Flying Machine,Barbarian Hut,1,3,4,0.3989,0.3852
-Flying Machine,Berserker,1,0,1,0.3989,0.82
+Electro Wizard,Baby Dragon,1,1,2,0.6537,0.4861
+Electro Wizard,Barbarian Hut,1,3,4,0.6537,0.3469
+Electro Wizard,Berserker,1,0,1,0.6537,0.576
+Electro Wizard,Dart Goblin,2,0,2,0.6537,0.625
+Electro Wizard,Electro Spirit,2,1,3,0.6537,0.6367
+Electro Wizard,Elixir Golem,0,0,0,0.6537,0.5625
+Electro Wizard,Executioner,1,1,2,0.6537,0.4861
+Electro Wizard,Fireball,4,3,7,0.6537,0.6375
+Electro Wizard,Fisherman,0,0,0,0.6537,0.5625
+Electro Wizard,Flying Machine,2,2,4,0.6537,0.5359
+Electro Wizard,Furnace,1,0,1,0.6537,0.576
+Electro Wizard,Giant,1,0,1,0.6537,0.576
+Electro Wizard,Giant Snowball,0,0,0,0.6537,0.5625
+Electro Wizard,Goblin Barrel,2,1,3,0.6537,0.6367
+Electro Wizard,Goblin Demolisher,0,0,0,0.6537,0.5625
+Electro Wizard,Goblin Drill,0,0,0,0.6537,0.5625
+Electro Wizard,Goblin Giant,0,0,0,0.6537,0.5625
+Electro Wizard,Goblin Hut,3,2,5,0.6537,0.6321
+Electro Wizard,Golem,1,1,2,0.6537,0.4861
+Electro Wizard,Graveyard,2,1,3,0.6537,0.6367
+Electro Wizard,Hunter,0,0,0,0.6537,0.5625
+Electro Wizard,Ice Spirit,2,0,2,0.6537,0.625
+Electro Wizard,Ice Wizard,0,0,0,0.6537,0.5625
+Electro Wizard,Inferno Tower,0,0,0,0.6537,0.5625
+Electro Wizard,Knight,4,6,10,0.6537,0.4138
+Electro Wizard,Lava Hound,0,2,2,0.6537,0.3611
+Electro Wizard,Mega Knight,0,0,0,0.6537,0.5625
+Electro Wizard,Mortar,0,0,0,0.6537,0.5625
+Electro Wizard,Mother Witch,1,0,1,0.6537,0.576
+Electro Wizard,Musketeer,2,5,7,0.6537,0.3347
+Electro Wizard,Night Witch,0,0,0,0.6537,0.5625
+Electro Wizard,P.E.K.K.A,1,1,2,0.6537,0.4861
+Electro Wizard,Poison,3,2,5,0.6537,0.6321
+Electro Wizard,Princess,1,0,1,0.6537,0.576
+Electro Wizard,Rage,0,1,1,0.6537,0.372
+Electro Wizard,Ram Rider,0,3,3,0.6537,0.3531
+Electro Wizard,Rascals,3,2,5,0.6537,0.6321
+Electro Wizard,Rocket,0,0,0,0.6537,0.5625
+Electro Wizard,Royal Delivery,1,1,2,0.6537,0.4861
+Electro Wizard,Royal Giant,0,0,0,0.6537,0.5625
+Electro Wizard,Rune Giant,0,0,0,0.6537,0.5625
+Electro Wizard,Suspicious Bush,4,1,5,0.6537,0.7111
+Electro Wizard,The Log,2,4,6,0.6537,0.365
+Electro Wizard,Tombstone,2,2,4,0.6537,0.5359
+Electro Wizard,Vines,4,2,6,0.6537,0.702
+Electro Wizard,Witch,1,0,1,0.6537,0.576
+Electro Wizard,Wizard,0,0,0,0.6537,0.5625
+Electro Wizard,X-Bow,1,0,1,0.6537,0.576
+Electro Wizard,Zappies,0,0,0,0.6537,0.5625
+Elixir Golem,Baby Dragon,0,0,0,0.372,0.5625
+Elixir Golem,Barbarian Hut,0,0,0,0.372,0.5625
+Elixir Golem,Berserker,0,0,0,0.372,0.5625
+Elixir Golem,Dart Goblin,0,0,0,0.372,0.5625
+Elixir Golem,Electro Spirit,0,0,0,0.372,0.5625
+Elixir Golem,Electro Wizard,0,0,0,0.372,0.5625
+Elixir Golem,Executioner,0,0,0,0.372,0.5625
+Elixir Golem,Fireball,0,1,1,0.372,0.372
+Elixir Golem,Fisherman,0,0,0,0.372,0.5625
+Elixir Golem,Flying Machine,0,0,0,0.372,0.5625
+Elixir Golem,Furnace,0,0,0,0.372,0.5625
+Elixir Golem,Giant,0,0,0,0.372,0.5625
+Elixir Golem,Giant Snowball,0,0,0,0.372,0.5625
+Elixir Golem,Goblin Barrel,0,0,0,0.372,0.5625
+Elixir Golem,Goblin Demolisher,0,0,0,0.372,0.5625
+Elixir Golem,Goblin Drill,0,0,0,0.372,0.5625
+Elixir Golem,Goblin Giant,0,0,0,0.372,0.5625
+Elixir Golem,Goblin Hut,0,1,1,0.372,0.372
+Elixir Golem,Golem,0,0,0,0.372,0.5625
+Elixir Golem,Graveyard,0,0,0,0.372,0.5625
+Elixir Golem,Hunter,0,0,0,0.372,0.5625
+Elixir Golem,Ice Spirit,0,0,0,0.372,0.5625
+Elixir Golem,Ice Wizard,0,0,0,0.372,0.5625
+Elixir Golem,Inferno Tower,0,0,0,0.372,0.5625
+Elixir Golem,Knight,0,1,1,0.372,0.372
+Elixir Golem,Lava Hound,0,0,0,0.372,0.5625
+Elixir Golem,Mega Knight,0,1,1,0.372,0.372
+Elixir Golem,Mortar,0,0,0,0.372,0.5625
+Elixir Golem,Mother Witch,0,0,0,0.372,0.5625
+Elixir Golem,Musketeer,0,1,1,0.372,0.372
+Elixir Golem,Night Witch,0,0,0,0.372,0.5625
+Elixir Golem,P.E.K.K.A,0,0,0,0.372,0.5625
+Elixir Golem,Poison,0,0,0,0.372,0.5625
+Elixir Golem,Princess,0,1,1,0.372,0.372
+Elixir Golem,Rage,0,0,0,0.372,0.5625
+Elixir Golem,Ram Rider,0,1,1,0.372,0.372
+Elixir Golem,Rascals,0,0,0,0.372,0.5625
+Elixir Golem,Rocket,0,0,0,0.372,0.5625
+Elixir Golem,Royal Delivery,0,0,0,0.372,0.5625
+Elixir Golem,Royal Giant,0,0,0,0.372,0.5625
+Elixir Golem,Rune Giant,0,0,0,0.372,0.5625
+Elixir Golem,Suspicious Bush,0,0,0,0.372,0.5625
+Elixir Golem,The Log,0,0,0,0.372,0.5625
+Elixir Golem,Tombstone,0,0,0,0.372,0.5625
+Elixir Golem,Vines,0,1,1,0.372,0.372
+Elixir Golem,Witch,0,0,0,0.372,0.5625
+Elixir Golem,Wizard,0,0,0,0.372,0.5625
+Elixir Golem,X-Bow,0,0,0,0.372,0.5625
+Elixir Golem,Zappies,0,0,0,0.372,0.5625
+Executioner,Baby Dragon,0,0,0,0.7438,0.5625
+Executioner,Barbarian Hut,1,0,1,0.7438,0.576
+Executioner,Berserker,0,0,0,0.7438,0.5625
+Executioner,Dart Goblin,1,0,1,0.7438,0.576
+Executioner,Electro Spirit,0,0,0,0.7438,0.5625
+Executioner,Electro Wizard,1,1,2,0.7438,0.4861
+Executioner,Elixir Golem,0,0,0,0.7438,0.5625
+Executioner,Fireball,3,1,4,0.7438,0.6891
+Executioner,Fisherman,0,0,0,0.7438,0.5625
+Executioner,Flying Machine,2,0,2,0.7438,0.625
+Executioner,Furnace,0,0,0,0.7438,0.5625
+Executioner,Giant,2,0,2,0.7438,0.625
+Executioner,Giant Snowball,0,0,0,0.7438,0.5625
+Executioner,Goblin Barrel,1,0,1,0.7438,0.576
+Executioner,Goblin Demolisher,0,0,0,0.7438,0.5625
+Executioner,Goblin Drill,0,0,0,0.7438,0.5625
+Executioner,Goblin Giant,0,0,0,0.7438,0.5625
+Executioner,Goblin Hut,3,0,3,0.7438,0.6612
+Executioner,Golem,1,0,1,0.7438,0.576
+Executioner,Graveyard,0,0,0,0.7438,0.5625
+Executioner,Hunter,0,0,0,0.7438,0.5625
+Executioner,Ice Spirit,2,2,4,0.7438,0.5359
+Executioner,Ice Wizard,0,0,0,0.7438,0.5625
+Executioner,Inferno Tower,0,0,0,0.7438,0.5625
+Executioner,Knight,2,0,2,0.7438,0.625
+Executioner,Lava Hound,1,1,2,0.7438,0.4861
+Executioner,Mega Knight,0,1,1,0.7438,0.372
+Executioner,Mortar,0,0,0,0.7438,0.5625
+Executioner,Mother Witch,0,0,0,0.7438,0.5625
+Executioner,Musketeer,3,2,5,0.7438,0.6321
+Executioner,Night Witch,0,0,0,0.7438,0.5625
+Executioner,P.E.K.K.A,1,0,1,0.7438,0.576
+Executioner,Poison,2,0,2,0.7438,0.625
+Executioner,Princess,0,0,0,0.7438,0.5625
+Executioner,Rage,0,0,0,0.7438,0.5625
+Executioner,Ram Rider,2,2,4,0.7438,0.5359
+Executioner,Rascals,1,0,1,0.7438,0.576
+Executioner,Rocket,0,0,0,0.7438,0.5625
+Executioner,Royal Delivery,3,1,4,0.7438,0.6891
+Executioner,Royal Giant,0,0,0,0.7438,0.5625
+Executioner,Rune Giant,1,0,1,0.7438,0.576
+Executioner,Suspicious Bush,2,0,2,0.7438,0.625
+Executioner,The Log,1,2,3,0.7438,0.3776
+Executioner,Tombstone,1,2,3,0.7438,0.3776
+Executioner,Vines,2,1,3,0.7438,0.6367
+Executioner,Witch,1,0,1,0.7438,0.576
+Executioner,Wizard,0,0,0,0.7438,0.5625
+Executioner,X-Bow,0,0,0,0.7438,0.5625
+Executioner,Zappies,0,0,0,0.7438,0.5625
+Fireball,Baby Dragon,5,5,10,0.4468,0.6036
+Fireball,Barbarian Hut,1,7,8,0.4468,0.3319
+Fireball,Berserker,1,1,2,0.4468,0.4861
+Fireball,Dart Goblin,1,3,4,0.4468,0.3469
+Fireball,Electro Spirit,5,6,11,0.4468,0.4604
+Fireball,Electro Wizard,3,4,7,0.4468,0.441
+Fireball,Elixir Golem,1,0,1,0.4468,0.576
+Fireball,Executioner,1,3,4,0.4468,0.3469
+Fireball,Fisherman,1,0,1,0.4468,0.576
+Fireball,Flying Machine,4,4,8,0.4468,0.5882
+Fireball,Furnace,1,0,1,0.4468,0.576
+Fireball,Giant,2,2,4,0.4468,0.5359
+Fireball,Giant Snowball,2,0,2,0.4468,0.625
+Fireball,Goblin Barrel,7,6,13,0.4468,0.6541
+Fireball,Goblin Demolisher,0,1,1,0.4468,0.372
+Fireball,Goblin Drill,0,0,0,0.4468,0.5625
+Fireball,Goblin Giant,1,0,1,0.4468,0.576
+Fireball,Goblin Hut,4,7,11,0.4468,0.3812
+Fireball,Golem,0,4,4,0.4468,0.3469
+Fireball,Graveyard,5,5,10,0.4468,0.6036
+Fireball,Hunter,0,0,0,0.4468,0.5625
+Fireball,Ice Spirit,7,10,17,0.4468,0.42
+Fireball,Ice Wizard,1,0,1,0.4468,0.576
+Fireball,Inferno Tower,1,0,1,0.4468,0.576
+Fireball,Knight,6,9,15,0.4468,0.4102
+Fireball,Lava Hound,0,1,1,0.4468,0.372
+Fireball,Mega Knight,0,1,1,0.4468,0.372
+Fireball,Mortar,0,0,0,0.4468,0.5625
+Fireball,Mother Witch,2,0,2,0.4468,0.625
+Fireball,Musketeer,5,13,18,0.4468,0.3178
+Fireball,Night Witch,0,0,0,0.4468,0.5625
+Fireball,P.E.K.K.A,1,1,2,0.4468,0.4861
+Fireball,Poison,4,11,15,0.4468,0.3205
+Fireball,Princess,1,1,2,0.4468,0.4861
+Fireball,Rage,1,1,2,0.4468,0.4861
+Fireball,Ram Rider,3,4,7,0.4468,0.441
+Fireball,Rascals,4,5,9,0.4468,0.4527
+Fireball,Rocket,1,0,1,0.4468,0.576
+Fireball,Royal Delivery,6,4,10,0.4468,0.6898
+Fireball,Royal Giant,1,1,2,0.4468,0.4861
+Fireball,Rune Giant,3,1,4,0.4468,0.6891
+Fireball,Suspicious Bush,8,3,11,0.4468,0.784
+Fireball,The Log,8,14,22,0.4468,0.3739
+Fireball,Tombstone,8,10,18,0.4468,0.4494
+Fireball,Vines,7,10,17,0.4468,0.42
+Fireball,Witch,3,1,4,0.4468,0.6891
+Fireball,Wizard,1,0,1,0.4468,0.576
+Fireball,X-Bow,1,1,2,0.4468,0.4861
+Fireball,Zappies,0,0,0,0.4468,0.5625
+Fisherman,Baby Dragon,0,0,0,0.372,0.5625
+Fisherman,Barbarian Hut,0,0,0,0.372,0.5625
+Fisherman,Berserker,0,0,0,0.372,0.5625
+Fisherman,Dart Goblin,0,0,0,0.372,0.5625
+Fisherman,Electro Spirit,0,0,0,0.372,0.5625
+Fisherman,Electro Wizard,0,0,0,0.372,0.5625
+Fisherman,Elixir Golem,0,0,0,0.372,0.5625
+Fisherman,Executioner,0,0,0,0.372,0.5625
+Fisherman,Fireball,0,1,1,0.372,0.372
+Fisherman,Flying Machine,0,0,0,0.372,0.5625
+Fisherman,Furnace,0,0,0,0.372,0.5625
+Fisherman,Giant,0,0,0,0.372,0.5625
+Fisherman,Giant Snowball,0,0,0,0.372,0.5625
+Fisherman,Goblin Barrel,0,0,0,0.372,0.5625
+Fisherman,Goblin Demolisher,0,0,0,0.372,0.5625
+Fisherman,Goblin Drill,0,0,0,0.372,0.5625
+Fisherman,Goblin Giant,0,0,0,0.372,0.5625
+Fisherman,Goblin Hut,0,1,1,0.372,0.372
+Fisherman,Golem,0,0,0,0.372,0.5625
+Fisherman,Graveyard,0,0,0,0.372,0.5625
+Fisherman,Hunter,0,0,0,0.372,0.5625
+Fisherman,Ice Spirit,0,0,0,0.372,0.5625
+Fisherman,Ice Wizard,0,0,0,0.372,0.5625
+Fisherman,Inferno Tower,0,0,0,0.372,0.5625
+Fisherman,Knight,0,1,1,0.372,0.372
+Fisherman,Lava Hound,0,0,0,0.372,0.5625
+Fisherman,Mega Knight,0,1,1,0.372,0.372
+Fisherman,Mortar,0,0,0,0.372,0.5625
+Fisherman,Mother Witch,0,0,0,0.372,0.5625
+Fisherman,Musketeer,0,1,1,0.372,0.372
+Fisherman,Night Witch,0,0,0,0.372,0.5625
+Fisherman,P.E.K.K.A,0,0,0,0.372,0.5625
+Fisherman,Poison,0,0,0,0.372,0.5625
+Fisherman,Princess,0,1,1,0.372,0.372
+Fisherman,Rage,0,0,0,0.372,0.5625
+Fisherman,Ram Rider,0,1,1,0.372,0.372
+Fisherman,Rascals,0,0,0,0.372,0.5625
+Fisherman,Rocket,0,0,0,0.372,0.5625
+Fisherman,Royal Delivery,0,0,0,0.372,0.5625
+Fisherman,Royal Giant,0,0,0,0.372,0.5625
+Fisherman,Rune Giant,0,0,0,0.372,0.5625
+Fisherman,Suspicious Bush,0,0,0,0.372,0.5625
+Fisherman,The Log,0,0,0,0.372,0.5625
+Fisherman,Tombstone,0,0,0,0.372,0.5625
+Fisherman,Vines,0,1,1,0.372,0.372
+Fisherman,Witch,0,0,0,0.372,0.5625
+Fisherman,Wizard,0,0,0,0.372,0.5625
+Fisherman,X-Bow,0,0,0,0.372,0.5625
+Fisherman,Zappies,0,0,0,0.372,0.5625
+Flying Machine,Baby Dragon,2,2,4,0.3989,0.5359
+Flying Machine,Barbarian Hut,1,3,4,0.3989,0.3469
+Flying Machine,Berserker,1,0,1,0.3989,0.576
 Flying Machine,Dart Goblin,2,3,5,0.3989,0.421
-Flying Machine,Electro Spirit,5,5,10,0.3989,0.5
-Flying Machine,Electro Wizard,2,2,4,0.3989,0.5
+Flying Machine,Electro Spirit,5,5,10,0.3989,0.6036
+Flying Machine,Electro Wizard,2,2,4,0.3989,0.5359
 Flying Machine,Elixir Golem,0,0,0,0.3989,0.5625
-Flying Machine,Executioner,0,2,2,0.3989,0.3958
-Flying Machine,Fireball,4,4,8,0.3989,0.5
+Flying Machine,Executioner,0,2,2,0.3989,0.3611
+Flying Machine,Fireball,4,4,8,0.3989,0.5882
 Flying Machine,Fisherman,0,0,0,0.3989,0.5625
 Flying Machine,Furnace,0,0,0,0.3989,0.5625
-Flying Machine,Giant,1,1,2,0.3989,0.5
+Flying Machine,Giant,1,1,2,0.3989,0.4861
 Flying Machine,Giant Snowball,0,0,0,0.3989,0.5625
-Flying Machine,Goblin Barrel,2,2,4,0.3989,0.5
-Flying Machine,Goblin Demolisher,0,2,2,0.3989,0.3958
+Flying Machine,Goblin Barrel,2,2,4,0.3989,0.5359
+Flying Machine,Goblin Demolisher,0,2,2,0.3989,0.3611
 Flying Machine,Goblin Drill,0,0,0,0.3989,0.5625
 Flying Machine,Goblin Giant,0,0,0,0.3989,0.5625
-Flying Machine,Goblin Hut,3,6,9,0.3989,0.3722
-Flying Machine,Golem,5,4,9,0.3989,0.5473
-Flying Machine,Graveyard,2,5,7,0.3989,0.376
+Flying Machine,Goblin Hut,3,6,9,0.3989,0.358
+Flying Machine,Golem,5,4,9,0.3989,0.6438
+Flying Machine,Graveyard,2,5,7,0.3989,0.3347
 Flying Machine,Hunter,0,0,0,0.3989,0.5625
-Flying Machine,Ice Spirit,2,7,9,0.3989,0.3722
+Flying Machine,Ice Spirit,2,7,9,0.3989,0.3296
 Flying Machine,Ice Wizard,0,0,0,0.3989,0.5625
 Flying Machine,Inferno Tower,0,0,0,0.3989,0.5625
-Flying Machine,Knight,2,9,11,0.3989,0.3693
+Flying Machine,Knight,2,9,11,0.3989,0.3258
 Flying Machine,Lava Hound,0,0,0,0.3989,0.5625
 Flying Machine,Mega Knight,0,0,0,0.3989,0.5625
 Flying Machine,Mortar,0,0,0,0.3989,0.5625
-Flying Machine,Mother Witch,2,0,2,0.3989,0.8472
-Flying Machine,Musketeer,5,10,15,0.3989,0.3654
+Flying Machine,Mother Witch,2,0,2,0.3989,0.625
+Flying Machine,Musketeer,5,10,15,0.3989,0.3504
 Flying Machine,Night Witch,0,0,0,0.3989,0.5625
 Flying Machine,P.E.K.K.A,0,0,0,0.3989,0.5625
-Flying Machine,Poison,3,7,10,0.3989,0.3707
-Flying Machine,Princess,1,0,1,0.3989,0.82
+Flying Machine,Poison,3,7,10,0.3989,0.3276
+Flying Machine,Princess,1,0,1,0.3989,0.576
 Flying Machine,Rage,0,0,0,0.3989,0.5625
-Flying Machine,Ram Rider,0,2,2,0.3989,0.3958
+Flying Machine,Ram Rider,0,2,2,0.3989,0.3611
 Flying Machine,Rascals,5,6,11,0.3989,0.4604
-Flying Machine,Rocket,1,0,1,0.3989,0.82
-Flying Machine,Royal Delivery,1,1,2,0.3989,0.5
-Flying Machine,Royal Giant,2,2,4,0.3989,0.5
-Flying Machine,Rune Giant,0,1,1,0.3989,0.404
-Flying Machine,Suspicious Bush,3,1,4,0.3989,0.6914
-Flying Machine,The Log,2,8,10,0.3989,0.3707
+Flying Machine,Rocket,1,0,1,0.3989,0.576
+Flying Machine,Royal Delivery,1,1,2,0.3989,0.4861
+Flying Machine,Royal Giant,2,2,4,0.3989,0.5359
+Flying Machine,Rune Giant,0,1,1,0.3989,0.372
+Flying Machine,Suspicious Bush,3,1,4,0.3989,0.6891
+Flying Machine,The Log,2,8,10,0.3989,0.3276
 Flying Machine,Tombstone,5,6,11,0.3989,0.4604
 Flying Machine,Vines,3,5,8,0.3989,0.395
-Flying Machine,Witch,2,2,4,0.3989,0.5
-Flying Machine,Wizard,1,1,2,0.3989,0.5
+Flying Machine,Witch,2,2,4,0.3989,0.5359
+Flying Machine,Wizard,1,1,2,0.3989,0.4861
 Flying Machine,X-Bow,2,3,5,0.3989,0.421
 Flying Machine,Zappies,0,0,0,0.3989,0.5625
-Furnace,Baby Dragon,0,0,0,0.3958,0.5625
-Furnace,Barbarian Hut,0,0,0,0.3958,0.5625
-Furnace,Berserker,0,0,0,0.3958,0.5625
-Furnace,Dart Goblin,0,1,1,0.3958,0.404
-Furnace,Electro Spirit,0,0,0,0.3958,0.5625
-Furnace,Electro Wizard,0,1,1,0.3958,0.404
-Furnace,Elixir Golem,0,0,0,0.3958,0.5625
-Furnace,Executioner,0,0,0,0.3958,0.5625
-Furnace,Fireball,0,1,1,0.3958,0.404
-Furnace,Fisherman,0,0,0,0.3958,0.5625
-Furnace,Flying Machine,0,0,0,0.3958,0.5625
-Furnace,Giant,0,0,0,0.3958,0.5625
-Furnace,Giant Snowball,0,0,0,0.3958,0.5625
-Furnace,Goblin Barrel,0,1,1,0.3958,0.404
-Furnace,Goblin Demolisher,0,1,1,0.3958,0.404
-Furnace,Goblin Drill,0,0,0,0.3958,0.5625
-Furnace,Goblin Giant,0,0,0,0.3958,0.5625
-Furnace,Goblin Hut,0,0,0,0.3958,0.5625
-Furnace,Golem,0,0,0,0.3958,0.5625
-Furnace,Graveyard,0,1,1,0.3958,0.404
-Furnace,Hunter,0,0,0,0.3958,0.5625
-Furnace,Ice Spirit,0,0,0,0.3958,0.5625
-Furnace,Ice Wizard,0,0,0,0.3958,0.5625
-Furnace,Inferno Tower,0,0,0,0.3958,0.5625
-Furnace,Knight,0,2,2,0.3958,0.3958
-Furnace,Lava Hound,0,0,0,0.3958,0.5625
-Furnace,Mega Knight,0,0,0,0.3958,0.5625
-Furnace,Mortar,0,0,0,0.3958,0.5625
-Furnace,Mother Witch,0,0,0,0.3958,0.5625
-Furnace,Musketeer,0,2,2,0.3958,0.3958
-Furnace,Night Witch,0,0,0,0.3958,0.5625
-Furnace,P.E.K.K.A,0,0,0,0.3958,0.5625
-Furnace,Poison,0,1,1,0.3958,0.404
-Furnace,Princess,0,0,0,0.3958,0.5625
-Furnace,Rage,0,0,0,0.3958,0.5625
-Furnace,Ram Rider,0,0,0,0.3958,0.5625
-Furnace,Rascals,0,1,1,0.3958,0.404
-Furnace,Rocket,0,0,0,0.3958,0.5625
-Furnace,Royal Delivery,0,1,1,0.3958,0.404
-Furnace,Royal Giant,0,0,0,0.3958,0.5625
-Furnace,Rune Giant,0,0,0,0.3958,0.5625
-Furnace,Suspicious Bush,0,0,0,0.3958,0.5625
-Furnace,The Log,0,2,2,0.3958,0.3958
-Furnace,Tombstone,0,1,1,0.3958,0.404
-Furnace,Vines,0,0,0,0.3958,0.5625
-Furnace,Witch,0,0,0,0.3958,0.5625
-Furnace,Wizard,0,0,0,0.3958,0.5625
-Furnace,X-Bow,0,0,0,0.3958,0.5625
-Furnace,Zappies,0,0,0,0.3958,0.5625
-Giant,Baby Dragon,2,0,2,0.444,0.8472
-Giant,Barbarian Hut,1,1,2,0.444,0.5
-Giant,Berserker,0,0,0,0.444,0.5625
-Giant,Dart Goblin,1,1,2,0.444,0.5
-Giant,Electro Spirit,1,2,3,0.444,0.3898
-Giant,Electro Wizard,0,1,1,0.444,0.404
-Giant,Elixir Golem,0,0,0,0.444,0.5625
-Giant,Executioner,0,2,2,0.444,0.3958
-Giant,Fireball,2,2,4,0.444,0.5
-Giant,Fisherman,0,0,0,0.444,0.5625
-Giant,Flying Machine,1,1,2,0.444,0.5
-Giant,Furnace,0,0,0,0.444,0.5625
-Giant,Giant Snowball,1,0,1,0.444,0.82
-Giant,Goblin Barrel,2,4,6,0.444,0.3785
-Giant,Goblin Demolisher,0,2,2,0.444,0.3958
-Giant,Goblin Drill,0,0,0,0.444,0.5625
-Giant,Goblin Giant,0,0,0,0.444,0.5625
-Giant,Goblin Hut,1,1,2,0.444,0.5
-Giant,Golem,1,3,4,0.444,0.3852
-Giant,Graveyard,2,1,3,0.444,0.6224
-Giant,Hunter,0,0,0,0.444,0.5625
-Giant,Ice Spirit,4,4,8,0.444,0.5
-Giant,Ice Wizard,0,0,0,0.444,0.5625
-Giant,Inferno Tower,0,0,0,0.444,0.5625
-Giant,Knight,3,4,7,0.444,0.441
-Giant,Lava Hound,0,2,2,0.444,0.3958
-Giant,Mega Knight,0,0,0,0.444,0.5625
-Giant,Mortar,0,0,0,0.444,0.5625
-Giant,Mother Witch,0,0,0,0.444,0.5625
-Giant,Musketeer,4,5,9,0.444,0.4527
-Giant,Night Witch,0,1,1,0.444,0.404
-Giant,P.E.K.K.A,0,0,0,0.444,0.5625
-Giant,Poison,0,3,3,0.444,0.3898
-Giant,Princess,0,0,0,0.444,0.5625
-Giant,Rage,1,1,2,0.444,0.5
-Giant,Ram Rider,4,3,7,0.444,0.559
-Giant,Rascals,5,4,9,0.444,0.5473
-Giant,Rocket,0,0,0,0.444,0.5625
-Giant,Royal Delivery,4,1,5,0.444,0.737
-Giant,Royal Giant,2,0,2,0.444,0.8472
-Giant,Rune Giant,0,0,0,0.444,0.5625
-Giant,Suspicious Bush,3,1,4,0.444,0.6914
-Giant,The Log,2,8,10,0.444,0.3707
-Giant,Tombstone,4,5,9,0.444,0.4527
-Giant,Vines,3,4,7,0.444,0.441
-Giant,Witch,1,2,3,0.444,0.3898
-Giant,Wizard,0,1,1,0.444,0.404
-Giant,X-Bow,1,2,3,0.444,0.3898
-Giant,Zappies,0,0,0,0.444,0.5625
-Giant Snowball,Baby Dragon,0,0,0,0.3898,0.5625
-Giant Snowball,Barbarian Hut,0,0,0,0.3898,0.5625
-Giant Snowball,Berserker,0,0,0,0.3898,0.5625
-Giant Snowball,Dart Goblin,0,1,1,0.3898,0.404
-Giant Snowball,Electro Spirit,0,0,0,0.3898,0.5625
-Giant Snowball,Electro Wizard,0,0,0,0.3898,0.5625
-Giant Snowball,Elixir Golem,0,0,0,0.3898,0.5625
-Giant Snowball,Executioner,0,0,0,0.3898,0.5625
-Giant Snowball,Fireball,0,2,2,0.3898,0.3958
-Giant Snowball,Fisherman,0,0,0,0.3898,0.5625
-Giant Snowball,Flying Machine,0,0,0,0.3898,0.5625
-Giant Snowball,Furnace,0,0,0,0.3898,0.5625
-Giant Snowball,Giant,0,1,1,0.3898,0.404
-Giant Snowball,Goblin Barrel,0,1,1,0.3898,0.404
-Giant Snowball,Goblin Demolisher,0,0,0,0.3898,0.5625
-Giant Snowball,Goblin Drill,0,0,0,0.3898,0.5625
-Giant Snowball,Goblin Giant,0,0,0,0.3898,0.5625
-Giant Snowball,Goblin Hut,0,1,1,0.3898,0.404
-Giant Snowball,Golem,0,0,0,0.3898,0.5625
-Giant Snowball,Graveyard,0,1,1,0.3898,0.404
-Giant Snowball,Hunter,0,0,0,0.3898,0.5625
-Giant Snowball,Ice Spirit,0,1,1,0.3898,0.404
-Giant Snowball,Ice Wizard,0,0,0,0.3898,0.5625
-Giant Snowball,Inferno Tower,0,0,0,0.3898,0.5625
-Giant Snowball,Knight,0,2,2,0.3898,0.3958
-Giant Snowball,Lava Hound,0,2,2,0.3898,0.3958
-Giant Snowball,Mega Knight,0,0,0,0.3898,0.5625
-Giant Snowball,Mortar,0,0,0,0.3898,0.5625
-Giant Snowball,Mother Witch,0,0,0,0.3898,0.5625
-Giant Snowball,Musketeer,0,2,2,0.3898,0.3958
-Giant Snowball,Night Witch,0,0,0,0.3898,0.5625
-Giant Snowball,P.E.K.K.A,0,0,0,0.3898,0.5625
-Giant Snowball,Poison,0,0,0,0.3898,0.5625
-Giant Snowball,Princess,0,0,0,0.3898,0.5625
-Giant Snowball,Rage,0,0,0,0.3898,0.5625
-Giant Snowball,Ram Rider,0,1,1,0.3898,0.404
-Giant Snowball,Rascals,0,0,0,0.3898,0.5625
-Giant Snowball,Rocket,0,0,0,0.3898,0.5625
-Giant Snowball,Royal Delivery,0,1,1,0.3898,0.404
-Giant Snowball,Royal Giant,0,0,0,0.3898,0.5625
-Giant Snowball,Rune Giant,0,0,0,0.3898,0.5625
-Giant Snowball,Suspicious Bush,0,2,2,0.3898,0.3958
-Giant Snowball,The Log,0,2,2,0.3898,0.3958
-Giant Snowball,Tombstone,0,3,3,0.3898,0.3898
-Giant Snowball,Vines,0,1,1,0.3898,0.404
-Giant Snowball,Witch,0,0,0,0.3898,0.5625
-Giant Snowball,Wizard,0,0,0,0.3898,0.5625
-Giant Snowball,X-Bow,0,0,0,0.3898,0.5625
-Giant Snowball,Zappies,0,0,0,0.3898,0.5625
-Goblin Barrel,Baby Dragon,2,1,3,0.4228,0.6224
-Goblin Barrel,Barbarian Hut,1,2,3,0.4228,0.3898
-Goblin Barrel,Berserker,1,1,2,0.4228,0.5
-Goblin Barrel,Dart Goblin,3,2,5,0.4228,0.579
-Goblin Barrel,Electro Spirit,3,4,7,0.4228,0.441
-Goblin Barrel,Electro Wizard,1,2,3,0.4228,0.3898
-Goblin Barrel,Elixir Golem,0,0,0,0.4228,0.5625
-Goblin Barrel,Executioner,0,1,1,0.4228,0.404
-Goblin Barrel,Fireball,6,5,11,0.4228,0.5396
-Goblin Barrel,Fisherman,0,0,0,0.4228,0.5625
-Goblin Barrel,Flying Machine,2,2,4,0.4228,0.5
-Goblin Barrel,Furnace,1,0,1,0.4228,0.82
-Goblin Barrel,Giant,4,2,6,0.4228,0.635
-Goblin Barrel,Giant Snowball,1,0,1,0.4228,0.82
-Goblin Barrel,Goblin Demolisher,0,2,2,0.4228,0.3958
-Goblin Barrel,Goblin Drill,1,0,1,0.4228,0.82
-Goblin Barrel,Goblin Giant,0,0,0,0.4228,0.5625
-Goblin Barrel,Goblin Hut,6,7,13,0.4228,0.4659
-Goblin Barrel,Golem,3,3,6,0.4228,0.5
-Goblin Barrel,Graveyard,0,2,2,0.4228,0.3958
-Goblin Barrel,Hunter,0,0,0,0.4228,0.5625
-Goblin Barrel,Ice Spirit,1,6,7,0.4228,0.376
-Goblin Barrel,Ice Wizard,0,0,0,0.4228,0.5625
-Goblin Barrel,Inferno Tower,0,0,0,0.4228,0.5625
-Goblin Barrel,Knight,5,7,12,0.4228,0.4268
-Goblin Barrel,Lava Hound,0,1,1,0.4228,0.404
-Goblin Barrel,Mega Knight,0,1,1,0.4228,0.404
-Goblin Barrel,Mortar,0,0,0,0.4228,0.5625
-Goblin Barrel,Mother Witch,0,1,1,0.4228,0.404
-Goblin Barrel,Musketeer,4,13,17,0.4228,0.3639
-Goblin Barrel,Night Witch,0,0,0,0.4228,0.5625
-Goblin Barrel,P.E.K.K.A,0,1,1,0.4228,0.404
-Goblin Barrel,Poison,1,7,8,0.4228,0.374
-Goblin Barrel,Princess,1,0,1,0.4228,0.82
-Goblin Barrel,Rage,3,0,3,0.4228,0.8673
-Goblin Barrel,Ram Rider,4,4,8,0.4228,0.5
-Goblin Barrel,Rascals,2,4,6,0.4228,0.3785
-Goblin Barrel,Rocket,1,0,1,0.4228,0.82
-Goblin Barrel,Royal Delivery,2,3,5,0.4228,0.421
-Goblin Barrel,Royal Giant,3,2,5,0.4228,0.579
-Goblin Barrel,Rune Giant,1,0,1,0.4228,0.82
-Goblin Barrel,Suspicious Bush,8,3,11,0.4228,0.698
-Goblin Barrel,The Log,1,9,10,0.4228,0.3707
-Goblin Barrel,Tombstone,4,6,10,0.4228,0.4138
-Goblin Barrel,Vines,2,5,7,0.4228,0.376
-Goblin Barrel,Witch,0,1,1,0.4228,0.404
-Goblin Barrel,Wizard,0,0,0,0.4228,0.5625
-Goblin Barrel,X-Bow,2,2,4,0.4228,0.5
-Goblin Barrel,Zappies,0,0,0,0.4228,0.5625
-Goblin Demolisher,Baby Dragon,3,1,4,0.7101,0.6914
-Goblin Demolisher,Barbarian Hut,0,2,2,0.7101,0.3958
-Goblin Demolisher,Berserker,1,1,2,0.7101,0.5
-Goblin Demolisher,Dart Goblin,1,0,1,0.7101,0.82
-Goblin Demolisher,Electro Spirit,2,1,3,0.7101,0.6224
-Goblin Demolisher,Electro Wizard,0,0,0,0.7101,0.5625
-Goblin Demolisher,Elixir Golem,0,0,0,0.7101,0.5625
-Goblin Demolisher,Executioner,0,0,0,0.7101,0.5625
-Goblin Demolisher,Fireball,1,0,1,0.7101,0.82
-Goblin Demolisher,Fisherman,0,0,0,0.7101,0.5625
-Goblin Demolisher,Flying Machine,2,0,2,0.7101,0.8472
-Goblin Demolisher,Furnace,1,0,1,0.7101,0.82
-Goblin Demolisher,Giant,2,0,2,0.7101,0.8472
-Goblin Demolisher,Giant Snowball,0,0,0,0.7101,0.5625
-Goblin Demolisher,Goblin Barrel,2,0,2,0.7101,0.8472
-Goblin Demolisher,Goblin Drill,0,0,0,0.7101,0.5625
-Goblin Demolisher,Goblin Giant,1,0,1,0.7101,0.82
-Goblin Demolisher,Goblin Hut,2,0,2,0.7101,0.8472
-Goblin Demolisher,Golem,0,0,0,0.7101,0.5625
-Goblin Demolisher,Graveyard,2,1,3,0.7101,0.6224
-Goblin Demolisher,Hunter,0,0,0,0.7101,0.5625
-Goblin Demolisher,Ice Spirit,2,0,2,0.7101,0.8472
-Goblin Demolisher,Ice Wizard,0,0,0,0.7101,0.5625
-Goblin Demolisher,Inferno Tower,0,0,0,0.7101,0.5625
-Goblin Demolisher,Knight,2,1,3,0.7101,0.6224
-Goblin Demolisher,Lava Hound,0,0,0,0.7101,0.5625
-Goblin Demolisher,Mega Knight,0,0,0,0.7101,0.5625
-Goblin Demolisher,Mortar,0,0,0,0.7101,0.5625
-Goblin Demolisher,Mother Witch,1,0,1,0.7101,0.82
-Goblin Demolisher,Musketeer,4,2,6,0.7101,0.635
-Goblin Demolisher,Night Witch,0,0,0,0.7101,0.5625
-Goblin Demolisher,P.E.K.K.A,0,0,0,0.7101,0.5625
-Goblin Demolisher,Poison,2,2,4,0.7101,0.5
-Goblin Demolisher,Princess,0,0,0,0.7101,0.5625
-Goblin Demolisher,Rage,0,0,0,0.7101,0.5625
-Goblin Demolisher,Ram Rider,1,0,1,0.7101,0.82
-Goblin Demolisher,Rascals,1,0,1,0.7101,0.82
-Goblin Demolisher,Rocket,1,0,1,0.7101,0.82
-Goblin Demolisher,Royal Delivery,1,0,1,0.7101,0.82
-Goblin Demolisher,Royal Giant,1,1,2,0.7101,0.5
-Goblin Demolisher,Rune Giant,0,0,0,0.7101,0.5625
-Goblin Demolisher,Suspicious Bush,2,0,2,0.7101,0.8472
-Goblin Demolisher,The Log,3,1,4,0.7101,0.6914
-Goblin Demolisher,Tombstone,3,1,4,0.7101,0.6914
-Goblin Demolisher,Vines,3,2,5,0.7101,0.579
-Goblin Demolisher,Witch,0,0,0,0.7101,0.5625
-Goblin Demolisher,Wizard,0,0,0,0.7101,0.5625
-Goblin Demolisher,X-Bow,1,0,1,0.7101,0.82
-Goblin Demolisher,Zappies,0,0,0,0.7101,0.5625
-Goblin Drill,Baby Dragon,0,0,0,0.404,0.5625
-Goblin Drill,Barbarian Hut,0,1,1,0.404,0.404
-Goblin Drill,Berserker,0,0,0,0.404,0.5625
-Goblin Drill,Dart Goblin,0,0,0,0.404,0.5625
-Goblin Drill,Electro Spirit,0,0,0,0.404,0.5625
-Goblin Drill,Electro Wizard,0,0,0,0.404,0.5625
-Goblin Drill,Elixir Golem,0,0,0,0.404,0.5625
-Goblin Drill,Executioner,0,0,0,0.404,0.5625
-Goblin Drill,Fireball,0,0,0,0.404,0.5625
-Goblin Drill,Fisherman,0,0,0,0.404,0.5625
-Goblin Drill,Flying Machine,0,0,0,0.404,0.5625
-Goblin Drill,Furnace,0,0,0,0.404,0.5625
-Goblin Drill,Giant,0,0,0,0.404,0.5625
-Goblin Drill,Giant Snowball,0,0,0,0.404,0.5625
-Goblin Drill,Goblin Barrel,0,1,1,0.404,0.404
-Goblin Drill,Goblin Demolisher,0,0,0,0.404,0.5625
-Goblin Drill,Goblin Giant,0,0,0,0.404,0.5625
-Goblin Drill,Goblin Hut,0,0,0,0.404,0.5625
-Goblin Drill,Golem,0,1,1,0.404,0.404
-Goblin Drill,Graveyard,0,0,0,0.404,0.5625
-Goblin Drill,Hunter,0,0,0,0.404,0.5625
-Goblin Drill,Ice Spirit,0,1,1,0.404,0.404
-Goblin Drill,Ice Wizard,0,0,0,0.404,0.5625
-Goblin Drill,Inferno Tower,0,0,0,0.404,0.5625
-Goblin Drill,Knight,0,0,0,0.404,0.5625
-Goblin Drill,Lava Hound,0,0,0,0.404,0.5625
-Goblin Drill,Mega Knight,0,0,0,0.404,0.5625
-Goblin Drill,Mortar,0,0,0,0.404,0.5625
-Goblin Drill,Mother Witch,0,0,0,0.404,0.5625
-Goblin Drill,Musketeer,0,1,1,0.404,0.404
-Goblin Drill,Night Witch,0,0,0,0.404,0.5625
-Goblin Drill,P.E.K.K.A,0,0,0,0.404,0.5625
-Goblin Drill,Poison,0,0,0,0.404,0.5625
-Goblin Drill,Princess,0,0,0,0.404,0.5625
-Goblin Drill,Rage,0,0,0,0.404,0.5625
-Goblin Drill,Ram Rider,0,1,1,0.404,0.404
-Goblin Drill,Rascals,0,0,0,0.404,0.5625
-Goblin Drill,Rocket,0,0,0,0.404,0.5625
-Goblin Drill,Royal Delivery,0,1,1,0.404,0.404
-Goblin Drill,Royal Giant,0,0,0,0.404,0.5625
-Goblin Drill,Rune Giant,0,0,0,0.404,0.5625
-Goblin Drill,Suspicious Bush,0,0,0,0.404,0.5625
-Goblin Drill,The Log,0,1,1,0.404,0.404
-Goblin Drill,Tombstone,0,0,0,0.404,0.5625
-Goblin Drill,Vines,0,0,0,0.404,0.5625
-Goblin Drill,Witch,0,0,0,0.404,0.5625
-Goblin Drill,Wizard,0,0,0,0.404,0.5625
-Goblin Drill,X-Bow,0,0,0,0.404,0.5625
-Goblin Drill,Zappies,0,0,0,0.404,0.5625
-Goblin Giant,Baby Dragon,0,0,0,0.404,0.5625
-Goblin Giant,Barbarian Hut,0,0,0,0.404,0.5625
-Goblin Giant,Berserker,0,0,0,0.404,0.5625
-Goblin Giant,Dart Goblin,0,0,0,0.404,0.5625
-Goblin Giant,Electro Spirit,0,0,0,0.404,0.5625
-Goblin Giant,Electro Wizard,0,0,0,0.404,0.5625
-Goblin Giant,Elixir Golem,0,0,0,0.404,0.5625
-Goblin Giant,Executioner,0,0,0,0.404,0.5625
-Goblin Giant,Fireball,0,1,1,0.404,0.404
-Goblin Giant,Fisherman,0,0,0,0.404,0.5625
-Goblin Giant,Flying Machine,0,0,0,0.404,0.5625
-Goblin Giant,Furnace,0,0,0,0.404,0.5625
-Goblin Giant,Giant,0,0,0,0.404,0.5625
-Goblin Giant,Giant Snowball,0,0,0,0.404,0.5625
-Goblin Giant,Goblin Barrel,0,0,0,0.404,0.5625
-Goblin Giant,Goblin Demolisher,0,1,1,0.404,0.404
-Goblin Giant,Goblin Drill,0,0,0,0.404,0.5625
-Goblin Giant,Goblin Hut,0,0,0,0.404,0.5625
-Goblin Giant,Golem,0,0,0,0.404,0.5625
-Goblin Giant,Graveyard,0,1,1,0.404,0.404
-Goblin Giant,Hunter,0,0,0,0.404,0.5625
-Goblin Giant,Ice Spirit,0,0,0,0.404,0.5625
-Goblin Giant,Ice Wizard,0,0,0,0.404,0.5625
-Goblin Giant,Inferno Tower,0,0,0,0.404,0.5625
-Goblin Giant,Knight,0,1,1,0.404,0.404
-Goblin Giant,Lava Hound,0,0,0,0.404,0.5625
-Goblin Giant,Mega Knight,0,0,0,0.404,0.5625
-Goblin Giant,Mortar,0,0,0,0.404,0.5625
-Goblin Giant,Mother Witch,0,0,0,0.404,0.5625
-Goblin Giant,Musketeer,0,1,1,0.404,0.404
-Goblin Giant,Night Witch,0,0,0,0.404,0.5625
-Goblin Giant,P.E.K.K.A,0,0,0,0.404,0.5625
-Goblin Giant,Poison,0,0,0,0.404,0.5625
-Goblin Giant,Princess,0,0,0,0.404,0.5625
-Goblin Giant,Rage,0,0,0,0.404,0.5625
-Goblin Giant,Ram Rider,0,0,0,0.404,0.5625
-Goblin Giant,Rascals,0,1,1,0.404,0.404
-Goblin Giant,Rocket,0,0,0,0.404,0.5625
-Goblin Giant,Royal Delivery,0,1,1,0.404,0.404
-Goblin Giant,Royal Giant,0,0,0,0.404,0.5625
-Goblin Giant,Rune Giant,0,0,0,0.404,0.5625
-Goblin Giant,Suspicious Bush,0,0,0,0.404,0.5625
-Goblin Giant,The Log,0,1,1,0.404,0.404
-Goblin Giant,Tombstone,0,0,0,0.404,0.5625
-Goblin Giant,Vines,0,0,0,0.404,0.5625
-Goblin Giant,Witch,0,0,0,0.404,0.5625
-Goblin Giant,Wizard,0,0,0,0.404,0.5625
-Goblin Giant,X-Bow,0,0,0,0.404,0.5625
-Goblin Giant,Zappies,0,0,0,0.404,0.5625
-Goblin Hut,Baby Dragon,6,4,10,0.5426,0.5862
-Goblin Hut,Barbarian Hut,3,3,6,0.5426,0.5
-Goblin Hut,Berserker,5,0,5,0.5426,0.8951
-Goblin Hut,Dart Goblin,4,1,5,0.5426,0.737
-Goblin Hut,Electro Spirit,4,2,6,0.5426,0.635
-Goblin Hut,Electro Wizard,0,3,3,0.5426,0.3898
-Goblin Hut,Elixir Golem,1,0,1,0.5426,0.82
-Goblin Hut,Executioner,0,3,3,0.5426,0.3898
-Goblin Hut,Fireball,7,4,11,0.5426,0.6188
-Goblin Hut,Fisherman,1,0,1,0.5426,0.82
-Goblin Hut,Flying Machine,6,3,9,0.5426,0.642
-Goblin Hut,Furnace,0,0,0,0.5426,0.5625
-Goblin Hut,Giant,1,1,2,0.5426,0.5
-Goblin Hut,Giant Snowball,1,0,1,0.5426,0.82
-Goblin Hut,Goblin Barrel,7,6,13,0.5426,0.5341
-Goblin Hut,Goblin Demolisher,0,2,2,0.5426,0.3958
-Goblin Hut,Goblin Drill,0,0,0,0.5426,0.5625
-Goblin Hut,Goblin Giant,0,0,0,0.5426,0.5625
-Goblin Hut,Golem,3,2,5,0.5426,0.579
-Goblin Hut,Graveyard,3,6,9,0.5426,0.3722
-Goblin Hut,Hunter,0,0,0,0.5426,0.5625
-Goblin Hut,Ice Spirit,8,9,17,0.5426,0.4733
-Goblin Hut,Ice Wizard,1,0,1,0.5426,0.82
-Goblin Hut,Inferno Tower,0,0,0,0.5426,0.5625
-Goblin Hut,Knight,5,6,11,0.5426,0.4604
-Goblin Hut,Lava Hound,0,2,2,0.5426,0.3958
-Goblin Hut,Mega Knight,0,1,1,0.5426,0.404
-Goblin Hut,Mortar,0,0,0,0.5426,0.5625
-Goblin Hut,Mother Witch,2,0,2,0.5426,0.8472
-Goblin Hut,Musketeer,8,8,16,0.5426,0.5
-Goblin Hut,Night Witch,0,1,1,0.5426,0.404
-Goblin Hut,P.E.K.K.A,2,0,2,0.5426,0.8472
-Goblin Hut,Poison,5,6,11,0.5426,0.4604
-Goblin Hut,Princess,0,0,0,0.5426,0.5625
-Goblin Hut,Rage,1,1,2,0.5426,0.5
-Goblin Hut,Ram Rider,3,2,5,0.5426,0.579
-Goblin Hut,Rascals,6,6,12,0.5426,0.5
-Goblin Hut,Rocket,0,0,0,0.5426,0.5625
-Goblin Hut,Royal Delivery,5,2,7,0.5426,0.6771
-Goblin Hut,Royal Giant,3,0,3,0.5426,0.8673
-Goblin Hut,Rune Giant,1,2,3,0.5426,0.3898
-Goblin Hut,Suspicious Bush,8,4,12,0.5426,0.6465
-Goblin Hut,The Log,9,10,19,0.5426,0.4759
-Goblin Hut,Tombstone,7,11,18,0.5426,0.3988
-Goblin Hut,Vines,8,6,14,0.5426,0.5637
-Goblin Hut,Witch,6,3,9,0.5426,0.642
-Goblin Hut,Wizard,1,0,1,0.5426,0.82
-Goblin Hut,X-Bow,3,0,3,0.5426,0.8673
-Goblin Hut,Zappies,0,0,0,0.5426,0.5625
-Golem,Baby Dragon,2,4,6,0.4271,0.3785
-Golem,Barbarian Hut,0,2,2,0.4271,0.3958
-Golem,Berserker,2,0,2,0.4271,0.8472
-Golem,Dart Goblin,1,0,1,0.4271,0.82
-Golem,Electro Spirit,1,3,4,0.4271,0.3852
-Golem,Electro Wizard,1,1,2,0.4271,0.5
+Furnace,Baby Dragon,0,0,0,0.3611,0.5625
+Furnace,Barbarian Hut,0,0,0,0.3611,0.5625
+Furnace,Berserker,0,0,0,0.3611,0.5625
+Furnace,Dart Goblin,0,1,1,0.3611,0.372
+Furnace,Electro Spirit,0,0,0,0.3611,0.5625
+Furnace,Electro Wizard,0,1,1,0.3611,0.372
+Furnace,Elixir Golem,0,0,0,0.3611,0.5625
+Furnace,Executioner,0,0,0,0.3611,0.5625
+Furnace,Fireball,0,1,1,0.3611,0.372
+Furnace,Fisherman,0,0,0,0.3611,0.5625
+Furnace,Flying Machine,0,0,0,0.3611,0.5625
+Furnace,Giant,0,0,0,0.3611,0.5625
+Furnace,Giant Snowball,0,0,0,0.3611,0.5625
+Furnace,Goblin Barrel,0,1,1,0.3611,0.372
+Furnace,Goblin Demolisher,0,1,1,0.3611,0.372
+Furnace,Goblin Drill,0,0,0,0.3611,0.5625
+Furnace,Goblin Giant,0,0,0,0.3611,0.5625
+Furnace,Goblin Hut,0,0,0,0.3611,0.5625
+Furnace,Golem,0,0,0,0.3611,0.5625
+Furnace,Graveyard,0,1,1,0.3611,0.372
+Furnace,Hunter,0,0,0,0.3611,0.5625
+Furnace,Ice Spirit,0,0,0,0.3611,0.5625
+Furnace,Ice Wizard,0,0,0,0.3611,0.5625
+Furnace,Inferno Tower,0,0,0,0.3611,0.5625
+Furnace,Knight,0,2,2,0.3611,0.3611
+Furnace,Lava Hound,0,0,0,0.3611,0.5625
+Furnace,Mega Knight,0,0,0,0.3611,0.5625
+Furnace,Mortar,0,0,0,0.3611,0.5625
+Furnace,Mother Witch,0,0,0,0.3611,0.5625
+Furnace,Musketeer,0,2,2,0.3611,0.3611
+Furnace,Night Witch,0,0,0,0.3611,0.5625
+Furnace,P.E.K.K.A,0,0,0,0.3611,0.5625
+Furnace,Poison,0,1,1,0.3611,0.372
+Furnace,Princess,0,0,0,0.3611,0.5625
+Furnace,Rage,0,0,0,0.3611,0.5625
+Furnace,Ram Rider,0,0,0,0.3611,0.5625
+Furnace,Rascals,0,1,1,0.3611,0.372
+Furnace,Rocket,0,0,0,0.3611,0.5625
+Furnace,Royal Delivery,0,1,1,0.3611,0.372
+Furnace,Royal Giant,0,0,0,0.3611,0.5625
+Furnace,Rune Giant,0,0,0,0.3611,0.5625
+Furnace,Suspicious Bush,0,0,0,0.3611,0.5625
+Furnace,The Log,0,2,2,0.3611,0.3611
+Furnace,Tombstone,0,1,1,0.3611,0.372
+Furnace,Vines,0,0,0,0.3611,0.5625
+Furnace,Witch,0,0,0,0.3611,0.5625
+Furnace,Wizard,0,0,0,0.3611,0.5625
+Furnace,X-Bow,0,0,0,0.3611,0.5625
+Furnace,Zappies,0,0,0,0.3611,0.5625
+Giant,Baby Dragon,2,0,2,0.4737,0.625
+Giant,Barbarian Hut,1,1,2,0.4737,0.4861
+Giant,Berserker,0,0,0,0.4737,0.5625
+Giant,Dart Goblin,1,1,2,0.4737,0.4861
+Giant,Electro Spirit,1,2,3,0.4737,0.3776
+Giant,Electro Wizard,0,1,1,0.4737,0.372
+Giant,Elixir Golem,0,0,0,0.4737,0.5625
+Giant,Executioner,0,2,2,0.4737,0.3611
+Giant,Fireball,2,2,4,0.4737,0.5359
+Giant,Fisherman,0,0,0,0.4737,0.5625
+Giant,Flying Machine,1,1,2,0.4737,0.4861
+Giant,Furnace,0,0,0,0.4737,0.5625
+Giant,Giant Snowball,1,0,1,0.4737,0.576
+Giant,Goblin Barrel,2,4,6,0.4737,0.365
+Giant,Goblin Demolisher,0,2,2,0.4737,0.3611
+Giant,Goblin Drill,0,0,0,0.4737,0.5625
+Giant,Goblin Giant,0,0,0,0.4737,0.5625
+Giant,Goblin Hut,1,1,2,0.4737,0.4861
+Giant,Golem,1,3,4,0.4737,0.3469
+Giant,Graveyard,3,1,4,0.4737,0.6891
+Giant,Hunter,0,0,0,0.4737,0.5625
+Giant,Ice Spirit,5,4,9,0.4737,0.6438
+Giant,Ice Wizard,0,0,0,0.4737,0.5625
+Giant,Inferno Tower,0,0,0,0.4737,0.5625
+Giant,Knight,4,4,8,0.4737,0.5882
+Giant,Lava Hound,0,2,2,0.4737,0.3611
+Giant,Mega Knight,0,0,0,0.4737,0.5625
+Giant,Mortar,0,0,0,0.4737,0.5625
+Giant,Mother Witch,0,0,0,0.4737,0.5625
+Giant,Musketeer,4,5,9,0.4737,0.4527
+Giant,Night Witch,0,1,1,0.4737,0.372
+Giant,P.E.K.K.A,0,0,0,0.4737,0.5625
+Giant,Poison,1,3,4,0.4737,0.3469
+Giant,Princess,1,0,1,0.4737,0.576
+Giant,Rage,1,1,2,0.4737,0.4861
+Giant,Ram Rider,4,3,7,0.4737,0.6375
+Giant,Rascals,6,4,10,0.4737,0.6898
+Giant,Rocket,0,0,0,0.4737,0.5625
+Giant,Royal Delivery,4,1,5,0.4737,0.7111
+Giant,Royal Giant,2,0,2,0.4737,0.625
+Giant,Rune Giant,0,0,0,0.4737,0.5625
+Giant,Suspicious Bush,4,1,5,0.4737,0.7111
+Giant,The Log,2,8,10,0.4737,0.3276
+Giant,Tombstone,5,5,10,0.4737,0.6036
+Giant,Vines,3,4,7,0.4737,0.441
+Giant,Witch,1,2,3,0.4737,0.3776
+Giant,Wizard,0,1,1,0.4737,0.372
+Giant,X-Bow,1,2,3,0.4737,0.3776
+Giant,Zappies,0,0,0,0.4737,0.5625
+Giant Snowball,Baby Dragon,0,0,0,0.3531,0.5625
+Giant Snowball,Barbarian Hut,0,0,0,0.3531,0.5625
+Giant Snowball,Berserker,0,0,0,0.3531,0.5625
+Giant Snowball,Dart Goblin,0,1,1,0.3531,0.372
+Giant Snowball,Electro Spirit,0,0,0,0.3531,0.5625
+Giant Snowball,Electro Wizard,0,0,0,0.3531,0.5625
+Giant Snowball,Elixir Golem,0,0,0,0.3531,0.5625
+Giant Snowball,Executioner,0,0,0,0.3531,0.5625
+Giant Snowball,Fireball,0,2,2,0.3531,0.3611
+Giant Snowball,Fisherman,0,0,0,0.3531,0.5625
+Giant Snowball,Flying Machine,0,0,0,0.3531,0.5625
+Giant Snowball,Furnace,0,0,0,0.3531,0.5625
+Giant Snowball,Giant,0,1,1,0.3531,0.372
+Giant Snowball,Goblin Barrel,0,1,1,0.3531,0.372
+Giant Snowball,Goblin Demolisher,0,0,0,0.3531,0.5625
+Giant Snowball,Goblin Drill,0,0,0,0.3531,0.5625
+Giant Snowball,Goblin Giant,0,0,0,0.3531,0.5625
+Giant Snowball,Goblin Hut,0,1,1,0.3531,0.372
+Giant Snowball,Golem,0,0,0,0.3531,0.5625
+Giant Snowball,Graveyard,0,1,1,0.3531,0.372
+Giant Snowball,Hunter,0,0,0,0.3531,0.5625
+Giant Snowball,Ice Spirit,0,1,1,0.3531,0.372
+Giant Snowball,Ice Wizard,0,0,0,0.3531,0.5625
+Giant Snowball,Inferno Tower,0,0,0,0.3531,0.5625
+Giant Snowball,Knight,0,2,2,0.3531,0.3611
+Giant Snowball,Lava Hound,0,2,2,0.3531,0.3611
+Giant Snowball,Mega Knight,0,0,0,0.3531,0.5625
+Giant Snowball,Mortar,0,0,0,0.3531,0.5625
+Giant Snowball,Mother Witch,0,0,0,0.3531,0.5625
+Giant Snowball,Musketeer,0,2,2,0.3531,0.3611
+Giant Snowball,Night Witch,0,0,0,0.3531,0.5625
+Giant Snowball,P.E.K.K.A,0,0,0,0.3531,0.5625
+Giant Snowball,Poison,0,0,0,0.3531,0.5625
+Giant Snowball,Princess,0,0,0,0.3531,0.5625
+Giant Snowball,Rage,0,0,0,0.3531,0.5625
+Giant Snowball,Ram Rider,0,1,1,0.3531,0.372
+Giant Snowball,Rascals,0,0,0,0.3531,0.5625
+Giant Snowball,Rocket,0,0,0,0.3531,0.5625
+Giant Snowball,Royal Delivery,0,1,1,0.3531,0.372
+Giant Snowball,Royal Giant,0,0,0,0.3531,0.5625
+Giant Snowball,Rune Giant,0,0,0,0.3531,0.5625
+Giant Snowball,Suspicious Bush,0,2,2,0.3531,0.3611
+Giant Snowball,The Log,0,2,2,0.3531,0.3611
+Giant Snowball,Tombstone,0,3,3,0.3531,0.3531
+Giant Snowball,Vines,0,1,1,0.3531,0.372
+Giant Snowball,Witch,0,0,0,0.3531,0.5625
+Giant Snowball,Wizard,0,0,0,0.3531,0.5625
+Giant Snowball,X-Bow,0,0,0,0.3531,0.5625
+Giant Snowball,Zappies,0,0,0,0.3531,0.5625
+Goblin Barrel,Baby Dragon,2,1,3,0.3925,0.6367
+Goblin Barrel,Barbarian Hut,1,4,5,0.3925,0.342
+Goblin Barrel,Berserker,1,1,2,0.3925,0.4861
+Goblin Barrel,Dart Goblin,3,2,5,0.3925,0.6321
+Goblin Barrel,Electro Spirit,3,4,7,0.3925,0.441
+Goblin Barrel,Electro Wizard,1,2,3,0.3925,0.3776
+Goblin Barrel,Elixir Golem,0,0,0,0.3925,0.5625
+Goblin Barrel,Executioner,0,1,1,0.3925,0.372
+Goblin Barrel,Fireball,6,7,13,0.3925,0.4659
+Goblin Barrel,Fisherman,0,0,0,0.3925,0.5625
+Goblin Barrel,Flying Machine,2,2,4,0.3925,0.5359
+Goblin Barrel,Furnace,1,0,1,0.3925,0.576
+Goblin Barrel,Giant,4,2,6,0.3925,0.702
+Goblin Barrel,Giant Snowball,1,0,1,0.3925,0.576
+Goblin Barrel,Goblin Demolisher,0,2,2,0.3925,0.3611
+Goblin Barrel,Goblin Drill,1,0,1,0.3925,0.576
+Goblin Barrel,Goblin Giant,0,0,0,0.3925,0.5625
+Goblin Barrel,Goblin Hut,6,9,15,0.3925,0.4102
+Goblin Barrel,Golem,3,3,6,0.3925,0.567
+Goblin Barrel,Graveyard,0,2,2,0.3925,0.3611
+Goblin Barrel,Hunter,0,0,0,0.3925,0.5625
+Goblin Barrel,Ice Spirit,1,6,7,0.3925,0.3347
+Goblin Barrel,Ice Wizard,0,0,0,0.3925,0.5625
+Goblin Barrel,Inferno Tower,0,0,0,0.3925,0.5625
+Goblin Barrel,Knight,5,9,14,0.3925,0.3726
+Goblin Barrel,Lava Hound,0,1,1,0.3925,0.372
+Goblin Barrel,Mega Knight,0,1,1,0.3925,0.372
+Goblin Barrel,Mortar,0,0,0,0.3925,0.5625
+Goblin Barrel,Mother Witch,0,1,1,0.3925,0.372
+Goblin Barrel,Musketeer,4,15,19,0.3925,0.317
+Goblin Barrel,Night Witch,0,0,0,0.3925,0.5625
+Goblin Barrel,P.E.K.K.A,0,1,1,0.3925,0.372
+Goblin Barrel,Poison,1,7,8,0.3925,0.3319
+Goblin Barrel,Princess,1,0,1,0.3925,0.576
+Goblin Barrel,Rage,3,0,3,0.3925,0.6612
+Goblin Barrel,Ram Rider,4,6,10,0.3925,0.4138
+Goblin Barrel,Rascals,2,6,8,0.3925,0.3319
+Goblin Barrel,Rocket,1,0,1,0.3925,0.576
+Goblin Barrel,Royal Delivery,2,3,5,0.3925,0.421
+Goblin Barrel,Royal Giant,3,2,5,0.3925,0.6321
+Goblin Barrel,Rune Giant,1,0,1,0.3925,0.576
+Goblin Barrel,Suspicious Bush,8,3,11,0.3925,0.784
+Goblin Barrel,The Log,1,11,12,0.3925,0.3242
+Goblin Barrel,Tombstone,4,6,10,0.3925,0.4138
+Goblin Barrel,Vines,2,5,7,0.3925,0.3347
+Goblin Barrel,Witch,0,1,1,0.3925,0.372
+Goblin Barrel,Wizard,0,0,0,0.3925,0.5625
+Goblin Barrel,X-Bow,2,2,4,0.3925,0.5359
+Goblin Barrel,Zappies,0,0,0,0.3925,0.5625
+Goblin Demolisher,Baby Dragon,3,1,4,0.7562,0.6891
+Goblin Demolisher,Barbarian Hut,0,2,2,0.7562,0.3611
+Goblin Demolisher,Berserker,1,1,2,0.7562,0.4861
+Goblin Demolisher,Dart Goblin,1,0,1,0.7562,0.576
+Goblin Demolisher,Electro Spirit,2,1,3,0.7562,0.6367
+Goblin Demolisher,Electro Wizard,0,0,0,0.7562,0.5625
+Goblin Demolisher,Elixir Golem,0,0,0,0.7562,0.5625
+Goblin Demolisher,Executioner,0,0,0,0.7562,0.5625
+Goblin Demolisher,Fireball,1,0,1,0.7562,0.576
+Goblin Demolisher,Fisherman,0,0,0,0.7562,0.5625
+Goblin Demolisher,Flying Machine,2,0,2,0.7562,0.625
+Goblin Demolisher,Furnace,1,0,1,0.7562,0.576
+Goblin Demolisher,Giant,2,0,2,0.7562,0.625
+Goblin Demolisher,Giant Snowball,0,0,0,0.7562,0.5625
+Goblin Demolisher,Goblin Barrel,2,0,2,0.7562,0.625
+Goblin Demolisher,Goblin Drill,0,0,0,0.7562,0.5625
+Goblin Demolisher,Goblin Giant,1,0,1,0.7562,0.576
+Goblin Demolisher,Goblin Hut,2,0,2,0.7562,0.625
+Goblin Demolisher,Golem,0,0,0,0.7562,0.5625
+Goblin Demolisher,Graveyard,2,1,3,0.7562,0.6367
+Goblin Demolisher,Hunter,0,0,0,0.7562,0.5625
+Goblin Demolisher,Ice Spirit,2,0,2,0.7562,0.625
+Goblin Demolisher,Ice Wizard,0,0,0,0.7562,0.5625
+Goblin Demolisher,Inferno Tower,0,0,0,0.7562,0.5625
+Goblin Demolisher,Knight,2,1,3,0.7562,0.6367
+Goblin Demolisher,Lava Hound,0,0,0,0.7562,0.5625
+Goblin Demolisher,Mega Knight,0,0,0,0.7562,0.5625
+Goblin Demolisher,Mortar,0,0,0,0.7562,0.5625
+Goblin Demolisher,Mother Witch,1,0,1,0.7562,0.576
+Goblin Demolisher,Musketeer,4,2,6,0.7562,0.702
+Goblin Demolisher,Night Witch,0,0,0,0.7562,0.5625
+Goblin Demolisher,P.E.K.K.A,0,0,0,0.7562,0.5625
+Goblin Demolisher,Poison,2,2,4,0.7562,0.5359
+Goblin Demolisher,Princess,0,0,0,0.7562,0.5625
+Goblin Demolisher,Rage,0,0,0,0.7562,0.5625
+Goblin Demolisher,Ram Rider,1,0,1,0.7562,0.576
+Goblin Demolisher,Rascals,1,0,1,0.7562,0.576
+Goblin Demolisher,Rocket,1,0,1,0.7562,0.576
+Goblin Demolisher,Royal Delivery,1,0,1,0.7562,0.576
+Goblin Demolisher,Royal Giant,1,1,2,0.7562,0.4861
+Goblin Demolisher,Rune Giant,0,0,0,0.7562,0.5625
+Goblin Demolisher,Suspicious Bush,2,0,2,0.7562,0.625
+Goblin Demolisher,The Log,3,1,4,0.7562,0.6891
+Goblin Demolisher,Tombstone,3,1,4,0.7562,0.6891
+Goblin Demolisher,Vines,3,2,5,0.7562,0.6321
+Goblin Demolisher,Witch,0,0,0,0.7562,0.5625
+Goblin Demolisher,Wizard,0,0,0,0.7562,0.5625
+Goblin Demolisher,X-Bow,1,0,1,0.7562,0.576
+Goblin Demolisher,Zappies,0,0,0,0.7562,0.5625
+Goblin Drill,Baby Dragon,0,0,0,0.372,0.5625
+Goblin Drill,Barbarian Hut,0,1,1,0.372,0.372
+Goblin Drill,Berserker,0,0,0,0.372,0.5625
+Goblin Drill,Dart Goblin,0,0,0,0.372,0.5625
+Goblin Drill,Electro Spirit,0,0,0,0.372,0.5625
+Goblin Drill,Electro Wizard,0,0,0,0.372,0.5625
+Goblin Drill,Elixir Golem,0,0,0,0.372,0.5625
+Goblin Drill,Executioner,0,0,0,0.372,0.5625
+Goblin Drill,Fireball,0,0,0,0.372,0.5625
+Goblin Drill,Fisherman,0,0,0,0.372,0.5625
+Goblin Drill,Flying Machine,0,0,0,0.372,0.5625
+Goblin Drill,Furnace,0,0,0,0.372,0.5625
+Goblin Drill,Giant,0,0,0,0.372,0.5625
+Goblin Drill,Giant Snowball,0,0,0,0.372,0.5625
+Goblin Drill,Goblin Barrel,0,1,1,0.372,0.372
+Goblin Drill,Goblin Demolisher,0,0,0,0.372,0.5625
+Goblin Drill,Goblin Giant,0,0,0,0.372,0.5625
+Goblin Drill,Goblin Hut,0,0,0,0.372,0.5625
+Goblin Drill,Golem,0,1,1,0.372,0.372
+Goblin Drill,Graveyard,0,0,0,0.372,0.5625
+Goblin Drill,Hunter,0,0,0,0.372,0.5625
+Goblin Drill,Ice Spirit,0,1,1,0.372,0.372
+Goblin Drill,Ice Wizard,0,0,0,0.372,0.5625
+Goblin Drill,Inferno Tower,0,0,0,0.372,0.5625
+Goblin Drill,Knight,0,0,0,0.372,0.5625
+Goblin Drill,Lava Hound,0,0,0,0.372,0.5625
+Goblin Drill,Mega Knight,0,0,0,0.372,0.5625
+Goblin Drill,Mortar,0,0,0,0.372,0.5625
+Goblin Drill,Mother Witch,0,0,0,0.372,0.5625
+Goblin Drill,Musketeer,0,1,1,0.372,0.372
+Goblin Drill,Night Witch,0,0,0,0.372,0.5625
+Goblin Drill,P.E.K.K.A,0,0,0,0.372,0.5625
+Goblin Drill,Poison,0,0,0,0.372,0.5625
+Goblin Drill,Princess,0,0,0,0.372,0.5625
+Goblin Drill,Rage,0,0,0,0.372,0.5625
+Goblin Drill,Ram Rider,0,1,1,0.372,0.372
+Goblin Drill,Rascals,0,0,0,0.372,0.5625
+Goblin Drill,Rocket,0,0,0,0.372,0.5625
+Goblin Drill,Royal Delivery,0,1,1,0.372,0.372
+Goblin Drill,Royal Giant,0,0,0,0.372,0.5625
+Goblin Drill,Rune Giant,0,0,0,0.372,0.5625
+Goblin Drill,Suspicious Bush,0,0,0,0.372,0.5625
+Goblin Drill,The Log,0,1,1,0.372,0.372
+Goblin Drill,Tombstone,0,0,0,0.372,0.5625
+Goblin Drill,Vines,0,0,0,0.372,0.5625
+Goblin Drill,Witch,0,0,0,0.372,0.5625
+Goblin Drill,Wizard,0,0,0,0.372,0.5625
+Goblin Drill,X-Bow,0,0,0,0.372,0.5625
+Goblin Drill,Zappies,0,0,0,0.372,0.5625
+Goblin Giant,Baby Dragon,0,0,0,0.372,0.5625
+Goblin Giant,Barbarian Hut,0,0,0,0.372,0.5625
+Goblin Giant,Berserker,0,0,0,0.372,0.5625
+Goblin Giant,Dart Goblin,0,0,0,0.372,0.5625
+Goblin Giant,Electro Spirit,0,0,0,0.372,0.5625
+Goblin Giant,Electro Wizard,0,0,0,0.372,0.5625
+Goblin Giant,Elixir Golem,0,0,0,0.372,0.5625
+Goblin Giant,Executioner,0,0,0,0.372,0.5625
+Goblin Giant,Fireball,0,1,1,0.372,0.372
+Goblin Giant,Fisherman,0,0,0,0.372,0.5625
+Goblin Giant,Flying Machine,0,0,0,0.372,0.5625
+Goblin Giant,Furnace,0,0,0,0.372,0.5625
+Goblin Giant,Giant,0,0,0,0.372,0.5625
+Goblin Giant,Giant Snowball,0,0,0,0.372,0.5625
+Goblin Giant,Goblin Barrel,0,0,0,0.372,0.5625
+Goblin Giant,Goblin Demolisher,0,1,1,0.372,0.372
+Goblin Giant,Goblin Drill,0,0,0,0.372,0.5625
+Goblin Giant,Goblin Hut,0,0,0,0.372,0.5625
+Goblin Giant,Golem,0,0,0,0.372,0.5625
+Goblin Giant,Graveyard,0,1,1,0.372,0.372
+Goblin Giant,Hunter,0,0,0,0.372,0.5625
+Goblin Giant,Ice Spirit,0,0,0,0.372,0.5625
+Goblin Giant,Ice Wizard,0,0,0,0.372,0.5625
+Goblin Giant,Inferno Tower,0,0,0,0.372,0.5625
+Goblin Giant,Knight,0,1,1,0.372,0.372
+Goblin Giant,Lava Hound,0,0,0,0.372,0.5625
+Goblin Giant,Mega Knight,0,0,0,0.372,0.5625
+Goblin Giant,Mortar,0,0,0,0.372,0.5625
+Goblin Giant,Mother Witch,0,0,0,0.372,0.5625
+Goblin Giant,Musketeer,0,1,1,0.372,0.372
+Goblin Giant,Night Witch,0,0,0,0.372,0.5625
+Goblin Giant,P.E.K.K.A,0,0,0,0.372,0.5625
+Goblin Giant,Poison,0,0,0,0.372,0.5625
+Goblin Giant,Princess,0,0,0,0.372,0.5625
+Goblin Giant,Rage,0,0,0,0.372,0.5625
+Goblin Giant,Ram Rider,0,0,0,0.372,0.5625
+Goblin Giant,Rascals,0,1,1,0.372,0.372
+Goblin Giant,Rocket,0,0,0,0.372,0.5625
+Goblin Giant,Royal Delivery,0,1,1,0.372,0.372
+Goblin Giant,Royal Giant,0,0,0,0.372,0.5625
+Goblin Giant,Rune Giant,0,0,0,0.372,0.5625
+Goblin Giant,Suspicious Bush,0,0,0,0.372,0.5625
+Goblin Giant,The Log,0,1,1,0.372,0.372
+Goblin Giant,Tombstone,0,0,0,0.372,0.5625
+Goblin Giant,Vines,0,0,0,0.372,0.5625
+Goblin Giant,Witch,0,0,0,0.372,0.5625
+Goblin Giant,Wizard,0,0,0,0.372,0.5625
+Goblin Giant,X-Bow,0,0,0,0.372,0.5625
+Goblin Giant,Zappies,0,0,0,0.372,0.5625
+Goblin Hut,Baby Dragon,6,4,10,0.7443,0.6898
+Goblin Hut,Barbarian Hut,3,3,6,0.7443,0.567
+Goblin Hut,Berserker,5,0,5,0.7443,0.7111
+Goblin Hut,Dart Goblin,4,1,5,0.7443,0.7111
+Goblin Hut,Electro Spirit,4,2,6,0.7443,0.702
+Goblin Hut,Electro Wizard,2,3,5,0.7443,0.421
+Goblin Hut,Elixir Golem,1,0,1,0.7443,0.576
+Goblin Hut,Executioner,0,3,3,0.7443,0.3531
+Goblin Hut,Fireball,7,4,11,0.7443,0.7286
+Goblin Hut,Fisherman,1,0,1,0.7443,0.576
+Goblin Hut,Flying Machine,6,3,9,0.7443,0.7385
+Goblin Hut,Furnace,0,0,0,0.7443,0.5625
+Goblin Hut,Giant,1,1,2,0.7443,0.4861
+Goblin Hut,Giant Snowball,1,0,1,0.7443,0.576
+Goblin Hut,Goblin Barrel,9,6,15,0.7443,0.718
+Goblin Hut,Goblin Demolisher,0,2,2,0.7443,0.3611
+Goblin Hut,Goblin Drill,0,0,0,0.7443,0.5625
+Goblin Hut,Goblin Giant,0,0,0,0.7443,0.5625
+Goblin Hut,Golem,3,2,5,0.7443,0.6321
+Goblin Hut,Graveyard,6,6,12,0.7443,0.6152
+Goblin Hut,Hunter,0,0,0,0.7443,0.5625
+Goblin Hut,Ice Spirit,11,9,20,0.7443,0.6888
+Goblin Hut,Ice Wizard,1,0,1,0.7443,0.576
+Goblin Hut,Inferno Tower,0,0,0,0.7443,0.5625
+Goblin Hut,Knight,6,6,12,0.7443,0.6152
+Goblin Hut,Lava Hound,0,2,2,0.7443,0.3611
+Goblin Hut,Mega Knight,0,1,1,0.7443,0.372
+Goblin Hut,Mortar,0,0,0,0.7443,0.5625
+Goblin Hut,Mother Witch,2,0,2,0.7443,0.625
+Goblin Hut,Musketeer,8,8,16,0.7443,0.6318
+Goblin Hut,Night Witch,0,1,1,0.7443,0.372
+Goblin Hut,P.E.K.K.A,2,0,2,0.7443,0.625
+Goblin Hut,Poison,8,6,14,0.7443,0.6881
+Goblin Hut,Princess,1,0,1,0.7443,0.576
+Goblin Hut,Rage,1,1,2,0.7443,0.4861
+Goblin Hut,Ram Rider,3,2,5,0.7443,0.6321
+Goblin Hut,Rascals,7,6,13,0.7443,0.6541
+Goblin Hut,Rocket,0,0,0,0.7443,0.5625
+Goblin Hut,Royal Delivery,5,2,7,0.7443,0.7438
+Goblin Hut,Royal Giant,3,0,3,0.7443,0.6612
+Goblin Hut,Rune Giant,3,2,5,0.7443,0.6321
+Goblin Hut,Suspicious Bush,11,4,15,0.7443,0.8078
+Goblin Hut,The Log,9,10,19,0.7443,0.4759
+Goblin Hut,Tombstone,10,11,21,0.7443,0.4781
+Goblin Hut,Vines,8,6,14,0.7443,0.6881
+Goblin Hut,Witch,6,3,9,0.7443,0.7385
+Goblin Hut,Wizard,1,0,1,0.7443,0.576
+Goblin Hut,X-Bow,3,0,3,0.7443,0.6612
+Goblin Hut,Zappies,0,0,0,0.7443,0.5625
+Golem,Baby Dragon,2,4,6,0.4271,0.365
+Golem,Barbarian Hut,0,2,2,0.4271,0.3611
+Golem,Berserker,2,0,2,0.4271,0.625
+Golem,Dart Goblin,1,0,1,0.4271,0.576
+Golem,Electro Spirit,1,3,4,0.4271,0.3469
+Golem,Electro Wizard,1,1,2,0.4271,0.4861
 Golem,Elixir Golem,0,0,0,0.4271,0.5625
-Golem,Executioner,0,1,1,0.4271,0.404
-Golem,Fireball,4,0,4,0.4271,0.8828
+Golem,Executioner,0,1,1,0.4271,0.372
+Golem,Fireball,4,0,4,0.4271,0.6891
 Golem,Fisherman,0,0,0,0.4271,0.5625
 Golem,Flying Machine,4,5,9,0.4271,0.4527
 Golem,Furnace,0,0,0,0.4271,0.5625
-Golem,Giant,3,1,4,0.4271,0.6914
+Golem,Giant,3,1,4,0.4271,0.6891
 Golem,Giant Snowball,0,0,0,0.4271,0.5625
-Golem,Goblin Barrel,3,3,6,0.4271,0.5
+Golem,Goblin Barrel,3,3,6,0.4271,0.567
 Golem,Goblin Demolisher,0,0,0,0.4271,0.5625
-Golem,Goblin Drill,1,0,1,0.4271,0.82
+Golem,Goblin Drill,1,0,1,0.4271,0.576
 Golem,Goblin Giant,0,0,0,0.4271,0.5625
 Golem,Goblin Hut,2,3,5,0.4271,0.421
-Golem,Graveyard,0,3,3,0.4271,0.3898
+Golem,Graveyard,0,3,3,0.4271,0.3531
 Golem,Hunter,0,0,0,0.4271,0.5625
 Golem,Ice Spirit,2,3,5,0.4271,0.421
 Golem,Ice Wizard,0,0,0,0.4271,0.5625
@@ -959,1445 +959,1445 @@ Golem,Lava Hound,0,0,0,0.4271,0.5625
 Golem,Mega Knight,0,0,0,0.4271,0.5625
 Golem,Mortar,0,0,0,0.4271,0.5625
 Golem,Mother Witch,0,0,0,0.4271,0.5625
-Golem,Musketeer,0,3,3,0.4271,0.3898
+Golem,Musketeer,0,3,3,0.4271,0.3531
 Golem,Night Witch,0,0,0,0.4271,0.5625
-Golem,P.E.K.K.A,0,1,1,0.4271,0.404
-Golem,Poison,1,4,5,0.4271,0.3815
-Golem,Princess,0,1,1,0.4271,0.404
-Golem,Rage,1,0,1,0.4271,0.82
+Golem,P.E.K.K.A,0,1,1,0.4271,0.372
+Golem,Poison,1,4,5,0.4271,0.342
+Golem,Princess,0,1,1,0.4271,0.372
+Golem,Rage,1,0,1,0.4271,0.576
 Golem,Ram Rider,0,0,0,0.4271,0.5625
-Golem,Rascals,0,1,1,0.4271,0.404
+Golem,Rascals,0,1,1,0.4271,0.372
 Golem,Rocket,0,0,0,0.4271,0.5625
-Golem,Royal Delivery,1,1,2,0.4271,0.5
+Golem,Royal Delivery,1,1,2,0.4271,0.4861
 Golem,Royal Giant,0,0,0,0.4271,0.5625
-Golem,Rune Giant,1,0,1,0.4271,0.82
-Golem,Suspicious Bush,2,0,2,0.4271,0.8472
-Golem,The Log,1,4,5,0.4271,0.3815
-Golem,Tombstone,1,2,3,0.4271,0.3898
-Golem,Vines,1,3,4,0.4271,0.3852
-Golem,Witch,1,2,3,0.4271,0.3898
+Golem,Rune Giant,1,0,1,0.4271,0.576
+Golem,Suspicious Bush,2,0,2,0.4271,0.625
+Golem,The Log,1,4,5,0.4271,0.342
+Golem,Tombstone,1,2,3,0.4271,0.3776
+Golem,Vines,1,3,4,0.4271,0.3469
+Golem,Witch,1,2,3,0.4271,0.3776
 Golem,Wizard,0,0,0,0.4271,0.5625
-Golem,X-Bow,1,0,1,0.4271,0.82
+Golem,X-Bow,1,0,1,0.4271,0.576
 Golem,Zappies,0,0,0,0.4271,0.5625
-Graveyard,Baby Dragon,2,0,2,0.7256,0.8472
-Graveyard,Barbarian Hut,2,0,2,0.7256,0.8472
-Graveyard,Berserker,0,0,0,0.7256,0.5625
-Graveyard,Dart Goblin,3,1,4,0.7256,0.6914
-Graveyard,Electro Spirit,6,1,7,0.7256,0.7952
-Graveyard,Electro Wizard,1,1,2,0.7256,0.5
-Graveyard,Elixir Golem,0,0,0,0.7256,0.5625
-Graveyard,Executioner,0,0,0,0.7256,0.5625
-Graveyard,Fireball,5,3,8,0.7256,0.605
-Graveyard,Fisherman,0,0,0,0.7256,0.5625
-Graveyard,Flying Machine,5,2,7,0.7256,0.6771
-Graveyard,Furnace,1,0,1,0.7256,0.82
-Graveyard,Giant,1,2,3,0.7256,0.3898
-Graveyard,Giant Snowball,1,0,1,0.7256,0.82
-Graveyard,Goblin Barrel,2,0,2,0.7256,0.8472
-Graveyard,Goblin Demolisher,1,2,3,0.7256,0.3898
-Graveyard,Goblin Drill,0,0,0,0.7256,0.5625
-Graveyard,Goblin Giant,1,0,1,0.7256,0.82
-Graveyard,Goblin Hut,6,3,9,0.7256,0.642
-Graveyard,Golem,3,0,3,0.7256,0.8673
-Graveyard,Hunter,0,0,0,0.7256,0.5625
-Graveyard,Ice Spirit,3,0,3,0.7256,0.8673
-Graveyard,Ice Wizard,0,0,0,0.7256,0.5625
-Graveyard,Inferno Tower,0,0,0,0.7256,0.5625
-Graveyard,Knight,5,3,8,0.7256,0.605
-Graveyard,Lava Hound,1,0,1,0.7256,0.82
-Graveyard,Mega Knight,0,0,0,0.7256,0.5625
-Graveyard,Mortar,0,0,0,0.7256,0.5625
-Graveyard,Mother Witch,2,1,3,0.7256,0.6224
-Graveyard,Musketeer,6,2,8,0.7256,0.7101
-Graveyard,Night Witch,0,0,0,0.7256,0.5625
-Graveyard,P.E.K.K.A,2,0,2,0.7256,0.8472
-Graveyard,Poison,3,1,4,0.7256,0.6914
-Graveyard,Princess,0,0,0,0.7256,0.5625
-Graveyard,Rage,0,0,0,0.7256,0.5625
-Graveyard,Ram Rider,2,1,3,0.7256,0.6224
-Graveyard,Rascals,5,2,7,0.7256,0.6771
-Graveyard,Rocket,1,0,1,0.7256,0.82
-Graveyard,Royal Delivery,2,0,2,0.7256,0.8472
-Graveyard,Royal Giant,0,0,0,0.7256,0.5625
-Graveyard,Rune Giant,0,0,0,0.7256,0.5625
-Graveyard,Suspicious Bush,2,1,3,0.7256,0.6224
-Graveyard,The Log,4,2,6,0.7256,0.635
-Graveyard,Tombstone,4,1,5,0.7256,0.737
-Graveyard,Vines,5,1,6,0.7256,0.77
-Graveyard,Witch,7,0,7,0.7256,0.9132
-Graveyard,Wizard,1,1,2,0.7256,0.5
-Graveyard,X-Bow,1,1,2,0.7256,0.5
-Graveyard,Zappies,0,0,0,0.7256,0.5625
-Hunter,Baby Dragon,0,0,0,0.404,0.5625
-Hunter,Barbarian Hut,0,1,1,0.404,0.404
-Hunter,Berserker,0,1,1,0.404,0.404
-Hunter,Dart Goblin,0,0,0,0.404,0.5625
-Hunter,Electro Spirit,0,1,1,0.404,0.404
-Hunter,Electro Wizard,0,0,0,0.404,0.5625
-Hunter,Elixir Golem,0,0,0,0.404,0.5625
-Hunter,Executioner,0,0,0,0.404,0.5625
-Hunter,Fireball,0,0,0,0.404,0.5625
-Hunter,Fisherman,0,0,0,0.404,0.5625
-Hunter,Flying Machine,0,0,0,0.404,0.5625
-Hunter,Furnace,0,0,0,0.404,0.5625
-Hunter,Giant,0,0,0,0.404,0.5625
-Hunter,Giant Snowball,0,0,0,0.404,0.5625
-Hunter,Goblin Barrel,0,0,0,0.404,0.5625
-Hunter,Goblin Demolisher,0,0,0,0.404,0.5625
-Hunter,Goblin Drill,0,0,0,0.404,0.5625
-Hunter,Goblin Giant,0,0,0,0.404,0.5625
-Hunter,Goblin Hut,0,0,0,0.404,0.5625
-Hunter,Golem,0,0,0,0.404,0.5625
-Hunter,Graveyard,0,0,0,0.404,0.5625
-Hunter,Ice Spirit,0,0,0,0.404,0.5625
-Hunter,Ice Wizard,0,0,0,0.404,0.5625
-Hunter,Inferno Tower,0,0,0,0.404,0.5625
-Hunter,Knight,0,0,0,0.404,0.5625
-Hunter,Lava Hound,0,0,0,0.404,0.5625
-Hunter,Mega Knight,0,0,0,0.404,0.5625
-Hunter,Mortar,0,0,0,0.404,0.5625
-Hunter,Mother Witch,0,0,0,0.404,0.5625
-Hunter,Musketeer,0,1,1,0.404,0.404
-Hunter,Night Witch,0,0,0,0.404,0.5625
-Hunter,P.E.K.K.A,0,0,0,0.404,0.5625
-Hunter,Poison,0,1,1,0.404,0.404
-Hunter,Princess,0,0,0,0.404,0.5625
-Hunter,Rage,0,0,0,0.404,0.5625
-Hunter,Ram Rider,0,0,0,0.404,0.5625
-Hunter,Rascals,0,0,0,0.404,0.5625
-Hunter,Rocket,0,0,0,0.404,0.5625
-Hunter,Royal Delivery,0,0,0,0.404,0.5625
-Hunter,Royal Giant,0,1,1,0.404,0.404
-Hunter,Rune Giant,0,0,0,0.404,0.5625
-Hunter,Suspicious Bush,0,0,0,0.404,0.5625
-Hunter,The Log,0,0,0,0.404,0.5625
-Hunter,Tombstone,0,1,1,0.404,0.404
-Hunter,Vines,0,1,1,0.404,0.404
-Hunter,Witch,0,0,0,0.404,0.5625
-Hunter,Wizard,0,0,0,0.404,0.5625
-Hunter,X-Bow,0,0,0,0.404,0.5625
-Hunter,Zappies,0,0,0,0.404,0.5625
-Ice Spirit,Baby Dragon,6,3,9,0.5293,0.642
-Ice Spirit,Barbarian Hut,2,3,5,0.5293,0.421
-Ice Spirit,Berserker,3,1,4,0.5293,0.6914
-Ice Spirit,Dart Goblin,3,5,8,0.5293,0.395
-Ice Spirit,Electro Spirit,8,5,13,0.5293,0.6022
-Ice Spirit,Electro Wizard,0,1,1,0.5293,0.404
-Ice Spirit,Elixir Golem,0,0,0,0.5293,0.5625
-Ice Spirit,Executioner,2,2,4,0.5293,0.5
-Ice Spirit,Fireball,10,5,15,0.5293,0.6496
-Ice Spirit,Fisherman,0,0,0,0.5293,0.5625
-Ice Spirit,Flying Machine,7,2,9,0.5293,0.7367
-Ice Spirit,Furnace,0,0,0,0.5293,0.5625
-Ice Spirit,Giant,4,4,8,0.5293,0.5
-Ice Spirit,Giant Snowball,1,0,1,0.5293,0.82
-Ice Spirit,Goblin Barrel,6,1,7,0.5293,0.7952
-Ice Spirit,Goblin Demolisher,0,2,2,0.5293,0.3958
-Ice Spirit,Goblin Drill,1,0,1,0.5293,0.82
-Ice Spirit,Goblin Giant,0,0,0,0.5293,0.5625
-Ice Spirit,Goblin Hut,9,8,17,0.5293,0.5267
-Ice Spirit,Golem,3,2,5,0.5293,0.579
-Ice Spirit,Graveyard,0,3,3,0.5293,0.3898
-Ice Spirit,Hunter,0,0,0,0.5293,0.5625
-Ice Spirit,Ice Wizard,1,0,1,0.5293,0.82
-Ice Spirit,Inferno Tower,1,0,1,0.5293,0.82
-Ice Spirit,Knight,12,14,26,0.5293,0.4641
-Ice Spirit,Lava Hound,1,2,3,0.5293,0.3898
-Ice Spirit,Mega Knight,0,1,1,0.5293,0.404
-Ice Spirit,Mortar,0,0,0,0.5293,0.5625
-Ice Spirit,Mother Witch,2,0,2,0.5293,0.8472
-Ice Spirit,Musketeer,5,9,14,0.5293,0.3726
-Ice Spirit,Night Witch,0,0,0,0.5293,0.5625
-Ice Spirit,P.E.K.K.A,0,0,0,0.5293,0.5625
-Ice Spirit,Poison,2,6,8,0.5293,0.374
-Ice Spirit,Princess,0,1,1,0.5293,0.404
-Ice Spirit,Rage,2,1,3,0.5293,0.6224
-Ice Spirit,Ram Rider,4,5,9,0.5293,0.4527
-Ice Spirit,Rascals,6,3,9,0.5293,0.642
-Ice Spirit,Rocket,0,0,0,0.5293,0.5625
-Ice Spirit,Royal Delivery,3,2,5,0.5293,0.579
-Ice Spirit,Royal Giant,2,1,3,0.5293,0.6224
-Ice Spirit,Rune Giant,0,0,0,0.5293,0.5625
-Ice Spirit,Suspicious Bush,8,4,12,0.5293,0.6465
-Ice Spirit,The Log,5,7,12,0.5293,0.4268
-Ice Spirit,Tombstone,5,7,12,0.5293,0.4268
-Ice Spirit,Vines,6,7,13,0.5293,0.4659
-Ice Spirit,Witch,4,0,4,0.5293,0.8828
-Ice Spirit,Wizard,0,1,1,0.5293,0.404
-Ice Spirit,X-Bow,2,2,4,0.5293,0.5
-Ice Spirit,Zappies,0,0,0,0.5293,0.5625
-Ice Wizard,Baby Dragon,0,0,0,0.404,0.5625
-Ice Wizard,Barbarian Hut,0,1,1,0.404,0.404
-Ice Wizard,Berserker,0,0,0,0.404,0.5625
-Ice Wizard,Dart Goblin,0,0,0,0.404,0.5625
-Ice Wizard,Electro Spirit,0,0,0,0.404,0.5625
-Ice Wizard,Electro Wizard,0,0,0,0.404,0.5625
-Ice Wizard,Elixir Golem,0,0,0,0.404,0.5625
-Ice Wizard,Executioner,0,0,0,0.404,0.5625
-Ice Wizard,Fireball,0,1,1,0.404,0.404
-Ice Wizard,Fisherman,0,0,0,0.404,0.5625
-Ice Wizard,Flying Machine,0,0,0,0.404,0.5625
-Ice Wizard,Furnace,0,0,0,0.404,0.5625
-Ice Wizard,Giant,0,0,0,0.404,0.5625
-Ice Wizard,Giant Snowball,0,0,0,0.404,0.5625
-Ice Wizard,Goblin Barrel,0,0,0,0.404,0.5625
-Ice Wizard,Goblin Demolisher,0,0,0,0.404,0.5625
-Ice Wizard,Goblin Drill,0,0,0,0.404,0.5625
-Ice Wizard,Goblin Giant,0,0,0,0.404,0.5625
-Ice Wizard,Goblin Hut,0,1,1,0.404,0.404
-Ice Wizard,Golem,0,0,0,0.404,0.5625
-Ice Wizard,Graveyard,0,0,0,0.404,0.5625
-Ice Wizard,Hunter,0,0,0,0.404,0.5625
-Ice Wizard,Ice Spirit,0,1,1,0.404,0.404
-Ice Wizard,Inferno Tower,0,0,0,0.404,0.5625
-Ice Wizard,Knight,0,1,1,0.404,0.404
-Ice Wizard,Lava Hound,0,0,0,0.404,0.5625
-Ice Wizard,Mega Knight,0,0,0,0.404,0.5625
-Ice Wizard,Mortar,0,0,0,0.404,0.5625
-Ice Wizard,Mother Witch,0,0,0,0.404,0.5625
-Ice Wizard,Musketeer,0,0,0,0.404,0.5625
-Ice Wizard,Night Witch,0,0,0,0.404,0.5625
-Ice Wizard,P.E.K.K.A,0,0,0,0.404,0.5625
-Ice Wizard,Poison,0,0,0,0.404,0.5625
-Ice Wizard,Princess,0,0,0,0.404,0.5625
-Ice Wizard,Rage,0,0,0,0.404,0.5625
-Ice Wizard,Ram Rider,0,0,0,0.404,0.5625
-Ice Wizard,Rascals,0,1,1,0.404,0.404
-Ice Wizard,Rocket,0,0,0,0.404,0.5625
-Ice Wizard,Royal Delivery,0,0,0,0.404,0.5625
-Ice Wizard,Royal Giant,0,1,1,0.404,0.404
-Ice Wizard,Rune Giant,0,1,1,0.404,0.404
-Ice Wizard,Suspicious Bush,0,0,0,0.404,0.5625
-Ice Wizard,The Log,0,0,0,0.404,0.5625
-Ice Wizard,Tombstone,0,0,0,0.404,0.5625
-Ice Wizard,Vines,0,0,0,0.404,0.5625
-Ice Wizard,Witch,0,0,0,0.404,0.5625
-Ice Wizard,Wizard,0,0,0,0.404,0.5625
-Ice Wizard,X-Bow,0,0,0,0.404,0.5625
-Ice Wizard,Zappies,0,0,0,0.404,0.5625
-Inferno Tower,Baby Dragon,0,0,0,0.404,0.5625
-Inferno Tower,Barbarian Hut,0,0,0,0.404,0.5625
-Inferno Tower,Berserker,0,0,0,0.404,0.5625
-Inferno Tower,Dart Goblin,0,0,0,0.404,0.5625
-Inferno Tower,Electro Spirit,0,0,0,0.404,0.5625
-Inferno Tower,Electro Wizard,0,0,0,0.404,0.5625
-Inferno Tower,Elixir Golem,0,0,0,0.404,0.5625
-Inferno Tower,Executioner,0,0,0,0.404,0.5625
-Inferno Tower,Fireball,0,1,1,0.404,0.404
-Inferno Tower,Fisherman,0,0,0,0.404,0.5625
-Inferno Tower,Flying Machine,0,0,0,0.404,0.5625
-Inferno Tower,Furnace,0,0,0,0.404,0.5625
-Inferno Tower,Giant,0,0,0,0.404,0.5625
-Inferno Tower,Giant Snowball,0,0,0,0.404,0.5625
-Inferno Tower,Goblin Barrel,0,0,0,0.404,0.5625
-Inferno Tower,Goblin Demolisher,0,0,0,0.404,0.5625
-Inferno Tower,Goblin Drill,0,0,0,0.404,0.5625
-Inferno Tower,Goblin Giant,0,0,0,0.404,0.5625
-Inferno Tower,Goblin Hut,0,0,0,0.404,0.5625
-Inferno Tower,Golem,0,0,0,0.404,0.5625
-Inferno Tower,Graveyard,0,0,0,0.404,0.5625
-Inferno Tower,Hunter,0,0,0,0.404,0.5625
-Inferno Tower,Ice Spirit,0,1,1,0.404,0.404
-Inferno Tower,Ice Wizard,0,0,0,0.404,0.5625
-Inferno Tower,Knight,0,0,0,0.404,0.5625
-Inferno Tower,Lava Hound,0,1,1,0.404,0.404
-Inferno Tower,Mega Knight,0,0,0,0.404,0.5625
-Inferno Tower,Mortar,0,0,0,0.404,0.5625
-Inferno Tower,Mother Witch,0,0,0,0.404,0.5625
-Inferno Tower,Musketeer,0,1,1,0.404,0.404
-Inferno Tower,Night Witch,0,0,0,0.404,0.5625
-Inferno Tower,P.E.K.K.A,0,0,0,0.404,0.5625
-Inferno Tower,Poison,0,0,0,0.404,0.5625
-Inferno Tower,Princess,0,0,0,0.404,0.5625
-Inferno Tower,Rage,0,0,0,0.404,0.5625
-Inferno Tower,Ram Rider,0,1,1,0.404,0.404
-Inferno Tower,Rascals,0,0,0,0.404,0.5625
-Inferno Tower,Rocket,0,0,0,0.404,0.5625
-Inferno Tower,Royal Delivery,0,0,0,0.404,0.5625
-Inferno Tower,Royal Giant,0,0,0,0.404,0.5625
-Inferno Tower,Rune Giant,0,0,0,0.404,0.5625
-Inferno Tower,Suspicious Bush,0,0,0,0.404,0.5625
-Inferno Tower,The Log,0,1,1,0.404,0.404
-Inferno Tower,Tombstone,0,1,1,0.404,0.404
-Inferno Tower,Vines,0,1,1,0.404,0.404
-Inferno Tower,Witch,0,0,0,0.404,0.5625
-Inferno Tower,Wizard,0,0,0,0.404,0.5625
-Inferno Tower,X-Bow,0,0,0,0.404,0.5625
-Inferno Tower,Zappies,0,0,0,0.404,0.5625
-Knight,Baby Dragon,6,2,8,0.5909,0.7101
-Knight,Barbarian Hut,2,4,6,0.5909,0.3785
-Knight,Berserker,3,1,4,0.5909,0.6914
-Knight,Dart Goblin,4,1,5,0.5909,0.737
-Knight,Electro Spirit,10,4,14,0.5909,0.6911
-Knight,Electro Wizard,4,3,7,0.5909,0.559
-Knight,Elixir Golem,1,0,1,0.5909,0.82
-Knight,Executioner,0,2,2,0.5909,0.3958
-Knight,Fireball,9,6,15,0.5909,0.5898
-Knight,Fisherman,1,0,1,0.5909,0.82
-Knight,Flying Machine,9,2,11,0.5909,0.7772
-Knight,Furnace,2,0,2,0.5909,0.8472
-Knight,Giant,4,3,7,0.5909,0.559
-Knight,Giant Snowball,2,0,2,0.5909,0.8472
-Knight,Goblin Barrel,7,5,12,0.5909,0.5732
-Knight,Goblin Demolisher,1,2,3,0.5909,0.3898
-Knight,Goblin Drill,0,0,0,0.5909,0.5625
-Knight,Goblin Giant,1,0,1,0.5909,0.82
-Knight,Goblin Hut,6,5,11,0.5909,0.5396
-Knight,Golem,5,3,8,0.5909,0.605
-Knight,Graveyard,3,5,8,0.5909,0.395
-Knight,Hunter,0,0,0,0.5909,0.5625
-Knight,Ice Spirit,14,12,26,0.5909,0.5359
-Knight,Ice Wizard,1,0,1,0.5909,0.82
-Knight,Inferno Tower,0,0,0,0.5909,0.5625
-Knight,Lava Hound,0,1,1,0.5909,0.404
-Knight,Mega Knight,0,1,1,0.5909,0.404
-Knight,Mortar,0,0,0,0.5909,0.5625
-Knight,Mother Witch,2,1,3,0.5909,0.6224
-Knight,Musketeer,10,12,22,0.5909,0.458
-Knight,Night Witch,0,1,1,0.5909,0.404
-Knight,P.E.K.K.A,1,0,1,0.5909,0.82
-Knight,Poison,8,8,16,0.5909,0.5
-Knight,Princess,2,1,3,0.5909,0.6224
-Knight,Rage,1,0,1,0.5909,0.82
-Knight,Ram Rider,3,3,6,0.5909,0.5
-Knight,Rascals,11,7,18,0.5909,0.6012
-Knight,Rocket,2,0,2,0.5909,0.8472
-Knight,Royal Delivery,4,3,7,0.5909,0.559
-Knight,Royal Giant,4,1,5,0.5909,0.737
-Knight,Rune Giant,3,2,5,0.5909,0.579
-Knight,Suspicious Bush,13,5,18,0.5909,0.7025
-Knight,The Log,8,11,19,0.5909,0.4278
-Knight,Tombstone,12,9,21,0.5909,0.5658
-Knight,Vines,7,8,15,0.5909,0.4701
-Knight,Witch,8,2,10,0.5909,0.7587
-Knight,Wizard,1,0,1,0.5909,0.82
-Knight,X-Bow,5,0,5,0.5909,0.8951
-Knight,Zappies,0,0,0,0.5909,0.5625
-Lava Hound,Baby Dragon,0,0,0,0.6914,0.5625
-Lava Hound,Barbarian Hut,0,1,1,0.6914,0.404
-Lava Hound,Berserker,0,0,0,0.6914,0.5625
-Lava Hound,Dart Goblin,0,0,0,0.6914,0.5625
-Lava Hound,Electro Spirit,0,0,0,0.6914,0.5625
-Lava Hound,Electro Wizard,2,0,2,0.6914,0.8472
-Lava Hound,Elixir Golem,0,0,0,0.6914,0.5625
-Lava Hound,Executioner,1,1,2,0.6914,0.5
-Lava Hound,Fireball,1,0,1,0.6914,0.82
-Lava Hound,Fisherman,0,0,0,0.6914,0.5625
-Lava Hound,Flying Machine,0,0,0,0.6914,0.5625
-Lava Hound,Furnace,0,0,0,0.6914,0.5625
-Lava Hound,Giant,2,0,2,0.6914,0.8472
-Lava Hound,Giant Snowball,2,0,2,0.6914,0.8472
-Lava Hound,Goblin Barrel,1,0,1,0.6914,0.82
-Lava Hound,Goblin Demolisher,0,0,0,0.6914,0.5625
-Lava Hound,Goblin Drill,0,0,0,0.6914,0.5625
-Lava Hound,Goblin Giant,0,0,0,0.6914,0.5625
-Lava Hound,Goblin Hut,2,0,2,0.6914,0.8472
-Lava Hound,Golem,0,0,0,0.6914,0.5625
-Lava Hound,Graveyard,0,1,1,0.6914,0.404
-Lava Hound,Hunter,0,0,0,0.6914,0.5625
-Lava Hound,Ice Spirit,2,1,3,0.6914,0.6224
-Lava Hound,Ice Wizard,0,0,0,0.6914,0.5625
-Lava Hound,Inferno Tower,1,0,1,0.6914,0.82
-Lava Hound,Knight,1,0,1,0.6914,0.82
-Lava Hound,Mega Knight,0,0,0,0.6914,0.5625
-Lava Hound,Mortar,0,0,0,0.6914,0.5625
-Lava Hound,Mother Witch,0,0,0,0.6914,0.5625
-Lava Hound,Musketeer,0,1,1,0.6914,0.404
-Lava Hound,Night Witch,0,0,0,0.6914,0.5625
-Lava Hound,P.E.K.K.A,0,0,0,0.6914,0.5625
-Lava Hound,Poison,0,0,0,0.6914,0.5625
-Lava Hound,Princess,1,0,1,0.6914,0.82
-Lava Hound,Rage,1,0,1,0.6914,0.82
-Lava Hound,Ram Rider,1,0,1,0.6914,0.82
-Lava Hound,Rascals,0,0,0,0.6914,0.5625
-Lava Hound,Rocket,0,0,0,0.6914,0.5625
-Lava Hound,Royal Delivery,2,0,2,0.6914,0.8472
-Lava Hound,Royal Giant,0,0,0,0.6914,0.5625
-Lava Hound,Rune Giant,2,1,3,0.6914,0.6224
-Lava Hound,Suspicious Bush,2,1,3,0.6914,0.6224
-Lava Hound,The Log,0,1,1,0.6914,0.404
-Lava Hound,Tombstone,0,0,0,0.6914,0.5625
-Lava Hound,Vines,0,0,0,0.6914,0.5625
-Lava Hound,Witch,0,0,0,0.6914,0.5625
-Lava Hound,Wizard,0,0,0,0.6914,0.5625
-Lava Hound,X-Bow,0,0,0,0.6914,0.5625
-Lava Hound,Zappies,0,0,0,0.6914,0.5625
-Mega Knight,Baby Dragon,0,0,0,0.8472,0.5625
-Mega Knight,Barbarian Hut,0,0,0,0.8472,0.5625
-Mega Knight,Berserker,0,0,0,0.8472,0.5625
-Mega Knight,Dart Goblin,0,0,0,0.8472,0.5625
-Mega Knight,Electro Spirit,0,0,0,0.8472,0.5625
-Mega Knight,Electro Wizard,0,0,0,0.8472,0.5625
-Mega Knight,Elixir Golem,1,0,1,0.8472,0.82
-Mega Knight,Executioner,1,0,1,0.8472,0.82
-Mega Knight,Fireball,1,0,1,0.8472,0.82
-Mega Knight,Fisherman,1,0,1,0.8472,0.82
-Mega Knight,Flying Machine,0,0,0,0.8472,0.5625
-Mega Knight,Furnace,0,0,0,0.8472,0.5625
-Mega Knight,Giant,0,0,0,0.8472,0.5625
-Mega Knight,Giant Snowball,0,0,0,0.8472,0.5625
-Mega Knight,Goblin Barrel,1,0,1,0.8472,0.82
-Mega Knight,Goblin Demolisher,0,0,0,0.8472,0.5625
-Mega Knight,Goblin Drill,0,0,0,0.8472,0.5625
-Mega Knight,Goblin Giant,0,0,0,0.8472,0.5625
-Mega Knight,Goblin Hut,1,0,1,0.8472,0.82
-Mega Knight,Golem,0,0,0,0.8472,0.5625
-Mega Knight,Graveyard,0,0,0,0.8472,0.5625
-Mega Knight,Hunter,0,0,0,0.8472,0.5625
-Mega Knight,Ice Spirit,1,0,1,0.8472,0.82
-Mega Knight,Ice Wizard,0,0,0,0.8472,0.5625
-Mega Knight,Inferno Tower,0,0,0,0.8472,0.5625
-Mega Knight,Knight,1,0,1,0.8472,0.82
-Mega Knight,Lava Hound,0,0,0,0.8472,0.5625
-Mega Knight,Mortar,0,0,0,0.8472,0.5625
-Mega Knight,Mother Witch,0,0,0,0.8472,0.5625
-Mega Knight,Musketeer,0,0,0,0.8472,0.5625
-Mega Knight,Night Witch,0,0,0,0.8472,0.5625
-Mega Knight,P.E.K.K.A,0,0,0,0.8472,0.5625
-Mega Knight,Poison,1,0,1,0.8472,0.82
-Mega Knight,Princess,0,0,0,0.8472,0.5625
-Mega Knight,Rage,0,0,0,0.8472,0.5625
-Mega Knight,Ram Rider,0,0,0,0.8472,0.5625
-Mega Knight,Rascals,1,0,1,0.8472,0.82
-Mega Knight,Rocket,0,0,0,0.8472,0.5625
-Mega Knight,Royal Delivery,0,0,0,0.8472,0.5625
-Mega Knight,Royal Giant,0,0,0,0.8472,0.5625
-Mega Knight,Rune Giant,0,0,0,0.8472,0.5625
-Mega Knight,Suspicious Bush,2,0,2,0.8472,0.8472
-Mega Knight,The Log,1,0,1,0.8472,0.82
-Mega Knight,Tombstone,1,0,1,0.8472,0.82
-Mega Knight,Vines,1,0,1,0.8472,0.82
-Mega Knight,Witch,1,0,1,0.8472,0.82
-Mega Knight,Wizard,0,0,0,0.8472,0.5625
-Mega Knight,X-Bow,0,0,0,0.8472,0.5625
-Mega Knight,Zappies,0,0,0,0.8472,0.5625
-Mortar,Baby Dragon,0,0,0,0.404,0.5625
-Mortar,Barbarian Hut,0,1,1,0.404,0.404
-Mortar,Berserker,0,1,1,0.404,0.404
-Mortar,Dart Goblin,0,0,0,0.404,0.5625
-Mortar,Electro Spirit,0,1,1,0.404,0.404
-Mortar,Electro Wizard,0,0,0,0.404,0.5625
-Mortar,Elixir Golem,0,0,0,0.404,0.5625
-Mortar,Executioner,0,0,0,0.404,0.5625
-Mortar,Fireball,0,0,0,0.404,0.5625
-Mortar,Fisherman,0,0,0,0.404,0.5625
-Mortar,Flying Machine,0,0,0,0.404,0.5625
-Mortar,Furnace,0,0,0,0.404,0.5625
-Mortar,Giant,0,0,0,0.404,0.5625
-Mortar,Giant Snowball,0,0,0,0.404,0.5625
-Mortar,Goblin Barrel,0,0,0,0.404,0.5625
-Mortar,Goblin Demolisher,0,0,0,0.404,0.5625
-Mortar,Goblin Drill,0,0,0,0.404,0.5625
-Mortar,Goblin Giant,0,0,0,0.404,0.5625
-Mortar,Goblin Hut,0,0,0,0.404,0.5625
-Mortar,Golem,0,0,0,0.404,0.5625
-Mortar,Graveyard,0,0,0,0.404,0.5625
-Mortar,Hunter,0,0,0,0.404,0.5625
-Mortar,Ice Spirit,0,0,0,0.404,0.5625
-Mortar,Ice Wizard,0,0,0,0.404,0.5625
-Mortar,Inferno Tower,0,0,0,0.404,0.5625
-Mortar,Knight,0,0,0,0.404,0.5625
-Mortar,Lava Hound,0,0,0,0.404,0.5625
-Mortar,Mega Knight,0,0,0,0.404,0.5625
-Mortar,Mother Witch,0,0,0,0.404,0.5625
-Mortar,Musketeer,0,1,1,0.404,0.404
-Mortar,Night Witch,0,0,0,0.404,0.5625
-Mortar,P.E.K.K.A,0,0,0,0.404,0.5625
-Mortar,Poison,0,1,1,0.404,0.404
-Mortar,Princess,0,0,0,0.404,0.5625
-Mortar,Rage,0,0,0,0.404,0.5625
-Mortar,Ram Rider,0,0,0,0.404,0.5625
-Mortar,Rascals,0,0,0,0.404,0.5625
-Mortar,Rocket,0,0,0,0.404,0.5625
-Mortar,Royal Delivery,0,0,0,0.404,0.5625
-Mortar,Royal Giant,0,1,1,0.404,0.404
-Mortar,Rune Giant,0,0,0,0.404,0.5625
-Mortar,Suspicious Bush,0,0,0,0.404,0.5625
-Mortar,The Log,0,0,0,0.404,0.5625
-Mortar,Tombstone,0,1,1,0.404,0.404
-Mortar,Vines,0,1,1,0.404,0.404
-Mortar,Witch,0,0,0,0.404,0.5625
-Mortar,Wizard,0,0,0,0.404,0.5625
-Mortar,X-Bow,0,0,0,0.404,0.5625
-Mortar,Zappies,0,0,0,0.404,0.5625
-Mother Witch,Baby Dragon,0,0,0,0.3852,0.5625
-Mother Witch,Barbarian Hut,0,0,0,0.3852,0.5625
-Mother Witch,Berserker,0,0,0,0.3852,0.5625
-Mother Witch,Dart Goblin,0,0,0,0.3852,0.5625
-Mother Witch,Electro Spirit,1,2,3,0.3852,0.3898
-Mother Witch,Electro Wizard,0,1,1,0.3852,0.404
-Mother Witch,Elixir Golem,0,0,0,0.3852,0.5625
-Mother Witch,Executioner,0,0,0,0.3852,0.5625
-Mother Witch,Fireball,0,2,2,0.3852,0.3958
-Mother Witch,Fisherman,0,0,0,0.3852,0.5625
-Mother Witch,Flying Machine,0,2,2,0.3852,0.3958
-Mother Witch,Furnace,0,0,0,0.3852,0.5625
-Mother Witch,Giant,0,0,0,0.3852,0.5625
-Mother Witch,Giant Snowball,0,0,0,0.3852,0.5625
-Mother Witch,Goblin Barrel,1,0,1,0.3852,0.82
-Mother Witch,Goblin Demolisher,0,1,1,0.3852,0.404
-Mother Witch,Goblin Drill,0,0,0,0.3852,0.5625
-Mother Witch,Goblin Giant,0,0,0,0.3852,0.5625
-Mother Witch,Goblin Hut,0,2,2,0.3852,0.3958
-Mother Witch,Golem,0,0,0,0.3852,0.5625
-Mother Witch,Graveyard,1,2,3,0.3852,0.3898
-Mother Witch,Hunter,0,0,0,0.3852,0.5625
-Mother Witch,Ice Spirit,0,2,2,0.3852,0.3958
-Mother Witch,Ice Wizard,0,0,0,0.3852,0.5625
-Mother Witch,Inferno Tower,0,0,0,0.3852,0.5625
-Mother Witch,Knight,1,2,3,0.3852,0.3898
-Mother Witch,Lava Hound,0,0,0,0.3852,0.5625
-Mother Witch,Mega Knight,0,0,0,0.3852,0.5625
-Mother Witch,Mortar,0,0,0,0.3852,0.5625
-Mother Witch,Musketeer,0,1,1,0.3852,0.404
-Mother Witch,Night Witch,0,0,0,0.3852,0.5625
-Mother Witch,P.E.K.K.A,0,0,0,0.3852,0.5625
-Mother Witch,Poison,0,1,1,0.3852,0.404
-Mother Witch,Princess,0,0,0,0.3852,0.5625
-Mother Witch,Rage,0,0,0,0.3852,0.5625
-Mother Witch,Ram Rider,0,0,0,0.3852,0.5625
-Mother Witch,Rascals,1,2,3,0.3852,0.3898
-Mother Witch,Rocket,0,0,0,0.3852,0.5625
-Mother Witch,Royal Delivery,1,0,1,0.3852,0.82
-Mother Witch,Royal Giant,0,0,0,0.3852,0.5625
-Mother Witch,Rune Giant,0,0,0,0.3852,0.5625
-Mother Witch,Suspicious Bush,0,0,0,0.3852,0.5625
-Mother Witch,The Log,0,1,1,0.3852,0.404
-Mother Witch,Tombstone,0,2,2,0.3852,0.3958
-Mother Witch,Vines,1,1,2,0.3852,0.5
-Mother Witch,Witch,0,0,0,0.3852,0.5625
-Mother Witch,Wizard,0,0,0,0.3852,0.5625
-Mother Witch,X-Bow,1,0,1,0.3852,0.82
-Mother Witch,Zappies,0,0,0,0.3852,0.5625
-Musketeer,Baby Dragon,5,4,9,0.6097,0.5473
-Musketeer,Barbarian Hut,1,2,3,0.6097,0.3898
-Musketeer,Berserker,4,0,4,0.6097,0.8828
-Musketeer,Dart Goblin,7,4,11,0.6097,0.6188
-Musketeer,Electro Spirit,10,6,16,0.6097,0.6128
-Musketeer,Electro Wizard,3,2,5,0.6097,0.579
-Musketeer,Elixir Golem,1,0,1,0.6097,0.82
-Musketeer,Executioner,2,3,5,0.6097,0.421
-Musketeer,Fireball,13,5,18,0.6097,0.7025
-Musketeer,Fisherman,1,0,1,0.6097,0.82
-Musketeer,Flying Machine,10,5,15,0.6097,0.6496
-Musketeer,Furnace,2,0,2,0.6097,0.8472
-Musketeer,Giant,5,4,9,0.6097,0.5473
-Musketeer,Giant Snowball,2,0,2,0.6097,0.8472
-Musketeer,Goblin Barrel,13,4,17,0.6097,0.7401
-Musketeer,Goblin Demolisher,2,4,6,0.6097,0.3785
-Musketeer,Goblin Drill,1,0,1,0.6097,0.82
-Musketeer,Goblin Giant,1,0,1,0.6097,0.82
-Musketeer,Goblin Hut,8,8,16,0.6097,0.5
-Musketeer,Golem,3,0,3,0.6097,0.8673
-Musketeer,Graveyard,2,6,8,0.6097,0.374
-Musketeer,Hunter,1,0,1,0.6097,0.82
-Musketeer,Ice Spirit,9,5,14,0.6097,0.6274
-Musketeer,Ice Wizard,0,0,0,0.6097,0.5625
-Musketeer,Inferno Tower,1,0,1,0.6097,0.82
-Musketeer,Knight,12,10,22,0.6097,0.542
-Musketeer,Lava Hound,1,0,1,0.6097,0.82
-Musketeer,Mega Knight,0,0,0,0.6097,0.5625
-Musketeer,Mortar,1,0,1,0.6097,0.82
-Musketeer,Mother Witch,1,0,1,0.6097,0.82
-Musketeer,Night Witch,0,1,1,0.6097,0.404
-Musketeer,P.E.K.K.A,0,0,0,0.6097,0.5625
-Musketeer,Poison,2,3,5,0.6097,0.421
-Musketeer,Princess,2,0,2,0.6097,0.8472
-Musketeer,Rage,3,0,3,0.6097,0.8673
-Musketeer,Ram Rider,3,1,4,0.6097,0.6914
-Musketeer,Rascals,8,8,16,0.6097,0.5
-Musketeer,Rocket,1,0,1,0.6097,0.82
-Musketeer,Royal Delivery,3,0,3,0.6097,0.8673
-Musketeer,Royal Giant,0,0,0,0.6097,0.5625
-Musketeer,Rune Giant,2,1,3,0.6097,0.6224
-Musketeer,Suspicious Bush,10,4,14,0.6097,0.6911
-Musketeer,The Log,6,9,15,0.6097,0.4102
-Musketeer,Tombstone,9,9,18,0.6097,0.5
-Musketeer,Vines,10,6,16,0.6097,0.6128
-Musketeer,Witch,6,4,10,0.6097,0.5862
-Musketeer,Wizard,1,0,1,0.6097,0.82
-Musketeer,X-Bow,4,2,6,0.6097,0.635
-Musketeer,Zappies,0,0,0,0.6097,0.5625
-Night Witch,Baby Dragon,0,0,0,0.82,0.5625
-Night Witch,Barbarian Hut,1,0,1,0.82,0.82
-Night Witch,Berserker,0,0,0,0.82,0.5625
-Night Witch,Dart Goblin,0,0,0,0.82,0.5625
-Night Witch,Electro Spirit,0,0,0,0.82,0.5625
-Night Witch,Electro Wizard,0,0,0,0.82,0.5625
-Night Witch,Elixir Golem,0,0,0,0.82,0.5625
-Night Witch,Executioner,0,0,0,0.82,0.5625
-Night Witch,Fireball,0,0,0,0.82,0.5625
-Night Witch,Fisherman,0,0,0,0.82,0.5625
-Night Witch,Flying Machine,0,0,0,0.82,0.5625
-Night Witch,Furnace,0,0,0,0.82,0.5625
-Night Witch,Giant,1,0,1,0.82,0.82
-Night Witch,Giant Snowball,0,0,0,0.82,0.5625
-Night Witch,Goblin Barrel,0,0,0,0.82,0.5625
-Night Witch,Goblin Demolisher,0,0,0,0.82,0.5625
-Night Witch,Goblin Drill,0,0,0,0.82,0.5625
-Night Witch,Goblin Giant,0,0,0,0.82,0.5625
-Night Witch,Goblin Hut,1,0,1,0.82,0.82
-Night Witch,Golem,0,0,0,0.82,0.5625
-Night Witch,Graveyard,0,0,0,0.82,0.5625
-Night Witch,Hunter,0,0,0,0.82,0.5625
-Night Witch,Ice Spirit,0,0,0,0.82,0.5625
-Night Witch,Ice Wizard,0,0,0,0.82,0.5625
-Night Witch,Inferno Tower,0,0,0,0.82,0.5625
-Night Witch,Knight,1,0,1,0.82,0.82
-Night Witch,Lava Hound,0,0,0,0.82,0.5625
-Night Witch,Mega Knight,0,0,0,0.82,0.5625
-Night Witch,Mortar,0,0,0,0.82,0.5625
-Night Witch,Mother Witch,0,0,0,0.82,0.5625
-Night Witch,Musketeer,1,0,1,0.82,0.82
-Night Witch,P.E.K.K.A,0,0,0,0.82,0.5625
-Night Witch,Poison,0,0,0,0.82,0.5625
-Night Witch,Princess,0,0,0,0.82,0.5625
-Night Witch,Rage,0,0,0,0.82,0.5625
-Night Witch,Ram Rider,1,0,1,0.82,0.82
-Night Witch,Rascals,0,0,0,0.82,0.5625
-Night Witch,Rocket,0,0,0,0.82,0.5625
-Night Witch,Royal Delivery,1,0,1,0.82,0.82
-Night Witch,Royal Giant,0,0,0,0.82,0.5625
-Night Witch,Rune Giant,0,0,0,0.82,0.5625
-Night Witch,Suspicious Bush,0,0,0,0.82,0.5625
-Night Witch,The Log,0,0,0,0.82,0.5625
-Night Witch,Tombstone,0,0,0,0.82,0.5625
-Night Witch,Vines,1,0,1,0.82,0.82
-Night Witch,Witch,0,0,0,0.82,0.5625
-Night Witch,Wizard,0,0,0,0.82,0.5625
-Night Witch,X-Bow,0,0,0,0.82,0.5625
-Night Witch,Zappies,0,0,0,0.82,0.5625
-P.E.K.K.A,Baby Dragon,0,0,0,0.3898,0.5625
-P.E.K.K.A,Barbarian Hut,0,0,0,0.3898,0.5625
-P.E.K.K.A,Berserker,0,0,0,0.3898,0.5625
-P.E.K.K.A,Dart Goblin,0,1,1,0.3898,0.404
-P.E.K.K.A,Electro Spirit,1,2,3,0.3898,0.3898
-P.E.K.K.A,Electro Wizard,1,1,2,0.3898,0.5
-P.E.K.K.A,Elixir Golem,0,0,0,0.3898,0.5625
-P.E.K.K.A,Executioner,0,1,1,0.3898,0.404
-P.E.K.K.A,Fireball,1,1,2,0.3898,0.5
-P.E.K.K.A,Fisherman,0,0,0,0.3898,0.5625
-P.E.K.K.A,Flying Machine,0,0,0,0.3898,0.5625
-P.E.K.K.A,Furnace,0,0,0,0.3898,0.5625
-P.E.K.K.A,Giant,0,0,0,0.3898,0.5625
-P.E.K.K.A,Giant Snowball,0,0,0,0.3898,0.5625
-P.E.K.K.A,Goblin Barrel,1,0,1,0.3898,0.82
-P.E.K.K.A,Goblin Demolisher,0,0,0,0.3898,0.5625
-P.E.K.K.A,Goblin Drill,0,0,0,0.3898,0.5625
-P.E.K.K.A,Goblin Giant,0,0,0,0.3898,0.5625
-P.E.K.K.A,Goblin Hut,0,2,2,0.3898,0.3958
-P.E.K.K.A,Golem,1,0,1,0.3898,0.82
-P.E.K.K.A,Graveyard,0,2,2,0.3898,0.3958
-P.E.K.K.A,Hunter,0,0,0,0.3898,0.5625
-P.E.K.K.A,Ice Spirit,0,0,0,0.3898,0.5625
-P.E.K.K.A,Ice Wizard,0,0,0,0.3898,0.5625
-P.E.K.K.A,Inferno Tower,0,0,0,0.3898,0.5625
-P.E.K.K.A,Knight,0,1,1,0.3898,0.404
-P.E.K.K.A,Lava Hound,0,0,0,0.3898,0.5625
-P.E.K.K.A,Mega Knight,0,0,0,0.3898,0.5625
-P.E.K.K.A,Mortar,0,0,0,0.3898,0.5625
-P.E.K.K.A,Mother Witch,0,0,0,0.3898,0.5625
-P.E.K.K.A,Musketeer,0,0,0,0.3898,0.5625
-P.E.K.K.A,Night Witch,0,0,0,0.3898,0.5625
-P.E.K.K.A,Poison,0,1,1,0.3898,0.404
-P.E.K.K.A,Princess,1,0,1,0.3898,0.82
-P.E.K.K.A,Rage,0,0,0,0.3898,0.5625
-P.E.K.K.A,Ram Rider,0,0,0,0.3898,0.5625
-P.E.K.K.A,Rascals,0,2,2,0.3898,0.3958
-P.E.K.K.A,Rocket,0,0,0,0.3898,0.5625
-P.E.K.K.A,Royal Delivery,0,0,0,0.3898,0.5625
-P.E.K.K.A,Royal Giant,0,0,0,0.3898,0.5625
-P.E.K.K.A,Rune Giant,0,0,0,0.3898,0.5625
-P.E.K.K.A,Suspicious Bush,0,0,0,0.3898,0.5625
-P.E.K.K.A,The Log,0,0,0,0.3898,0.5625
-P.E.K.K.A,Tombstone,1,1,2,0.3898,0.5
-P.E.K.K.A,Vines,0,0,0,0.3898,0.5625
-P.E.K.K.A,Witch,0,1,1,0.3898,0.404
-P.E.K.K.A,Wizard,1,0,1,0.3898,0.82
-P.E.K.K.A,X-Bow,0,0,0,0.3898,0.5625
-P.E.K.K.A,Zappies,0,0,0,0.3898,0.5625
-Poison,Baby Dragon,3,1,4,0.6553,0.6914
-Poison,Barbarian Hut,1,0,1,0.6553,0.82
-Poison,Berserker,3,0,3,0.6553,0.8673
-Poison,Dart Goblin,4,1,5,0.6553,0.737
-Poison,Electro Spirit,8,5,13,0.6553,0.6022
-Poison,Electro Wizard,2,2,4,0.6553,0.5
-Poison,Elixir Golem,0,0,0,0.6553,0.5625
-Poison,Executioner,0,2,2,0.6553,0.3958
-Poison,Fireball,11,2,13,0.6553,0.8066
-Poison,Fisherman,0,0,0,0.6553,0.5625
-Poison,Flying Machine,7,3,10,0.6553,0.6724
-Poison,Furnace,1,0,1,0.6553,0.82
-Poison,Giant,3,0,3,0.6553,0.8673
-Poison,Giant Snowball,0,0,0,0.6553,0.5625
-Poison,Goblin Barrel,7,1,8,0.6553,0.8151
-Poison,Goblin Demolisher,2,2,4,0.6553,0.5
-Poison,Goblin Drill,0,0,0,0.6553,0.5625
-Poison,Goblin Giant,0,0,0,0.6553,0.5625
-Poison,Goblin Hut,6,5,11,0.6553,0.5396
-Poison,Golem,4,1,5,0.6553,0.737
-Poison,Graveyard,1,3,4,0.6553,0.3852
-Poison,Hunter,1,0,1,0.6553,0.82
-Poison,Ice Spirit,6,2,8,0.6553,0.7101
-Poison,Ice Wizard,0,0,0,0.6553,0.5625
-Poison,Inferno Tower,0,0,0,0.6553,0.5625
-Poison,Knight,8,8,16,0.6553,0.5
-Poison,Lava Hound,0,0,0,0.6553,0.5625
-Poison,Mega Knight,0,1,1,0.6553,0.404
-Poison,Mortar,1,0,1,0.6553,0.82
-Poison,Mother Witch,1,0,1,0.6553,0.82
-Poison,Musketeer,3,2,5,0.6553,0.579
-Poison,Night Witch,0,0,0,0.6553,0.5625
-Poison,P.E.K.K.A,1,0,1,0.6553,0.82
-Poison,Princess,1,1,2,0.6553,0.5
-Poison,Rage,0,0,0,0.6553,0.5625
-Poison,Ram Rider,0,1,1,0.6553,0.404
-Poison,Rascals,6,4,10,0.6553,0.5862
-Poison,Rocket,0,0,0,0.6553,0.5625
-Poison,Royal Delivery,2,0,2,0.6553,0.8472
-Poison,Royal Giant,1,0,1,0.6553,0.82
-Poison,Rune Giant,1,0,1,0.6553,0.82
-Poison,Suspicious Bush,7,1,8,0.6553,0.8151
-Poison,The Log,6,5,11,0.6553,0.5396
-Poison,Tombstone,4,4,8,0.6553,0.5
-Poison,Vines,7,3,10,0.6553,0.6724
-Poison,Witch,5,2,7,0.6553,0.6771
-Poison,Wizard,2,0,2,0.6553,0.8472
-Poison,X-Bow,2,2,4,0.6553,0.5
-Poison,Zappies,0,0,0,0.6553,0.5625
-Princess,Baby Dragon,0,0,0,0.5,0.5625
-Princess,Barbarian Hut,0,1,1,0.5,0.404
-Princess,Berserker,0,0,0,0.5,0.5625
-Princess,Dart Goblin,1,0,1,0.5,0.82
-Princess,Electro Spirit,0,0,0,0.5,0.5625
-Princess,Electro Wizard,0,0,0,0.5,0.5625
-Princess,Elixir Golem,1,0,1,0.5,0.82
-Princess,Executioner,0,0,0,0.5,0.5625
-Princess,Fireball,1,1,2,0.5,0.5
-Princess,Fisherman,1,0,1,0.5,0.82
-Princess,Flying Machine,0,1,1,0.5,0.404
-Princess,Furnace,0,0,0,0.5,0.5625
-Princess,Giant,0,0,0,0.5,0.5625
-Princess,Giant Snowball,0,0,0,0.5,0.5625
-Princess,Goblin Barrel,0,1,1,0.5,0.404
-Princess,Goblin Demolisher,0,0,0,0.5,0.5625
-Princess,Goblin Drill,0,0,0,0.5,0.5625
-Princess,Goblin Giant,0,0,0,0.5,0.5625
-Princess,Goblin Hut,0,0,0,0.5,0.5625
-Princess,Golem,1,0,1,0.5,0.82
-Princess,Graveyard,0,0,0,0.5,0.5625
-Princess,Hunter,0,0,0,0.5,0.5625
-Princess,Ice Spirit,1,0,1,0.5,0.82
-Princess,Ice Wizard,0,0,0,0.5,0.5625
-Princess,Inferno Tower,0,0,0,0.5,0.5625
-Princess,Knight,1,2,3,0.5,0.3898
-Princess,Lava Hound,0,1,1,0.5,0.404
-Princess,Mega Knight,0,0,0,0.5,0.5625
-Princess,Mortar,0,0,0,0.5,0.5625
-Princess,Mother Witch,0,0,0,0.5,0.5625
-Princess,Musketeer,0,2,2,0.5,0.3958
-Princess,Night Witch,0,0,0,0.5,0.5625
-Princess,P.E.K.K.A,0,1,1,0.5,0.404
-Princess,Poison,1,1,2,0.5,0.5
-Princess,Rage,1,0,1,0.5,0.82
-Princess,Ram Rider,1,0,1,0.5,0.82
-Princess,Rascals,0,0,0,0.5,0.5625
-Princess,Rocket,0,0,0,0.5,0.5625
-Princess,Royal Delivery,0,1,1,0.5,0.404
-Princess,Royal Giant,0,0,0,0.5,0.5625
-Princess,Rune Giant,0,0,0,0.5,0.5625
-Princess,Suspicious Bush,2,1,3,0.5,0.6224
-Princess,The Log,1,1,2,0.5,0.5
-Princess,Tombstone,2,1,3,0.5,0.6224
-Princess,Vines,0,1,1,0.5,0.404
-Princess,Witch,1,0,1,0.5,0.82
-Princess,Wizard,0,0,0,0.5,0.5625
-Princess,X-Bow,0,0,0,0.5,0.5625
-Princess,Zappies,0,0,0,0.5,0.5625
-Rage,Baby Dragon,0,0,0,0.3852,0.5625
-Rage,Barbarian Hut,0,1,1,0.3852,0.404
-Rage,Berserker,0,0,0,0.3852,0.5625
-Rage,Dart Goblin,0,0,0,0.3852,0.5625
-Rage,Electro Spirit,0,0,0,0.3852,0.5625
-Rage,Electro Wizard,1,0,1,0.3852,0.82
-Rage,Elixir Golem,0,0,0,0.3852,0.5625
-Rage,Executioner,0,0,0,0.3852,0.5625
-Rage,Fireball,1,1,2,0.3852,0.5
-Rage,Fisherman,0,0,0,0.3852,0.5625
-Rage,Flying Machine,0,0,0,0.3852,0.5625
-Rage,Furnace,0,0,0,0.3852,0.5625
-Rage,Giant,1,1,2,0.3852,0.5
-Rage,Giant Snowball,0,0,0,0.3852,0.5625
-Rage,Goblin Barrel,0,3,3,0.3852,0.3898
-Rage,Goblin Demolisher,0,0,0,0.3852,0.5625
-Rage,Goblin Drill,0,0,0,0.3852,0.5625
-Rage,Goblin Giant,0,0,0,0.3852,0.5625
-Rage,Goblin Hut,1,1,2,0.3852,0.5
-Rage,Golem,0,1,1,0.3852,0.404
-Rage,Graveyard,0,0,0,0.3852,0.5625
-Rage,Hunter,0,0,0,0.3852,0.5625
-Rage,Ice Spirit,1,2,3,0.3852,0.3898
-Rage,Ice Wizard,0,0,0,0.3852,0.5625
-Rage,Inferno Tower,0,0,0,0.3852,0.5625
-Rage,Knight,0,1,1,0.3852,0.404
-Rage,Lava Hound,0,1,1,0.3852,0.404
-Rage,Mega Knight,0,0,0,0.3852,0.5625
-Rage,Mortar,0,0,0,0.3852,0.5625
-Rage,Mother Witch,0,0,0,0.3852,0.5625
-Rage,Musketeer,0,3,3,0.3852,0.3898
-Rage,Night Witch,0,0,0,0.3852,0.5625
-Rage,P.E.K.K.A,0,0,0,0.3852,0.5625
-Rage,Poison,0,0,0,0.3852,0.5625
-Rage,Princess,0,1,1,0.3852,0.404
-Rage,Ram Rider,0,1,1,0.3852,0.404
-Rage,Rascals,0,0,0,0.3852,0.5625
-Rage,Rocket,0,0,0,0.3852,0.5625
-Rage,Royal Delivery,1,3,4,0.3852,0.3852
-Rage,Royal Giant,0,0,0,0.3852,0.5625
-Rage,Rune Giant,1,0,1,0.3852,0.82
-Rage,Suspicious Bush,1,1,2,0.3852,0.5
-Rage,The Log,0,1,1,0.3852,0.404
-Rage,Tombstone,0,1,1,0.3852,0.404
-Rage,Vines,0,1,1,0.3852,0.404
-Rage,Witch,0,0,0,0.3852,0.5625
-Rage,Wizard,0,0,0,0.3852,0.5625
-Rage,X-Bow,0,0,0,0.3852,0.5625
-Rage,Zappies,0,0,0,0.3852,0.5625
-Ram Rider,Baby Dragon,1,1,2,0.5,0.5
-Ram Rider,Barbarian Hut,0,3,3,0.5,0.3898
-Ram Rider,Berserker,0,0,0,0.5,0.5625
-Ram Rider,Dart Goblin,0,2,2,0.5,0.3958
-Ram Rider,Electro Spirit,0,0,0,0.5,0.5625
-Ram Rider,Electro Wizard,1,0,1,0.5,0.82
-Ram Rider,Elixir Golem,1,0,1,0.5,0.82
-Ram Rider,Executioner,2,2,4,0.5,0.5
-Ram Rider,Fireball,4,3,7,0.5,0.559
-Ram Rider,Fisherman,1,0,1,0.5,0.82
-Ram Rider,Flying Machine,2,0,2,0.5,0.8472
-Ram Rider,Furnace,0,0,0,0.5,0.5625
-Ram Rider,Giant,3,4,7,0.5,0.441
-Ram Rider,Giant Snowball,1,0,1,0.5,0.82
-Ram Rider,Goblin Barrel,4,4,8,0.5,0.5
-Ram Rider,Goblin Demolisher,0,1,1,0.5,0.404
-Ram Rider,Goblin Drill,1,0,1,0.5,0.82
-Ram Rider,Goblin Giant,0,0,0,0.5,0.5625
-Ram Rider,Goblin Hut,2,3,5,0.5,0.421
-Ram Rider,Golem,0,0,0,0.5,0.5625
-Ram Rider,Graveyard,1,2,3,0.5,0.3898
-Ram Rider,Hunter,0,0,0,0.5,0.5625
-Ram Rider,Ice Spirit,5,4,9,0.5,0.5473
-Ram Rider,Ice Wizard,0,0,0,0.5,0.5625
-Ram Rider,Inferno Tower,1,0,1,0.5,0.82
-Ram Rider,Knight,3,3,6,0.5,0.5
-Ram Rider,Lava Hound,0,1,1,0.5,0.404
-Ram Rider,Mega Knight,0,0,0,0.5,0.5625
-Ram Rider,Mortar,0,0,0,0.5,0.5625
-Ram Rider,Mother Witch,0,0,0,0.5,0.5625
-Ram Rider,Musketeer,1,3,4,0.5,0.3852
-Ram Rider,Night Witch,0,1,1,0.5,0.404
-Ram Rider,P.E.K.K.A,0,0,0,0.5,0.5625
-Ram Rider,Poison,1,0,1,0.5,0.82
-Ram Rider,Princess,0,1,1,0.5,0.404
-Ram Rider,Rage,1,0,1,0.5,0.82
-Ram Rider,Rascals,2,2,4,0.5,0.5
-Ram Rider,Rocket,0,0,0,0.5,0.5625
-Ram Rider,Royal Delivery,3,2,5,0.5,0.579
-Ram Rider,Royal Giant,1,0,1,0.5,0.82
-Ram Rider,Rune Giant,2,2,4,0.5,0.5
-Ram Rider,Suspicious Bush,8,6,14,0.5,0.5637
-Ram Rider,The Log,3,5,8,0.5,0.395
-Ram Rider,Tombstone,4,5,9,0.5,0.4527
-Ram Rider,Vines,2,4,6,0.5,0.3785
-Ram Rider,Witch,2,0,2,0.5,0.8472
-Ram Rider,Wizard,0,0,0,0.5,0.5625
-Ram Rider,X-Bow,1,0,1,0.5,0.82
-Ram Rider,Zappies,0,0,0,0.5,0.5625
-Rascals,Baby Dragon,5,5,10,0.5,0.5
-Rascals,Barbarian Hut,2,3,5,0.5,0.421
-Rascals,Berserker,1,0,1,0.5,0.82
-Rascals,Dart Goblin,3,6,9,0.5,0.3722
-Rascals,Electro Spirit,7,3,10,0.5,0.6724
-Rascals,Electro Wizard,0,2,2,0.5,0.3958
-Rascals,Elixir Golem,0,0,0,0.5,0.5625
-Rascals,Executioner,0,1,1,0.5,0.404
-Rascals,Fireball,5,4,9,0.5,0.5473
-Rascals,Fisherman,0,0,0,0.5,0.5625
-Rascals,Flying Machine,6,5,11,0.5,0.5396
-Rascals,Furnace,1,0,1,0.5,0.82
-Rascals,Giant,4,5,9,0.5,0.4527
-Rascals,Giant Snowball,0,0,0,0.5,0.5625
-Rascals,Goblin Barrel,4,2,6,0.5,0.635
-Rascals,Goblin Demolisher,0,1,1,0.5,0.404
-Rascals,Goblin Drill,0,0,0,0.5,0.5625
-Rascals,Goblin Giant,1,0,1,0.5,0.82
-Rascals,Goblin Hut,6,6,12,0.5,0.5
-Rascals,Golem,1,0,1,0.5,0.82
-Rascals,Graveyard,2,5,7,0.5,0.376
-Rascals,Hunter,0,0,0,0.5,0.5625
-Rascals,Ice Spirit,3,6,9,0.5,0.3722
-Rascals,Ice Wizard,1,0,1,0.5,0.82
-Rascals,Inferno Tower,0,0,0,0.5,0.5625
-Rascals,Knight,7,11,18,0.5,0.3988
-Rascals,Lava Hound,0,0,0,0.5,0.5625
-Rascals,Mega Knight,0,1,1,0.5,0.404
-Rascals,Mortar,0,0,0,0.5,0.5625
-Rascals,Mother Witch,2,1,3,0.5,0.6224
-Rascals,Musketeer,8,8,16,0.5,0.5
-Rascals,Night Witch,0,0,0,0.5,0.5625
-Rascals,P.E.K.K.A,2,0,2,0.5,0.8472
-Rascals,Poison,4,6,10,0.5,0.4138
-Rascals,Princess,0,0,0,0.5,0.5625
-Rascals,Rage,0,0,0,0.5,0.5625
-Rascals,Ram Rider,2,2,4,0.5,0.5
-Rascals,Rocket,2,0,2,0.5,0.8472
-Rascals,Royal Delivery,4,1,5,0.5,0.737
-Rascals,Royal Giant,2,1,3,0.5,0.6224
-Rascals,Rune Giant,1,1,2,0.5,0.5
-Rascals,Suspicious Bush,8,4,12,0.5,0.6465
-Rascals,The Log,8,12,20,0.5,0.4082
-Rascals,Tombstone,5,8,13,0.5,0.3978
-Rascals,Vines,5,3,8,0.5,0.605
-Rascals,Witch,5,3,8,0.5,0.605
-Rascals,Wizard,1,1,2,0.5,0.5
-Rascals,X-Bow,2,3,5,0.5,0.421
-Rascals,Zappies,0,0,0,0.5,0.5625
-Rocket,Baby Dragon,0,0,0,0.3958,0.5625
-Rocket,Barbarian Hut,0,0,0,0.3958,0.5625
-Rocket,Berserker,0,0,0,0.3958,0.5625
-Rocket,Dart Goblin,0,0,0,0.3958,0.5625
-Rocket,Electro Spirit,0,0,0,0.3958,0.5625
-Rocket,Electro Wizard,0,0,0,0.3958,0.5625
-Rocket,Elixir Golem,0,0,0,0.3958,0.5625
-Rocket,Executioner,0,0,0,0.3958,0.5625
-Rocket,Fireball,0,1,1,0.3958,0.404
-Rocket,Fisherman,0,0,0,0.3958,0.5625
-Rocket,Flying Machine,0,1,1,0.3958,0.404
-Rocket,Furnace,0,0,0,0.3958,0.5625
-Rocket,Giant,0,0,0,0.3958,0.5625
-Rocket,Giant Snowball,0,0,0,0.3958,0.5625
-Rocket,Goblin Barrel,0,1,1,0.3958,0.404
-Rocket,Goblin Demolisher,0,1,1,0.3958,0.404
-Rocket,Goblin Drill,0,0,0,0.3958,0.5625
-Rocket,Goblin Giant,0,0,0,0.3958,0.5625
-Rocket,Goblin Hut,0,0,0,0.3958,0.5625
-Rocket,Golem,0,0,0,0.3958,0.5625
-Rocket,Graveyard,0,1,1,0.3958,0.404
-Rocket,Hunter,0,0,0,0.3958,0.5625
-Rocket,Ice Spirit,0,0,0,0.3958,0.5625
-Rocket,Ice Wizard,0,0,0,0.3958,0.5625
-Rocket,Inferno Tower,0,0,0,0.3958,0.5625
-Rocket,Knight,0,2,2,0.3958,0.3958
-Rocket,Lava Hound,0,0,0,0.3958,0.5625
-Rocket,Mega Knight,0,0,0,0.3958,0.5625
-Rocket,Mortar,0,0,0,0.3958,0.5625
-Rocket,Mother Witch,0,0,0,0.3958,0.5625
-Rocket,Musketeer,0,1,1,0.3958,0.404
-Rocket,Night Witch,0,0,0,0.3958,0.5625
-Rocket,P.E.K.K.A,0,0,0,0.3958,0.5625
-Rocket,Poison,0,0,0,0.3958,0.5625
-Rocket,Princess,0,0,0,0.3958,0.5625
-Rocket,Rage,0,0,0,0.3958,0.5625
-Rocket,Ram Rider,0,0,0,0.3958,0.5625
-Rocket,Rascals,0,2,2,0.3958,0.3958
-Rocket,Royal Delivery,0,1,1,0.3958,0.404
-Rocket,Royal Giant,0,0,0,0.3958,0.5625
-Rocket,Rune Giant,0,0,0,0.3958,0.5625
-Rocket,Suspicious Bush,0,0,0,0.3958,0.5625
-Rocket,The Log,0,2,2,0.3958,0.3958
-Rocket,Tombstone,0,0,0,0.3958,0.5625
-Rocket,Vines,0,1,1,0.3958,0.404
-Rocket,Witch,0,1,1,0.3958,0.404
-Rocket,Wizard,0,0,0,0.3958,0.5625
-Rocket,X-Bow,0,1,1,0.3958,0.404
-Rocket,Zappies,0,0,0,0.3958,0.5625
-Royal Delivery,Baby Dragon,0,1,1,0.3872,0.404
-Royal Delivery,Barbarian Hut,0,2,2,0.3872,0.3958
+Graveyard,Baby Dragon,2,0,2,0.7612,0.625
+Graveyard,Barbarian Hut,2,2,4,0.7612,0.5359
+Graveyard,Berserker,0,0,0,0.7612,0.5625
+Graveyard,Dart Goblin,3,1,4,0.7612,0.6891
+Graveyard,Electro Spirit,6,1,7,0.7612,0.7438
+Graveyard,Electro Wizard,1,2,3,0.7612,0.3776
+Graveyard,Elixir Golem,0,0,0,0.7612,0.5625
+Graveyard,Executioner,0,0,0,0.7612,0.5625
+Graveyard,Fireball,5,5,10,0.7612,0.6036
+Graveyard,Fisherman,0,0,0,0.7612,0.5625
+Graveyard,Flying Machine,5,2,7,0.7612,0.7438
+Graveyard,Furnace,1,0,1,0.7612,0.576
+Graveyard,Giant,1,3,4,0.7612,0.3469
+Graveyard,Giant Snowball,1,0,1,0.7612,0.576
+Graveyard,Goblin Barrel,2,0,2,0.7612,0.625
+Graveyard,Goblin Demolisher,1,2,3,0.7612,0.3776
+Graveyard,Goblin Drill,0,0,0,0.7612,0.5625
+Graveyard,Goblin Giant,1,0,1,0.7612,0.576
+Graveyard,Goblin Hut,6,6,12,0.7612,0.6152
+Graveyard,Golem,3,0,3,0.7612,0.6612
+Graveyard,Hunter,0,0,0,0.7612,0.5625
+Graveyard,Ice Spirit,3,0,3,0.7612,0.6612
+Graveyard,Ice Wizard,0,0,0,0.7612,0.5625
+Graveyard,Inferno Tower,0,0,0,0.7612,0.5625
+Graveyard,Knight,5,5,10,0.7612,0.6036
+Graveyard,Lava Hound,1,0,1,0.7612,0.576
+Graveyard,Mega Knight,0,0,0,0.7612,0.5625
+Graveyard,Mortar,0,0,0,0.7612,0.5625
+Graveyard,Mother Witch,2,1,3,0.7612,0.6367
+Graveyard,Musketeer,6,5,11,0.7612,0.6494
+Graveyard,Night Witch,0,1,1,0.7612,0.372
+Graveyard,P.E.K.K.A,2,0,2,0.7612,0.625
+Graveyard,Poison,3,1,4,0.7612,0.6891
+Graveyard,Princess,0,0,0,0.7612,0.5625
+Graveyard,Rage,0,0,0,0.7612,0.5625
+Graveyard,Ram Rider,2,4,6,0.7612,0.365
+Graveyard,Rascals,5,4,9,0.7612,0.6438
+Graveyard,Rocket,1,0,1,0.7612,0.576
+Graveyard,Royal Delivery,2,0,2,0.7612,0.625
+Graveyard,Royal Giant,0,0,0,0.7612,0.5625
+Graveyard,Rune Giant,0,0,0,0.7612,0.5625
+Graveyard,Suspicious Bush,2,1,3,0.7612,0.6367
+Graveyard,The Log,4,5,9,0.7612,0.4527
+Graveyard,Tombstone,4,1,5,0.7612,0.7111
+Graveyard,Vines,5,2,7,0.7612,0.7438
+Graveyard,Witch,7,0,7,0.7612,0.7438
+Graveyard,Wizard,1,1,2,0.7612,0.4861
+Graveyard,X-Bow,1,1,2,0.7612,0.4861
+Graveyard,Zappies,0,0,0,0.7612,0.5625
+Hunter,Baby Dragon,0,0,0,0.372,0.5625
+Hunter,Barbarian Hut,0,1,1,0.372,0.372
+Hunter,Berserker,0,1,1,0.372,0.372
+Hunter,Dart Goblin,0,0,0,0.372,0.5625
+Hunter,Electro Spirit,0,1,1,0.372,0.372
+Hunter,Electro Wizard,0,0,0,0.372,0.5625
+Hunter,Elixir Golem,0,0,0,0.372,0.5625
+Hunter,Executioner,0,0,0,0.372,0.5625
+Hunter,Fireball,0,0,0,0.372,0.5625
+Hunter,Fisherman,0,0,0,0.372,0.5625
+Hunter,Flying Machine,0,0,0,0.372,0.5625
+Hunter,Furnace,0,0,0,0.372,0.5625
+Hunter,Giant,0,0,0,0.372,0.5625
+Hunter,Giant Snowball,0,0,0,0.372,0.5625
+Hunter,Goblin Barrel,0,0,0,0.372,0.5625
+Hunter,Goblin Demolisher,0,0,0,0.372,0.5625
+Hunter,Goblin Drill,0,0,0,0.372,0.5625
+Hunter,Goblin Giant,0,0,0,0.372,0.5625
+Hunter,Goblin Hut,0,0,0,0.372,0.5625
+Hunter,Golem,0,0,0,0.372,0.5625
+Hunter,Graveyard,0,0,0,0.372,0.5625
+Hunter,Ice Spirit,0,0,0,0.372,0.5625
+Hunter,Ice Wizard,0,0,0,0.372,0.5625
+Hunter,Inferno Tower,0,0,0,0.372,0.5625
+Hunter,Knight,0,0,0,0.372,0.5625
+Hunter,Lava Hound,0,0,0,0.372,0.5625
+Hunter,Mega Knight,0,0,0,0.372,0.5625
+Hunter,Mortar,0,0,0,0.372,0.5625
+Hunter,Mother Witch,0,0,0,0.372,0.5625
+Hunter,Musketeer,0,1,1,0.372,0.372
+Hunter,Night Witch,0,0,0,0.372,0.5625
+Hunter,P.E.K.K.A,0,0,0,0.372,0.5625
+Hunter,Poison,0,1,1,0.372,0.372
+Hunter,Princess,0,0,0,0.372,0.5625
+Hunter,Rage,0,0,0,0.372,0.5625
+Hunter,Ram Rider,0,0,0,0.372,0.5625
+Hunter,Rascals,0,0,0,0.372,0.5625
+Hunter,Rocket,0,0,0,0.372,0.5625
+Hunter,Royal Delivery,0,0,0,0.372,0.5625
+Hunter,Royal Giant,0,1,1,0.372,0.372
+Hunter,Rune Giant,0,0,0,0.372,0.5625
+Hunter,Suspicious Bush,0,0,0,0.372,0.5625
+Hunter,The Log,0,0,0,0.372,0.5625
+Hunter,Tombstone,0,1,1,0.372,0.372
+Hunter,Vines,0,1,1,0.372,0.372
+Hunter,Witch,0,0,0,0.372,0.5625
+Hunter,Wizard,0,0,0,0.372,0.5625
+Hunter,X-Bow,0,0,0,0.372,0.5625
+Hunter,Zappies,0,0,0,0.372,0.5625
+Ice Spirit,Baby Dragon,6,3,9,0.4867,0.7385
+Ice Spirit,Barbarian Hut,2,5,7,0.4867,0.3347
+Ice Spirit,Berserker,3,1,4,0.4867,0.6891
+Ice Spirit,Dart Goblin,3,5,8,0.4867,0.395
+Ice Spirit,Electro Spirit,8,5,13,0.4867,0.7223
+Ice Spirit,Electro Wizard,0,2,2,0.4867,0.3611
+Ice Spirit,Elixir Golem,0,0,0,0.4867,0.5625
+Ice Spirit,Executioner,2,2,4,0.4867,0.5359
+Ice Spirit,Fireball,10,7,17,0.4867,0.715
+Ice Spirit,Fisherman,0,0,0,0.4867,0.5625
+Ice Spirit,Flying Machine,7,2,9,0.4867,0.7669
+Ice Spirit,Furnace,0,0,0,0.4867,0.5625
+Ice Spirit,Giant,4,5,9,0.4867,0.4527
+Ice Spirit,Giant Snowball,1,0,1,0.4867,0.576
+Ice Spirit,Goblin Barrel,6,1,7,0.4867,0.7438
+Ice Spirit,Goblin Demolisher,0,2,2,0.4867,0.3611
+Ice Spirit,Goblin Drill,1,0,1,0.4867,0.576
+Ice Spirit,Goblin Giant,0,0,0,0.4867,0.5625
+Ice Spirit,Goblin Hut,9,11,20,0.4867,0.4541
+Ice Spirit,Golem,3,2,5,0.4867,0.6321
+Ice Spirit,Graveyard,0,3,3,0.4867,0.3531
+Ice Spirit,Hunter,0,0,0,0.4867,0.5625
+Ice Spirit,Ice Wizard,1,0,1,0.4867,0.576
+Ice Spirit,Inferno Tower,1,0,1,0.4867,0.576
+Ice Spirit,Knight,12,16,28,0.4867,0.433
+Ice Spirit,Lava Hound,1,2,3,0.4867,0.3776
+Ice Spirit,Mega Knight,0,1,1,0.4867,0.372
+Ice Spirit,Mortar,0,0,0,0.4867,0.5625
+Ice Spirit,Mother Witch,2,0,2,0.4867,0.625
+Ice Spirit,Musketeer,5,12,17,0.4867,0.3186
+Ice Spirit,Night Witch,0,1,1,0.4867,0.372
+Ice Spirit,P.E.K.K.A,0,0,0,0.4867,0.5625
+Ice Spirit,Poison,2,6,8,0.4867,0.3319
+Ice Spirit,Princess,0,1,1,0.4867,0.372
+Ice Spirit,Rage,2,1,3,0.4867,0.6367
+Ice Spirit,Ram Rider,4,8,12,0.4867,0.3535
+Ice Spirit,Rascals,6,5,11,0.4867,0.6494
+Ice Spirit,Rocket,0,0,0,0.4867,0.5625
+Ice Spirit,Royal Delivery,3,2,5,0.4867,0.6321
+Ice Spirit,Royal Giant,2,1,3,0.4867,0.6367
+Ice Spirit,Rune Giant,0,0,0,0.4867,0.5625
+Ice Spirit,Suspicious Bush,8,4,12,0.4867,0.7617
+Ice Spirit,The Log,5,10,15,0.4867,0.3504
+Ice Spirit,Tombstone,5,7,12,0.4867,0.4268
+Ice Spirit,Vines,6,8,14,0.4867,0.4363
+Ice Spirit,Witch,4,0,4,0.4867,0.6891
+Ice Spirit,Wizard,0,1,1,0.4867,0.372
+Ice Spirit,X-Bow,2,2,4,0.4867,0.5359
+Ice Spirit,Zappies,0,0,0,0.4867,0.5625
+Ice Wizard,Baby Dragon,0,0,0,0.372,0.5625
+Ice Wizard,Barbarian Hut,0,1,1,0.372,0.372
+Ice Wizard,Berserker,0,0,0,0.372,0.5625
+Ice Wizard,Dart Goblin,0,0,0,0.372,0.5625
+Ice Wizard,Electro Spirit,0,0,0,0.372,0.5625
+Ice Wizard,Electro Wizard,0,0,0,0.372,0.5625
+Ice Wizard,Elixir Golem,0,0,0,0.372,0.5625
+Ice Wizard,Executioner,0,0,0,0.372,0.5625
+Ice Wizard,Fireball,0,1,1,0.372,0.372
+Ice Wizard,Fisherman,0,0,0,0.372,0.5625
+Ice Wizard,Flying Machine,0,0,0,0.372,0.5625
+Ice Wizard,Furnace,0,0,0,0.372,0.5625
+Ice Wizard,Giant,0,0,0,0.372,0.5625
+Ice Wizard,Giant Snowball,0,0,0,0.372,0.5625
+Ice Wizard,Goblin Barrel,0,0,0,0.372,0.5625
+Ice Wizard,Goblin Demolisher,0,0,0,0.372,0.5625
+Ice Wizard,Goblin Drill,0,0,0,0.372,0.5625
+Ice Wizard,Goblin Giant,0,0,0,0.372,0.5625
+Ice Wizard,Goblin Hut,0,1,1,0.372,0.372
+Ice Wizard,Golem,0,0,0,0.372,0.5625
+Ice Wizard,Graveyard,0,0,0,0.372,0.5625
+Ice Wizard,Hunter,0,0,0,0.372,0.5625
+Ice Wizard,Ice Spirit,0,1,1,0.372,0.372
+Ice Wizard,Inferno Tower,0,0,0,0.372,0.5625
+Ice Wizard,Knight,0,1,1,0.372,0.372
+Ice Wizard,Lava Hound,0,0,0,0.372,0.5625
+Ice Wizard,Mega Knight,0,0,0,0.372,0.5625
+Ice Wizard,Mortar,0,0,0,0.372,0.5625
+Ice Wizard,Mother Witch,0,0,0,0.372,0.5625
+Ice Wizard,Musketeer,0,0,0,0.372,0.5625
+Ice Wizard,Night Witch,0,0,0,0.372,0.5625
+Ice Wizard,P.E.K.K.A,0,0,0,0.372,0.5625
+Ice Wizard,Poison,0,0,0,0.372,0.5625
+Ice Wizard,Princess,0,0,0,0.372,0.5625
+Ice Wizard,Rage,0,0,0,0.372,0.5625
+Ice Wizard,Ram Rider,0,0,0,0.372,0.5625
+Ice Wizard,Rascals,0,1,1,0.372,0.372
+Ice Wizard,Rocket,0,0,0,0.372,0.5625
+Ice Wizard,Royal Delivery,0,0,0,0.372,0.5625
+Ice Wizard,Royal Giant,0,1,1,0.372,0.372
+Ice Wizard,Rune Giant,0,1,1,0.372,0.372
+Ice Wizard,Suspicious Bush,0,0,0,0.372,0.5625
+Ice Wizard,The Log,0,0,0,0.372,0.5625
+Ice Wizard,Tombstone,0,0,0,0.372,0.5625
+Ice Wizard,Vines,0,0,0,0.372,0.5625
+Ice Wizard,Witch,0,0,0,0.372,0.5625
+Ice Wizard,Wizard,0,0,0,0.372,0.5625
+Ice Wizard,X-Bow,0,0,0,0.372,0.5625
+Ice Wizard,Zappies,0,0,0,0.372,0.5625
+Inferno Tower,Baby Dragon,0,0,0,0.372,0.5625
+Inferno Tower,Barbarian Hut,0,0,0,0.372,0.5625
+Inferno Tower,Berserker,0,0,0,0.372,0.5625
+Inferno Tower,Dart Goblin,0,0,0,0.372,0.5625
+Inferno Tower,Electro Spirit,0,0,0,0.372,0.5625
+Inferno Tower,Electro Wizard,0,0,0,0.372,0.5625
+Inferno Tower,Elixir Golem,0,0,0,0.372,0.5625
+Inferno Tower,Executioner,0,0,0,0.372,0.5625
+Inferno Tower,Fireball,0,1,1,0.372,0.372
+Inferno Tower,Fisherman,0,0,0,0.372,0.5625
+Inferno Tower,Flying Machine,0,0,0,0.372,0.5625
+Inferno Tower,Furnace,0,0,0,0.372,0.5625
+Inferno Tower,Giant,0,0,0,0.372,0.5625
+Inferno Tower,Giant Snowball,0,0,0,0.372,0.5625
+Inferno Tower,Goblin Barrel,0,0,0,0.372,0.5625
+Inferno Tower,Goblin Demolisher,0,0,0,0.372,0.5625
+Inferno Tower,Goblin Drill,0,0,0,0.372,0.5625
+Inferno Tower,Goblin Giant,0,0,0,0.372,0.5625
+Inferno Tower,Goblin Hut,0,0,0,0.372,0.5625
+Inferno Tower,Golem,0,0,0,0.372,0.5625
+Inferno Tower,Graveyard,0,0,0,0.372,0.5625
+Inferno Tower,Hunter,0,0,0,0.372,0.5625
+Inferno Tower,Ice Spirit,0,1,1,0.372,0.372
+Inferno Tower,Ice Wizard,0,0,0,0.372,0.5625
+Inferno Tower,Knight,0,0,0,0.372,0.5625
+Inferno Tower,Lava Hound,0,1,1,0.372,0.372
+Inferno Tower,Mega Knight,0,0,0,0.372,0.5625
+Inferno Tower,Mortar,0,0,0,0.372,0.5625
+Inferno Tower,Mother Witch,0,0,0,0.372,0.5625
+Inferno Tower,Musketeer,0,1,1,0.372,0.372
+Inferno Tower,Night Witch,0,0,0,0.372,0.5625
+Inferno Tower,P.E.K.K.A,0,0,0,0.372,0.5625
+Inferno Tower,Poison,0,0,0,0.372,0.5625
+Inferno Tower,Princess,0,0,0,0.372,0.5625
+Inferno Tower,Rage,0,0,0,0.372,0.5625
+Inferno Tower,Ram Rider,0,1,1,0.372,0.372
+Inferno Tower,Rascals,0,0,0,0.372,0.5625
+Inferno Tower,Rocket,0,0,0,0.372,0.5625
+Inferno Tower,Royal Delivery,0,0,0,0.372,0.5625
+Inferno Tower,Royal Giant,0,0,0,0.372,0.5625
+Inferno Tower,Rune Giant,0,0,0,0.372,0.5625
+Inferno Tower,Suspicious Bush,0,0,0,0.372,0.5625
+Inferno Tower,The Log,0,1,1,0.372,0.372
+Inferno Tower,Tombstone,0,1,1,0.372,0.372
+Inferno Tower,Vines,0,1,1,0.372,0.372
+Inferno Tower,Witch,0,0,0,0.372,0.5625
+Inferno Tower,Wizard,0,0,0,0.372,0.5625
+Inferno Tower,X-Bow,0,0,0,0.372,0.5625
+Inferno Tower,Zappies,0,0,0,0.372,0.5625
+Knight,Baby Dragon,6,2,8,0.7677,0.7562
+Knight,Barbarian Hut,2,4,6,0.7677,0.365
+Knight,Berserker,3,1,4,0.7677,0.6891
+Knight,Dart Goblin,4,1,5,0.7677,0.7111
+Knight,Electro Spirit,10,4,14,0.7677,0.8028
+Knight,Electro Wizard,6,4,10,0.7677,0.6898
+Knight,Elixir Golem,1,0,1,0.7677,0.576
+Knight,Executioner,0,2,2,0.7677,0.3611
+Knight,Fireball,9,6,15,0.7677,0.718
+Knight,Fisherman,1,0,1,0.7677,0.576
+Knight,Flying Machine,9,2,11,0.7677,0.784
+Knight,Furnace,2,0,2,0.7677,0.625
+Knight,Giant,4,4,8,0.7677,0.5882
+Knight,Giant Snowball,2,0,2,0.7677,0.625
+Knight,Goblin Barrel,9,5,14,0.7677,0.7518
+Knight,Goblin Demolisher,1,2,3,0.7677,0.3776
+Knight,Goblin Drill,0,0,0,0.7677,0.5625
+Knight,Goblin Giant,1,0,1,0.7677,0.576
+Knight,Goblin Hut,6,6,12,0.7677,0.6152
+Knight,Golem,5,3,8,0.7677,0.6932
+Knight,Graveyard,5,5,10,0.7677,0.6036
+Knight,Hunter,0,0,0,0.7677,0.5625
+Knight,Ice Spirit,16,12,28,0.7677,0.724
+Knight,Ice Wizard,1,0,1,0.7677,0.576
+Knight,Inferno Tower,0,0,0,0.7677,0.5625
+Knight,Lava Hound,0,1,1,0.7677,0.372
+Knight,Mega Knight,0,1,1,0.7677,0.372
+Knight,Mortar,0,0,0,0.7677,0.5625
+Knight,Mother Witch,2,1,3,0.7677,0.6367
+Knight,Musketeer,10,13,23,0.7677,0.4395
+Knight,Night Witch,0,2,2,0.7677,0.3611
+Knight,P.E.K.K.A,1,0,1,0.7677,0.576
+Knight,Poison,10,8,18,0.7677,0.6884
+Knight,Princess,2,1,3,0.7677,0.6367
+Knight,Rage,1,0,1,0.7677,0.576
+Knight,Ram Rider,3,4,7,0.7677,0.441
+Knight,Rascals,11,7,18,0.7677,0.739
+Knight,Rocket,2,0,2,0.7677,0.625
+Knight,Royal Delivery,4,3,7,0.7677,0.6375
+Knight,Royal Giant,4,1,5,0.7677,0.7111
+Knight,Rune Giant,5,2,7,0.7677,0.7438
+Knight,Suspicious Bush,15,5,20,0.7677,0.8266
+Knight,The Log,8,12,20,0.7677,0.4082
+Knight,Tombstone,14,9,23,0.7677,0.7499
+Knight,Vines,7,9,16,0.7677,0.4436
+Knight,Witch,8,2,10,0.7677,0.776
+Knight,Wizard,1,0,1,0.7677,0.576
+Knight,X-Bow,5,0,5,0.7677,0.7111
+Knight,Zappies,0,0,0,0.7677,0.5625
+Lava Hound,Baby Dragon,0,0,0,0.6891,0.5625
+Lava Hound,Barbarian Hut,0,1,1,0.6891,0.372
+Lava Hound,Berserker,0,0,0,0.6891,0.5625
+Lava Hound,Dart Goblin,0,0,0,0.6891,0.5625
+Lava Hound,Electro Spirit,0,0,0,0.6891,0.5625
+Lava Hound,Electro Wizard,2,0,2,0.6891,0.625
+Lava Hound,Elixir Golem,0,0,0,0.6891,0.5625
+Lava Hound,Executioner,1,1,2,0.6891,0.4861
+Lava Hound,Fireball,1,0,1,0.6891,0.576
+Lava Hound,Fisherman,0,0,0,0.6891,0.5625
+Lava Hound,Flying Machine,0,0,0,0.6891,0.5625
+Lava Hound,Furnace,0,0,0,0.6891,0.5625
+Lava Hound,Giant,2,0,2,0.6891,0.625
+Lava Hound,Giant Snowball,2,0,2,0.6891,0.625
+Lava Hound,Goblin Barrel,1,0,1,0.6891,0.576
+Lava Hound,Goblin Demolisher,0,0,0,0.6891,0.5625
+Lava Hound,Goblin Drill,0,0,0,0.6891,0.5625
+Lava Hound,Goblin Giant,0,0,0,0.6891,0.5625
+Lava Hound,Goblin Hut,2,0,2,0.6891,0.625
+Lava Hound,Golem,0,0,0,0.6891,0.5625
+Lava Hound,Graveyard,0,1,1,0.6891,0.372
+Lava Hound,Hunter,0,0,0,0.6891,0.5625
+Lava Hound,Ice Spirit,2,1,3,0.6891,0.6367
+Lava Hound,Ice Wizard,0,0,0,0.6891,0.5625
+Lava Hound,Inferno Tower,1,0,1,0.6891,0.576
+Lava Hound,Knight,1,0,1,0.6891,0.576
+Lava Hound,Mega Knight,0,0,0,0.6891,0.5625
+Lava Hound,Mortar,0,0,0,0.6891,0.5625
+Lava Hound,Mother Witch,0,0,0,0.6891,0.5625
+Lava Hound,Musketeer,0,1,1,0.6891,0.372
+Lava Hound,Night Witch,0,0,0,0.6891,0.5625
+Lava Hound,P.E.K.K.A,0,0,0,0.6891,0.5625
+Lava Hound,Poison,0,0,0,0.6891,0.5625
+Lava Hound,Princess,1,0,1,0.6891,0.576
+Lava Hound,Rage,1,0,1,0.6891,0.576
+Lava Hound,Ram Rider,1,0,1,0.6891,0.576
+Lava Hound,Rascals,0,0,0,0.6891,0.5625
+Lava Hound,Rocket,0,0,0,0.6891,0.5625
+Lava Hound,Royal Delivery,2,0,2,0.6891,0.625
+Lava Hound,Royal Giant,0,0,0,0.6891,0.5625
+Lava Hound,Rune Giant,2,1,3,0.6891,0.6367
+Lava Hound,Suspicious Bush,2,1,3,0.6891,0.6367
+Lava Hound,The Log,0,1,1,0.6891,0.372
+Lava Hound,Tombstone,0,0,0,0.6891,0.5625
+Lava Hound,Vines,0,0,0,0.6891,0.5625
+Lava Hound,Witch,0,0,0,0.6891,0.5625
+Lava Hound,Wizard,0,0,0,0.6891,0.5625
+Lava Hound,X-Bow,0,0,0,0.6891,0.5625
+Lava Hound,Zappies,0,0,0,0.6891,0.5625
+Mega Knight,Baby Dragon,0,0,0,0.625,0.5625
+Mega Knight,Barbarian Hut,0,0,0,0.625,0.5625
+Mega Knight,Berserker,0,0,0,0.625,0.5625
+Mega Knight,Dart Goblin,0,0,0,0.625,0.5625
+Mega Knight,Electro Spirit,0,0,0,0.625,0.5625
+Mega Knight,Electro Wizard,0,0,0,0.625,0.5625
+Mega Knight,Elixir Golem,1,0,1,0.625,0.576
+Mega Knight,Executioner,1,0,1,0.625,0.576
+Mega Knight,Fireball,1,0,1,0.625,0.576
+Mega Knight,Fisherman,1,0,1,0.625,0.576
+Mega Knight,Flying Machine,0,0,0,0.625,0.5625
+Mega Knight,Furnace,0,0,0,0.625,0.5625
+Mega Knight,Giant,0,0,0,0.625,0.5625
+Mega Knight,Giant Snowball,0,0,0,0.625,0.5625
+Mega Knight,Goblin Barrel,1,0,1,0.625,0.576
+Mega Knight,Goblin Demolisher,0,0,0,0.625,0.5625
+Mega Knight,Goblin Drill,0,0,0,0.625,0.5625
+Mega Knight,Goblin Giant,0,0,0,0.625,0.5625
+Mega Knight,Goblin Hut,1,0,1,0.625,0.576
+Mega Knight,Golem,0,0,0,0.625,0.5625
+Mega Knight,Graveyard,0,0,0,0.625,0.5625
+Mega Knight,Hunter,0,0,0,0.625,0.5625
+Mega Knight,Ice Spirit,1,0,1,0.625,0.576
+Mega Knight,Ice Wizard,0,0,0,0.625,0.5625
+Mega Knight,Inferno Tower,0,0,0,0.625,0.5625
+Mega Knight,Knight,1,0,1,0.625,0.576
+Mega Knight,Lava Hound,0,0,0,0.625,0.5625
+Mega Knight,Mortar,0,0,0,0.625,0.5625
+Mega Knight,Mother Witch,0,0,0,0.625,0.5625
+Mega Knight,Musketeer,0,0,0,0.625,0.5625
+Mega Knight,Night Witch,0,0,0,0.625,0.5625
+Mega Knight,P.E.K.K.A,0,0,0,0.625,0.5625
+Mega Knight,Poison,1,0,1,0.625,0.576
+Mega Knight,Princess,0,0,0,0.625,0.5625
+Mega Knight,Rage,0,0,0,0.625,0.5625
+Mega Knight,Ram Rider,0,0,0,0.625,0.5625
+Mega Knight,Rascals,1,0,1,0.625,0.576
+Mega Knight,Rocket,0,0,0,0.625,0.5625
+Mega Knight,Royal Delivery,0,0,0,0.625,0.5625
+Mega Knight,Royal Giant,0,0,0,0.625,0.5625
+Mega Knight,Rune Giant,0,0,0,0.625,0.5625
+Mega Knight,Suspicious Bush,2,0,2,0.625,0.625
+Mega Knight,The Log,1,0,1,0.625,0.576
+Mega Knight,Tombstone,1,0,1,0.625,0.576
+Mega Knight,Vines,1,0,1,0.625,0.576
+Mega Knight,Witch,1,0,1,0.625,0.576
+Mega Knight,Wizard,0,0,0,0.625,0.5625
+Mega Knight,X-Bow,0,0,0,0.625,0.5625
+Mega Knight,Zappies,0,0,0,0.625,0.5625
+Mortar,Baby Dragon,0,0,0,0.372,0.5625
+Mortar,Barbarian Hut,0,1,1,0.372,0.372
+Mortar,Berserker,0,1,1,0.372,0.372
+Mortar,Dart Goblin,0,0,0,0.372,0.5625
+Mortar,Electro Spirit,0,1,1,0.372,0.372
+Mortar,Electro Wizard,0,0,0,0.372,0.5625
+Mortar,Elixir Golem,0,0,0,0.372,0.5625
+Mortar,Executioner,0,0,0,0.372,0.5625
+Mortar,Fireball,0,0,0,0.372,0.5625
+Mortar,Fisherman,0,0,0,0.372,0.5625
+Mortar,Flying Machine,0,0,0,0.372,0.5625
+Mortar,Furnace,0,0,0,0.372,0.5625
+Mortar,Giant,0,0,0,0.372,0.5625
+Mortar,Giant Snowball,0,0,0,0.372,0.5625
+Mortar,Goblin Barrel,0,0,0,0.372,0.5625
+Mortar,Goblin Demolisher,0,0,0,0.372,0.5625
+Mortar,Goblin Drill,0,0,0,0.372,0.5625
+Mortar,Goblin Giant,0,0,0,0.372,0.5625
+Mortar,Goblin Hut,0,0,0,0.372,0.5625
+Mortar,Golem,0,0,0,0.372,0.5625
+Mortar,Graveyard,0,0,0,0.372,0.5625
+Mortar,Hunter,0,0,0,0.372,0.5625
+Mortar,Ice Spirit,0,0,0,0.372,0.5625
+Mortar,Ice Wizard,0,0,0,0.372,0.5625
+Mortar,Inferno Tower,0,0,0,0.372,0.5625
+Mortar,Knight,0,0,0,0.372,0.5625
+Mortar,Lava Hound,0,0,0,0.372,0.5625
+Mortar,Mega Knight,0,0,0,0.372,0.5625
+Mortar,Mother Witch,0,0,0,0.372,0.5625
+Mortar,Musketeer,0,1,1,0.372,0.372
+Mortar,Night Witch,0,0,0,0.372,0.5625
+Mortar,P.E.K.K.A,0,0,0,0.372,0.5625
+Mortar,Poison,0,1,1,0.372,0.372
+Mortar,Princess,0,0,0,0.372,0.5625
+Mortar,Rage,0,0,0,0.372,0.5625
+Mortar,Ram Rider,0,0,0,0.372,0.5625
+Mortar,Rascals,0,0,0,0.372,0.5625
+Mortar,Rocket,0,0,0,0.372,0.5625
+Mortar,Royal Delivery,0,0,0,0.372,0.5625
+Mortar,Royal Giant,0,1,1,0.372,0.372
+Mortar,Rune Giant,0,0,0,0.372,0.5625
+Mortar,Suspicious Bush,0,0,0,0.372,0.5625
+Mortar,The Log,0,0,0,0.372,0.5625
+Mortar,Tombstone,0,1,1,0.372,0.372
+Mortar,Vines,0,1,1,0.372,0.372
+Mortar,Witch,0,0,0,0.372,0.5625
+Mortar,Wizard,0,0,0,0.372,0.5625
+Mortar,X-Bow,0,0,0,0.372,0.5625
+Mortar,Zappies,0,0,0,0.372,0.5625
+Mother Witch,Baby Dragon,0,0,0,0.3469,0.5625
+Mother Witch,Barbarian Hut,0,0,0,0.3469,0.5625
+Mother Witch,Berserker,0,0,0,0.3469,0.5625
+Mother Witch,Dart Goblin,0,0,0,0.3469,0.5625
+Mother Witch,Electro Spirit,1,2,3,0.3469,0.3776
+Mother Witch,Electro Wizard,0,1,1,0.3469,0.372
+Mother Witch,Elixir Golem,0,0,0,0.3469,0.5625
+Mother Witch,Executioner,0,0,0,0.3469,0.5625
+Mother Witch,Fireball,0,2,2,0.3469,0.3611
+Mother Witch,Fisherman,0,0,0,0.3469,0.5625
+Mother Witch,Flying Machine,0,2,2,0.3469,0.3611
+Mother Witch,Furnace,0,0,0,0.3469,0.5625
+Mother Witch,Giant,0,0,0,0.3469,0.5625
+Mother Witch,Giant Snowball,0,0,0,0.3469,0.5625
+Mother Witch,Goblin Barrel,1,0,1,0.3469,0.576
+Mother Witch,Goblin Demolisher,0,1,1,0.3469,0.372
+Mother Witch,Goblin Drill,0,0,0,0.3469,0.5625
+Mother Witch,Goblin Giant,0,0,0,0.3469,0.5625
+Mother Witch,Goblin Hut,0,2,2,0.3469,0.3611
+Mother Witch,Golem,0,0,0,0.3469,0.5625
+Mother Witch,Graveyard,1,2,3,0.3469,0.3776
+Mother Witch,Hunter,0,0,0,0.3469,0.5625
+Mother Witch,Ice Spirit,0,2,2,0.3469,0.3611
+Mother Witch,Ice Wizard,0,0,0,0.3469,0.5625
+Mother Witch,Inferno Tower,0,0,0,0.3469,0.5625
+Mother Witch,Knight,1,2,3,0.3469,0.3776
+Mother Witch,Lava Hound,0,0,0,0.3469,0.5625
+Mother Witch,Mega Knight,0,0,0,0.3469,0.5625
+Mother Witch,Mortar,0,0,0,0.3469,0.5625
+Mother Witch,Musketeer,0,1,1,0.3469,0.372
+Mother Witch,Night Witch,0,0,0,0.3469,0.5625
+Mother Witch,P.E.K.K.A,0,0,0,0.3469,0.5625
+Mother Witch,Poison,0,1,1,0.3469,0.372
+Mother Witch,Princess,0,0,0,0.3469,0.5625
+Mother Witch,Rage,0,0,0,0.3469,0.5625
+Mother Witch,Ram Rider,0,0,0,0.3469,0.5625
+Mother Witch,Rascals,1,2,3,0.3469,0.3776
+Mother Witch,Rocket,0,0,0,0.3469,0.5625
+Mother Witch,Royal Delivery,1,0,1,0.3469,0.576
+Mother Witch,Royal Giant,0,0,0,0.3469,0.5625
+Mother Witch,Rune Giant,0,0,0,0.3469,0.5625
+Mother Witch,Suspicious Bush,0,0,0,0.3469,0.5625
+Mother Witch,The Log,0,1,1,0.3469,0.372
+Mother Witch,Tombstone,0,2,2,0.3469,0.3611
+Mother Witch,Vines,1,1,2,0.3469,0.4861
+Mother Witch,Witch,0,0,0,0.3469,0.5625
+Mother Witch,Wizard,0,0,0,0.3469,0.5625
+Mother Witch,X-Bow,1,0,1,0.3469,0.576
+Mother Witch,Zappies,0,0,0,0.3469,0.5625
+Musketeer,Baby Dragon,5,4,9,0.8067,0.6438
+Musketeer,Barbarian Hut,1,2,3,0.8067,0.3776
+Musketeer,Berserker,4,0,4,0.8067,0.6891
+Musketeer,Dart Goblin,7,4,11,0.8067,0.7286
+Musketeer,Electro Spirit,10,6,16,0.8067,0.7446
+Musketeer,Electro Wizard,5,2,7,0.8067,0.7438
+Musketeer,Elixir Golem,1,0,1,0.8067,0.576
+Musketeer,Executioner,2,3,5,0.8067,0.421
+Musketeer,Fireball,13,5,18,0.8067,0.82
+Musketeer,Fisherman,1,0,1,0.8067,0.576
+Musketeer,Flying Machine,10,5,15,0.8067,0.7778
+Musketeer,Furnace,2,0,2,0.8067,0.625
+Musketeer,Giant,5,4,9,0.8067,0.6438
+Musketeer,Giant Snowball,2,0,2,0.8067,0.625
+Musketeer,Goblin Barrel,15,4,19,0.8067,0.8234
+Musketeer,Goblin Demolisher,2,4,6,0.8067,0.365
+Musketeer,Goblin Drill,1,0,1,0.8067,0.576
+Musketeer,Goblin Giant,1,0,1,0.8067,0.576
+Musketeer,Goblin Hut,8,8,16,0.8067,0.6318
+Musketeer,Golem,3,0,3,0.8067,0.6612
+Musketeer,Graveyard,5,6,11,0.8067,0.4604
+Musketeer,Hunter,1,0,1,0.8067,0.576
+Musketeer,Ice Spirit,12,5,17,0.8067,0.8163
+Musketeer,Ice Wizard,0,0,0,0.8067,0.5625
+Musketeer,Inferno Tower,1,0,1,0.8067,0.576
+Musketeer,Knight,13,10,23,0.8067,0.7096
+Musketeer,Lava Hound,1,0,1,0.8067,0.576
+Musketeer,Mega Knight,0,0,0,0.8067,0.5625
+Musketeer,Mortar,1,0,1,0.8067,0.576
+Musketeer,Mother Witch,1,0,1,0.8067,0.576
+Musketeer,Night Witch,0,1,1,0.8067,0.372
+Musketeer,P.E.K.K.A,0,0,0,0.8067,0.5625
+Musketeer,Poison,5,3,8,0.8067,0.6932
+Musketeer,Princess,3,0,3,0.8067,0.6612
+Musketeer,Rage,3,0,3,0.8067,0.6612
+Musketeer,Ram Rider,3,1,4,0.8067,0.6891
+Musketeer,Rascals,9,8,17,0.8067,0.6616
+Musketeer,Rocket,1,0,1,0.8067,0.576
+Musketeer,Royal Delivery,3,0,3,0.8067,0.6612
+Musketeer,Royal Giant,0,0,0,0.8067,0.5625
+Musketeer,Rune Giant,4,1,5,0.8067,0.7111
+Musketeer,Suspicious Bush,13,4,17,0.8067,0.8163
+Musketeer,The Log,6,9,15,0.8067,0.4102
+Musketeer,Tombstone,12,9,21,0.8067,0.7109
+Musketeer,Vines,10,6,16,0.8067,0.7446
+Musketeer,Witch,6,4,10,0.8067,0.6898
+Musketeer,Wizard,1,0,1,0.8067,0.576
+Musketeer,X-Bow,4,2,6,0.8067,0.702
+Musketeer,Zappies,0,0,0,0.8067,0.5625
+Night Witch,Baby Dragon,0,0,0,0.625,0.5625
+Night Witch,Barbarian Hut,1,0,1,0.625,0.576
+Night Witch,Berserker,0,0,0,0.625,0.5625
+Night Witch,Dart Goblin,0,0,0,0.625,0.5625
+Night Witch,Electro Spirit,0,0,0,0.625,0.5625
+Night Witch,Electro Wizard,0,0,0,0.625,0.5625
+Night Witch,Elixir Golem,0,0,0,0.625,0.5625
+Night Witch,Executioner,0,0,0,0.625,0.5625
+Night Witch,Fireball,0,0,0,0.625,0.5625
+Night Witch,Fisherman,0,0,0,0.625,0.5625
+Night Witch,Flying Machine,0,0,0,0.625,0.5625
+Night Witch,Furnace,0,0,0,0.625,0.5625
+Night Witch,Giant,1,0,1,0.625,0.576
+Night Witch,Giant Snowball,0,0,0,0.625,0.5625
+Night Witch,Goblin Barrel,0,0,0,0.625,0.5625
+Night Witch,Goblin Demolisher,0,0,0,0.625,0.5625
+Night Witch,Goblin Drill,0,0,0,0.625,0.5625
+Night Witch,Goblin Giant,0,0,0,0.625,0.5625
+Night Witch,Goblin Hut,1,0,1,0.625,0.576
+Night Witch,Golem,0,0,0,0.625,0.5625
+Night Witch,Graveyard,1,0,1,0.625,0.576
+Night Witch,Hunter,0,0,0,0.625,0.5625
+Night Witch,Ice Spirit,1,0,1,0.625,0.576
+Night Witch,Ice Wizard,0,0,0,0.625,0.5625
+Night Witch,Inferno Tower,0,0,0,0.625,0.5625
+Night Witch,Knight,2,0,2,0.625,0.625
+Night Witch,Lava Hound,0,0,0,0.625,0.5625
+Night Witch,Mega Knight,0,0,0,0.625,0.5625
+Night Witch,Mortar,0,0,0,0.625,0.5625
+Night Witch,Mother Witch,0,0,0,0.625,0.5625
+Night Witch,Musketeer,1,0,1,0.625,0.576
+Night Witch,P.E.K.K.A,0,0,0,0.625,0.5625
+Night Witch,Poison,1,0,1,0.625,0.576
+Night Witch,Princess,1,0,1,0.625,0.576
+Night Witch,Rage,0,0,0,0.625,0.5625
+Night Witch,Ram Rider,1,0,1,0.625,0.576
+Night Witch,Rascals,1,0,1,0.625,0.576
+Night Witch,Rocket,0,0,0,0.625,0.5625
+Night Witch,Royal Delivery,1,0,1,0.625,0.576
+Night Witch,Royal Giant,0,0,0,0.625,0.5625
+Night Witch,Rune Giant,0,0,0,0.625,0.5625
+Night Witch,Suspicious Bush,1,0,1,0.625,0.576
+Night Witch,The Log,0,0,0,0.625,0.5625
+Night Witch,Tombstone,1,0,1,0.625,0.576
+Night Witch,Vines,1,0,1,0.625,0.576
+Night Witch,Witch,0,0,0,0.625,0.5625
+Night Witch,Wizard,0,0,0,0.625,0.5625
+Night Witch,X-Bow,0,0,0,0.625,0.5625
+Night Witch,Zappies,0,0,0,0.625,0.5625
+P.E.K.K.A,Baby Dragon,0,0,0,0.3773,0.5625
+P.E.K.K.A,Barbarian Hut,0,0,0,0.3773,0.5625
+P.E.K.K.A,Berserker,0,0,0,0.3773,0.5625
+P.E.K.K.A,Dart Goblin,0,1,1,0.3773,0.372
+P.E.K.K.A,Electro Spirit,1,2,3,0.3773,0.3776
+P.E.K.K.A,Electro Wizard,1,1,2,0.3773,0.4861
+P.E.K.K.A,Elixir Golem,0,0,0,0.3773,0.5625
+P.E.K.K.A,Executioner,0,1,1,0.3773,0.372
+P.E.K.K.A,Fireball,1,1,2,0.3773,0.4861
+P.E.K.K.A,Fisherman,0,0,0,0.3773,0.5625
+P.E.K.K.A,Flying Machine,0,0,0,0.3773,0.5625
+P.E.K.K.A,Furnace,0,0,0,0.3773,0.5625
+P.E.K.K.A,Giant,0,0,0,0.3773,0.5625
+P.E.K.K.A,Giant Snowball,0,0,0,0.3773,0.5625
+P.E.K.K.A,Goblin Barrel,1,0,1,0.3773,0.576
+P.E.K.K.A,Goblin Demolisher,0,0,0,0.3773,0.5625
+P.E.K.K.A,Goblin Drill,0,0,0,0.3773,0.5625
+P.E.K.K.A,Goblin Giant,0,0,0,0.3773,0.5625
+P.E.K.K.A,Goblin Hut,0,2,2,0.3773,0.3611
+P.E.K.K.A,Golem,1,0,1,0.3773,0.576
+P.E.K.K.A,Graveyard,0,2,2,0.3773,0.3611
+P.E.K.K.A,Hunter,0,0,0,0.3773,0.5625
+P.E.K.K.A,Ice Spirit,0,0,0,0.3773,0.5625
+P.E.K.K.A,Ice Wizard,0,0,0,0.3773,0.5625
+P.E.K.K.A,Inferno Tower,0,0,0,0.3773,0.5625
+P.E.K.K.A,Knight,0,1,1,0.3773,0.372
+P.E.K.K.A,Lava Hound,0,0,0,0.3773,0.5625
+P.E.K.K.A,Mega Knight,0,0,0,0.3773,0.5625
+P.E.K.K.A,Mortar,0,0,0,0.3773,0.5625
+P.E.K.K.A,Mother Witch,0,0,0,0.3773,0.5625
+P.E.K.K.A,Musketeer,0,0,0,0.3773,0.5625
+P.E.K.K.A,Night Witch,0,0,0,0.3773,0.5625
+P.E.K.K.A,Poison,0,1,1,0.3773,0.372
+P.E.K.K.A,Princess,1,0,1,0.3773,0.576
+P.E.K.K.A,Rage,0,0,0,0.3773,0.5625
+P.E.K.K.A,Ram Rider,0,0,0,0.3773,0.5625
+P.E.K.K.A,Rascals,0,2,2,0.3773,0.3611
+P.E.K.K.A,Rocket,0,0,0,0.3773,0.5625
+P.E.K.K.A,Royal Delivery,0,0,0,0.3773,0.5625
+P.E.K.K.A,Royal Giant,0,0,0,0.3773,0.5625
+P.E.K.K.A,Rune Giant,0,0,0,0.3773,0.5625
+P.E.K.K.A,Suspicious Bush,0,0,0,0.3773,0.5625
+P.E.K.K.A,The Log,0,0,0,0.3773,0.5625
+P.E.K.K.A,Tombstone,1,1,2,0.3773,0.4861
+P.E.K.K.A,Vines,0,0,0,0.3773,0.5625
+P.E.K.K.A,Witch,0,1,1,0.3773,0.372
+P.E.K.K.A,Wizard,1,0,1,0.3773,0.576
+P.E.K.K.A,X-Bow,0,0,0,0.3773,0.5625
+P.E.K.K.A,Zappies,0,0,0,0.3773,0.5625
+Poison,Baby Dragon,3,1,4,0.7427,0.6891
+Poison,Barbarian Hut,1,2,3,0.7427,0.3776
+Poison,Berserker,3,0,3,0.7427,0.6612
+Poison,Dart Goblin,4,1,5,0.7427,0.7111
+Poison,Electro Spirit,8,5,13,0.7427,0.7223
+Poison,Electro Wizard,2,3,5,0.7427,0.421
+Poison,Elixir Golem,0,0,0,0.7427,0.5625
+Poison,Executioner,0,2,2,0.7427,0.3611
+Poison,Fireball,11,4,15,0.7427,0.8078
+Poison,Fisherman,0,0,0,0.7427,0.5625
+Poison,Flying Machine,7,3,10,0.7427,0.776
+Poison,Furnace,1,0,1,0.7427,0.576
+Poison,Giant,3,1,4,0.7427,0.6891
+Poison,Giant Snowball,0,0,0,0.7427,0.5625
+Poison,Goblin Barrel,7,1,8,0.7427,0.7562
+Poison,Goblin Demolisher,2,2,4,0.7427,0.5359
+Poison,Goblin Drill,0,0,0,0.7427,0.5625
+Poison,Goblin Giant,0,0,0,0.7427,0.5625
+Poison,Goblin Hut,6,8,14,0.7427,0.4363
+Poison,Golem,4,1,5,0.7427,0.7111
+Poison,Graveyard,1,3,4,0.7427,0.3469
+Poison,Hunter,1,0,1,0.7427,0.576
+Poison,Ice Spirit,6,2,8,0.7427,0.7562
+Poison,Ice Wizard,0,0,0,0.7427,0.5625
+Poison,Inferno Tower,0,0,0,0.7427,0.5625
+Poison,Knight,8,10,18,0.7427,0.4494
+Poison,Lava Hound,0,0,0,0.7427,0.5625
+Poison,Mega Knight,0,1,1,0.7427,0.372
+Poison,Mortar,1,0,1,0.7427,0.576
+Poison,Mother Witch,1,0,1,0.7427,0.576
+Poison,Musketeer,3,5,8,0.7427,0.395
+Poison,Night Witch,0,1,1,0.7427,0.372
+Poison,P.E.K.K.A,1,0,1,0.7427,0.576
+Poison,Princess,1,1,2,0.7427,0.4861
+Poison,Rage,0,0,0,0.7427,0.5625
+Poison,Ram Rider,0,4,4,0.7427,0.3469
+Poison,Rascals,6,6,12,0.7427,0.6152
+Poison,Rocket,0,0,0,0.7427,0.5625
+Poison,Royal Delivery,2,0,2,0.7427,0.625
+Poison,Royal Giant,1,0,1,0.7427,0.576
+Poison,Rune Giant,1,0,1,0.7427,0.576
+Poison,Suspicious Bush,7,1,8,0.7427,0.7562
+Poison,The Log,6,8,14,0.7427,0.4363
+Poison,Tombstone,4,4,8,0.7427,0.5882
+Poison,Vines,7,4,11,0.7427,0.7286
+Poison,Witch,5,2,7,0.7427,0.7438
+Poison,Wizard,2,0,2,0.7427,0.625
+Poison,X-Bow,2,2,4,0.7427,0.5359
+Poison,Zappies,0,0,0,0.7427,0.5625
+Princess,Baby Dragon,0,0,0,0.421,0.5625
+Princess,Barbarian Hut,0,1,1,0.421,0.372
+Princess,Berserker,0,0,0,0.421,0.5625
+Princess,Dart Goblin,1,0,1,0.421,0.576
+Princess,Electro Spirit,0,0,0,0.421,0.5625
+Princess,Electro Wizard,0,1,1,0.421,0.372
+Princess,Elixir Golem,1,0,1,0.421,0.576
+Princess,Executioner,0,0,0,0.421,0.5625
+Princess,Fireball,1,1,2,0.421,0.4861
+Princess,Fisherman,1,0,1,0.421,0.576
+Princess,Flying Machine,0,1,1,0.421,0.372
+Princess,Furnace,0,0,0,0.421,0.5625
+Princess,Giant,0,1,1,0.421,0.372
+Princess,Giant Snowball,0,0,0,0.421,0.5625
+Princess,Goblin Barrel,0,1,1,0.421,0.372
+Princess,Goblin Demolisher,0,0,0,0.421,0.5625
+Princess,Goblin Drill,0,0,0,0.421,0.5625
+Princess,Goblin Giant,0,0,0,0.421,0.5625
+Princess,Goblin Hut,0,1,1,0.421,0.372
+Princess,Golem,1,0,1,0.421,0.576
+Princess,Graveyard,0,0,0,0.421,0.5625
+Princess,Hunter,0,0,0,0.421,0.5625
+Princess,Ice Spirit,1,0,1,0.421,0.576
+Princess,Ice Wizard,0,0,0,0.421,0.5625
+Princess,Inferno Tower,0,0,0,0.421,0.5625
+Princess,Knight,1,2,3,0.421,0.3776
+Princess,Lava Hound,0,1,1,0.421,0.372
+Princess,Mega Knight,0,0,0,0.421,0.5625
+Princess,Mortar,0,0,0,0.421,0.5625
+Princess,Mother Witch,0,0,0,0.421,0.5625
+Princess,Musketeer,0,3,3,0.421,0.3531
+Princess,Night Witch,0,1,1,0.421,0.372
+Princess,P.E.K.K.A,0,1,1,0.421,0.372
+Princess,Poison,1,1,2,0.421,0.4861
+Princess,Rage,1,0,1,0.421,0.576
+Princess,Ram Rider,1,1,2,0.421,0.4861
+Princess,Rascals,0,0,0,0.421,0.5625
+Princess,Rocket,0,0,0,0.421,0.5625
+Princess,Royal Delivery,0,1,1,0.421,0.372
+Princess,Royal Giant,0,0,0,0.421,0.5625
+Princess,Rune Giant,0,0,0,0.421,0.5625
+Princess,Suspicious Bush,2,1,3,0.421,0.6367
+Princess,The Log,1,2,3,0.421,0.3776
+Princess,Tombstone,2,1,3,0.421,0.6367
+Princess,Vines,0,2,2,0.421,0.3611
+Princess,Witch,1,0,1,0.421,0.576
+Princess,Wizard,0,0,0,0.421,0.5625
+Princess,X-Bow,0,0,0,0.421,0.5625
+Princess,Zappies,0,0,0,0.421,0.5625
+Rage,Baby Dragon,0,0,0,0.3469,0.5625
+Rage,Barbarian Hut,0,1,1,0.3469,0.372
+Rage,Berserker,0,0,0,0.3469,0.5625
+Rage,Dart Goblin,0,0,0,0.3469,0.5625
+Rage,Electro Spirit,0,0,0,0.3469,0.5625
+Rage,Electro Wizard,1,0,1,0.3469,0.576
+Rage,Elixir Golem,0,0,0,0.3469,0.5625
+Rage,Executioner,0,0,0,0.3469,0.5625
+Rage,Fireball,1,1,2,0.3469,0.4861
+Rage,Fisherman,0,0,0,0.3469,0.5625
+Rage,Flying Machine,0,0,0,0.3469,0.5625
+Rage,Furnace,0,0,0,0.3469,0.5625
+Rage,Giant,1,1,2,0.3469,0.4861
+Rage,Giant Snowball,0,0,0,0.3469,0.5625
+Rage,Goblin Barrel,0,3,3,0.3469,0.3531
+Rage,Goblin Demolisher,0,0,0,0.3469,0.5625
+Rage,Goblin Drill,0,0,0,0.3469,0.5625
+Rage,Goblin Giant,0,0,0,0.3469,0.5625
+Rage,Goblin Hut,1,1,2,0.3469,0.4861
+Rage,Golem,0,1,1,0.3469,0.372
+Rage,Graveyard,0,0,0,0.3469,0.5625
+Rage,Hunter,0,0,0,0.3469,0.5625
+Rage,Ice Spirit,1,2,3,0.3469,0.3776
+Rage,Ice Wizard,0,0,0,0.3469,0.5625
+Rage,Inferno Tower,0,0,0,0.3469,0.5625
+Rage,Knight,0,1,1,0.3469,0.372
+Rage,Lava Hound,0,1,1,0.3469,0.372
+Rage,Mega Knight,0,0,0,0.3469,0.5625
+Rage,Mortar,0,0,0,0.3469,0.5625
+Rage,Mother Witch,0,0,0,0.3469,0.5625
+Rage,Musketeer,0,3,3,0.3469,0.3531
+Rage,Night Witch,0,0,0,0.3469,0.5625
+Rage,P.E.K.K.A,0,0,0,0.3469,0.5625
+Rage,Poison,0,0,0,0.3469,0.5625
+Rage,Princess,0,1,1,0.3469,0.372
+Rage,Ram Rider,0,1,1,0.3469,0.372
+Rage,Rascals,0,0,0,0.3469,0.5625
+Rage,Rocket,0,0,0,0.3469,0.5625
+Rage,Royal Delivery,1,3,4,0.3469,0.3469
+Rage,Royal Giant,0,0,0,0.3469,0.5625
+Rage,Rune Giant,1,0,1,0.3469,0.576
+Rage,Suspicious Bush,1,1,2,0.3469,0.4861
+Rage,The Log,0,1,1,0.3469,0.372
+Rage,Tombstone,0,1,1,0.3469,0.372
+Rage,Vines,0,1,1,0.3469,0.372
+Rage,Witch,0,0,0,0.3469,0.5625
+Rage,Wizard,0,0,0,0.3469,0.5625
+Rage,X-Bow,0,0,0,0.3469,0.5625
+Rage,Zappies,0,0,0,0.3469,0.5625
+Ram Rider,Baby Dragon,1,1,2,0.7127,0.4861
+Ram Rider,Barbarian Hut,0,3,3,0.7127,0.3531
+Ram Rider,Berserker,0,0,0,0.7127,0.5625
+Ram Rider,Dart Goblin,0,2,2,0.7127,0.3611
+Ram Rider,Electro Spirit,0,0,0,0.7127,0.5625
+Ram Rider,Electro Wizard,3,0,3,0.7127,0.6612
+Ram Rider,Elixir Golem,1,0,1,0.7127,0.576
+Ram Rider,Executioner,2,2,4,0.7127,0.5359
+Ram Rider,Fireball,4,3,7,0.7127,0.6375
+Ram Rider,Fisherman,1,0,1,0.7127,0.576
+Ram Rider,Flying Machine,2,0,2,0.7127,0.625
+Ram Rider,Furnace,0,0,0,0.7127,0.5625
+Ram Rider,Giant,3,4,7,0.7127,0.441
+Ram Rider,Giant Snowball,1,0,1,0.7127,0.576
+Ram Rider,Goblin Barrel,6,4,10,0.7127,0.6898
+Ram Rider,Goblin Demolisher,0,1,1,0.7127,0.372
+Ram Rider,Goblin Drill,1,0,1,0.7127,0.576
+Ram Rider,Goblin Giant,0,0,0,0.7127,0.5625
+Ram Rider,Goblin Hut,2,3,5,0.7127,0.421
+Ram Rider,Golem,0,0,0,0.7127,0.5625
+Ram Rider,Graveyard,4,2,6,0.7127,0.702
+Ram Rider,Hunter,0,0,0,0.7127,0.5625
+Ram Rider,Ice Spirit,8,4,12,0.7127,0.7617
+Ram Rider,Ice Wizard,0,0,0,0.7127,0.5625
+Ram Rider,Inferno Tower,1,0,1,0.7127,0.576
+Ram Rider,Knight,4,3,7,0.7127,0.6375
+Ram Rider,Lava Hound,0,1,1,0.7127,0.372
+Ram Rider,Mega Knight,0,0,0,0.7127,0.5625
+Ram Rider,Mortar,0,0,0,0.7127,0.5625
+Ram Rider,Mother Witch,0,0,0,0.7127,0.5625
+Ram Rider,Musketeer,1,3,4,0.7127,0.3469
+Ram Rider,Night Witch,0,1,1,0.7127,0.372
+Ram Rider,P.E.K.K.A,0,0,0,0.7127,0.5625
+Ram Rider,Poison,4,0,4,0.7127,0.6891
+Ram Rider,Princess,1,1,2,0.7127,0.4861
+Ram Rider,Rage,1,0,1,0.7127,0.576
+Ram Rider,Rascals,3,2,5,0.7127,0.6321
+Ram Rider,Rocket,0,0,0,0.7127,0.5625
+Ram Rider,Royal Delivery,3,2,5,0.7127,0.6321
+Ram Rider,Royal Giant,1,0,1,0.7127,0.576
+Ram Rider,Rune Giant,4,2,6,0.7127,0.702
+Ram Rider,Suspicious Bush,11,6,17,0.7127,0.7683
+Ram Rider,The Log,3,5,8,0.7127,0.395
+Ram Rider,Tombstone,7,5,12,0.7127,0.6885
+Ram Rider,Vines,2,4,6,0.7127,0.365
+Ram Rider,Witch,2,0,2,0.7127,0.625
+Ram Rider,Wizard,0,0,0,0.7127,0.5625
+Ram Rider,X-Bow,1,0,1,0.7127,0.576
+Ram Rider,Zappies,0,0,0,0.7127,0.5625
+Rascals,Baby Dragon,5,5,10,0.6769,0.6036
+Rascals,Barbarian Hut,2,3,5,0.6769,0.421
+Rascals,Berserker,1,0,1,0.6769,0.576
+Rascals,Dart Goblin,3,6,9,0.6769,0.358
+Rascals,Electro Spirit,7,3,10,0.6769,0.776
+Rascals,Electro Wizard,2,3,5,0.6769,0.421
+Rascals,Elixir Golem,0,0,0,0.6769,0.5625
+Rascals,Executioner,0,1,1,0.6769,0.372
+Rascals,Fireball,5,4,9,0.6769,0.6438
+Rascals,Fisherman,0,0,0,0.6769,0.5625
+Rascals,Flying Machine,6,5,11,0.6769,0.6494
+Rascals,Furnace,1,0,1,0.6769,0.576
+Rascals,Giant,4,6,10,0.6769,0.4138
+Rascals,Giant Snowball,0,0,0,0.6769,0.5625
+Rascals,Goblin Barrel,6,2,8,0.6769,0.7562
+Rascals,Goblin Demolisher,0,1,1,0.6769,0.372
+Rascals,Goblin Drill,0,0,0,0.6769,0.5625
+Rascals,Goblin Giant,1,0,1,0.6769,0.576
+Rascals,Goblin Hut,6,7,13,0.6769,0.4659
+Rascals,Golem,1,0,1,0.6769,0.576
+Rascals,Graveyard,4,5,9,0.6769,0.4527
+Rascals,Hunter,0,0,0,0.6769,0.5625
+Rascals,Ice Spirit,5,6,11,0.6769,0.4604
+Rascals,Ice Wizard,1,0,1,0.6769,0.576
+Rascals,Inferno Tower,0,0,0,0.6769,0.5625
+Rascals,Knight,7,11,18,0.6769,0.3988
+Rascals,Lava Hound,0,0,0,0.6769,0.5625
+Rascals,Mega Knight,0,1,1,0.6769,0.372
+Rascals,Mortar,0,0,0,0.6769,0.5625
+Rascals,Mother Witch,2,1,3,0.6769,0.6367
+Rascals,Musketeer,8,9,17,0.6769,0.4733
+Rascals,Night Witch,0,1,1,0.6769,0.372
+Rascals,P.E.K.K.A,2,0,2,0.6769,0.625
+Rascals,Poison,6,6,12,0.6769,0.6152
+Rascals,Princess,0,0,0,0.6769,0.5625
+Rascals,Rage,0,0,0,0.6769,0.5625
+Rascals,Ram Rider,2,3,5,0.6769,0.421
+Rascals,Rocket,2,0,2,0.6769,0.625
+Rascals,Royal Delivery,4,1,5,0.6769,0.7111
+Rascals,Royal Giant,2,1,3,0.6769,0.6367
+Rascals,Rune Giant,3,1,4,0.6769,0.6891
+Rascals,Suspicious Bush,10,4,14,0.6769,0.8028
+Rascals,The Log,8,13,21,0.6769,0.3903
+Rascals,Tombstone,7,8,15,0.6769,0.4701
+Rascals,Vines,5,4,9,0.6769,0.6438
+Rascals,Witch,5,3,8,0.6769,0.6932
+Rascals,Wizard,1,1,2,0.6769,0.4861
+Rascals,X-Bow,2,3,5,0.6769,0.421
+Rascals,Zappies,0,0,0,0.6769,0.5625
+Rocket,Baby Dragon,0,0,0,0.3611,0.5625
+Rocket,Barbarian Hut,0,0,0,0.3611,0.5625
+Rocket,Berserker,0,0,0,0.3611,0.5625
+Rocket,Dart Goblin,0,0,0,0.3611,0.5625
+Rocket,Electro Spirit,0,0,0,0.3611,0.5625
+Rocket,Electro Wizard,0,0,0,0.3611,0.5625
+Rocket,Elixir Golem,0,0,0,0.3611,0.5625
+Rocket,Executioner,0,0,0,0.3611,0.5625
+Rocket,Fireball,0,1,1,0.3611,0.372
+Rocket,Fisherman,0,0,0,0.3611,0.5625
+Rocket,Flying Machine,0,1,1,0.3611,0.372
+Rocket,Furnace,0,0,0,0.3611,0.5625
+Rocket,Giant,0,0,0,0.3611,0.5625
+Rocket,Giant Snowball,0,0,0,0.3611,0.5625
+Rocket,Goblin Barrel,0,1,1,0.3611,0.372
+Rocket,Goblin Demolisher,0,1,1,0.3611,0.372
+Rocket,Goblin Drill,0,0,0,0.3611,0.5625
+Rocket,Goblin Giant,0,0,0,0.3611,0.5625
+Rocket,Goblin Hut,0,0,0,0.3611,0.5625
+Rocket,Golem,0,0,0,0.3611,0.5625
+Rocket,Graveyard,0,1,1,0.3611,0.372
+Rocket,Hunter,0,0,0,0.3611,0.5625
+Rocket,Ice Spirit,0,0,0,0.3611,0.5625
+Rocket,Ice Wizard,0,0,0,0.3611,0.5625
+Rocket,Inferno Tower,0,0,0,0.3611,0.5625
+Rocket,Knight,0,2,2,0.3611,0.3611
+Rocket,Lava Hound,0,0,0,0.3611,0.5625
+Rocket,Mega Knight,0,0,0,0.3611,0.5625
+Rocket,Mortar,0,0,0,0.3611,0.5625
+Rocket,Mother Witch,0,0,0,0.3611,0.5625
+Rocket,Musketeer,0,1,1,0.3611,0.372
+Rocket,Night Witch,0,0,0,0.3611,0.5625
+Rocket,P.E.K.K.A,0,0,0,0.3611,0.5625
+Rocket,Poison,0,0,0,0.3611,0.5625
+Rocket,Princess,0,0,0,0.3611,0.5625
+Rocket,Rage,0,0,0,0.3611,0.5625
+Rocket,Ram Rider,0,0,0,0.3611,0.5625
+Rocket,Rascals,0,2,2,0.3611,0.3611
+Rocket,Royal Delivery,0,1,1,0.3611,0.372
+Rocket,Royal Giant,0,0,0,0.3611,0.5625
+Rocket,Rune Giant,0,0,0,0.3611,0.5625
+Rocket,Suspicious Bush,0,0,0,0.3611,0.5625
+Rocket,The Log,0,2,2,0.3611,0.3611
+Rocket,Tombstone,0,0,0,0.3611,0.5625
+Rocket,Vines,0,1,1,0.3611,0.372
+Rocket,Witch,0,1,1,0.3611,0.372
+Rocket,Wizard,0,0,0,0.3611,0.5625
+Rocket,X-Bow,0,1,1,0.3611,0.372
+Rocket,Zappies,0,0,0,0.3611,0.5625
+Royal Delivery,Baby Dragon,0,1,1,0.3872,0.372
+Royal Delivery,Barbarian Hut,0,2,2,0.3872,0.3611
 Royal Delivery,Berserker,0,0,0,0.3872,0.5625
 Royal Delivery,Dart Goblin,2,3,5,0.3872,0.421
-Royal Delivery,Electro Spirit,1,2,3,0.3872,0.3898
-Royal Delivery,Electro Wizard,1,1,2,0.3872,0.5
+Royal Delivery,Electro Spirit,1,2,3,0.3872,0.3776
+Royal Delivery,Electro Wizard,1,1,2,0.3872,0.4861
 Royal Delivery,Elixir Golem,0,0,0,0.3872,0.5625
-Royal Delivery,Executioner,1,3,4,0.3872,0.3852
+Royal Delivery,Executioner,1,3,4,0.3872,0.3469
 Royal Delivery,Fireball,4,6,10,0.3872,0.4138
 Royal Delivery,Fisherman,0,0,0,0.3872,0.5625
-Royal Delivery,Flying Machine,1,1,2,0.3872,0.5
-Royal Delivery,Furnace,1,0,1,0.3872,0.82
-Royal Delivery,Giant,1,4,5,0.3872,0.3815
-Royal Delivery,Giant Snowball,1,0,1,0.3872,0.82
-Royal Delivery,Goblin Barrel,3,2,5,0.3872,0.579
-Royal Delivery,Goblin Demolisher,0,1,1,0.3872,0.404
-Royal Delivery,Goblin Drill,1,0,1,0.3872,0.82
-Royal Delivery,Goblin Giant,1,0,1,0.3872,0.82
-Royal Delivery,Goblin Hut,2,5,7,0.3872,0.376
-Royal Delivery,Golem,1,1,2,0.3872,0.5
-Royal Delivery,Graveyard,0,2,2,0.3872,0.3958
+Royal Delivery,Flying Machine,1,1,2,0.3872,0.4861
+Royal Delivery,Furnace,1,0,1,0.3872,0.576
+Royal Delivery,Giant,1,4,5,0.3872,0.342
+Royal Delivery,Giant Snowball,1,0,1,0.3872,0.576
+Royal Delivery,Goblin Barrel,3,2,5,0.3872,0.6321
+Royal Delivery,Goblin Demolisher,0,1,1,0.3872,0.372
+Royal Delivery,Goblin Drill,1,0,1,0.3872,0.576
+Royal Delivery,Goblin Giant,1,0,1,0.3872,0.576
+Royal Delivery,Goblin Hut,2,5,7,0.3872,0.3347
+Royal Delivery,Golem,1,1,2,0.3872,0.4861
+Royal Delivery,Graveyard,0,2,2,0.3872,0.3611
 Royal Delivery,Hunter,0,0,0,0.3872,0.5625
 Royal Delivery,Ice Spirit,2,3,5,0.3872,0.421
 Royal Delivery,Ice Wizard,0,0,0,0.3872,0.5625
 Royal Delivery,Inferno Tower,0,0,0,0.3872,0.5625
 Royal Delivery,Knight,3,4,7,0.3872,0.441
-Royal Delivery,Lava Hound,0,2,2,0.3872,0.3958
+Royal Delivery,Lava Hound,0,2,2,0.3872,0.3611
 Royal Delivery,Mega Knight,0,0,0,0.3872,0.5625
 Royal Delivery,Mortar,0,0,0,0.3872,0.5625
-Royal Delivery,Mother Witch,0,1,1,0.3872,0.404
-Royal Delivery,Musketeer,0,3,3,0.3872,0.3898
-Royal Delivery,Night Witch,0,1,1,0.3872,0.404
+Royal Delivery,Mother Witch,0,1,1,0.3872,0.372
+Royal Delivery,Musketeer,0,3,3,0.3872,0.3531
+Royal Delivery,Night Witch,0,1,1,0.3872,0.372
 Royal Delivery,P.E.K.K.A,0,0,0,0.3872,0.5625
-Royal Delivery,Poison,0,2,2,0.3872,0.3958
-Royal Delivery,Princess,1,0,1,0.3872,0.82
-Royal Delivery,Rage,3,1,4,0.3872,0.6914
+Royal Delivery,Poison,0,2,2,0.3872,0.3611
+Royal Delivery,Princess,1,0,1,0.3872,0.576
+Royal Delivery,Rage,3,1,4,0.3872,0.6891
 Royal Delivery,Ram Rider,2,3,5,0.3872,0.421
-Royal Delivery,Rascals,1,4,5,0.3872,0.3815
-Royal Delivery,Rocket,1,0,1,0.3872,0.82
+Royal Delivery,Rascals,1,4,5,0.3872,0.342
+Royal Delivery,Rocket,1,0,1,0.3872,0.576
 Royal Delivery,Royal Giant,0,0,0,0.3872,0.5625
-Royal Delivery,Rune Giant,2,1,3,0.3872,0.6224
-Royal Delivery,Suspicious Bush,4,4,8,0.3872,0.5
-Royal Delivery,The Log,1,5,6,0.3872,0.3785
-Royal Delivery,Tombstone,3,6,9,0.3872,0.3722
-Royal Delivery,Vines,2,5,7,0.3872,0.376
-Royal Delivery,Witch,1,1,2,0.3872,0.5
+Royal Delivery,Rune Giant,2,1,3,0.3872,0.6367
+Royal Delivery,Suspicious Bush,4,4,8,0.3872,0.5882
+Royal Delivery,The Log,1,5,6,0.3872,0.338
+Royal Delivery,Tombstone,3,6,9,0.3872,0.358
+Royal Delivery,Vines,2,5,7,0.3872,0.3347
+Royal Delivery,Witch,1,1,2,0.3872,0.4861
 Royal Delivery,Wizard,0,0,0,0.3872,0.5625
-Royal Delivery,X-Bow,1,0,1,0.3872,0.82
+Royal Delivery,X-Bow,1,0,1,0.3872,0.576
 Royal Delivery,Zappies,0,0,0,0.3872,0.5625
 Royal Giant,Baby Dragon,2,3,5,0.395,0.421
-Royal Giant,Barbarian Hut,0,3,3,0.395,0.3898
-Royal Giant,Berserker,1,0,1,0.395,0.82
-Royal Giant,Dart Goblin,0,1,1,0.395,0.404
-Royal Giant,Electro Spirit,2,1,3,0.395,0.6224
+Royal Giant,Barbarian Hut,0,3,3,0.395,0.3531
+Royal Giant,Berserker,1,0,1,0.395,0.576
+Royal Giant,Dart Goblin,0,1,1,0.395,0.372
+Royal Giant,Electro Spirit,2,1,3,0.395,0.6367
 Royal Giant,Electro Wizard,0,0,0,0.395,0.5625
 Royal Giant,Elixir Golem,0,0,0,0.395,0.5625
 Royal Giant,Executioner,0,0,0,0.395,0.5625
-Royal Giant,Fireball,1,1,2,0.395,0.5
+Royal Giant,Fireball,1,1,2,0.395,0.4861
 Royal Giant,Fisherman,0,0,0,0.395,0.5625
-Royal Giant,Flying Machine,2,2,4,0.395,0.5
+Royal Giant,Flying Machine,2,2,4,0.395,0.5359
 Royal Giant,Furnace,0,0,0,0.395,0.5625
-Royal Giant,Giant,0,2,2,0.395,0.3958
+Royal Giant,Giant,0,2,2,0.395,0.3611
 Royal Giant,Giant Snowball,0,0,0,0.395,0.5625
 Royal Giant,Goblin Barrel,2,3,5,0.395,0.421
-Royal Giant,Goblin Demolisher,1,1,2,0.395,0.5
+Royal Giant,Goblin Demolisher,1,1,2,0.395,0.4861
 Royal Giant,Goblin Drill,0,0,0,0.395,0.5625
 Royal Giant,Goblin Giant,0,0,0,0.395,0.5625
-Royal Giant,Goblin Hut,0,3,3,0.395,0.3898
+Royal Giant,Goblin Hut,0,3,3,0.395,0.3531
 Royal Giant,Golem,0,0,0,0.395,0.5625
 Royal Giant,Graveyard,0,0,0,0.395,0.5625
-Royal Giant,Hunter,1,0,1,0.395,0.82
-Royal Giant,Ice Spirit,1,2,3,0.395,0.3898
-Royal Giant,Ice Wizard,1,0,1,0.395,0.82
+Royal Giant,Hunter,1,0,1,0.395,0.576
+Royal Giant,Ice Spirit,1,2,3,0.395,0.3776
+Royal Giant,Ice Wizard,1,0,1,0.395,0.576
 Royal Giant,Inferno Tower,0,0,0,0.395,0.5625
-Royal Giant,Knight,1,4,5,0.395,0.3815
+Royal Giant,Knight,1,4,5,0.395,0.342
 Royal Giant,Lava Hound,0,0,0,0.395,0.5625
 Royal Giant,Mega Knight,0,0,0,0.395,0.5625
-Royal Giant,Mortar,1,0,1,0.395,0.82
+Royal Giant,Mortar,1,0,1,0.395,0.576
 Royal Giant,Mother Witch,0,0,0,0.395,0.5625
 Royal Giant,Musketeer,0,0,0,0.395,0.5625
 Royal Giant,Night Witch,0,0,0,0.395,0.5625
 Royal Giant,P.E.K.K.A,0,0,0,0.395,0.5625
-Royal Giant,Poison,0,1,1,0.395,0.404
+Royal Giant,Poison,0,1,1,0.395,0.372
 Royal Giant,Princess,0,0,0,0.395,0.5625
 Royal Giant,Rage,0,0,0,0.395,0.5625
-Royal Giant,Ram Rider,0,1,1,0.395,0.404
-Royal Giant,Rascals,1,2,3,0.395,0.3898
+Royal Giant,Ram Rider,0,1,1,0.395,0.372
+Royal Giant,Rascals,1,2,3,0.395,0.3776
 Royal Giant,Rocket,0,0,0,0.395,0.5625
 Royal Giant,Royal Delivery,0,0,0,0.395,0.5625
 Royal Giant,Rune Giant,0,0,0,0.395,0.5625
-Royal Giant,Suspicious Bush,1,1,2,0.395,0.5
-Royal Giant,The Log,3,3,6,0.395,0.5
-Royal Giant,Tombstone,1,1,2,0.395,0.5
-Royal Giant,Vines,1,4,5,0.395,0.3815
-Royal Giant,Witch,1,1,2,0.395,0.5
+Royal Giant,Suspicious Bush,1,1,2,0.395,0.4861
+Royal Giant,The Log,3,3,6,0.395,0.567
+Royal Giant,Tombstone,1,1,2,0.395,0.4861
+Royal Giant,Vines,1,4,5,0.395,0.342
+Royal Giant,Witch,1,1,2,0.395,0.4861
 Royal Giant,Wizard,0,0,0,0.395,0.5625
 Royal Giant,X-Bow,0,0,0,0.395,0.5625
 Royal Giant,Zappies,0,0,0,0.395,0.5625
-Rune Giant,Baby Dragon,2,0,2,0.5,0.8472
-Rune Giant,Barbarian Hut,0,0,0,0.5,0.5625
-Rune Giant,Berserker,0,0,0,0.5,0.5625
-Rune Giant,Dart Goblin,1,0,1,0.5,0.82
-Rune Giant,Electro Spirit,1,0,1,0.5,0.82
-Rune Giant,Electro Wizard,0,0,0,0.5,0.5625
-Rune Giant,Elixir Golem,0,0,0,0.5,0.5625
-Rune Giant,Executioner,0,1,1,0.5,0.404
-Rune Giant,Fireball,1,1,2,0.5,0.5
-Rune Giant,Fisherman,0,0,0,0.5,0.5625
-Rune Giant,Flying Machine,1,0,1,0.5,0.82
-Rune Giant,Furnace,0,0,0,0.5,0.5625
-Rune Giant,Giant,0,0,0,0.5,0.5625
-Rune Giant,Giant Snowball,0,0,0,0.5,0.5625
-Rune Giant,Goblin Barrel,0,1,1,0.5,0.404
-Rune Giant,Goblin Demolisher,0,0,0,0.5,0.5625
-Rune Giant,Goblin Drill,0,0,0,0.5,0.5625
-Rune Giant,Goblin Giant,0,0,0,0.5,0.5625
-Rune Giant,Goblin Hut,2,1,3,0.5,0.6224
-Rune Giant,Golem,0,1,1,0.5,0.404
-Rune Giant,Graveyard,0,0,0,0.5,0.5625
-Rune Giant,Hunter,0,0,0,0.5,0.5625
-Rune Giant,Ice Spirit,0,0,0,0.5,0.5625
-Rune Giant,Ice Wizard,1,0,1,0.5,0.82
-Rune Giant,Inferno Tower,0,0,0,0.5,0.5625
-Rune Giant,Knight,2,3,5,0.5,0.421
-Rune Giant,Lava Hound,1,2,3,0.5,0.3898
-Rune Giant,Mega Knight,0,0,0,0.5,0.5625
-Rune Giant,Mortar,0,0,0,0.5,0.5625
-Rune Giant,Mother Witch,0,0,0,0.5,0.5625
-Rune Giant,Musketeer,1,2,3,0.5,0.3898
-Rune Giant,Night Witch,0,0,0,0.5,0.5625
-Rune Giant,P.E.K.K.A,0,0,0,0.5,0.5625
-Rune Giant,Poison,0,1,1,0.5,0.404
-Rune Giant,Princess,0,0,0,0.5,0.5625
-Rune Giant,Rage,0,1,1,0.5,0.404
-Rune Giant,Ram Rider,2,2,4,0.5,0.5
-Rune Giant,Rascals,1,1,2,0.5,0.5
-Rune Giant,Rocket,0,0,0,0.5,0.5625
-Rune Giant,Royal Delivery,1,2,3,0.5,0.3898
-Rune Giant,Royal Giant,0,0,0,0.5,0.5625
-Rune Giant,Suspicious Bush,1,1,2,0.5,0.5
-Rune Giant,The Log,2,0,2,0.5,0.8472
-Rune Giant,Tombstone,2,3,5,0.5,0.421
-Rune Giant,Vines,1,1,2,0.5,0.5
-Rune Giant,Witch,1,0,1,0.5,0.82
-Rune Giant,Wizard,0,0,0,0.5,0.5625
-Rune Giant,X-Bow,0,0,0,0.5,0.5625
-Rune Giant,Zappies,0,0,0,0.5,0.5625
-Suspicious Bush,Baby Dragon,2,4,6,0.359,0.3785
-Suspicious Bush,Barbarian Hut,3,4,7,0.359,0.441
-Suspicious Bush,Berserker,2,0,2,0.359,0.8472
-Suspicious Bush,Dart Goblin,3,5,8,0.359,0.395
-Suspicious Bush,Electro Spirit,2,4,6,0.359,0.3785
-Suspicious Bush,Electro Wizard,1,3,4,0.359,0.3852
-Suspicious Bush,Elixir Golem,0,0,0,0.359,0.5625
-Suspicious Bush,Executioner,0,2,2,0.359,0.3958
-Suspicious Bush,Fireball,3,6,9,0.359,0.3722
-Suspicious Bush,Fisherman,0,0,0,0.359,0.5625
-Suspicious Bush,Flying Machine,1,3,4,0.359,0.3852
-Suspicious Bush,Furnace,0,0,0,0.359,0.5625
-Suspicious Bush,Giant,1,3,4,0.359,0.3852
-Suspicious Bush,Giant Snowball,2,0,2,0.359,0.8472
-Suspicious Bush,Goblin Barrel,3,8,11,0.359,0.3693
-Suspicious Bush,Goblin Demolisher,0,2,2,0.359,0.3958
-Suspicious Bush,Goblin Drill,0,0,0,0.359,0.5625
-Suspicious Bush,Goblin Giant,0,0,0,0.359,0.5625
-Suspicious Bush,Goblin Hut,4,8,12,0.359,0.3682
-Suspicious Bush,Golem,0,2,2,0.359,0.3958
-Suspicious Bush,Graveyard,1,2,3,0.359,0.3898
-Suspicious Bush,Hunter,0,0,0,0.359,0.5625
-Suspicious Bush,Ice Spirit,4,8,12,0.359,0.3682
-Suspicious Bush,Ice Wizard,0,0,0,0.359,0.5625
-Suspicious Bush,Inferno Tower,0,0,0,0.359,0.5625
-Suspicious Bush,Knight,5,13,18,0.359,0.3633
-Suspicious Bush,Lava Hound,1,2,3,0.359,0.3898
-Suspicious Bush,Mega Knight,0,2,2,0.359,0.3958
-Suspicious Bush,Mortar,0,0,0,0.359,0.5625
-Suspicious Bush,Mother Witch,0,0,0,0.359,0.5625
-Suspicious Bush,Musketeer,4,10,14,0.359,0.3662
-Suspicious Bush,Night Witch,0,0,0,0.359,0.5625
-Suspicious Bush,P.E.K.K.A,0,0,0,0.359,0.5625
-Suspicious Bush,Poison,1,7,8,0.359,0.374
-Suspicious Bush,Princess,1,2,3,0.359,0.3898
-Suspicious Bush,Rage,1,1,2,0.359,0.5
-Suspicious Bush,Ram Rider,6,8,14,0.359,0.4363
-Suspicious Bush,Rascals,4,8,12,0.359,0.3682
-Suspicious Bush,Rocket,0,0,0,0.359,0.5625
-Suspicious Bush,Royal Delivery,4,4,8,0.359,0.5
-Suspicious Bush,Royal Giant,1,1,2,0.359,0.5
-Suspicious Bush,Rune Giant,1,1,2,0.359,0.5
-Suspicious Bush,The Log,1,11,12,0.359,0.3682
-Suspicious Bush,Tombstone,2,9,11,0.359,0.3693
-Suspicious Bush,Vines,5,9,14,0.359,0.3726
-Suspicious Bush,Witch,1,4,5,0.359,0.3815
-Suspicious Bush,Wizard,0,1,1,0.359,0.404
-Suspicious Bush,X-Bow,2,3,5,0.359,0.421
-Suspicious Bush,Zappies,0,0,0,0.359,0.5625
-The Log,Baby Dragon,5,1,6,0.6506,0.77
-The Log,Barbarian Hut,4,2,6,0.6506,0.635
-The Log,Berserker,3,1,4,0.6506,0.6914
-The Log,Dart Goblin,6,1,7,0.6506,0.7952
-The Log,Electro Spirit,11,5,16,0.6506,0.6692
-The Log,Electro Wizard,2,2,4,0.6506,0.5
-The Log,Elixir Golem,0,0,0,0.6506,0.5625
-The Log,Executioner,2,1,3,0.6506,0.6224
-The Log,Fireball,14,8,22,0.6506,0.6261
-The Log,Fisherman,0,0,0,0.6506,0.5625
-The Log,Flying Machine,8,2,10,0.6506,0.7587
-The Log,Furnace,2,0,2,0.6506,0.8472
-The Log,Giant,8,2,10,0.6506,0.7587
-The Log,Giant Snowball,2,0,2,0.6506,0.8472
-The Log,Goblin Barrel,9,1,10,0.6506,0.8449
-The Log,Goblin Demolisher,1,3,4,0.6506,0.3852
-The Log,Goblin Drill,1,0,1,0.6506,0.82
-The Log,Goblin Giant,1,0,1,0.6506,0.82
-The Log,Goblin Hut,10,9,19,0.6506,0.5241
-The Log,Golem,4,1,5,0.6506,0.737
-The Log,Graveyard,2,4,6,0.6506,0.3785
-The Log,Hunter,0,0,0,0.6506,0.5625
-The Log,Ice Spirit,7,5,12,0.6506,0.5732
-The Log,Ice Wizard,0,0,0,0.6506,0.5625
-The Log,Inferno Tower,1,0,1,0.6506,0.82
-The Log,Knight,11,8,19,0.6506,0.5722
-The Log,Lava Hound,1,0,1,0.6506,0.82
-The Log,Mega Knight,0,1,1,0.6506,0.404
-The Log,Mortar,0,0,0,0.6506,0.5625
-The Log,Mother Witch,1,0,1,0.6506,0.82
-The Log,Musketeer,9,6,15,0.6506,0.5898
-The Log,Night Witch,0,0,0,0.6506,0.5625
-The Log,P.E.K.K.A,0,0,0,0.6506,0.5625
-The Log,Poison,5,6,11,0.6506,0.4604
-The Log,Princess,1,1,2,0.6506,0.5
-The Log,Rage,1,0,1,0.6506,0.82
-The Log,Ram Rider,5,3,8,0.6506,0.605
-The Log,Rascals,12,8,20,0.6506,0.5918
-The Log,Rocket,2,0,2,0.6506,0.8472
-The Log,Royal Delivery,5,1,6,0.6506,0.77
-The Log,Royal Giant,3,3,6,0.6506,0.5
-The Log,Rune Giant,0,2,2,0.6506,0.3958
-The Log,Suspicious Bush,11,1,12,0.6506,0.8662
-The Log,Tombstone,9,6,15,0.6506,0.5898
-The Log,Vines,11,7,18,0.6506,0.6012
-The Log,Witch,4,2,6,0.6506,0.635
-The Log,Wizard,1,0,1,0.6506,0.82
-The Log,X-Bow,5,1,6,0.6506,0.77
-The Log,Zappies,0,0,0,0.6506,0.5625
-Tombstone,Baby Dragon,3,3,6,0.5559,0.5
-Tombstone,Barbarian Hut,3,7,10,0.5559,0.3707
-Tombstone,Berserker,0,0,0,0.5559,0.5625
-Tombstone,Dart Goblin,0,2,2,0.5559,0.3958
-Tombstone,Electro Spirit,6,2,8,0.5559,0.7101
-Tombstone,Electro Wizard,2,1,3,0.5559,0.6224
-Tombstone,Elixir Golem,0,0,0,0.5559,0.5625
-Tombstone,Executioner,2,1,3,0.5559,0.6224
-Tombstone,Fireball,10,6,16,0.5559,0.6128
-Tombstone,Fisherman,0,0,0,0.5559,0.5625
-Tombstone,Flying Machine,6,5,11,0.5559,0.5396
-Tombstone,Furnace,1,0,1,0.5559,0.82
-Tombstone,Giant,5,4,9,0.5559,0.5473
-Tombstone,Giant Snowball,3,0,3,0.5559,0.8673
-Tombstone,Goblin Barrel,6,4,10,0.5559,0.5862
-Tombstone,Goblin Demolisher,1,3,4,0.5559,0.3852
-Tombstone,Goblin Drill,0,0,0,0.5559,0.5625
-Tombstone,Goblin Giant,0,0,0,0.5559,0.5625
-Tombstone,Goblin Hut,11,7,18,0.5559,0.6012
-Tombstone,Golem,2,1,3,0.5559,0.6224
-Tombstone,Graveyard,1,4,5,0.5559,0.3815
-Tombstone,Hunter,1,0,1,0.5559,0.82
-Tombstone,Ice Spirit,7,5,12,0.5559,0.5732
-Tombstone,Ice Wizard,0,0,0,0.5559,0.5625
-Tombstone,Inferno Tower,1,0,1,0.5559,0.82
-Tombstone,Knight,9,12,21,0.5559,0.4342
-Tombstone,Lava Hound,0,0,0,0.5559,0.5625
-Tombstone,Mega Knight,0,1,1,0.5559,0.404
-Tombstone,Mortar,1,0,1,0.5559,0.82
-Tombstone,Mother Witch,2,0,2,0.5559,0.8472
-Tombstone,Musketeer,9,9,18,0.5559,0.5
-Tombstone,Night Witch,0,0,0,0.5559,0.5625
-Tombstone,P.E.K.K.A,1,1,2,0.5559,0.5
-Tombstone,Poison,4,4,8,0.5559,0.5
-Tombstone,Princess,1,2,3,0.5559,0.3898
-Tombstone,Rage,1,0,1,0.5559,0.82
-Tombstone,Ram Rider,5,4,9,0.5559,0.5473
-Tombstone,Rascals,8,5,13,0.5559,0.6022
-Tombstone,Rocket,0,0,0,0.5559,0.5625
-Tombstone,Royal Delivery,6,3,9,0.5559,0.642
-Tombstone,Royal Giant,1,1,2,0.5559,0.5
-Tombstone,Rune Giant,3,2,5,0.5559,0.579
-Tombstone,Suspicious Bush,9,2,11,0.5559,0.7772
-Tombstone,The Log,6,9,15,0.5559,0.4102
-Tombstone,Vines,6,7,13,0.5559,0.4659
-Tombstone,Witch,6,2,8,0.5559,0.7101
-Tombstone,Wizard,0,0,0,0.5559,0.5625
-Tombstone,X-Bow,3,1,4,0.5559,0.6914
-Tombstone,Zappies,0,0,0,0.5559,0.5625
-Vines,Baby Dragon,6,1,7,0.5293,0.7952
-Vines,Barbarian Hut,0,1,1,0.5293,0.404
-Vines,Berserker,2,0,2,0.5293,0.8472
-Vines,Dart Goblin,4,5,9,0.5293,0.4527
-Vines,Electro Spirit,5,3,8,0.5293,0.605
-Vines,Electro Wizard,2,4,6,0.5293,0.3785
-Vines,Elixir Golem,1,0,1,0.5293,0.82
-Vines,Executioner,1,2,3,0.5293,0.3898
-Vines,Fireball,10,7,17,0.5293,0.58
-Vines,Fisherman,1,0,1,0.5293,0.82
-Vines,Flying Machine,5,3,8,0.5293,0.605
-Vines,Furnace,0,0,0,0.5293,0.5625
-Vines,Giant,4,3,7,0.5293,0.559
-Vines,Giant Snowball,1,0,1,0.5293,0.82
-Vines,Goblin Barrel,5,2,7,0.5293,0.6771
-Vines,Goblin Demolisher,2,3,5,0.5293,0.421
-Vines,Goblin Drill,0,0,0,0.5293,0.5625
-Vines,Goblin Giant,0,0,0,0.5293,0.5625
-Vines,Goblin Hut,6,8,14,0.5293,0.4363
-Vines,Golem,3,1,4,0.5293,0.6914
-Vines,Graveyard,1,5,6,0.5293,0.3785
-Vines,Hunter,1,0,1,0.5293,0.82
-Vines,Ice Spirit,7,6,13,0.5293,0.5341
-Vines,Ice Wizard,0,0,0,0.5293,0.5625
-Vines,Inferno Tower,1,0,1,0.5293,0.82
-Vines,Knight,8,7,15,0.5293,0.5299
-Vines,Lava Hound,0,0,0,0.5293,0.5625
-Vines,Mega Knight,0,1,1,0.5293,0.404
-Vines,Mortar,1,0,1,0.5293,0.82
-Vines,Mother Witch,1,1,2,0.5293,0.5
-Vines,Musketeer,6,10,16,0.5293,0.3872
-Vines,Night Witch,0,1,1,0.5293,0.404
-Vines,P.E.K.K.A,0,0,0,0.5293,0.5625
-Vines,Poison,3,7,10,0.5293,0.3707
-Vines,Princess,1,0,1,0.5293,0.82
-Vines,Rage,1,0,1,0.5293,0.82
-Vines,Ram Rider,4,2,6,0.5293,0.635
-Vines,Rascals,3,5,8,0.5293,0.395
-Vines,Rocket,1,0,1,0.5293,0.82
-Vines,Royal Delivery,5,2,7,0.5293,0.6771
-Vines,Royal Giant,4,1,5,0.5293,0.737
-Vines,Rune Giant,1,1,2,0.5293,0.5
-Vines,Suspicious Bush,9,5,14,0.5293,0.6274
-Vines,The Log,7,11,18,0.5293,0.3988
-Vines,Tombstone,7,6,13,0.5293,0.5341
-Vines,Witch,4,3,7,0.5293,0.559
-Vines,Wizard,1,1,2,0.5293,0.5
-Vines,X-Bow,1,2,3,0.5293,0.3898
-Vines,Zappies,0,0,0,0.5293,0.5625
-Witch,Baby Dragon,2,2,4,0.3872,0.5
-Witch,Barbarian Hut,0,2,2,0.3872,0.3958
-Witch,Berserker,1,0,1,0.3872,0.82
-Witch,Dart Goblin,0,1,1,0.3872,0.404
-Witch,Electro Spirit,5,3,8,0.3872,0.605
-Witch,Electro Wizard,0,1,1,0.3872,0.404
+Rune Giant,Baby Dragon,2,0,2,0.395,0.625
+Rune Giant,Barbarian Hut,0,2,2,0.395,0.3611
+Rune Giant,Berserker,0,0,0,0.395,0.5625
+Rune Giant,Dart Goblin,1,0,1,0.395,0.576
+Rune Giant,Electro Spirit,1,0,1,0.395,0.576
+Rune Giant,Electro Wizard,0,0,0,0.395,0.5625
+Rune Giant,Elixir Golem,0,0,0,0.395,0.5625
+Rune Giant,Executioner,0,1,1,0.395,0.372
+Rune Giant,Fireball,1,3,4,0.395,0.3469
+Rune Giant,Fisherman,0,0,0,0.395,0.5625
+Rune Giant,Flying Machine,1,0,1,0.395,0.576
+Rune Giant,Furnace,0,0,0,0.395,0.5625
+Rune Giant,Giant,0,0,0,0.395,0.5625
+Rune Giant,Giant Snowball,0,0,0,0.395,0.5625
+Rune Giant,Goblin Barrel,0,1,1,0.395,0.372
+Rune Giant,Goblin Demolisher,0,0,0,0.395,0.5625
+Rune Giant,Goblin Drill,0,0,0,0.395,0.5625
+Rune Giant,Goblin Giant,0,0,0,0.395,0.5625
+Rune Giant,Goblin Hut,2,3,5,0.395,0.421
+Rune Giant,Golem,0,1,1,0.395,0.372
+Rune Giant,Graveyard,0,0,0,0.395,0.5625
+Rune Giant,Hunter,0,0,0,0.395,0.5625
+Rune Giant,Ice Spirit,0,0,0,0.395,0.5625
+Rune Giant,Ice Wizard,1,0,1,0.395,0.576
+Rune Giant,Inferno Tower,0,0,0,0.395,0.5625
+Rune Giant,Knight,2,5,7,0.395,0.3347
+Rune Giant,Lava Hound,1,2,3,0.395,0.3776
+Rune Giant,Mega Knight,0,0,0,0.395,0.5625
+Rune Giant,Mortar,0,0,0,0.395,0.5625
+Rune Giant,Mother Witch,0,0,0,0.395,0.5625
+Rune Giant,Musketeer,1,4,5,0.395,0.342
+Rune Giant,Night Witch,0,0,0,0.395,0.5625
+Rune Giant,P.E.K.K.A,0,0,0,0.395,0.5625
+Rune Giant,Poison,0,1,1,0.395,0.372
+Rune Giant,Princess,0,0,0,0.395,0.5625
+Rune Giant,Rage,0,1,1,0.395,0.372
+Rune Giant,Ram Rider,2,4,6,0.395,0.365
+Rune Giant,Rascals,1,3,4,0.395,0.3469
+Rune Giant,Rocket,0,0,0,0.395,0.5625
+Rune Giant,Royal Delivery,1,2,3,0.395,0.3776
+Rune Giant,Royal Giant,0,0,0,0.395,0.5625
+Rune Giant,Suspicious Bush,1,1,2,0.395,0.4861
+Rune Giant,The Log,2,2,4,0.395,0.5359
+Rune Giant,Tombstone,2,3,5,0.395,0.421
+Rune Giant,Vines,1,1,2,0.395,0.4861
+Rune Giant,Witch,1,0,1,0.395,0.576
+Rune Giant,Wizard,0,0,0,0.395,0.5625
+Rune Giant,X-Bow,0,0,0,0.395,0.5625
+Rune Giant,Zappies,0,0,0,0.395,0.5625
+Suspicious Bush,Baby Dragon,2,4,6,0.311,0.365
+Suspicious Bush,Barbarian Hut,3,6,9,0.311,0.358
+Suspicious Bush,Berserker,2,0,2,0.311,0.625
+Suspicious Bush,Dart Goblin,3,5,8,0.311,0.395
+Suspicious Bush,Electro Spirit,2,4,6,0.311,0.365
+Suspicious Bush,Electro Wizard,1,4,5,0.311,0.342
+Suspicious Bush,Elixir Golem,0,0,0,0.311,0.5625
+Suspicious Bush,Executioner,0,2,2,0.311,0.3611
+Suspicious Bush,Fireball,3,8,11,0.311,0.3258
+Suspicious Bush,Fisherman,0,0,0,0.311,0.5625
+Suspicious Bush,Flying Machine,1,3,4,0.311,0.3469
+Suspicious Bush,Furnace,0,0,0,0.311,0.5625
+Suspicious Bush,Giant,1,4,5,0.311,0.342
+Suspicious Bush,Giant Snowball,2,0,2,0.311,0.625
+Suspicious Bush,Goblin Barrel,3,8,11,0.311,0.3258
+Suspicious Bush,Goblin Demolisher,0,2,2,0.311,0.3611
+Suspicious Bush,Goblin Drill,0,0,0,0.311,0.5625
+Suspicious Bush,Goblin Giant,0,0,0,0.311,0.5625
+Suspicious Bush,Goblin Hut,4,11,15,0.311,0.3205
+Suspicious Bush,Golem,0,2,2,0.311,0.3611
+Suspicious Bush,Graveyard,1,2,3,0.311,0.3776
+Suspicious Bush,Hunter,0,0,0,0.311,0.5625
+Suspicious Bush,Ice Spirit,4,8,12,0.311,0.3535
+Suspicious Bush,Ice Wizard,0,0,0,0.311,0.5625
+Suspicious Bush,Inferno Tower,0,0,0,0.311,0.5625
+Suspicious Bush,Knight,5,15,20,0.311,0.3163
+Suspicious Bush,Lava Hound,1,2,3,0.311,0.3776
+Suspicious Bush,Mega Knight,0,2,2,0.311,0.3611
+Suspicious Bush,Mortar,0,0,0,0.311,0.5625
+Suspicious Bush,Mother Witch,0,0,0,0.311,0.5625
+Suspicious Bush,Musketeer,4,13,17,0.311,0.3186
+Suspicious Bush,Night Witch,0,1,1,0.311,0.372
+Suspicious Bush,P.E.K.K.A,0,0,0,0.311,0.5625
+Suspicious Bush,Poison,1,7,8,0.311,0.3319
+Suspicious Bush,Princess,1,2,3,0.311,0.3776
+Suspicious Bush,Rage,1,1,2,0.311,0.4861
+Suspicious Bush,Ram Rider,6,11,17,0.311,0.3666
+Suspicious Bush,Rascals,4,10,14,0.311,0.3216
+Suspicious Bush,Rocket,0,0,0,0.311,0.5625
+Suspicious Bush,Royal Delivery,4,4,8,0.311,0.5882
+Suspicious Bush,Royal Giant,1,1,2,0.311,0.4861
+Suspicious Bush,Rune Giant,1,1,2,0.311,0.4861
+Suspicious Bush,The Log,1,14,15,0.311,0.3205
+Suspicious Bush,Tombstone,2,9,11,0.311,0.3258
+Suspicious Bush,Vines,5,10,15,0.311,0.3504
+Suspicious Bush,Witch,1,4,5,0.311,0.342
+Suspicious Bush,Wizard,0,1,1,0.311,0.372
+Suspicious Bush,X-Bow,2,3,5,0.311,0.421
+Suspicious Bush,Zappies,0,0,0,0.311,0.5625
+The Log,Baby Dragon,5,1,6,0.8442,0.729
+The Log,Barbarian Hut,4,2,6,0.8442,0.702
+The Log,Berserker,3,1,4,0.8442,0.6891
+The Log,Dart Goblin,6,1,7,0.8442,0.7438
+The Log,Electro Spirit,11,5,16,0.8442,0.801
+The Log,Electro Wizard,4,2,6,0.8442,0.702
+The Log,Elixir Golem,0,0,0,0.8442,0.5625
+The Log,Executioner,2,1,3,0.8442,0.6367
+The Log,Fireball,14,8,22,0.8442,0.7733
+The Log,Fisherman,0,0,0,0.8442,0.5625
+The Log,Flying Machine,8,2,10,0.8442,0.776
+The Log,Furnace,2,0,2,0.8442,0.625
+The Log,Giant,8,2,10,0.8442,0.776
+The Log,Giant Snowball,2,0,2,0.8442,0.625
+The Log,Goblin Barrel,11,1,12,0.8442,0.791
+The Log,Goblin Demolisher,1,3,4,0.8442,0.3469
+The Log,Goblin Drill,1,0,1,0.8442,0.576
+The Log,Goblin Giant,1,0,1,0.8442,0.576
+The Log,Goblin Hut,10,9,19,0.8442,0.6645
+The Log,Golem,4,1,5,0.8442,0.7111
+The Log,Graveyard,5,4,9,0.8442,0.6438
+The Log,Hunter,0,0,0,0.8442,0.5625
+The Log,Ice Spirit,10,5,15,0.8442,0.7778
+The Log,Ice Wizard,0,0,0,0.8442,0.5625
+The Log,Inferno Tower,1,0,1,0.8442,0.576
+The Log,Knight,12,8,20,0.8442,0.7347
+The Log,Lava Hound,1,0,1,0.8442,0.576
+The Log,Mega Knight,0,1,1,0.8442,0.372
+The Log,Mortar,0,0,0,0.8442,0.5625
+The Log,Mother Witch,1,0,1,0.8442,0.576
+The Log,Musketeer,9,6,15,0.8442,0.718
+The Log,Night Witch,0,0,0,0.8442,0.5625
+The Log,P.E.K.K.A,0,0,0,0.8442,0.5625
+The Log,Poison,8,6,14,0.8442,0.6881
+The Log,Princess,2,1,3,0.8442,0.6367
+The Log,Rage,1,0,1,0.8442,0.576
+The Log,Ram Rider,5,3,8,0.8442,0.6932
+The Log,Rascals,13,8,21,0.8442,0.7548
+The Log,Rocket,2,0,2,0.8442,0.625
+The Log,Royal Delivery,5,1,6,0.8442,0.729
+The Log,Royal Giant,3,3,6,0.8442,0.567
+The Log,Rune Giant,2,2,4,0.8442,0.5359
+The Log,Suspicious Bush,14,1,15,0.8442,0.8078
+The Log,Tombstone,12,6,18,0.8442,0.7897
+The Log,Vines,11,7,18,0.8442,0.739
+The Log,Witch,4,2,6,0.8442,0.702
+The Log,Wizard,1,0,1,0.8442,0.576
+The Log,X-Bow,5,1,6,0.8442,0.729
+The Log,Zappies,0,0,0,0.8442,0.5625
+Tombstone,Baby Dragon,3,3,6,0.6796,0.567
+Tombstone,Barbarian Hut,3,9,12,0.6796,0.3242
+Tombstone,Berserker,0,0,0,0.6796,0.5625
+Tombstone,Dart Goblin,0,2,2,0.6796,0.3611
+Tombstone,Electro Spirit,6,2,8,0.6796,0.7562
+Tombstone,Electro Wizard,2,2,4,0.6796,0.5359
+Tombstone,Elixir Golem,0,0,0,0.6796,0.5625
+Tombstone,Executioner,2,1,3,0.6796,0.6367
+Tombstone,Fireball,10,8,18,0.6796,0.6884
+Tombstone,Fisherman,0,0,0,0.6796,0.5625
+Tombstone,Flying Machine,6,5,11,0.6796,0.6494
+Tombstone,Furnace,1,0,1,0.6796,0.576
+Tombstone,Giant,5,5,10,0.6796,0.6036
+Tombstone,Giant Snowball,3,0,3,0.6796,0.6612
+Tombstone,Goblin Barrel,6,4,10,0.6796,0.6898
+Tombstone,Goblin Demolisher,1,3,4,0.6796,0.3469
+Tombstone,Goblin Drill,0,0,0,0.6796,0.5625
+Tombstone,Goblin Giant,0,0,0,0.6796,0.5625
+Tombstone,Goblin Hut,11,10,21,0.6796,0.6671
+Tombstone,Golem,2,1,3,0.6796,0.6367
+Tombstone,Graveyard,1,4,5,0.6796,0.342
+Tombstone,Hunter,1,0,1,0.6796,0.576
+Tombstone,Ice Spirit,7,5,12,0.6796,0.6885
+Tombstone,Ice Wizard,0,0,0,0.6796,0.5625
+Tombstone,Inferno Tower,1,0,1,0.6796,0.576
+Tombstone,Knight,9,14,23,0.6796,0.3992
+Tombstone,Lava Hound,0,0,0,0.6796,0.5625
+Tombstone,Mega Knight,0,1,1,0.6796,0.372
+Tombstone,Mortar,1,0,1,0.6796,0.576
+Tombstone,Mother Witch,2,0,2,0.6796,0.625
+Tombstone,Musketeer,9,12,21,0.6796,0.4342
+Tombstone,Night Witch,0,1,1,0.6796,0.372
+Tombstone,P.E.K.K.A,1,1,2,0.6796,0.4861
+Tombstone,Poison,4,4,8,0.6796,0.5882
+Tombstone,Princess,1,2,3,0.6796,0.3776
+Tombstone,Rage,1,0,1,0.6796,0.576
+Tombstone,Ram Rider,5,7,12,0.6796,0.4268
+Tombstone,Rascals,8,7,15,0.6796,0.6582
+Tombstone,Rocket,0,0,0,0.6796,0.5625
+Tombstone,Royal Delivery,6,3,9,0.6796,0.7385
+Tombstone,Royal Giant,1,1,2,0.6796,0.4861
+Tombstone,Rune Giant,3,2,5,0.6796,0.6321
+Tombstone,Suspicious Bush,9,2,11,0.6796,0.784
+Tombstone,The Log,6,12,18,0.6796,0.3481
+Tombstone,Vines,6,8,14,0.6796,0.4363
+Tombstone,Witch,6,2,8,0.6796,0.7562
+Tombstone,Wizard,0,0,0,0.6796,0.5625
+Tombstone,X-Bow,3,1,4,0.6796,0.6891
+Tombstone,Zappies,0,0,0,0.6796,0.5625
+Vines,Baby Dragon,6,1,7,0.7053,0.7438
+Vines,Barbarian Hut,0,1,1,0.7053,0.372
+Vines,Berserker,2,0,2,0.7053,0.625
+Vines,Dart Goblin,4,5,9,0.7053,0.4527
+Vines,Electro Spirit,5,3,8,0.7053,0.6932
+Vines,Electro Wizard,2,4,6,0.7053,0.365
+Vines,Elixir Golem,1,0,1,0.7053,0.576
+Vines,Executioner,1,2,3,0.7053,0.3776
+Vines,Fireball,10,7,17,0.7053,0.715
+Vines,Fisherman,1,0,1,0.7053,0.576
+Vines,Flying Machine,5,3,8,0.7053,0.6932
+Vines,Furnace,0,0,0,0.7053,0.5625
+Vines,Giant,4,3,7,0.7053,0.6375
+Vines,Giant Snowball,1,0,1,0.7053,0.576
+Vines,Goblin Barrel,5,2,7,0.7053,0.7438
+Vines,Goblin Demolisher,2,3,5,0.7053,0.421
+Vines,Goblin Drill,0,0,0,0.7053,0.5625
+Vines,Goblin Giant,0,0,0,0.7053,0.5625
+Vines,Goblin Hut,6,8,14,0.7053,0.4363
+Vines,Golem,3,1,4,0.7053,0.6891
+Vines,Graveyard,2,5,7,0.7053,0.3347
+Vines,Hunter,1,0,1,0.7053,0.576
+Vines,Ice Spirit,8,6,14,0.7053,0.6881
+Vines,Ice Wizard,0,0,0,0.7053,0.5625
+Vines,Inferno Tower,1,0,1,0.7053,0.576
+Vines,Knight,9,7,16,0.7053,0.6882
+Vines,Lava Hound,0,0,0,0.7053,0.5625
+Vines,Mega Knight,0,1,1,0.7053,0.372
+Vines,Mortar,1,0,1,0.7053,0.576
+Vines,Mother Witch,1,1,2,0.7053,0.4861
+Vines,Musketeer,6,10,16,0.7053,0.3872
+Vines,Night Witch,0,1,1,0.7053,0.372
+Vines,P.E.K.K.A,0,0,0,0.7053,0.5625
+Vines,Poison,4,7,11,0.7053,0.3812
+Vines,Princess,2,0,2,0.7053,0.625
+Vines,Rage,1,0,1,0.7053,0.576
+Vines,Ram Rider,4,2,6,0.7053,0.702
+Vines,Rascals,4,5,9,0.7053,0.4527
+Vines,Rocket,1,0,1,0.7053,0.576
+Vines,Royal Delivery,5,2,7,0.7053,0.7438
+Vines,Royal Giant,4,1,5,0.7053,0.7111
+Vines,Rune Giant,1,1,2,0.7053,0.4861
+Vines,Suspicious Bush,10,5,15,0.7053,0.7778
+Vines,The Log,7,11,18,0.7053,0.3988
+Vines,Tombstone,8,6,14,0.7053,0.6881
+Vines,Witch,4,3,7,0.7053,0.6375
+Vines,Wizard,1,1,2,0.7053,0.4861
+Vines,X-Bow,1,2,3,0.7053,0.3776
+Vines,Zappies,0,0,0,0.7053,0.5625
+Witch,Baby Dragon,2,2,4,0.3872,0.5359
+Witch,Barbarian Hut,0,2,2,0.3872,0.3611
+Witch,Berserker,1,0,1,0.3872,0.576
+Witch,Dart Goblin,0,1,1,0.3872,0.372
+Witch,Electro Spirit,5,3,8,0.3872,0.6932
+Witch,Electro Wizard,0,1,1,0.3872,0.372
 Witch,Elixir Golem,0,0,0,0.3872,0.5625
-Witch,Executioner,0,1,1,0.3872,0.404
-Witch,Fireball,1,3,4,0.3872,0.3852
+Witch,Executioner,0,1,1,0.3872,0.372
+Witch,Fireball,1,3,4,0.3872,0.3469
 Witch,Fisherman,0,0,0,0.3872,0.5625
-Witch,Flying Machine,2,2,4,0.3872,0.5
+Witch,Flying Machine,2,2,4,0.3872,0.5359
 Witch,Furnace,0,0,0,0.3872,0.5625
-Witch,Giant,2,1,3,0.3872,0.6224
+Witch,Giant,2,1,3,0.3872,0.6367
 Witch,Giant Snowball,0,0,0,0.3872,0.5625
-Witch,Goblin Barrel,1,0,1,0.3872,0.82
+Witch,Goblin Barrel,1,0,1,0.3872,0.576
 Witch,Goblin Demolisher,0,0,0,0.3872,0.5625
 Witch,Goblin Drill,0,0,0,0.3872,0.5625
 Witch,Goblin Giant,0,0,0,0.3872,0.5625
-Witch,Goblin Hut,3,6,9,0.3872,0.3722
-Witch,Golem,2,1,3,0.3872,0.6224
-Witch,Graveyard,0,7,7,0.3872,0.376
+Witch,Goblin Hut,3,6,9,0.3872,0.358
+Witch,Golem,2,1,3,0.3872,0.6367
+Witch,Graveyard,0,7,7,0.3872,0.3347
 Witch,Hunter,0,0,0,0.3872,0.5625
-Witch,Ice Spirit,0,4,4,0.3872,0.3852
+Witch,Ice Spirit,0,4,4,0.3872,0.3469
 Witch,Ice Wizard,0,0,0,0.3872,0.5625
 Witch,Inferno Tower,0,0,0,0.3872,0.5625
-Witch,Knight,2,8,10,0.3872,0.3707
+Witch,Knight,2,8,10,0.3872,0.3276
 Witch,Lava Hound,0,0,0,0.3872,0.5625
-Witch,Mega Knight,0,1,1,0.3872,0.404
+Witch,Mega Knight,0,1,1,0.3872,0.372
 Witch,Mortar,0,0,0,0.3872,0.5625
 Witch,Mother Witch,0,0,0,0.3872,0.5625
 Witch,Musketeer,4,6,10,0.3872,0.4138
 Witch,Night Witch,0,0,0,0.3872,0.5625
-Witch,P.E.K.K.A,1,0,1,0.3872,0.82
-Witch,Poison,2,5,7,0.3872,0.376
-Witch,Princess,0,1,1,0.3872,0.404
+Witch,P.E.K.K.A,1,0,1,0.3872,0.576
+Witch,Poison,2,5,7,0.3872,0.3347
+Witch,Princess,0,1,1,0.3872,0.372
 Witch,Rage,0,0,0,0.3872,0.5625
-Witch,Ram Rider,0,2,2,0.3872,0.3958
+Witch,Ram Rider,0,2,2,0.3872,0.3611
 Witch,Rascals,3,5,8,0.3872,0.395
-Witch,Rocket,1,0,1,0.3872,0.82
-Witch,Royal Delivery,1,1,2,0.3872,0.5
-Witch,Royal Giant,1,1,2,0.3872,0.5
-Witch,Rune Giant,0,1,1,0.3872,0.404
-Witch,Suspicious Bush,4,1,5,0.3872,0.737
-Witch,The Log,2,4,6,0.3872,0.3785
-Witch,Tombstone,2,6,8,0.3872,0.374
+Witch,Rocket,1,0,1,0.3872,0.576
+Witch,Royal Delivery,1,1,2,0.3872,0.4861
+Witch,Royal Giant,1,1,2,0.3872,0.4861
+Witch,Rune Giant,0,1,1,0.3872,0.372
+Witch,Suspicious Bush,4,1,5,0.3872,0.7111
+Witch,The Log,2,4,6,0.3872,0.365
+Witch,Tombstone,2,6,8,0.3872,0.3319
 Witch,Vines,3,4,7,0.3872,0.441
-Witch,Wizard,1,0,1,0.3872,0.82
-Witch,X-Bow,2,0,2,0.3872,0.8472
+Witch,Wizard,1,0,1,0.3872,0.576
+Witch,X-Bow,2,0,2,0.3872,0.625
 Witch,Zappies,0,0,0,0.3872,0.5625
-Wizard,Baby Dragon,0,0,0,0.3898,0.5625
-Wizard,Barbarian Hut,0,1,1,0.3898,0.404
-Wizard,Berserker,0,0,0,0.3898,0.5625
-Wizard,Dart Goblin,0,1,1,0.3898,0.404
-Wizard,Electro Spirit,1,1,2,0.3898,0.5
-Wizard,Electro Wizard,0,0,0,0.3898,0.5625
-Wizard,Elixir Golem,0,0,0,0.3898,0.5625
-Wizard,Executioner,0,0,0,0.3898,0.5625
-Wizard,Fireball,0,1,1,0.3898,0.404
-Wizard,Fisherman,0,0,0,0.3898,0.5625
-Wizard,Flying Machine,1,1,2,0.3898,0.5
-Wizard,Furnace,0,0,0,0.3898,0.5625
-Wizard,Giant,1,0,1,0.3898,0.82
-Wizard,Giant Snowball,0,0,0,0.3898,0.5625
-Wizard,Goblin Barrel,0,0,0,0.3898,0.5625
-Wizard,Goblin Demolisher,0,0,0,0.3898,0.5625
-Wizard,Goblin Drill,0,0,0,0.3898,0.5625
-Wizard,Goblin Giant,0,0,0,0.3898,0.5625
-Wizard,Goblin Hut,0,1,1,0.3898,0.404
-Wizard,Golem,0,0,0,0.3898,0.5625
-Wizard,Graveyard,1,1,2,0.3898,0.5
-Wizard,Hunter,0,0,0,0.3898,0.5625
-Wizard,Ice Spirit,1,0,1,0.3898,0.82
-Wizard,Ice Wizard,0,0,0,0.3898,0.5625
-Wizard,Inferno Tower,0,0,0,0.3898,0.5625
-Wizard,Knight,0,1,1,0.3898,0.404
-Wizard,Lava Hound,0,0,0,0.3898,0.5625
-Wizard,Mega Knight,0,0,0,0.3898,0.5625
-Wizard,Mortar,0,0,0,0.3898,0.5625
-Wizard,Mother Witch,0,0,0,0.3898,0.5625
-Wizard,Musketeer,0,1,1,0.3898,0.404
-Wizard,Night Witch,0,0,0,0.3898,0.5625
-Wizard,P.E.K.K.A,0,1,1,0.3898,0.404
-Wizard,Poison,0,2,2,0.3898,0.3958
-Wizard,Princess,0,0,0,0.3898,0.5625
-Wizard,Rage,0,0,0,0.3898,0.5625
-Wizard,Ram Rider,0,0,0,0.3898,0.5625
-Wizard,Rascals,1,1,2,0.3898,0.5
-Wizard,Rocket,0,0,0,0.3898,0.5625
-Wizard,Royal Delivery,0,0,0,0.3898,0.5625
-Wizard,Royal Giant,0,0,0,0.3898,0.5625
-Wizard,Rune Giant,0,0,0,0.3898,0.5625
-Wizard,Suspicious Bush,1,0,1,0.3898,0.82
-Wizard,The Log,0,1,1,0.3898,0.404
-Wizard,Tombstone,0,0,0,0.3898,0.5625
-Wizard,Vines,1,1,2,0.3898,0.5
-Wizard,Witch,0,1,1,0.3898,0.404
-Wizard,X-Bow,0,0,0,0.3898,0.5625
-Wizard,Zappies,0,0,0,0.3898,0.5625
-X-Bow,Baby Dragon,2,1,3,0.4138,0.6224
-X-Bow,Barbarian Hut,0,1,1,0.4138,0.404
-X-Bow,Berserker,1,0,1,0.4138,0.82
-X-Bow,Dart Goblin,0,1,1,0.4138,0.404
-X-Bow,Electro Spirit,3,1,4,0.4138,0.6914
-X-Bow,Electro Wizard,0,1,1,0.4138,0.404
+Wizard,Baby Dragon,0,0,0,0.3773,0.5625
+Wizard,Barbarian Hut,0,1,1,0.3773,0.372
+Wizard,Berserker,0,0,0,0.3773,0.5625
+Wizard,Dart Goblin,0,1,1,0.3773,0.372
+Wizard,Electro Spirit,1,1,2,0.3773,0.4861
+Wizard,Electro Wizard,0,0,0,0.3773,0.5625
+Wizard,Elixir Golem,0,0,0,0.3773,0.5625
+Wizard,Executioner,0,0,0,0.3773,0.5625
+Wizard,Fireball,0,1,1,0.3773,0.372
+Wizard,Fisherman,0,0,0,0.3773,0.5625
+Wizard,Flying Machine,1,1,2,0.3773,0.4861
+Wizard,Furnace,0,0,0,0.3773,0.5625
+Wizard,Giant,1,0,1,0.3773,0.576
+Wizard,Giant Snowball,0,0,0,0.3773,0.5625
+Wizard,Goblin Barrel,0,0,0,0.3773,0.5625
+Wizard,Goblin Demolisher,0,0,0,0.3773,0.5625
+Wizard,Goblin Drill,0,0,0,0.3773,0.5625
+Wizard,Goblin Giant,0,0,0,0.3773,0.5625
+Wizard,Goblin Hut,0,1,1,0.3773,0.372
+Wizard,Golem,0,0,0,0.3773,0.5625
+Wizard,Graveyard,1,1,2,0.3773,0.4861
+Wizard,Hunter,0,0,0,0.3773,0.5625
+Wizard,Ice Spirit,1,0,1,0.3773,0.576
+Wizard,Ice Wizard,0,0,0,0.3773,0.5625
+Wizard,Inferno Tower,0,0,0,0.3773,0.5625
+Wizard,Knight,0,1,1,0.3773,0.372
+Wizard,Lava Hound,0,0,0,0.3773,0.5625
+Wizard,Mega Knight,0,0,0,0.3773,0.5625
+Wizard,Mortar,0,0,0,0.3773,0.5625
+Wizard,Mother Witch,0,0,0,0.3773,0.5625
+Wizard,Musketeer,0,1,1,0.3773,0.372
+Wizard,Night Witch,0,0,0,0.3773,0.5625
+Wizard,P.E.K.K.A,0,1,1,0.3773,0.372
+Wizard,Poison,0,2,2,0.3773,0.3611
+Wizard,Princess,0,0,0,0.3773,0.5625
+Wizard,Rage,0,0,0,0.3773,0.5625
+Wizard,Ram Rider,0,0,0,0.3773,0.5625
+Wizard,Rascals,1,1,2,0.3773,0.4861
+Wizard,Rocket,0,0,0,0.3773,0.5625
+Wizard,Royal Delivery,0,0,0,0.3773,0.5625
+Wizard,Royal Giant,0,0,0,0.3773,0.5625
+Wizard,Rune Giant,0,0,0,0.3773,0.5625
+Wizard,Suspicious Bush,1,0,1,0.3773,0.576
+Wizard,The Log,0,1,1,0.3773,0.372
+Wizard,Tombstone,0,0,0,0.3773,0.5625
+Wizard,Vines,1,1,2,0.3773,0.4861
+Wizard,Witch,0,1,1,0.3773,0.372
+Wizard,X-Bow,0,0,0,0.3773,0.5625
+Wizard,Zappies,0,0,0,0.3773,0.5625
+X-Bow,Baby Dragon,2,1,3,0.4138,0.6367
+X-Bow,Barbarian Hut,0,1,1,0.4138,0.372
+X-Bow,Berserker,1,0,1,0.4138,0.576
+X-Bow,Dart Goblin,0,1,1,0.4138,0.372
+X-Bow,Electro Spirit,3,1,4,0.4138,0.6891
+X-Bow,Electro Wizard,0,1,1,0.4138,0.372
 X-Bow,Elixir Golem,0,0,0,0.4138,0.5625
 X-Bow,Executioner,0,0,0,0.4138,0.5625
-X-Bow,Fireball,1,1,2,0.4138,0.5
+X-Bow,Fireball,1,1,2,0.4138,0.4861
 X-Bow,Fisherman,0,0,0,0.4138,0.5625
-X-Bow,Flying Machine,3,2,5,0.4138,0.579
+X-Bow,Flying Machine,3,2,5,0.4138,0.6321
 X-Bow,Furnace,0,0,0,0.4138,0.5625
-X-Bow,Giant,2,1,3,0.4138,0.6224
+X-Bow,Giant,2,1,3,0.4138,0.6367
 X-Bow,Giant Snowball,0,0,0,0.4138,0.5625
-X-Bow,Goblin Barrel,2,2,4,0.4138,0.5
-X-Bow,Goblin Demolisher,0,1,1,0.4138,0.404
+X-Bow,Goblin Barrel,2,2,4,0.4138,0.5359
+X-Bow,Goblin Demolisher,0,1,1,0.4138,0.372
 X-Bow,Goblin Drill,0,0,0,0.4138,0.5625
 X-Bow,Goblin Giant,0,0,0,0.4138,0.5625
-X-Bow,Goblin Hut,0,3,3,0.4138,0.3898
-X-Bow,Golem,0,1,1,0.4138,0.404
-X-Bow,Graveyard,1,1,2,0.4138,0.5
+X-Bow,Goblin Hut,0,3,3,0.4138,0.3531
+X-Bow,Golem,0,1,1,0.4138,0.372
+X-Bow,Graveyard,1,1,2,0.4138,0.4861
 X-Bow,Hunter,0,0,0,0.4138,0.5625
-X-Bow,Ice Spirit,2,2,4,0.4138,0.5
+X-Bow,Ice Spirit,2,2,4,0.4138,0.5359
 X-Bow,Ice Wizard,0,0,0,0.4138,0.5625
 X-Bow,Inferno Tower,0,0,0,0.4138,0.5625
-X-Bow,Knight,0,5,5,0.4138,0.3815
+X-Bow,Knight,0,5,5,0.4138,0.342
 X-Bow,Lava Hound,0,0,0,0.4138,0.5625
 X-Bow,Mega Knight,0,0,0,0.4138,0.5625
 X-Bow,Mortar,0,0,0,0.4138,0.5625
-X-Bow,Mother Witch,0,1,1,0.4138,0.404
-X-Bow,Musketeer,2,4,6,0.4138,0.3785
+X-Bow,Mother Witch,0,1,1,0.4138,0.372
+X-Bow,Musketeer,2,4,6,0.4138,0.365
 X-Bow,Night Witch,0,0,0,0.4138,0.5625
 X-Bow,P.E.K.K.A,0,0,0,0.4138,0.5625
-X-Bow,Poison,2,2,4,0.4138,0.5
+X-Bow,Poison,2,2,4,0.4138,0.5359
 X-Bow,Princess,0,0,0,0.4138,0.5625
 X-Bow,Rage,0,0,0,0.4138,0.5625
-X-Bow,Ram Rider,0,1,1,0.4138,0.404
-X-Bow,Rascals,3,2,5,0.4138,0.579
-X-Bow,Rocket,1,0,1,0.4138,0.82
-X-Bow,Royal Delivery,0,1,1,0.4138,0.404
+X-Bow,Ram Rider,0,1,1,0.4138,0.372
+X-Bow,Rascals,3,2,5,0.4138,0.6321
+X-Bow,Rocket,1,0,1,0.4138,0.576
+X-Bow,Royal Delivery,0,1,1,0.4138,0.372
 X-Bow,Royal Giant,0,0,0,0.4138,0.5625
 X-Bow,Rune Giant,0,0,0,0.4138,0.5625
-X-Bow,Suspicious Bush,3,2,5,0.4138,0.579
-X-Bow,The Log,1,5,6,0.4138,0.3785
-X-Bow,Tombstone,1,3,4,0.4138,0.3852
-X-Bow,Vines,2,1,3,0.4138,0.6224
-X-Bow,Witch,0,2,2,0.4138,0.3958
+X-Bow,Suspicious Bush,3,2,5,0.4138,0.6321
+X-Bow,The Log,1,5,6,0.4138,0.338
+X-Bow,Tombstone,1,3,4,0.4138,0.3469
+X-Bow,Vines,2,1,3,0.4138,0.6367
+X-Bow,Witch,0,2,2,0.4138,0.3611
 X-Bow,Wizard,0,0,0,0.4138,0.5625
 X-Bow,Zappies,0,0,0,0.4138,0.5625
 Zappies,Baby Dragon,0,0,0,0.5625,0.5625
