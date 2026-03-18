@@ -1,4 +1,4 @@
-# ⚔️ CR Draft — Clash Royale CHAOS Mode Draft Tool
+# ⚔️ CR Draft — Clash Royale CHAOS Mode Draft Tool 
 
 A local web app for running a ban/pick draft between two players using the official CHAOS mode card pool.
 
