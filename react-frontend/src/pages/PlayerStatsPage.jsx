@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { PLAYERS } from '../data/players'
 import { CARD_TIER, TIER_ICONS } from '../data/cardTiers'
 import { CARD_TYPE, TYPE_ICONS } from '../data/cardTypes'
@@ -235,7 +235,8 @@ function PlayerMatchHistory({ playerName, mode }) {
 }
 
 /* ── player detail screen ── */
-function PlayerDetail({ playerName, mode, onBack }) {
+function PlayerDetail({ playerName, mode }) {
+  const navigate = useNavigate()
   const [data, setData] = useState(null)
   const [elo, setElo] = useState(null)
   const [loading, setLoading] = useState(true)
@@ -266,7 +267,7 @@ function PlayerDetail({ playerName, mode, onBack }) {
   return (
     <div>
       <div className="detail-header">
-        <button className="btn-back" onClick={onBack}>← All Players</button>
+        <button className="btn-back" onClick={() => navigate('/player_stats')}>← All Players</button>
       </div>
 
       <div className="detail-name" style={{ marginBottom: '1.25rem' }}>{playerName}</div>
@@ -318,7 +319,8 @@ function PlayerDetail({ playerName, mode, onBack }) {
 }
 
 /* ── leaderboard ── */
-function Leaderboard({ mode, onSelectPlayer }) {
+function Leaderboard({ mode }) {
+  const navigate = useNavigate()
   const [playerStats, setPlayerStats] = useState(null)
   const [eloData, setEloData] = useState(null)
   const [loading, setLoading] = useState(true)
@@ -365,7 +367,7 @@ function Leaderboard({ mode, onSelectPlayer }) {
         </thead>
         <tbody>
           {players.map((p, i) => (
-            <tr key={p.name} onClick={() => onSelectPlayer(p.name)}>
+            <tr key={p.name} style={{ cursor: 'pointer' }} onClick={() => navigate(`/player_stats/${encodeURIComponent(p.name)}`)}>
               <td className="rank-cell">{i + 1}</td>
               <td className="player-name-cell">{p.name}</td>
               <td className="elo-cell">{p.elo}</td>
@@ -385,17 +387,16 @@ function Leaderboard({ mode, onSelectPlayer }) {
 
 /* ── main page component ── */
 export default function PlayerStatsPage() {
+  const { playerName } = useParams()
   const [mode, setMode] = useState('All')
-  const [selectedPlayer, setSelectedPlayer] = useState(null)
 
   return (
     <div>
       <header>
         <span className="header-title">Player Stats</span>
         <nav style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-          <Link to="/" style={{ color: 'var(--text-muted)', fontSize: '.85rem', textDecoration: 'none' }}>Draft</Link>
+          <Link to="/" style={{ color: 'var(--text-muted)', fontSize: '.85rem', textDecoration: 'none' }}>Home</Link>
           <Link to="/stats" style={{ color: 'var(--text-muted)', fontSize: '.85rem', textDecoration: 'none' }}>Card Stats</Link>
-          <Link to="/dashboard" style={{ color: 'var(--text-muted)', fontSize: '.85rem', textDecoration: 'none' }}>Dashboard</Link>
         </nav>
       </header>
 
@@ -410,18 +411,12 @@ export default function PlayerStatsPage() {
           </div>
         </div>
 
-        {selectedPlayer
-          ? (
-            <PlayerDetail
-              playerName={selectedPlayer}
-              mode={mode}
-              onBack={() => setSelectedPlayer(null)}
-            />
-          )
+        {playerName
+          ? <PlayerDetail playerName={decodeURIComponent(playerName)} mode={mode} />
           : (
             <>
               <div className="section-title" style={{ marginBottom: '1rem' }}>Leaderboard</div>
-              <Leaderboard mode={mode} onSelectPlayer={setSelectedPlayer} />
+              <Leaderboard mode={mode} />
             </>
           )
         }

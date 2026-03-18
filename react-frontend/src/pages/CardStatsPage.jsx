@@ -96,9 +96,8 @@ export default function CardStatsPage() {
       <header>
         <span className="header-title">Card Stats</span>
         <nav style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-          <Link to="/" style={{ color: 'var(--text-muted)', fontSize: '.85rem', textDecoration: 'none' }}>Draft</Link>
+          <Link to="/" style={{ color: 'var(--text-muted)', fontSize: '.85rem', textDecoration: 'none' }}>Home</Link>
           <Link to="/player_stats" style={{ color: 'var(--text-muted)', fontSize: '.85rem', textDecoration: 'none' }}>Players</Link>
-          <Link to="/dashboard" style={{ color: 'var(--text-muted)', fontSize: '.85rem', textDecoration: 'none' }}>Dashboard</Link>
         </nav>
       </header>
 

@@ -1,9 +1,8 @@
-import { useState, useEffect, useRef, useCallback } from 'react'
-import { Link } from 'react-router-dom'
+import { useState, useEffect, useRef } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { QRCodeCanvas } from 'qrcode.react'
 import { CARD_TIER, TIER_ORDER, TIER_ICONS } from '../data/cardTiers'
 import { CARD_TYPE, TYPE_ORDER, TYPE_ICONS } from '../data/cardTypes'
-import { PLAYERS } from '../data/players'
 
 // ── API helper ────────────────────────────────────────────────────────────────
 async function apiCall(path, method = 'GET', body = null) {
@@ -577,21 +576,16 @@ function DoneAiEntry({ entry }) {
 
 // ── Main DraftPage component ──────────────────────────────────────────────────
 export default function DraftPage() {
-  const [draft, setDraft]               = useState(null)
-  const [p1, setP1]                     = useState('Kevin')
-  const [p2, setP2]                     = useState('Jason')
-  const [setupErr, setSetupErr]         = useState('')
-  const [startLoading, setStartLoading] = useState(false)
-  const [aiLoading, setAiLoading]       = useState(false)
+  const location = useLocation()
+  const navigate = useNavigate()
+
+  const [draft, setDraft]               = useState(location.state?.draft ?? null)
   const [rarityFilter, setRarityFilter] = useState('All')
   const [sortMode, setSortMode]         = useState('type')
   const [elixirAsc, setElixirAsc]       = useState(true)
   const [search, setSearch]             = useState('')
   const [timerSecs, setTimerSecs]       = useState(30)
   const [timerPaused, setTimerPaused]   = useState(false)
-  const [history, setHistory]           = useState([])
-  const [mhLimit, setMhLimit]           = useState(10)
-  const [mhTotal, setMhTotal]           = useState(0)
   const [winnerInfo, setWinnerInfo]     = useState(null)
   const [aiThinking, setAiThinking]     = useState(false)
   const [aiLogOpen, setAiLogOpen]       = useState(false)
@@ -622,23 +616,7 @@ export default function DraftPage() {
     if (header) ro.observe(header)
     update()
     return () => ro.disconnect()
-  }, [!!draft]) // re-run when draft screen mounts/unmounts
-
-  // ── Match history ───────────────────────────────────────────────────────────
-  const loadMatchHistory = useCallback(async (limit) => {
-    try {
-      const games = await apiCall(`/api/match_history?limit=${limit}`)
-      const all   = await apiCall('/api/match_history?limit=0')
-      setHistory(games)
-      setMhTotal(all.length)
-    } catch (e) {
-      console.warn('match history failed', e)
-    }
-  }, [])
-
-  useEffect(() => {
-    loadMatchHistory(mhLimit)
-  }, [mhLimit, loadMatchHistory])
+  }, []) // runs once on mount
 
   // ── Timer ───────────────────────────────────────────────────────────────────
   function scheduleTickSound(secs) {
@@ -749,34 +727,6 @@ export default function DraftPage() {
   }
 
   // ── Actions ─────────────────────────────────────────────────────────────────
-  async function startDraft() {
-    if (p1 === p2) { setSetupErr('❌ Player 1 and Player 2 must be different players.'); return }
-    setSetupErr('')
-    setStartLoading(true)
-    try {
-      const s = await apiCall('/api/start', 'POST', { p1_name: p1, p2_name: p2 })
-      if (s.error) throw new Error(s.error)
-      applyState(s)
-    } catch (e) {
-      setSetupErr(`❌ ${e.message}`)
-    }
-    setStartLoading(false)
-  }
-
-  async function startAiDraft() {
-    if (p1 === p2) { setSetupErr('❌ Player 1 and Player 2 must be different players.'); return }
-    setSetupErr('')
-    setAiLoading(true)
-    try {
-      const s = await apiCall('/api/start', 'POST', { p1_name: p1, p2_name: p2, ai_mode: true })
-      if (s.error) throw new Error(s.error)
-      applyState(s)
-    } catch (e) {
-      setSetupErr(`❌ ${e.message}`)
-    }
-    setAiLoading(false)
-  }
-
   async function doAction(id) {
     const s = await apiCall('/api/action', 'POST', { card_id: id })
     if (s.error) { alert(s.error); return }
@@ -792,13 +742,7 @@ export default function DraftPage() {
   async function resetDraft() {
     stopTimer()
     await apiCall('/api/reset', 'POST')
-    setDraft(null)
-    setWinnerInfo(null)
-    setAiThinking(false)
-    setSetupErr('')
-    setStartLoading(false)
-    setAiLoading(false)
-    await loadMatchHistory(mhLimit)
+    navigate('/')
   }
 
   async function declareWinner(player) {
@@ -819,11 +763,6 @@ export default function DraftPage() {
     })
   }
 
-  function swapPlayers() {
-    setP1(p2)
-    setP2(p1)
-  }
-
   // ── Phase badge ─────────────────────────────────────────────────────────────
   function phaseBadge() {
     if (!draft) return null
@@ -833,7 +772,6 @@ export default function DraftPage() {
   }
 
   // ── Render ──────────────────────────────────────────────────────────────────
-  const showSetup = !draft
   const showDraft = draft && draft.phase !== 'done'
   const showDone  = draft && draft.phase === 'done'
 
@@ -846,82 +784,6 @@ export default function DraftPage() {
       </header>
 
       <main>
-
-        {/* ── SETUP SCREEN ── */}
-        {showSetup && (
-          <div id="setup-wrapper">
-            <div id="setup-screen">
-              <h2>Draft Setup</h2>
-              <div className="field">
-                <label>Player 1 Name</label>
-                <select value={p1} onChange={e => setP1(e.target.value)}>
-                  {PLAYERS.map(name => <option key={name} value={name}>{name}</option>)}
-                </select>
-              </div>
-              <div style={{ display: 'flex', justifyContent: 'center', margin: '.1rem 0' }}>
-                <button
-                  onClick={swapPlayers}
-                  title="Swap players"
-                  style={{
-                    background: 'transparent', border: '1px solid var(--border)', borderRadius: '999px',
-                    color: 'var(--text-muted)', cursor: 'pointer', fontSize: '.85rem',
-                    padding: '.25rem .75rem', transition: 'all .15s'
-                  }}
-                >
-                  ⇅ Swap
-                </button>
-              </div>
-              <div className="field">
-                <label>Player 2 Name</label>
-                <select value={p2} onChange={e => setP2(e.target.value)}>
-                  {PLAYERS.map(name => <option key={name} value={name}>{name}</option>)}
-                </select>
-              </div>
-              {p1 === p2 && (
-                <div className="error-msg">❌ Player 1 and Player 2 must be different players.</div>
-              )}
-              {setupErr && p1 !== p2 && (
-                <div className="error-msg">{setupErr}</div>
-              )}
-              <button
-                className="btn btn-gold"
-                id="btn-start-draft"
-                onClick={startDraft}
-                disabled={startLoading || p1 === p2}
-              >
-                {startLoading ? 'Loading cards…' : '⚔️ Begin Draft'}
-              </button>
-              <button
-                className="btn btn-ai"
-                id="btn-ai-draft"
-                onClick={startAiDraft}
-                disabled={aiLoading || p1 === p2}
-              >
-                {aiLoading ? 'Loading…' : '🤖 AI Draft'}
-              </button>
-              <div style={{ display: 'flex', gap: '.5rem', marginTop: '.6rem' }}>
-                <Link to="/stats" className="btn btn-ghost" style={{ flex: 1, padding: '.55rem', textAlign: 'center', textDecoration: 'none', fontSize: '.82rem' }}>
-                  📊 Card Stats
-                </Link>
-                <Link to="/player_stats" className="btn btn-ghost" style={{ flex: 1, padding: '.55rem', textAlign: 'center', textDecoration: 'none', fontSize: '.82rem' }}>
-                  👤 Players
-                </Link>
-              </div>
-            </div>
-
-            <div id="match-history">
-              <h2>📜 Match History</h2>
-              <div id="mh-list">
-                <MatchHistoryList
-                  games={history}
-                  mhTotal={mhTotal}
-                  mhLimit={mhLimit}
-                  onShowMore={() => setMhLimit(prev => prev + 10)}
-                />
-              </div>
-            </div>
-          </div>
-        )}
 
         {/* ── DRAFT SCREEN ── */}
         {showDraft && (

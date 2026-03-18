@@ -80,11 +80,11 @@ cr_draft/
 
 | URL | Page | Description |
 |-----|------|-------------|
-| `/` | `DraftPage` | Setup screen → ban/pick draft → done screen |
+| `/` | `LandingPage` | Dashboard overview (stats, leaderboard, recent matches) + draft setup form |
+| `/draft` | `DraftPage` | Ban/pick draft → done screen (draft state passed via navigation state) |
 | `/player_stats` | `PlayerStatsPage` | ELO leaderboard + per-player detail (Card Stats + Recent Matches tabs) |
 | `/card/:cardName` | `CardDetailPage` | Per-card profile with tier-color theming + matchup table |
 | `/stats` | `CardStatsPage` | Card stats table with tier/type/mode filters |
-| `/dashboard` | `LandingPage` | Overview dashboard (stats, leaderboard, recent matches) |
 
 ---
 
@@ -409,13 +409,14 @@ Flask (`python main.py`) must also be running on `:5050` for API calls to work.
 
 **`App.jsx`** — React Router with 5 routes. The draft tool is at `/` (root), matching the original Flask URL layout.
 
-**`pages/DraftPage.jsx`** — Port of `index.html`. Three conditional render blocks driven by `draft` state:
-- `draft === null` → Setup screen (player dropdowns + match history sidebar)
+**`pages/DraftPage.jsx`** — Port of `index.html`. Receives initial draft state via `location.state.draft` (set by `LandingPage` after calling `/api/start`). Two conditional render blocks driven by `draft.phase`:
 - `draft.phase === 'ban' | 'pick'` → Draft screen (pool, sidebars, timer, banned strip)
 - `draft.phase === 'done'` → Done screen (deck links, QR codes, winner buttons)
 
+If no draft state is present in navigation state, the page redirects to `/`.
+
 Key state and behavior:
-- `draft` — mirrors the API state object from `/api/start`, `/api/action`, etc.
+- `draft` — mirrors the API state object from `/api/action`, etc. (initial value from navigation state)
 - Timer: 30s countdown using `setInterval` + `useRef` to avoid stale closures; resets on each new turn (when `action_index` changes); auto-picks random card on expire
 - Tick sounds: Web Audio API square oscillator (220 Hz normal / 320 Hz urgent), same scheduling logic as original
 - AI mode: `useEffect` on `[draft?.action_index, draft?.phase, draft?.ai_mode]` — fires 800ms after each state change, calls `/api/ai_action`, loops by triggering re-render
@@ -446,11 +447,15 @@ All styles for the four ported pages live in **`react-frontend/src/styles/theme.
 
 ### Draft state flow (React)
 ```
-startDraft()      → POST /api/start       → setDraft(s)
-doAction(cardId)  → POST /api/action      → setDraft(s)
-undoAction()      → POST /api/undo        → setDraft(s)
-resetDraft()      → POST /api/reset       → setDraft(null)
-declareWinner(n)  → POST /api/record_winner → setWinnerInfo(res)
+LandingPage:
+  startDraft()    → POST /api/start       → navigate('/draft', { state: { draft: s } })
+
+DraftPage:
+  (init)          → location.state.draft  → setDraft(s)
+  doAction(cardId)→ POST /api/action      → setDraft(s)
+  undoAction()    → POST /api/undo        → setDraft(s)
+  resetDraft()    → POST /api/reset       → navigate('/')
+  declareWinner(n)→ POST /api/record_winner → setWinnerInfo(res)
 ```
 
 All state transitions call `setDraft(s)` which triggers re-renders and, in AI mode, re-triggers the AI polling `useEffect`.

@@ -246,7 +246,10 @@ export default function CardDetailPage() {
       <>
         <header>
           <div className="header-title">⚔️ Card Profile</div>
-          <Link to="/stats" className="back-btn">← Card Stats</Link>
+          <nav style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+            <Link to="/" style={{ color: 'var(--text-muted)', fontSize: '.85rem', textDecoration: 'none' }}>Home</Link>
+            <Link to="/stats" className="back-btn">← Card Stats</Link>
+          </nav>
         </header>
         <main>
           <div id="page-loading">
@@ -263,7 +266,10 @@ export default function CardDetailPage() {
       <>
         <header>
           <div className="header-title">⚔️ Card Profile</div>
-          <Link to="/stats" className="back-btn">← Card Stats</Link>
+          <nav style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+            <Link to="/" style={{ color: 'var(--text-muted)', fontSize: '.85rem', textDecoration: 'none' }}>Home</Link>
+            <Link to="/stats" className="back-btn">← Card Stats</Link>
+          </nav>
         </header>
         <main>
           <div id="page-loading">
