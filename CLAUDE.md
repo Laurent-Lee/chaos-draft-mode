@@ -30,18 +30,42 @@ cr_draft/
 │   ├── get_card_data.py  # Card/matchup stat readers — get_card_win_rates, get_matchup_win_rates, get_card_type_relative_win_rates, get_overall_ratings
 │   └── tier_calculator.py # Bayesian rating calculator — appends card_1_overall_rating and card_1_matchup_rating to card_data.csv
 │
-├── frontend/
-│   ├── frontend.py      # Frontend Blueprint — serves /, /player_stats, /card/<n>, /elixir.svg, /stats
-│   ├── stats.html       # Card stats page (external, served at /stats)
+├── frontend/             # Legacy Flask/Jinja2 templates (kept for reference, superseded by react-frontend)
+│   ├── frontend.py      # Frontend Blueprint — still serves /elixir.svg and legacy routes
+│   ├── stats.html       # Legacy card stats page
 │   └── templates/
-│       ├── index.html        # Main draft UI
-│       ├── player_stats.html # Player leaderboard + per-player detail (Stats + Recent Matches tabs)
-│       └── card_detail.html  # Per-card profile page — stats + head-to-head matchup table
+│       ├── index.html        # Legacy main draft UI
+│       ├── player_stats.html # Legacy player leaderboard
+│       └── card_detail.html  # Legacy per-card profile page
+│
+├── react-frontend/       # ✅ Active frontend — Vite + React app (runs on :5173)
+│   ├── package.json      # Dependencies: react, react-router-dom, qrcode.react, vite, tailwindcss
+│   ├── vite.config.js    # Proxies /api/* and /elixir.svg to Flask on :5050
+│   ├── index.html        # HTML entry point (loads Google Fonts)
+│   ├── tailwind.config.js
+│   ├── postcss.config.js
+│   └── src/
+│       ├── main.jsx          # React entry point — mounts App, imports global CSS
+│       ├── App.jsx           # React Router — 5 routes (see Routes section below)
+│       ├── index.css         # Tailwind directives (for LandingPage only)
+│       ├── styles/
+│       │   └── theme.css     # Combined CSS from all 4 ported pages — design tokens, shared components
+│       ├── data/
+│       │   ├── cardTiers.js  # ES module: CARD_TIER, TIER_ORDER, TIER_ICONS (mirrors static/card_tiers.js)
+│       │   ├── cardTypes.js  # ES module: CARD_TYPE, TYPE_ORDER, TYPE_ICONS (mirrors static/card_types.js)
+│       │   ├── tierColors.js # Tier → hex color + glow for CSS variable theming
+│       │   └── players.js    # PLAYERS list — single source of truth for React frontend
+│       └── pages/
+│           ├── DraftPage.jsx       # Main draft UI: setup → ban/pick → done (port of index.html)
+│           ├── PlayerStatsPage.jsx # Leaderboard + player detail tabs (port of player_stats.html)
+│           ├── CardDetailPage.jsx  # Per-card profile + matchup table (port of card_detail.html)
+│           ├── CardStatsPage.jsx   # Card stats table with filters (port of stats.html)
+│           └── LandingPage.jsx     # Dashboard overview (stats summary, leaderboard, recent matches)
 │
 ├── static/
 │   ├── elixir.svg       # Elixir icon served at /elixir.svg via frontend Blueprint
-│   ├── card_tiers.js    # CARD_TIER, TIER_ORDER, TIER_ICONS — edit to rebalance tiers
-│   └── card_types.js    # CARD_TYPE, TYPE_ORDER, TYPE_ICONS — edit to reclassify cards
+│   ├── card_tiers.js    # CARD_TIER, TIER_ORDER, TIER_ICONS — edit to rebalance tiers (also update react-frontend/src/data/cardTiers.js)
+│   └── card_types.js    # CARD_TYPE, TYPE_ORDER, TYPE_ICONS — edit to reclassify cards (also update react-frontend/src/data/cardTypes.js)
 │
 └── data/
     ├── output.csv             # Match history — 165 columns, auto-created on first recorded game
@@ -51,6 +75,16 @@ cr_draft/
     ├── player_tags.json       # App player name → CR player tag (#TAG) mapping
     └── backfill_modifiers.py  # One-off script: populate modifier data for old output.csv rows
 ```
+
+### React Frontend Routes
+
+| URL | Page | Description |
+|-----|------|-------------|
+| `/` | `DraftPage` | Setup screen → ban/pick draft → done screen |
+| `/player_stats` | `PlayerStatsPage` | ELO leaderboard + per-player detail (Card Stats + Recent Matches tabs) |
+| `/card/:cardName` | `CardDetailPage` | Per-card profile with tier-color theming + matchup table |
+| `/stats` | `CardStatsPage` | Card stats table with tier/type/mode filters |
+| `/dashboard` | `LandingPage` | Overview dashboard (stats, leaderboard, recent matches) |
 
 ---
 
@@ -359,70 +393,67 @@ If the CHAOS mode card pool changes:
 
 ## Frontend Architecture
 
-The frontend is split across standalone HTML templates in `frontend/templates/` and one static file in `frontend/`. There is no build step, no bundler, no npm.
+The active frontend is a **Vite + React** app in `react-frontend/`. It runs on `:5173` during development and proxies all `/api/*` calls to the Flask server on `:5050`. The legacy Jinja2 templates in `frontend/templates/` are kept for reference but are no longer the primary UI.
 
-### `index.html` — Main draft UI
-| JS Variable | Purpose |
-|-------------|---------|
-| `gState` | Last state snapshot received from the server |
-| `rarityFilter` | Active rarity filter button value |
-| `sortMode` | `"type"` \| `"tier"` \| `"elixir"` |
-| `elixirAsc` | Boolean — sort direction for elixir mode |
+### Running the React frontend
 
-### `player_stats.html` — Player leaderboard and detail
-A single-page app that handles two views via JS routing (no page reloads):
-- **Leaderboard** — all players ranked by ELO, click a row to drill into a player
-- **Player detail** — two tabs:
-  - **Card Stats tab** — sortable card stats table (pick %, win %, ban %) for that player's games only, using `GET /api/player_stats/<name>`
-  - **Recent Matches tab** — last 10 games using `GET /api/match_history/<name>`
-
-Key JS functions:
-```
-showLeaderboard()         → switch to leaderboard view
-showDetail(name)          → switch to player detail, triggers data loads
-switchTab('stats'|'history')  → toggle between the two detail tabs
-loadLeaderboard()         → fetches /api/player_stats + /api/elo, renders ranked table
-loadDetailStats(name)     → fetches /api/player_stats/<name>, renders stat cards + card table
-loadDetailHistory(name)   → fetches /api/match_history/<name>, renders game cards
-sortCardTable(col, id)    → re-sorts and re-renders the card stats table client-side
+```bash
+cd react-frontend
+npm install   # first time only
+npm run dev   # starts Vite dev server at http://localhost:5173
 ```
 
-### `card_detail.html` — Per-card profile page
-Served at `/card/<card_name>`. Each card has its own URL (e.g. `/card/Electro Wizard`). Reached by clicking any card row in `stats.html`.
+Flask (`python main.py`) must also be running on `:5050` for API calls to work.
 
-Fetches a single endpoint `GET /api/card_detail/<card_name>` which returns:
-- **Overall stats** — play rate, win rate, ban rate, wins, losses, total games
-- **49 matchup rows** — from `card_data.csv`, one row per opponent card
+### React app structure
 
-The page applies a tier-keyed colour theme (CSS `--tier-color` variable) so each card's profile has a distinct accent colour. The matchup table defaults to a grouped view — Favourable (≥55% WR) / Even (45–55%) / Unfavourable (<45%) — with a toggle to show unseen matchups.
+**`App.jsx`** — React Router with 5 routes. The draft tool is at `/` (root), matching the original Flask URL layout.
 
-**Important:** `card_tiers.js` and `card_types.js` are the single source of truth for tier and type data. All pages (`index.html`, `player_stats.html`, `stats.html`, `card_detail.html`) load them via `<script src="/static/card_tiers.js">`. `config.py` parses `card_tiers.js` at startup — no inline copies exist anywhere.
+**`pages/DraftPage.jsx`** — Port of `index.html`. Three conditional render blocks driven by `draft` state:
+- `draft === null` → Setup screen (player dropdowns + match history sidebar)
+- `draft.phase === 'ban' | 'pick'` → Draft screen (pool, sidebars, timer, banned strip)
+- `draft.phase === 'done'` → Done screen (deck links, QR codes, winner buttons)
 
-### `stats.html` — Card stats overview (static file)
-Served at `/stats` directly from `frontend/stats.html` (not a Jinja2 template). Clicking any card row navigates to that card's `/card/<n>` detail page.
+Key state and behavior:
+- `draft` — mirrors the API state object from `/api/start`, `/api/action`, etc.
+- Timer: 30s countdown using `setInterval` + `useRef` to avoid stale closures; resets on each new turn (when `action_index` changes); auto-picks random card on expire
+- Tick sounds: Web Audio API square oscillator (220 Hz normal / 320 Hz urgent), same scheduling logic as original
+- AI mode: `useEffect` on `[draft?.action_index, draft?.phase, draft?.ai_mode]` — fires 800ms after each state change, calls `/api/ai_action`, loops by triggering re-render
+- Pool rendering: three sort modes (type / tier / elixir), rarity filter, search, same group/label structure as original
 
-### Static JS data files
-Tier and type data live in `static/` as standalone JS files loaded in both templates.
+**`pages/PlayerStatsPage.jsx`** — Port of `player_stats.html`. React state routing between leaderboard and player detail; tabs implemented with `activeTab` state.
 
-| File | Globals | Purpose |
+**`pages/CardDetailPage.jsx`** — Port of `card_detail.html`. Gets card name from `useParams()`. Sets `--tier-color` and `--tier-glow` CSS variables via `document.documentElement.style.setProperty` on data load; cleans up on unmount. Stat bars animated with `requestAnimationFrame` + `data-pct` attributes.
+
+**`pages/CardStatsPage.jsx`** — Port of `stats.html`. Tier/type/mode filters, search, sortable table, export button.
+
+**`pages/LandingPage.jsx`** — Dashboard overview with Tailwind CSS (not a port of an existing page). Available at `/dashboard`.
+
+### Data files (`react-frontend/src/data/`)
+
+These are ES module versions of the Flask static JS files. **When updating tiers or types, edit both the `static/` file (for Flask/config.py) and the corresponding `src/data/` file (for React).**
+
+| File | Exports | Mirrors |
 |------|---------|---------|
-| `static/card_tiers.js` | `CARD_TIER`, `TIER_ORDER`, `TIER_ICONS` | Tier per card (S+ → F), display order, emoji icons |
-| `static/card_types.js` | `CARD_TYPE`, `TYPE_ORDER`, `TYPE_ICONS` | Type per card, display order, emoji icons |
+| `cardTiers.js` | `CARD_TIER`, `TIER_ORDER`, `TIER_ICONS` | `static/card_tiers.js` |
+| `cardTypes.js` | `CARD_TYPE`, `TYPE_ORDER`, `TYPE_ICONS` | `static/card_types.js` |
+| `tierColors.js` | `TIER_COLORS` | tier color theming (was inline in `card_detail.html`) |
+| `players.js` | `PLAYERS` | `config.py` `PLAYERS` list |
 
-Flask serves them from `static_folder="static"` configured in `main.py`.
+### CSS
 
-### Draft state flow
+All styles for the four ported pages live in **`react-frontend/src/styles/theme.css`** — a single combined file covering CSS variables (design tokens), shared components (header, buttons, match history cards, mode badges), and page-specific styles. Tailwind (in `index.css`) is used only by `LandingPage.jsx`.
+
+### Draft state flow (React)
 ```
-startDraft() → POST /api/start → applyState(s)
-doAction(id) → POST /api/action → applyState(s)
-resetDraft() → POST /api/reset → show setup screen
-declareWinner(player) → POST /api/record_winner → show banner
+startDraft()      → POST /api/start       → setDraft(s)
+doAction(cardId)  → POST /api/action      → setDraft(s)
+undoAction()      → POST /api/undo        → setDraft(s)
+resetDraft()      → POST /api/reset       → setDraft(null)
+declareWinner(n)  → POST /api/record_winner → setWinnerInfo(res)
 ```
 
-`applyState()` is the single function that transitions the draft UI between phases. All render functions (`renderPool`, `renderSidebars`, `renderBanned`, `renderDone`) read from `gState`.
-
-### Timer
-A 30-second countdown runs per turn (`TURN_SECONDS = 30`). On expiry, `autoPickRandom()` fires a random pick from the current pool. The timer uses `setInterval` + Web Audio API for tick sounds in the last 10 seconds.
+All state transitions call `setDraft(s)` which triggers re-renders and, in AI mode, re-triggers the AI polling `useEffect`.
 
 ---
 
