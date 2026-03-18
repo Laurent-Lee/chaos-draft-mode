@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { CARD_TIER } from '../data/cardTiers'
 import { TIER_COLORS } from '../data/tierColors'
+import { getApiUrl } from '../config'
 
 // ── Matchup group/sort helpers ────────────────────────────────────────────────
 

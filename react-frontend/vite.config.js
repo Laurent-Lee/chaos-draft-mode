@@ -6,8 +6,8 @@ export default defineConfig({
   server: {
     port: 5173,
     proxy: {
-      '/api': 'http://localhost:5050',
-      '/elixir.svg': 'http://localhost:5050',
+      '/api': 'http://54.145.3.50:5050',
+      '/elixir.svg': 'http://54.145.3.50:5050',
     },
   },
 })

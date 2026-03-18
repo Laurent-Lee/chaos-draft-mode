@@ -3,10 +3,11 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { QRCodeCanvas } from 'qrcode.react'
 import { CARD_TIER, TIER_ORDER, TIER_ICONS } from '../data/cardTiers'
 import { CARD_TYPE, TYPE_ORDER, TYPE_ICONS } from '../data/cardTypes'
+import { getApiUrl } from '../config'
 
 // ── API helper ────────────────────────────────────────────────────────────────
 async function apiCall(path, method = 'GET', body = null) {
-  const r = await fetch(path, {
+  const r = await fetch(getApiUrl(path), {
     method,
     headers: { 'Content-Type': 'application/json' },
     body: body ? JSON.stringify(body) : null,

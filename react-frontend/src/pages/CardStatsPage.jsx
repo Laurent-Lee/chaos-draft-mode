@@ -39,7 +39,7 @@ export default function CardStatsPage() {
   useEffect(() => {
     const params = new URLSearchParams()
     if (mode !== 'All') params.set('game_mode', mode)
-    fetch(`/api/card_stats?${params}`)
+    fetch(getApiUrl(`/api/card_stats?${params}`))
       .then(r => r.json())
       .then(data => { setCards(data); setLoading(false) })
       .catch(e => { setError(e.message); setLoading(false) })
@@ -145,7 +145,7 @@ export default function CardStatsPage() {
             style={{ marginLeft: 'auto' }}
           />
 
-          <a className="export-btn" href="/api/export_card_data" download>
+          <a className="export-btn" href={getApiUrl('/api/export_card_data')} download>
             ⬇ Export card_data.csv
           </a>
         </div>

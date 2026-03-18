@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { PLAYERS } from '../data/players'
+import { getApiUrl } from '../config'
 
 // ── API helper ────────────────────────────────────────────────────────────────
 async function apiCall(path, method = 'GET', body = null) {
-  const r = await fetch(path, {
+  const r = await fetch(getApiUrl(path), {
     method,
     headers: { 'Content-Type': 'application/json' },
     body: body ? JSON.stringify(body) : null,
@@ -18,7 +19,7 @@ function useAPI(url) {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch(url)
+    fetch(getApiUrl(url))
       .then(r => r.json())
       .then(setData)
       .finally(() => setLoading(false))
