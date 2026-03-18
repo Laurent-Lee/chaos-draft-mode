@@ -777,6 +777,42 @@ def player_stats_detail(player_name):
     })
 
 
+@stats_bp.route("/api/players", methods=["GET"])
+def get_players():
+    """Return the current player list from player_tags.json."""
+    try:
+        with open(PLAYER_TAGS_FILE, "r", encoding="utf-8") as f:
+            tags = json.load(f)
+        return jsonify(list(tags.keys()))
+    except (FileNotFoundError, json.JSONDecodeError):
+        return jsonify([])
+
+
+@stats_bp.route("/api/add_player", methods=["POST"])
+def add_player():
+    """Add a new player to player_tags.json and update the in-memory PLAYERS list."""
+    import config
+    data = request.get_json(force=True)
+    name = (data.get("name") or "").strip()
+    tag  = (data.get("tag")  or "").strip()
+    if not name:
+        return jsonify({"error": "name is required"}), 400
+    try:
+        with open(PLAYER_TAGS_FILE, "r", encoding="utf-8") as f:
+            tags = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        tags = {}
+    if name in tags:
+        return jsonify({"error": f"Player '{name}' already exists"}), 409
+    tags[name] = tag
+    with open(PLAYER_TAGS_FILE, "w", encoding="utf-8") as f:
+        json.dump(tags, f, indent=4)
+    # Update in-memory list so the running server picks it up immediately
+    if name not in config.PLAYERS:
+        config.PLAYERS.append(name)
+    return jsonify({"players": list(tags.keys())})
+
+
 @stats_bp.route("/api/elo", methods=["GET"])
 def get_elo():
     """Return the latest ELO for every known player. Accepts ?game_mode= to filter by mode."""

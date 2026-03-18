@@ -3,12 +3,12 @@ Baby Dragon I,1,0,0,0,0,0,0,0,1,0,0
 Baby Dragon II,4,0,2,0,0,0,0,1,1,0,0
 Baby Dragon III,1,0,0,0,0,0,0,1,0,0,0
 Barbarian Hut I,1,0,0,0,0,0,0,0,1,0,0
-Barbarian Hut II,4,0,3,0,0,0,0,0,0,1,0
+Barbarian Hut II,5,0,4,0,0,0,0,0,0,1,0
 Berserker I,1,0,0,0,1,0,0,0,0,0,0
 Berserker II,1,0,0,0,0,0,0,1,0,0,0
 Berserker III,1,0,0,0,0,0,0,1,0,0,0
 Dart Goblin I,2,0,0,1,1,0,0,0,0,0,0
-Dart Goblin II,1,0,0,0,0,0,0,0,1,0,0
+Dart Goblin II,2,0,0,1,0,0,0,0,1,0,0
 Dart Goblin III,4,1,0,0,0,0,3,0,0,0,0
 Electro Spirit I,3,0,0,1,1,0,0,0,1,0,0
 Electro Spirit II,1,0,0,0,0,0,0,1,0,0,0
@@ -18,70 +18,74 @@ Electro Wizard II,2,0,0,1,1,0,0,0,0,0,0
 Executioner I,1,0,0,0,1,0,0,0,0,0,0
 Executioner III,1,1,0,0,0,0,0,0,0,0,0
 Fireball I,5,0,0,0,1,1,0,0,0,3,0
+Fireball II,1,0,0,0,0,0,0,1,0,0,0
 Fireball III,4,0,0,0,0,0,4,0,0,0,0
 Flying Machine I,1,0,0,0,0,0,0,0,0,0,1
 Flying Machine II,3,0,0,0,0,0,0,2,1,0,0
 Flying Machine III,7,1,0,0,0,0,5,1,0,0,0
-Giant I,2,0,0,0,0,0,0,0,0,2,0
+Giant I,3,0,0,0,0,0,0,0,1,2,0
 Giant II,1,0,1,0,0,0,0,0,0,0,0
-Giant III,2,1,0,0,0,0,1,0,0,0,0
+Giant III,3,2,0,0,0,0,1,0,0,0,0
 Giant Snowball I,1,0,0,0,0,0,0,0,0,1,0
 Goblin Barrel I,6,0,0,1,2,1,0,0,1,1,0
-Goblin Barrel II,3,0,0,0,0,0,2,1,0,0,0
+Goblin Barrel II,4,0,0,0,0,0,2,2,0,0,0
 Goblin Barrel III,2,0,0,0,0,0,1,1,0,0,0
 Goblin Demolisher II,2,0,1,0,0,0,0,0,1,0,0
 Goblin Demolisher III,2,2,0,0,0,0,0,0,0,0,0
 Goblin Drill II,1,0,0,0,0,0,0,1,0,0,0
 Goblin Giant II,1,0,0,0,0,0,0,1,0,0,0
 Goblin Hut I,4,0,0,2,2,0,0,0,0,0,0
-Goblin Hut II,7,0,3,2,0,0,0,2,0,0,0
+Goblin Hut II,8,0,4,2,0,0,0,2,0,0,0
 Goblin Hut III,3,1,0,0,0,0,2,0,0,0,0
 Golem I,3,0,0,0,1,0,0,0,2,0,0
-Golem II,5,0,1,0,0,0,0,3,1,0,0
+Golem II,6,0,1,0,0,0,0,3,2,0,0
 Golem III,1,1,0,0,0,0,0,0,0,0,0
 Graveyard I,4,0,0,0,2,0,0,0,0,2,0
 Graveyard II,6,0,4,1,0,0,0,1,0,0,0
 Graveyard III,1,0,0,0,0,0,1,0,0,0,0
 Hunter III,1,0,0,0,0,0,0,1,0,0,0
+Ice Spirit I,2,0,0,0,1,0,0,0,0,1,0
 Ice Spirit II,3,0,1,0,0,0,0,1,1,0,0
 Ice Spirit III,4,3,0,0,0,0,1,0,0,0,0
 Ice Wizard III,1,0,0,0,0,0,1,0,0,0,0
-Knight I,2,0,0,0,0,0,0,0,2,0,0
+Inferno Tower III,1,0,0,0,0,0,1,0,0,0,0
+Knight I,3,0,0,0,0,0,0,0,2,1,0
 Knight II,3,1,1,0,0,0,0,1,0,0,0
 Knight III,6,6,0,0,0,0,0,0,0,0,0
 Mortar I,1,0,0,0,0,0,0,0,0,1,0
-Musketeer I,5,0,0,1,2,0,0,0,1,1,0
+Musketeer I,7,0,0,2,3,0,0,0,1,1,0
 Musketeer II,6,0,2,2,0,0,0,1,1,0,0
-Musketeer III,3,1,0,0,0,0,2,0,0,0,0
+Musketeer III,4,1,0,0,0,0,3,0,0,0,0
 P.E.K.K.A I,1,0,0,0,0,0,0,0,1,0,0
 P.E.K.K.A III,1,1,0,0,0,0,0,0,0,0,0
 Poison I,4,0,0,2,0,0,0,0,1,0,1
 Poison II,8,0,3,4,0,0,0,1,0,0,0
 Poison III,1,1,0,0,0,0,0,0,0,0,0
+Princess I,1,0,0,1,0,0,0,0,0,0,0
 Princess II,1,0,0,0,0,0,1,0,0,0,0
 Rage I,1,0,0,0,0,0,0,0,1,0,0
 Ram Rider I,1,0,0,0,0,0,0,0,0,0,1
 Ram Rider II,1,0,1,0,0,0,0,0,0,0,0
-Ram Rider III,1,1,0,0,0,0,0,0,0,0,0
+Ram Rider III,2,1,0,0,0,0,1,0,0,0,0
 Rascals I,5,0,0,2,1,0,0,0,1,1,0
 Rascals II,2,0,1,0,0,0,0,0,1,0,0
 Royal Delivery I,1,0,0,0,0,0,0,0,1,0,0
-Royal Delivery II,1,0,0,0,1,0,0,0,0,0,0
+Royal Delivery II,2,0,0,0,1,0,0,0,0,1,0
 Royal Delivery III,1,1,0,0,0,0,0,0,0,0,0
 Royal Giant I,3,0,0,0,1,0,0,0,0,2,0
 Royal Giant II,1,0,1,0,0,0,0,0,0,0,0
 Rune Giant II,1,0,0,1,0,0,0,0,0,0,0
 Rune Giant III,2,1,0,0,0,0,0,1,0,0,0
-Suspicious Bush I,4,0,0,1,1,0,0,0,1,1,0
-Suspicious Bush II,5,0,0,0,0,0,0,4,1,0,0
-The Log I,9,0,0,2,4,1,0,0,1,1,0
-The Log III,3,2,0,0,0,0,0,1,0,0,0
+Suspicious Bush I,5,0,0,1,1,0,0,0,1,1,1
+Suspicious Bush II,6,0,0,0,0,0,0,5,1,0,0
+The Log I,10,0,0,2,4,2,0,0,1,1,0
+The Log III,4,3,0,0,0,0,0,1,0,0,0
 Tombstone I,2,0,0,2,0,0,0,0,0,0,0
-Tombstone II,4,0,3,0,0,0,0,0,1,0,0
+Tombstone II,6,0,4,0,0,0,0,0,2,0,0
 Tombstone III,3,3,0,0,0,0,0,0,0,0,0
-Vines I,6,0,0,1,1,0,0,0,1,3,0
+Vines I,7,0,0,1,2,0,0,0,1,3,0
 Vines II,2,0,1,0,0,0,0,1,0,0,0
-Vines III,1,1,0,0,0,0,0,0,0,0,0
+Vines III,2,2,0,0,0,0,0,0,0,0,0
 Witch I,4,0,0,1,0,0,0,0,1,2,0
 Witch II,1,0,0,0,0,0,0,0,1,0,0
 Witch III,2,0,0,0,0,0,2,0,0,0,0
