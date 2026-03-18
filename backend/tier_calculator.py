@@ -21,10 +21,11 @@ def _bayesian_rating(n, win_rate):
     if n == 0:
         return 0.5625
     confidence = ((n + 3) / (n + 4)) ** 2
+    confidence_negative = (n / (n + 1)) ** 2
     win_rate = max(win_rate, 0.30)
     win_rate = min(win_rate, 0.70)
     if win_rate < 0.5:
-        return round(confidence * win_rate + (1 - confidence) * 0.5, 4)
+        return round(confidence * win_rate + (1 - confidence_negative) * 0.5, 4)
     else:
         return round(confidence * win_rate + confidence * 0.2, 4)
 
