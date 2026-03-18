@@ -1,6 +1,5 @@
 import { useState, useEffect, useMemo } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import { PLAYERS } from '../data/players'
 import { CARD_TIER, TIER_ICONS } from '../data/cardTiers'
 import { CARD_TYPE, TYPE_ICONS } from '../data/cardTypes'
 
@@ -248,7 +247,7 @@ function PlayerDetail({ playerName, mode }) {
     if (mode !== 'All') params.set('game_mode', mode)
     Promise.all([
       fetch(`/api/player_stats/${encodeURIComponent(playerName)}?${params}`).then(r => r.json()),
-      fetch('/api/elo').then(r => r.json()),
+      fetch(`/api/elo?${params}`).then(r => r.json()),
     ]).then(([pdata, eloData]) => {
       setData(pdata)
       setElo(eloData[playerName] ?? 1000)
@@ -321,6 +320,7 @@ function PlayerDetail({ playerName, mode }) {
 /* ── leaderboard ── */
 function Leaderboard({ mode }) {
   const navigate = useNavigate()
+  const [playerNames, setPlayerNames] = useState([])
   const [playerStats, setPlayerStats] = useState(null)
   const [eloData, setEloData] = useState(null)
   const [loading, setLoading] = useState(true)
@@ -328,11 +328,13 @@ function Leaderboard({ mode }) {
   useEffect(() => {
     setLoading(true)
     const params = new URLSearchParams()
-    if (mode !== 'All') params.set('mode', mode)
+    if (mode !== 'All') params.set('game_mode', mode)
     Promise.all([
+      fetch('/api/players').then(r => r.json()),
       fetch(`/api/player_stats?${params}`).then(r => r.json()),
-      fetch('/api/elo').then(r => r.json()),
-    ]).then(([ps, elo]) => {
+      fetch(`/api/elo?${params}`).then(r => r.json()),
+    ]).then(([names, ps, elo]) => {
+      setPlayerNames(names)
       setPlayerStats(ps)
       setEloData(elo)
       setLoading(false)
@@ -342,7 +344,7 @@ function Leaderboard({ mode }) {
   if (loading) return <div className="loading">Loading leaderboard…</div>
   if (!playerStats) return <div className="empty">No data yet.</div>
 
-  const players = PLAYERS.map(name => {
+  const players = playerNames.map(name => {
     const s = playerStats[name] ?? { wins: 0, losses: 0 }
     const wins = s.wins ?? 0
     const losses = s.losses ?? 0

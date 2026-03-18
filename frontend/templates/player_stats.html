@@ -207,8 +207,13 @@ main{max-width:1100px;margin:0 auto;padding:1.5rem 1rem}
 </main>
 
 <script>
-const PLAYERS = ['Kevin','Jason','Alex','Laurent','Brooks','Andrew'];
+let PLAYERS = [];
 let modeFilter = 'All';
+
+async function loadPlayers() {
+  try { PLAYERS = await fetch('/api/players').then(r => r.json()); }
+  catch(e) { console.warn('Failed to load players', e); }
+}
 
 // ── Routing ──────────────────────────────────────────────────────────────────
 
@@ -514,7 +519,7 @@ document.querySelectorAll('#mode-seg button').forEach(btn => {
 });
 
 // ── Init ──────────────────────────────────────────────────────────────────────
-loadLeaderboard();
+loadPlayers().then(() => loadLeaderboard());
 </script>
 </body>
 </html>

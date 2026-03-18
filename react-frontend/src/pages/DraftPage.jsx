@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { QRCodeCanvas } from 'qrcode.react'
 import { CARD_TIER, TIER_ORDER, TIER_ICONS } from '../data/cardTiers'
 import { CARD_TYPE, TYPE_ORDER, TYPE_ICONS } from '../data/cardTypes'
@@ -573,8 +573,9 @@ function DoneAiEntry({ entry }) {
 export default function DraftPage() {
   const location = useLocation()
   const navigate = useNavigate()
+  const { lobbyId } = useParams()
 
-  const [draft, setDraft]               = useState(location.state?.draft ?? null)
+  const [draft, setDraft]               = useState(null)
   const [rarityFilter, setRarityFilter] = useState('All')
   const [sortMode, setSortMode]         = useState('type')
   const [elixirAsc, setElixirAsc]       = useState(true)
@@ -596,6 +597,19 @@ export default function DraftPage() {
   // Keep refs in sync
   useEffect(() => { draftRef.current = draft }, [draft])
   useEffect(() => { pausedRef.current = timerPaused }, [timerPaused])
+
+  // Fetch draft state from API on mount (supports opening in a new tab)
+  useEffect(() => {
+    if (!lobbyId) { navigate('/'); return }
+    fetch(`/api/${lobbyId}/state`)
+      .then(r => r.json())
+      .then(s => {
+        if (s.error) { navigate('/'); return }
+        setDraft(s)
+        if (s.phase !== 'done' && !s.ai_mode) startTimer()
+      })
+      .catch(() => navigate('/'))
+  }, [lobbyId]) // eslint-disable-line react-hooks/exhaustive-deps
 
   // Track sticky-top height so sidebars can stick directly below it
   useEffect(() => {
@@ -661,7 +675,7 @@ export default function DraftPage() {
     const d = draftRef.current
     if (!d || !d.pool || d.pool.length === 0) return
     const randomCard = d.pool[Math.floor(Math.random() * d.pool.length)]
-    apiCall('/api/action', 'POST', { card_id: randomCard.id }).then(s => {
+    apiCall(`/api/${lobbyId}/action`, 'POST', { card_id: randomCard.id }).then(s => {
       if (s.error) { console.warn('Auto-pick failed:', s.error); return }
       applyState(s)
     })
@@ -690,7 +704,7 @@ export default function DraftPage() {
     setAiThinking(true)
     const t = setTimeout(async () => {
       try {
-        const s = await apiCall('/api/ai_action', 'POST')
+        const s = await apiCall(`/api/${lobbyId}/ai_action`, 'POST')
         if (s && s.error) {
           setAiThinking(false)
           console.warn('AI action error:', s.error)
@@ -723,29 +737,28 @@ export default function DraftPage() {
 
   // ── Actions ─────────────────────────────────────────────────────────────────
   async function doAction(id) {
-    const s = await apiCall('/api/action', 'POST', { card_id: id })
+    const s = await apiCall(`/api/${lobbyId}/action`, 'POST', { card_id: id })
     if (s.error) { alert(s.error); return }
     applyState(s)
   }
 
   async function undoAction() {
-    const s = await apiCall('/api/undo', 'POST')
+    const s = await apiCall(`/api/${lobbyId}/undo`, 'POST')
     if (s.error) { alert(s.error); return }
     applyState(s)
   }
 
   async function resetDraft() {
     stopTimer()
-    await apiCall('/api/reset', 'POST')
+    await apiCall(`/api/${lobbyId}/reset`, 'POST')
     navigate('/')
   }
 
   async function declareWinner(player) {
     try {
-      const res = await apiCall('/api/record_winner', 'POST', { winner: player })
+      const res = await apiCall(`/api/${lobbyId}/record_winner`, 'POST', { winner: player })
       if (res.error) { alert('Error saving result: ' + res.error); return }
       setWinnerInfo({ winner: res.winner, loser: res.loser })
-      await loadMatchHistory(mhLimit)
     } catch (e) {
       alert('Failed to save result: ' + e.message)
     }

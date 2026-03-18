@@ -1,0 +1,5 @@
+Flask==2.2.3
+flask-cors==6.0.2
+python-dotenv==1.2.1
+requests==2.28.1
+ollama==0.6.1  # optional — only needed for AI Draft mode; falls back gracefully if missing
