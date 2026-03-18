@@ -187,22 +187,137 @@ function MatchCard({ match }) {
   )
 }
 
+// ── Add Player modal ──────────────────────────────────────────────────────────
+function AddPlayerModal({ onClose, onAdded }) {
+  const [name, setName] = useState('')
+  const [tag,  setTag]  = useState('')
+  const [err,  setErr]  = useState('')
+  const [saving, setSaving] = useState(false)
+
+  async function handleSubmit(e) {
+    e.preventDefault()
+    if (!name.trim()) { setErr('Name is required.'); return }
+    if (!tag.trim())  { setErr('Player tag is required.'); return }
+    setSaving(true)
+    setErr('')
+    try {
+      const res = await fetch('/api/add_player', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: name.trim(), tag: tag.trim() }),
+      })
+      const data = await res.json()
+      if (!res.ok) { setErr(data.error || 'Failed to add player.'); setSaving(false); return }
+      onAdded(data.players)
+      onClose()
+    } catch {
+      setErr('Network error.')
+      setSaving(false)
+    }
+  }
+
+  return (
+    <div style={{
+      position: 'fixed', inset: 0, background: 'rgba(0,0,0,.6)', display: 'flex',
+      alignItems: 'center', justifyContent: 'center', zIndex: 1000,
+    }} onClick={onClose}>
+      <div style={{
+        background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: '1rem',
+        padding: '1.5rem', width: 'min(360px, 90vw)',
+      }} onClick={e => e.stopPropagation()}>
+        <h3 style={{ fontFamily: "'Cinzel Decorative', serif", color: 'var(--gold)', fontSize: '1rem', marginBottom: '1rem' }}>
+          Add New Player
+        </h3>
+        <form onSubmit={handleSubmit}>
+          <div className="field">
+            <label>Player Name</label>
+            <input
+              type="text" value={name} onChange={e => setName(e.target.value)}
+              placeholder="e.g. Brooks" autoFocus
+            />
+          </div>
+          <div className="field">
+            <label>Player Tag</label>
+            <input
+              type="text" value={tag} onChange={e => setTag(e.target.value)}
+              placeholder="e.g. #L990LPY2"
+            />
+          </div>
+          {err && <div className="error-msg">{err}</div>}
+          <div style={{ display: 'flex', gap: '.5rem', marginTop: '1rem' }}>
+            <button type="button" className="btn btn-ghost" style={{ flex: 1 }} onClick={onClose}>
+              Cancel
+            </button>
+            <button type="submit" className="btn btn-gold" style={{ flex: 1 }} disabled={saving}>
+              {saving ? 'Adding…' : 'Add Player'}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  )
+}
+
+const MODES = ['All', 'Normal Draft', 'AI Draft']
+
 // ── Main page ─────────────────────────────────────────────────────────────────
 export default function LandingPage() {
   const navigate = useNavigate()
 
+  // Mode filter
+  const [mode, setMode] = useState('All')
+  const modeParam = mode !== 'All' ? `?game_mode=${encodeURIComponent(mode)}` : ''
+
+  // Players loaded from API
+  const [players, setPlayers] = useState([])
+  const [p1, setP1]           = useState('')
+  const [p2, setP2]           = useState('')
+
+  // Add-player modal
+  const [showAddPlayer, setShowAddPlayer] = useState(false)
+
   // Draft setup state
-  const [p1, setP1]                     = useState('Kevin')
-  const [p2, setP2]                     = useState('Jason')
   const [setupErr, setSetupErr]         = useState('')
   const [startLoading, setStartLoading] = useState(false)
   const [aiLoading, setAiLoading]       = useState(false)
 
   // Dashboard data
-  const { data: cardStats,    loading: cardsLoading   } = useAPI('/api/card_stats')
-  const { data: playerStats,  loading: playersLoading } = useAPI('/api/player_stats')
-  const { data: elo,          loading: eloLoading     } = useAPI('/api/elo')
-  const { data: matchHistory, loading: matchesLoading } = useAPI('/api/match_history?limit=5')
+  const { data: cardStats,    loading: cardsLoading   } = useAPI(`/api/card_stats${modeParam}`)
+  const { data: playerStats,  loading: playersLoading } = useAPI(`/api/player_stats${modeParam}`)
+  const { data: elo,          loading: eloLoading     } = useAPI(`/api/elo${modeParam}`)
+  const { data: matchHistory, loading: matchesLoading } = useAPI(`/api/match_history?limit=5${mode !== 'All' ? `&game_mode=${encodeURIComponent(mode)}` : ''}`)
+
+  useEffect(() => {
+    fetch('/api/players')
+      .then(r => r.json())
+      .then(list => {
+        if (Array.isArray(list) && list.length > 0) {
+          setPlayers(list)
+          setP1(list[0])
+          setP2(list[1] ?? list[0])
+        }
+      })
+      .catch(() => {}) // fallback handled below via playerStats
+  }, [])
+
+  // Fallback: if /api/players failed, derive player list from playerStats keys
+  useEffect(() => {
+    if (players.length === 0 && playerStats) {
+      const names = Object.keys(playerStats)
+      if (names.length > 0) {
+        setPlayers(names)
+        if (!p1) setP1(names[0])
+        if (!p2) setP2(names[1] ?? names[0])
+      }
+    }
+  }, [playerStats])
+
+  function handlePlayerAdded(updatedList) {
+    setPlayers(updatedList)
+    // keep existing selections valid
+    if (!updatedList.includes(p1)) setP1(updatedList[0] ?? '')
+    if (!updatedList.includes(p2)) setP2(updatedList[1] ?? '')
+  }
 
   // Draft setup actions
   async function startDraft() {
@@ -212,7 +327,7 @@ export default function LandingPage() {
     try {
       const s = await apiCall('/api/start', 'POST', { p1_name: p1, p2_name: p2 })
       if (s.error) throw new Error(s.error)
-      navigate('/draft', { state: { draft: s } })
+      window.open(`/draft/${s.lobby_id}`, '_blank')
     } catch (e) {
       setSetupErr(`❌ ${e.message}`)
     }
@@ -226,7 +341,7 @@ export default function LandingPage() {
     try {
       const s = await apiCall('/api/start', 'POST', { p1_name: p1, p2_name: p2, ai_mode: true })
       if (s.error) throw new Error(s.error)
-      navigate('/draft', { state: { draft: s } })
+      window.open(`/draft/${s.lobby_id}`, '_blank')
     } catch (e) {
       setSetupErr(`❌ ${e.message}`)
     }
@@ -253,7 +368,7 @@ export default function LandingPage() {
     ? [...cardStats].filter(c => c.overall_rating != null).sort((a, b) => b.overall_rating - a.overall_rating).slice(0, 5)
     : []
 
-  const players =
+  const leaderboard =
     playerStats && elo
       ? Object.entries(playerStats)
           .map(([name, s]) => ({
@@ -267,10 +382,16 @@ export default function LandingPage() {
           .sort((a, b) => b.elo - a.elo)
       : []
 
-  const topPlayer = players[0]
+  const topPlayer = leaderboard[0]
 
   return (
     <>
+      {showAddPlayer && (
+        <AddPlayerModal
+          onClose={() => setShowAddPlayer(false)}
+          onAdded={handlePlayerAdded}
+        />
+      )}
       <header>
         <span className="header-title">⚔️ CHAOS Draft</span>
         <nav style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
@@ -281,6 +402,16 @@ export default function LandingPage() {
 
       <main>
 
+        {/* ── Mode filter ── */}
+        <div className="mode-filter">
+          <span className="mode-label">Mode</span>
+          <div className="seg">
+            {MODES.map(m => (
+              <button key={m} className={mode === m ? 'active' : ''} onClick={() => setMode(m)}>{m}</button>
+            ))}
+          </div>
+        </div>
+
         {/* ── Setup + summary two-column ── */}
         <div id="setup-wrapper">
 
@@ -290,7 +421,7 @@ export default function LandingPage() {
             <div className="field">
               <label>Player 1 Name</label>
               <select value={p1} onChange={e => setP1(e.target.value)}>
-                {PLAYERS.map(name => <option key={name} value={name}>{name}</option>)}
+                {players.map(name => <option key={name} value={name}>{name}</option>)}
               </select>
             </div>
             <div style={{ display: 'flex', justifyContent: 'center', margin: '.1rem 0' }}>
@@ -309,7 +440,7 @@ export default function LandingPage() {
             <div className="field">
               <label>Player 2 Name</label>
               <select value={p2} onChange={e => setP2(e.target.value)}>
-                {PLAYERS.map(name => <option key={name} value={name}>{name}</option>)}
+                {players.map(name => <option key={name} value={name}>{name}</option>)}
               </select>
             </div>
             {p1 === p2 && (
@@ -342,6 +473,13 @@ export default function LandingPage() {
                 👤 Players
               </Link>
             </div>
+            <button
+              className="btn btn-ghost"
+              style={{ width: '100%', marginTop: '.4rem', fontSize: '.82rem' }}
+              onClick={() => setShowAddPlayer(true)}
+            >
+              ➕ Add New Player
+            </button>
           </div>
 
           {/* Summary stats */}
@@ -432,7 +570,7 @@ export default function LandingPage() {
         {/* ── Player leaderboard ── */}
         <Panel>
           <PanelHeader>📊 Player Leaderboard</PanelHeader>
-          {playersLoading || eloLoading ? <EmptyState>Loading…</EmptyState> : players.length === 0 ? <EmptyState>No player data yet.</EmptyState> : (
+          {playersLoading || eloLoading ? <EmptyState>Loading…</EmptyState> : leaderboard.length === 0 ? <EmptyState>No player data yet.</EmptyState> : (
             <div style={{ overflowX: 'auto' }}>
               <table className="leaderboard-table">
                 <thead>
@@ -446,7 +584,7 @@ export default function LandingPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {players.map((p, i) => (
+                  {leaderboard.map((p, i) => (
                     <tr key={p.name} style={{ cursor: 'pointer' }} onClick={() => navigate(`/player_stats/${encodeURIComponent(p.name)}`)}>
                       <td className="rank-cell">{i + 1}</td>
                       <td className="player-name-cell">{p.name}</td>

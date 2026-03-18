@@ -1,1 +1,1 @@
-export const PLAYERS = ['Kevin', 'Jason', 'Alex', 'Laurent', 'Brooks', 'Andrew'];
+// Players are loaded dynamically from /api/players — do not hardcode names here.

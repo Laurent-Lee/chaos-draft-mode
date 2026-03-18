@@ -10,7 +10,7 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/"               element={<LandingPage />} />
-        <Route path="/draft"          element={<DraftPage />} />
+        <Route path="/draft/:lobbyId"  element={<DraftPage />} />
         <Route path="/player_stats"              element={<PlayerStatsPage />} />
         <Route path="/player_stats/:playerName" element={<PlayerStatsPage />} />
         <Route path="/card/:cardName" element={<CardDetailPage />} />

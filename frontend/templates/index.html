@@ -332,26 +332,12 @@ main{max-width:1400px;margin:0 auto;padding:1.2rem 1rem}
 <div id="setup-screen">
   <h2>Draft Setup</h2>
   <div class="field"><label>Player 1 Name</label>
-    <select id="p1-name" onchange="syncDropdowns()">
-      <option>Kevin</option>
-      <option>Jason</option>
-      <option>Alex</option>
-      <option>Laurent</option>
-      <option>Brooks</option>
-      <option>Andrew</option>
-    </select></div>
+    <select id="p1-name" onchange="syncDropdowns()"></select></div>
   <div style="display:flex;justify-content:center;margin:.1rem 0">
     <button onclick="swapPlayers()" title="Swap players" style="background:transparent;border:1px solid var(--border);border-radius:999px;color:var(--text-muted);cursor:pointer;font-size:.85rem;padding:.25rem .75rem;transition:all .15s" onmouseover="this.style.borderColor='var(--gold)';this.style.color='var(--gold)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text-muted)'">⇅ Swap</button>
   </div>
   <div class="field"><label>Player 2 Name</label>
-    <select id="p2-name" onchange="syncDropdowns()">
-      <option>Kevin</option>
-      <option>Jason</option>
-      <option>Alex</option>
-      <option>Laurent</option>
-      <option>Brooks</option>
-      <option>Andrew</option>
-    </select></div>
+    <select id="p2-name" onchange="syncDropdowns()"></select></div>
   <div id="setup-error"></div>
   <button class="btn btn-gold" id="btn-start-draft" onclick="startDraft()">⚔️ Begin Draft</button>
   <button class="btn btn-ai"  id="btn-ai-draft"    onclick="startAiDraft()">🤖 AI Draft</button>
@@ -481,7 +467,16 @@ main{max-width:1400px;margin:0 auto;padding:1.2rem 1rem}
 <script>
 let gState = null, rarityFilter = 'All', sortMode = 'type', elixirAsc = true;
 
-const PLAYERS = ['Kevin','Jason','Alex','Laurent','Brooks','Andrew'];
+let PLAYERS = [];
+async function loadPlayers() {
+  try {
+    PLAYERS = await api('/api/players');
+    ['p1-name','p2-name'].forEach(id => {
+      const sel = document.getElementById(id);
+      sel.innerHTML = PLAYERS.map(n => `<option value="${n}">${n}</option>`).join('');
+    });
+  } catch(e) { console.warn('Failed to load players', e); }
+}
 
 // ── Win/loss stats for dropdowns ─────────────────────────────────────────────
 let mhLimit = 10;
@@ -591,10 +586,11 @@ function syncDropdowns(){
   }
 }
 
-// Init: default P1=Kevin, P2=Jason, then load stats
-(function initDropdowns(){
-  document.getElementById('p1-name').value='Kevin';
-  document.getElementById('p2-name').value='Jason';
+// Init: load players from API, then set defaults and load stats
+(async function initDropdowns(){
+  await loadPlayers();
+  if (PLAYERS[0]) document.getElementById('p1-name').value = PLAYERS[0];
+  if (PLAYERS[1]) document.getElementById('p2-name').value = PLAYERS[1];
   loadPlayerStats();
 })();
 

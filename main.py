@@ -28,7 +28,8 @@ from flask_cors import CORS
 
 from config import CR_API_TOKEN, PORT
 from backend.cards import fetch_cards
-from backend.draft import draft_bp, state
+from backend.draft import draft_bp
+import backend.draft as _draft
 from backend.stats import stats_bp
 from frontend.frontend import frontend_bp
 
@@ -49,11 +50,11 @@ if __name__ == "__main__":
         print("   Get one at: https://developer.clashroyale.com\n")
 
     # Pre-load card data so match history icons work before any draft is started
-    if CR_API_TOKEN and not state["cards"]:
+    if CR_API_TOKEN and not _draft.cards_cache:
         try:
             print("⏳  Pre-loading card data…")
-            state["cards"] = fetch_cards()
-            print(f"✅  Loaded {len(state['cards'])} cards.")
+            _draft.cards_cache[:] = fetch_cards()
+            print(f"✅  Loaded {len(_draft.cards_cache)} cards.")
         except Exception as e:
             print(f"⚠️  Could not pre-load cards: {e}")
 

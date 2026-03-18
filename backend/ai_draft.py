@@ -16,7 +16,7 @@ import json
 import random
 import re
 
-from config import TIER_CARDS, TYPING_OF_CHAOS_CARD, CSV_FILE, CARD_DATA_CSV
+from config import TYPING_OF_CHAOS_CARD, CSV_FILE, CARD_DATA_CSV
 from backend.get_card_data import (
     get_card_win_rates    as get_card_stats,      # preserves existing public alias
     get_matchup_win_rates as get_matchup_stats,   # preserves existing public alias
@@ -30,13 +30,6 @@ from backend.get_card_data import (
 type_lookup = {
     card: type_name
     for type_name, cards in TYPING_OF_CHAOS_CARD.items()
-    for card in cards
-}
-
-# card_name -> tier string  (e.g. "Electro Wizard" -> "S+")
-tier_lookup = {
-    card: tier
-    for tier, cards in TIER_CARDS.items()
     for card in cards
 }
 
@@ -113,14 +106,14 @@ def _select_pick_context(pool_names, opp_picks, matchup_stats, overall_ratings,
 
 # ── Prompt builder ─────────────────────────────────────────────────────────────
 
-def _format_card_list(pool_names, card_stats, type_lookup, tier_lookup,
+def _format_card_list(pool_names, card_stats, type_lookup,
                       type_deltas=None, overall_ratings=None):
     """
     Format pool cards with extended stats, sorted by overall rating descending.
 
     Line format:
-      Goblin Hut [Tower] (S): 65% WR | rating: 0.61 | +10.2% vs Tower avg
-      Giant [Tanks] (B): no data | rating: 0.56
+      Goblin Hut [Tower]: 65% WR | rating: 0.61 | +10.2% vs Tower avg
+      Giant [Tanks]: no data | rating: 0.56
     """
     rows = []
     for name in pool_names:
@@ -134,7 +127,6 @@ def _format_card_list(pool_names, card_stats, type_lookup, tier_lookup,
     lines = []
     for name, rating, s in rows:
         ctype = type_lookup.get(name, "?")
-        tier  = tier_lookup.get(name, "?")
 
         if s and s["win_rate"] is not None:
             wr_str = f"{s['win_rate'] * 100:.0f}% WR"
@@ -151,7 +143,7 @@ def _format_card_list(pool_names, card_stats, type_lookup, tier_lookup,
             delta_str = ""
 
         lines.append(
-            f"  {name} [{ctype}] ({tier}): {wr_str} | {rating_str}{delta_str}"
+            f"  {name} [{ctype}]: {wr_str} | {rating_str}{delta_str}"
         )
     return "\n".join(lines)
 
@@ -221,7 +213,7 @@ def build_ban_prompt(pool_names, my_picks, opp_picks, card_stats,
     context_names = _select_ban_context(pool_names, overall_ratings or {})
 
     card_list = _format_card_list(
-        context_names, card_stats, type_lookup, tier_lookup,
+        context_names, card_stats, type_lookup,
         type_deltas=type_deltas, overall_ratings=overall_ratings,
     )
     my_str  = ", ".join(my_picks)  if my_picks  else "none yet"
@@ -346,7 +338,7 @@ def build_pick_prompt(pool_names, my_picks, opp_picks, card_stats,
     )
 
     card_list       = _format_card_list(
-        context_names, card_stats, type_lookup, tier_lookup,
+        context_names, card_stats, type_lookup,
         type_deltas=type_deltas, overall_ratings=overall_ratings,
     )
     matchup_section = _format_counter_analysis(context_names, opp_picks, matchup_stats)
