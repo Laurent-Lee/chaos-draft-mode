@@ -57,15 +57,17 @@ if __name__ == "__main__":
         except Exception as e:
             print(f"⚠️  Could not pre-load cards: {e}")
 
-    url = f"http://127.0.0.1:{PORT}"
+    url = f"http://0.0.0.0:{PORT}"
     print(f"⚔️  CR Draft starting on {url}")
     print("   Press Ctrl+C to stop.\n")
 
+    '''
     def open_browser():
         import time
         time.sleep(1.2)
         webbrowser.open(url)
 
     threading.Thread(target=open_browser, daemon=True).start()
+    '''
 
-    app.run(host="127.0.0.1", port=PORT, debug=False, use_reloader=False)
+    app.run(host="0.0.0.0", port=PORT, debug=False, use_reloader=False)
