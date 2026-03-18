@@ -256,9 +256,15 @@ function AddPlayerModal({ onClose, onAdded }) {
   )
 }
 
+const MODES = ['All', 'Normal Draft', 'AI Draft']
+
 // ── Main page ─────────────────────────────────────────────────────────────────
 export default function LandingPage() {
   const navigate = useNavigate()
+
+  // Mode filter
+  const [mode, setMode] = useState('All')
+  const modeParam = mode !== 'All' ? `?game_mode=${encodeURIComponent(mode)}` : ''
 
   // Players loaded from API
   const [players, setPlayers] = useState([])
@@ -274,10 +280,10 @@ export default function LandingPage() {
   const [aiLoading, setAiLoading]       = useState(false)
 
   // Dashboard data
-  const { data: cardStats,    loading: cardsLoading   } = useAPI('/api/card_stats')
-  const { data: playerStats,  loading: playersLoading } = useAPI('/api/player_stats')
-  const { data: elo,          loading: eloLoading     } = useAPI('/api/elo')
-  const { data: matchHistory, loading: matchesLoading } = useAPI('/api/match_history?limit=5')
+  const { data: cardStats,    loading: cardsLoading   } = useAPI(`/api/card_stats${modeParam}`)
+  const { data: playerStats,  loading: playersLoading } = useAPI(`/api/player_stats${modeParam}`)
+  const { data: elo,          loading: eloLoading     } = useAPI(`/api/elo${modeParam}`)
+  const { data: matchHistory, loading: matchesLoading } = useAPI(`/api/match_history?limit=5${mode !== 'All' ? `&game_mode=${encodeURIComponent(mode)}` : ''}`)
 
   useEffect(() => {
     fetch('/api/players')
@@ -393,6 +399,16 @@ export default function LandingPage() {
       </header>
 
       <main>
+
+        {/* ── Mode filter ── */}
+        <div className="mode-filter">
+          <span className="mode-label">Mode</span>
+          <div className="seg">
+            {MODES.map(m => (
+              <button key={m} className={mode === m ? 'active' : ''} onClick={() => setMode(m)}>{m}</button>
+            ))}
+          </div>
+        </div>
 
         {/* ── Setup + summary two-column ── */}
         <div id="setup-wrapper">

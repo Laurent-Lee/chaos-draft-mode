@@ -247,7 +247,7 @@ function PlayerDetail({ playerName, mode }) {
     if (mode !== 'All') params.set('game_mode', mode)
     Promise.all([
       fetch(`/api/player_stats/${encodeURIComponent(playerName)}?${params}`).then(r => r.json()),
-      fetch('/api/elo').then(r => r.json()),
+      fetch(`/api/elo?${params}`).then(r => r.json()),
     ]).then(([pdata, eloData]) => {
       setData(pdata)
       setElo(eloData[playerName] ?? 1000)
@@ -328,11 +328,11 @@ function Leaderboard({ mode }) {
   useEffect(() => {
     setLoading(true)
     const params = new URLSearchParams()
-    if (mode !== 'All') params.set('mode', mode)
+    if (mode !== 'All') params.set('game_mode', mode)
     Promise.all([
       fetch('/api/players').then(r => r.json()),
       fetch(`/api/player_stats?${params}`).then(r => r.json()),
-      fetch('/api/elo').then(r => r.json()),
+      fetch(`/api/elo?${params}`).then(r => r.json()),
     ]).then(([names, ps, elo]) => {
       setPlayerNames(names)
       setPlayerStats(ps)
