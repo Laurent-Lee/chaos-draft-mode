@@ -11,7 +11,9 @@ const isDevelopment = import.meta.env.MODE === 'development'
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || (
   isDevelopment 
     ? '' // Empty string uses relative paths (via Vite proxy)
-    : 'http://54.145.3.50:5050' // Production: EC2 instance
+    : 'https://zandra-flimsier-queen.ngrok-free.dev' // ngrok secure tunneling. TODO, replace with actual domain with certificates
+    // Note that this ngrok URL is temporary and will change each time ngrok is restarted. 
+    // : 'http://54.145.3.50:5050' // Production: EC2 instance
 )
 
 /**
